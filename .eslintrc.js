@@ -24,7 +24,6 @@ module.exports = {
     // allow async-await
     'generator-star-spacing': 'off',
     'indent': 0,// 忽略indent
-    'semi': ['error', 'always'],// 强制有分号，没有就报错
     // allow debugger during development
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
   }
