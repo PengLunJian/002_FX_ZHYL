@@ -7,6 +7,7 @@
 <script type="text/ecmascript-6">
   export default {
     name: 'App',
+    data () {},
     methods: {
       setRootFontSize: function () {
         const width = document.documentElement.clientWidth || document.body.clientWidth
@@ -19,7 +20,7 @@
         }
       }
     },
-    mounted: function () {
+    mounted () {
       this.setRootFontSize()
       this.windowOnResize()
     }

@@ -1,5 +1,5 @@
 <template>
-  <div class="FX_ZHYL_HOME">我是首页</div>
+  <div class="FX_ZHYL_HOME"></div>
 </template>
 
 <script type="text/ecmascript-6">
