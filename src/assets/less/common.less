@@ -5,15 +5,19 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 html {
   font-size: calc(100vw / 3.75);
+  -webkit-text-size-adjust: none;
 }
 
 body {
   min-height: 100vh;
   font-size: 0.13rem;
+  background-color: @bgColor;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
@@ -25,10 +29,36 @@ input, textarea {
 }
 
 input:focus, textarea:focus,
-select:focus, button:focus {
+select:focus, button:focus, .btn:focus {
   outline: none;
 }
 
 li, ul {
   list-style: none;
+}
+
+.ellipsis {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.btn, button {
+  border: none;
+  background-color: transparent;
+}
+
+.icon-next {
+  color: #c8c7cd;
+}
+
+.module {
+  margin-bottom: 0.1rem;
+  background-color: @white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, .05);
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
 }

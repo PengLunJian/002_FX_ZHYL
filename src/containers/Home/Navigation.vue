@@ -1,12 +1,50 @@
 <template>
-  <div>1</div>
+  <div class="module navigation">
+    <NavItem v-for="item in items" :key="item.index" :image="item.image" :title="item.title"
+             :path="item.path"></NavItem>
+  </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import NavItem from '../../components/NavItem.vue'
   export default{
     name: '',
+    components: {NavItem},
     data () {
-      return {msg: '这个是Home模板页'}
+      return {
+        items: [
+          {
+            image: require('../../assets/images/nav_icon01@2x.png'),
+            title: '预约',
+            path: '/bespoke'
+          },
+          {
+            image: require('../../assets/images/nav_icon02@2x.png'),
+            title: '挂号',
+            path: '/register'
+          },
+          {
+            image: require('../../assets/images/nav_icon03@2x.png'),
+            title: '绑卡',
+            path: '/bindCard'
+          },
+          {
+            image: require('../../assets/images/nav_icon04@2x.png'),
+            title: '医院指南',
+            path: '/guide'
+          },
+          {
+            image: require('../../assets/images/nav_icon05@2x.png'),
+            title: '我的收藏',
+            path: '/collection'
+          },
+          {
+            image: require('../../assets/images/nav_icon06@2x.png'),
+            title: '智能导航',
+            path: '/navigation'
+          }
+        ]
+      }
     }
   }
 </script>
