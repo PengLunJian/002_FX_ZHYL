@@ -16,32 +16,32 @@
           {
             image: require('../../assets/images/nav_icon01@2x.png'),
             title: '预约',
-            path: '/bespoke'
+            path: '/Nav01'
           },
           {
             image: require('../../assets/images/nav_icon02@2x.png'),
             title: '挂号',
-            path: '/register'
+            path: '/Nav02'
           },
           {
             image: require('../../assets/images/nav_icon03@2x.png'),
             title: '绑卡',
-            path: '/bindCard'
+            path: '/Nav03'
           },
           {
             image: require('../../assets/images/nav_icon04@2x.png'),
             title: '医院指南',
-            path: '/guide'
+            path: '/Nav04'
           },
           {
             image: require('../../assets/images/nav_icon05@2x.png'),
             title: '我的收藏',
-            path: '/collection'
+            path: '/Nav05'
           },
           {
             image: require('../../assets/images/nav_icon06@2x.png'),
             title: '智能导航',
-            path: '/navigation'
+            path: '/Nav06'
           }
         ]
       }

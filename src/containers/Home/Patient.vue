@@ -103,6 +103,7 @@
           width: 1.2rem;
           height: 1.2rem;
           border-radius: 0.04rem;
+          background-color: @white;
           border: 0.05rem solid @white;
         }
         .patient-desc {

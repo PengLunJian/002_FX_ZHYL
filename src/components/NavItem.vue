@@ -16,7 +16,9 @@
     ],
     methods: {
       handleClick: function () {
-        console.log(this.path)
+        this.$router.push({
+          path: this.path
+        })
       }
     },
     mounted () {
