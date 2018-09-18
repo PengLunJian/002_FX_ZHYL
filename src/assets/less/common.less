@@ -33,6 +33,10 @@ select:focus, button:focus, .btn:focus {
   outline: none;
 }
 
+em, i {
+  font-style: normal;
+}
+
 li, ul {
   list-style: none;
 }
@@ -55,11 +59,20 @@ li, ul {
 .clear {
   display: block;
   clear: both;
+  &:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
 }
 
 .col-xs-6 {
   width: 50%;
   float: left;
+}
+
+.borderNone {
+  border: none !important;
 }
 
 .module {
@@ -70,5 +83,27 @@ li, ul {
     content: '';
     display: block;
     clear: both;
+  }
+  .title {
+    height: 0.4rem;
+    line-height: 0.4rem;
+    padding: 0 0.15rem;
+    font-weight: normal;
+    font-size: 0;
+    border-bottom: 1px solid @borderColor2;
+    &:before {
+      content: '';
+      margin-right: 0.1rem;
+      display: inline-block;
+      vertical-align: middle;
+      border-top: 0.06rem solid transparent;
+      border-bottom: 0.06rem solid transparent;
+      border-left: 0.1rem solid @activeColor;
+    }
+    span {
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 0.14rem;
+    }
   }
 }

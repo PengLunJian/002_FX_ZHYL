@@ -1,19 +1,19 @@
 <template>
-  <div class="FX_ZHYL_BESPOKE">
-    <Search></Search>
-    <Menus></Menus>
+  <div class="FX_ZHYL_YYGH">
+    <search></search>
+    <f-l-c-d></f-l-c-d>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import Search from '../../components/Search'
-  import Menus from './Menus'
+  import FLCD from './FLCD'
   export default{
     components: {
-      Menus,
+      FLCD,
       Search
     },
-    name: 'Bespoke',
+    name: 'YYGH',
     data () {
       return {}
     }

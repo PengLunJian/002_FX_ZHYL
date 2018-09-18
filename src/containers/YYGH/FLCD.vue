@@ -1,26 +1,26 @@
 <template>
-  <div class="module menus">
+  <div class="module FLCD">
     <div class="col-xs-6 menu-lt">
       <ul class="menu-buttons">
         <li class="menu-button active" v-waves.block>专科专病</li>
-        <li class="menu-button">专科专病</li>
-        <li class="menu-button">专科专病</li>
-        <li class="menu-button">专科专病</li>
-        <li class="menu-button">专科专病</li>
-        <li class="menu-button">专科专病</li>
-        <li class="menu-button">专科专病</li>
-        <li class="menu-button">专科专病</li>
-        <li class="menu-button">专科专病</li>
-        <li class="menu-button">专科专病</li>
-        <li class="menu-button">专科专病</li>
-        <li class="menu-button">专科专病</li>
-        <li class="menu-button">专科专病</li>
-        <li class="menu-button">专科专病</li>
-        <li class="menu-button">专科专病</li>
-        <li class="menu-button">专科专病</li>
-        <li class="menu-button">专科专病</li>
-        <li class="menu-button">专科专病</li>
-        <li class="menu-button">专科专病</li>
+        <li class="menu-button" v-waves.block>专科专病</li>
+        <li class="menu-button" v-waves.block>专科专病</li>
+        <li class="menu-button" v-waves.block>专科专病</li>
+        <li class="menu-button" v-waves.block>专科专病</li>
+        <li class="menu-button" v-waves.block>专科专病</li>
+        <li class="menu-button" v-waves.block>专科专病</li>
+        <li class="menu-button" v-waves.block>专科专病</li>
+        <li class="menu-button" v-waves.block>专科专病</li>
+        <li class="menu-button" v-waves.block>专科专病</li>
+        <li class="menu-button" v-waves.block>专科专病</li>
+        <li class="menu-button" v-waves.block>专科专病</li>
+        <li class="menu-button" v-waves.block>专科专病</li>
+        <li class="menu-button" v-waves.block>专科专病</li>
+        <li class="menu-button" v-waves.block>专科专病</li>
+        <li class="menu-button" v-waves.block>专科专病</li>
+        <li class="menu-button" v-waves.block>专科专病</li>
+        <li class="menu-button" v-waves.block>专科专病</li>
+        <li class="menu-button" v-waves.block>专科专病</li>
       </ul>
     </div>
     <div class="col-xs-6 menu-rt">
@@ -48,7 +48,7 @@
 
 <script type="text/ecmascript-6">
   export default{
-    name: 'Menus',
+    name: 'FLCD',
     data () {
       return {}
     },
@@ -60,7 +60,7 @@
 <style lang="less">
   @import "../../assets/less/variable";
 
-  .menus {
+  .FLCD {
     margin-bottom: 0;
     height: calc(100vh - 0.45rem);
     .menu-lt {
@@ -71,6 +71,7 @@
       .menu-buttons {
         .menu-button {
           height: 0.45rem;
+          position: relative;
           line-height: 0.45rem;
           padding-left: 0.3rem;
           border-bottom: 1px solid #d9d9d9;
@@ -80,9 +81,11 @@
             background-color: @white;
             &:before {
               content: '';
-              margin-right: 0.05rem;
-              display: inline-block;
-              vertical-align: middle;
+              display: block;
+              position: absolute;
+              top: 50%;
+              left: 0.15rem;
+              margin-top: -0.05rem;
               border-top: 0.05rem solid transparent;
               border-left: 0.08rem solid @activeColor;
               border-bottom: 0.05rem solid transparent;
