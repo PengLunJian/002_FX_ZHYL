@@ -58,6 +58,12 @@
           color: @buttonColor;
           font-size: 0.15rem;
         }
+        &.icon-money {
+          font-size: 0.18rem;
+        }
+        &.icon-before {
+          font-size: 0.18rem;
+        }
       }
       .link-text {
         display: inline-block;

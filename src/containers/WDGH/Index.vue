@@ -1,20 +1,19 @@
 <template>
   <div class="FX_ZHYL_WDGH">
-    <d-y-m-k></d-y-m-k>
-    <d-y-m-k></d-y-m-k>
-    <d-y-m-k expired="true"></d-y-m-k>
-    <d-y-m-k expired="true"></d-y-m-k>
-    <d-y-m-k expired="true"></d-y-m-k>
+    <g-h-m-k></g-h-m-k>
+    <g-h-m-k expired="true"></g-h-m-k>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import DYMK from './DYMK'
+  import GHMK from './GHMK'
   export default{
-    components: {DYMK},
+    components: {GHMK},
     name: 'WDGH',
     data () {
-      return {}
+      return {
+        expired: true
+      }
     }
   }
 </script>

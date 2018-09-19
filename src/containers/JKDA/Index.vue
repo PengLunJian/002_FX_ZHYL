@@ -1,0 +1,27 @@
+<template>
+  <div class="FX_ZHYL_JKDA">
+    <d-y-m-k></d-y-m-k>
+    <d-e-m-k></d-e-m-k>
+    <d-s-m-k></d-s-m-k>
+  </div>
+</template>
+
+<script type="text/ecmascript-6">
+  import DYMK from './DYMK'
+  import DEMK from './DEMK'
+  import DSMK from './DSMK'
+  export default{
+    components: {
+      DSMK,
+      DEMK,
+      DYMK
+    },
+    name: 'JKDA',
+    data () {
+      return {}
+    }
+  }
+</script>
+
+<style lang="less">
+</style>

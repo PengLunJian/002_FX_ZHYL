@@ -1,7 +1,7 @@
 <template>
-  <div :class="'true'===expired?'module DYMK expired':'module DYMK'">
+  <div class="module YYMK">
     <div class="col-box-1">
-      <h3 class="name">眼科中心</h3>
+      <h3 class="name">何晗栩<span class="span">(正主任医师)</span></h3>
       <div class="date">
         <label class="label">提交时间：</label>
         <span class="span">2018/09/08 09:36</span>
@@ -33,22 +33,26 @@
 
 <script type="text/ecmascript-6">
   export default{
-    name: 'DYMK',
+    name: 'YYMK',
     data () {
       return {}
-    },
-    props: [
-      'expired'
-    ]
+    }
   }
 </script>
 
 <style lang="less">
   @import "../../assets/less/variable";
 
-  .DYMK {
+  .YYMK {
     height: auto;
     position: relative;
+    .label {
+      font-size: 0.13rem;
+    }
+    .span {
+      color: @fontColor;
+      font-size: 0.13rem;
+    }
     .col-box-1 {
       padding: 0 0.15rem;
       border-bottom: 1px solid @borderColor;
@@ -57,16 +61,20 @@
         font-weight: normal;
         font-size: 0.15rem;
         line-height: 0.36rem;
+        .span {
+          padding-left: 0.05rem;
+        }
       }
       .date {
         float: right;
         line-height: 0.36rem;
         font-size: 0.12rem;
         .label {
-
+          font-size: 0.12rem;
         }
         .span {
-
+          color: #333333;
+          font-size: 0.12rem;
         }
       }
     }
@@ -76,12 +84,6 @@
       .group {
         line-height: 0.2rem;
         margin-bottom: 0.04rem;
-        .label {
-
-        }
-        .span {
-          color: @fontColor;
-        }
         &:last-child {
           margin: 0;
         }
@@ -98,7 +100,7 @@
     }
     &.expired {
       &:before {
-        content: '已过期';
+        content: 'Sold Out';
         width: 100%;
         height: 100%;
         display: block;

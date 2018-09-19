@@ -8,16 +8,22 @@ import KSXX from '../containers/KSXX/Index.vue'
 import YSZY from '../containers/YSZY/Index.vue'
 import GRZX from '../containers/GRZX/Index.vue'
 import WDGH from '../containers/WDGH/Index.vue'
+import GHXQ from '../containers/GHXQ/Index.vue'
+import YYXQ from '../containers/YYXQ/Index.vue'
+import WDYY from '../containers/WDYY/Index.vue'
+import JFJL from '../containers/JFJL/Index.vue'
+import DJCLB from '../containers/DJCLB/Index.vue'
+import JKDA from '../containers/JKDA/Index.vue'
+
+import MuseUI from 'muse-ui'
+import 'muse-ui/dist/muse-ui.css'
+
+Vue.use(MuseUI)
 Vue.use(Router)
 
 const routes = [
   {
     path: '/',
-    name: 'Home',
-    component: Home
-  },
-  {
-    path: '/Home',
     name: 'Home',
     component: Home
   },
@@ -55,6 +61,36 @@ const routes = [
     path: '/Nav01/WDGH',
     name: 'WDGH',
     component: WDGH
+  },
+  {
+    path: '/Nav01/GHXQ',
+    name: 'GHXQ',
+    component: GHXQ
+  },
+  {
+    path: '/Nav01/WDYY',
+    name: 'WDYY',
+    component: WDYY
+  },
+  {
+    path: '/Nav01/JFJL',
+    name: 'JFJL',
+    component: JFJL
+  },
+  {
+    path: '/Nav01/DJCLB',
+    name: 'DJCLB',
+    component: DJCLB
+  },
+  {
+    path: '/Nav01/JKDA',
+    name: 'JKDA',
+    component: JKDA
+  },
+  {
+    path: '/Nav01/YYXQ',
+    name: 'YYXQ',
+    component: YYXQ
   }
 ]
 

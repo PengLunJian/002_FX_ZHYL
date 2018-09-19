@@ -58,6 +58,9 @@
           color: @buttonColor;
           font-size: 0.15rem;
         }
+        &.icon-print {
+          font-size: 0.22rem;
+        }
       }
       .link-text {
         display: inline-block;

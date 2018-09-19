@@ -11,8 +11,10 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "muse-ui": "^3.0.1",
     "normalize.css": "^8.0.0",
     "vue": "^2.5.2",
+    "vue-pull-to": "^0.1.6",
     "vue-router": "^3.0.1",
     "vue-waves": "^0.1.1",
     "vuex": "^3.0.1",
