@@ -14,11 +14,13 @@ import WDYY from '../containers/WDYY/Index.vue'
 import JFJL from '../containers/JFJL/Index.vue'
 import DJCLB from '../containers/DJCLB/Index.vue'
 import JKDA from '../containers/JKDA/Index.vue'
+import JCBG from '../containers/JCBG/Index.vue'
+import GRXX from '../containers/GRXX/Index.vue'
+import SCSFZ from '../containers/SCSFZ/Index.vue'
+import DZJZKBL from '../containers/DZJZKBL/Index.vue'
+import JCXX from '../containers/JCXX/Index.vue'
+import JZRLB from '../containers/JZRLB/Index.vue'
 
-import MuseUI from 'muse-ui'
-import 'muse-ui/dist/muse-ui.css'
-
-Vue.use(MuseUI)
 Vue.use(Router)
 
 const routes = [
@@ -86,6 +88,36 @@ const routes = [
     path: '/Nav01/JKDA',
     name: 'JKDA',
     component: JKDA
+  },
+  {
+    path: '/Nav01/JCBG',
+    name: 'JCBG',
+    component: JCBG
+  },
+  {
+    path: '/Nav01/GRXX',
+    name: 'GRXX',
+    component: GRXX
+  },
+  {
+    path: '/Nav01/DZJZKBL',
+    name: 'DZJZKBL',
+    component: DZJZKBL
+  },
+  {
+    path: '/Nav01/SCSFZ',
+    name: 'SCSFZ',
+    component: SCSFZ
+  },
+  {
+    path: '/Nav01/JCXX',
+    name: 'JCXX',
+    component: JCXX
+  },
+  {
+    path: '/Nav01/JZRLB',
+    name: 'JZRLB',
+    component: JZRLB
   },
   {
     path: '/Nav01/YYXQ',
