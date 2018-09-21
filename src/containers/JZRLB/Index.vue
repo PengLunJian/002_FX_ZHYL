@@ -111,7 +111,6 @@
 
   .btn-add {
     width: 100%;
-    height: 0.6rem;
     display: block;
     background-color: @white;
     border-radius: @borderRadius;
@@ -125,6 +124,7 @@
       margin-right: 0.1rem;
     }
     .btn-text {
+      line-height: 0.6rem;
       display: inline-block;
       vertical-align: middle;
       font-size: 0.18rem;

@@ -20,6 +20,9 @@ import SCSFZ from '../containers/SCSFZ/Index.vue'
 import DZJZKBL from '../containers/DZJZKBL/Index.vue'
 import JCXX from '../containers/JCXX/Index.vue'
 import JZRLB from '../containers/JZRLB/Index.vue'
+import JZRSFZ from '../containers/JZRSFZ/Index.vue'
+import WDSC from '../containers/WDSC/Index.vue'
+import YYJJ from '../containers/YYJJ/Index.vue'
 
 Vue.use(Router)
 
@@ -27,11 +30,13 @@ const routes = [
   {
     path: '/',
     name: 'Home',
+    meta: {index: 0},
     component: Home
   },
   {
     path: '/Nav01',
     name: 'YYGH',
+    meta: {index: 1},
     component: YYGH
   },
   {
@@ -118,6 +123,23 @@ const routes = [
     path: '/Nav01/JZRLB',
     name: 'JZRLB',
     component: JZRLB
+  },
+  {
+    path: '/Nav01/JZRSFZ',
+    name: 'JZRSFZ',
+    component: JZRSFZ
+  },
+  {
+    path: '/Nav05',
+    name: 'WDSC',
+    meta: {index: 1},
+    component: WDSC
+  },
+  {
+    path: '/Nav04',
+    name: 'YYJJ',
+    meta: {index: 1},
+    component: YYJJ
   },
   {
     path: '/Nav01/YYXQ',
