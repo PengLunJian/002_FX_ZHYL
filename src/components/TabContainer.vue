@@ -1,12 +1,12 @@
 <template>
-  <div class="module TPMK">
-    <img src="../../assets/images/banner@2x.png">
+  <div class="tab-container">
+    <div class="tab-content"></div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   export default{
-    name: 'TPMK',
+    name: '',
     data () {
       return {}
     }
@@ -14,11 +14,9 @@
 </script>
 
 <style lang="less">
-  .TPMK {
-    font-size: 0;
-    img {
-      width: 100%;
-      height: 1.7rem;
+  .tab-container {
+    .tab-content {
+
     }
   }
 </style>
