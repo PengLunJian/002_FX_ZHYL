@@ -1,17 +1,17 @@
 <template>
-  <div class="module patient">
+  <div class="module JZKP">
     <div class="patient-panel">
       <div class="patient-left">
         <h3 class="patient-name">胡代宇</h3>
         <span class="patient-pay">自费</span>
         <span class="patient-number">卡号：36************99</span>
-        <button class="btn btn-change">
+        <button class="btn btn-change" v-waves.button>
           <i class="btn-icon icon-change"></i>
           <span class="btn-text">切换就诊人</span>
         </button>
       </div>
       <div class="patient-right">
-        <img class="patient-code" src="../../assets/images/code@2x.png"/>
+        <img class="patient-code" src="../../assets/images/code@2x.png" @click="showCode"/>
         <span class="patient-desc">点击出示就诊二维码</span>
       </div>
     </div>
@@ -20,9 +20,16 @@
 
 <script type="text/ecmascript-6">
   export default{
-    name: 'User',
+    name: 'JZKP',
     data () {
       return {}
+    },
+    methods: {
+      showCode: function () {
+        this.$router.push({
+          path: '/JZEWM'
+        })
+      }
     }
   }
 </script>
@@ -30,7 +37,7 @@
 <style lang="less">
   @import "../../assets/less/variable";
 
-  .patient {
+  .JZKP {
     height: 2rem;
     padding: 0.13rem 0.15rem;
     color: @white;

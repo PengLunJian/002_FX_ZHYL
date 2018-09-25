@@ -1,31 +1,44 @@
 <template>
   <div class="FX_ZHYL_WDSC">
-    <tab-bar :items="items"></tab-bar>
-    <list-item></list-item>
-    <list-item></list-item>
-    <list-item></list-item>
-    <list-item></list-item>
+    <tab-slider :items="items" :tabIndex="tabIndex" @tabChange="tabChange">
+      <keep-alive>
+        <component :is="currentComponent"></component>
+      </keep-alive>
+    </tab-slider>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import TabBar from '../../components/TabBar'
-  import ListItem from '../../components/ListItem'
+  import TabContentOne from './TabContentOne.vue'
+  import TabContentTwo from './TabContentTwo.vue'
+  import TabSlider from '../../components/TabSlider'
   export default{
     components: {
-      ListItem,
-      TabBar},
+      TabSlider,
+      'TabContentOne': TabContentOne,
+      'TabContentTwo': TabContentTwo
+    },
     name: 'WDSC',
     data () {
       return {
+        tabIndex: 0,
+        currentComponent: 'TabContentOne',
         items: [
           {
-            text: '医生'
+            name: '医生',
+            component: 'TabContentOne'
           },
           {
-            text: '科室'
+            name: '科室',
+            component: 'TabContentTwo'
           }
         ]
+      }
+    },
+    methods: {
+      tabChange: function (index) {
+        this.tabIndex = index
+        this.currentComponent = this.items[index].component
       }
     }
   }

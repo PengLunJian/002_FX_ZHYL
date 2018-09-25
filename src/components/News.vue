@@ -67,7 +67,7 @@
     background-size: 0.2rem auto;
     background-repeat: no-repeat;
     background-position: 0.15rem center;
-    background-image: url('../../assets/images/news_icon@2x.png');
+    background-image: url('../assets/images/news_icon@2x.png');
     .news-items {
       transition: all 300ms ease-out;
       .news-item {

@@ -1,21 +1,21 @@
 <template>
   <div class="FX_ZHYL_HOME">
-    <Patient></Patient>
-    <News></News>
-    <Navigation></Navigation>
+    <j-z-k-p></j-z-k-p>
+    <x-x-t-s></x-x-t-s>
+    <d-h-c-d></d-h-c-d>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import Navigation from './Navigation.vue'
-  import News from './News'
-  import Patient from './Patient'
+  import JZKP from './JZKP'
+  import XXTS from './XXTS'
+  import DHCD from './DHCD'
   export default{
     name: 'Home',
     components: {
-      Patient,
-      News,
-      Navigation
+      JZKP,
+      DHCD,
+      XXTS
     },
     data () {
       return {}

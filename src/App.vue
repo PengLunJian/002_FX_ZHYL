@@ -51,41 +51,4 @@
     min-height: 100vh;
     position: relative;
   }
-
-  /*路由切换动画*/
-  .slide-right-enter-active,
-  .slide-right-leave-active,
-  .slide-left-enter-active,
-  .slide-left-leave-active {
-    position: absolute;
-    z-index: 1000;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: auto;
-    min-height: 100vh;
-    will-change: transform;
-    transition: all 500ms ease;
-    background-color: @bgColor;
-  }
-
-  .slide-right-enter {
-    /*opacity: 0;*/
-    transform: translate3d(-100%, 0, 0);
-  }
-
-  .slide-right-leave-active {
-    /*opacity: 0;*/
-    transform: translate3d(100%, 0, 0);
-  }
-
-  .slide-left-enter {
-    /*opacity: 0;*/
-    transform: translate3d(100%, 0, 0);
-  }
-
-  .slide-left-leave-active {
-    /*opacity: 0;*/
-    transform: translate3d(-100%, 0, 0);
-  }
 </style>

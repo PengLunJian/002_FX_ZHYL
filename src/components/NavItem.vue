@@ -6,19 +6,25 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import { Toast } from 'vux'
   export default{
     name: 'NavItem',
     data () {
       return {}
     },
+    components: {Toast},
     props: [
-      'image', 'title', 'path'
+      'image', 'title', 'path', 'disabled'
     ],
     methods: {
       handleClick: function () {
-        this.$router.push({
-          path: this.path
-        })
+        if (!this.disabled) {
+          this.$router.push({
+            path: this.path
+          })
+        } else {
+          console.log(Toast.props.isShowMask = true)
+        }
       }
     },
     mounted () {
@@ -33,6 +39,7 @@
     float: left;
     width: 33.333%;
     padding: 0.15rem 0;
+    position: relative;
     .nav-image {
       display: block;
       width: 0.55rem;
