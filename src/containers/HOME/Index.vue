@@ -10,12 +10,14 @@
   import JZKP from './JZKP'
   import XXTS from './XXTS'
   import DHCD from './DHCD'
+  import { Loading } from 'vux'
   export default{
     name: 'Home',
     components: {
       JZKP,
       DHCD,
-      XXTS
+      XXTS,
+      Loading
     },
     data () {
       return {}

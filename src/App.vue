@@ -3,12 +3,18 @@
     <transition :name="transitionName">
       <router-view></router-view>
     </transition>
+    <Loading :show="LOADING" :text="TEXT"></Loading>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import { Loading } from 'vux'
+  import { mapState } from 'vuex'
   export default {
     name: 'App',
+    components: {
+      Loading
+    },
     data () {
       return {
         transitionName: ''
@@ -29,6 +35,13 @@
     mounted () {
       this.setRootFontSize()
       this.windowOnResize()
+      this.$store.commit('showLoading')
+    },
+    computed: {
+      ...mapState([
+        'LOADING',
+        'TEXT'
+      ])
     },
     watch: {
       $route (to, from) {

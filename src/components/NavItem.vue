@@ -1,29 +1,31 @@
 <template>
-  <div class="nav-item" @click="handleClick">
+  <div class="nav-item" @click="handlerClick">
     <img :src="image" class="nav-image"/>
     <span class="nav-title">{{title}}</span>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import { Toast } from 'vux'
   export default{
     name: 'NavItem',
     data () {
       return {}
     },
-    components: {Toast},
     props: [
       'image', 'title', 'path', 'disabled'
     ],
     methods: {
-      handleClick: function () {
+      handlerClick: function () {
         if (!this.disabled) {
           this.$router.push({
             path: this.path
           })
         } else {
-          console.log(Toast.props.isShowMask = true)
+          this.$vux.toast.show({
+            type: 'text',
+            text: '敬请期待',
+            position: 'middle'
+          })
         }
       }
     },
