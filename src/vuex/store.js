@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import Mutations from './mutations'
 Vue.use(Vuex)
 
 const store = new Vuex.Store({
@@ -7,14 +8,7 @@ const store = new Vuex.Store({
     TEXT: '加载中',
     LOADING: false
   },
-  mutations: {
-    showLoading (state) {
-      state.LOADING = true
-    },
-    hideLoading (state) {
-      state.LOADING = false
-    }
-  }
+  mutations: Mutations
 })
 
 export default store

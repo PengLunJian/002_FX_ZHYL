@@ -22,7 +22,8 @@
     },
     methods: {
       setRootFontSize: function () {
-        const width = document.documentElement.clientWidth || document.body.clientWidth
+        const width = document.documentElement.clientWidth ||
+          document.body.clientWidth
         const fontSize = (width / 3.75) + 'px'
         document.querySelector('html').style.fontSize = fontSize
       },
@@ -35,7 +36,8 @@
     mounted () {
       this.setRootFontSize()
       this.windowOnResize()
-      this.$store.commit('showLoading')
+//      this.$store.commit('showLoading')
+      console.log(this.$store)
     },
     computed: {
       ...mapState([
