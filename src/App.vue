@@ -36,8 +36,6 @@
     mounted () {
       this.setRootFontSize()
       this.windowOnResize()
-//      this.$store.commit('showLoading')
-      console.log(this.$store)
     },
     computed: {
       ...mapState([
@@ -65,5 +63,6 @@
   #app {
     min-height: 100vh;
     position: relative;
+    overflow-x: hidden;
   }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="form-group" v-html="template" v-waves.block></div>
+  <div class="form-group" @input="handlerInput" @click="handlerClick" v-html="template"></div>
 </template>
 
 <script type="text/ecmascript-6">
@@ -7,18 +7,25 @@
     name: 'FormGroup',
     data () {
       return {
-        template: ''
+        template: '',
+        val: this.value
       }
     },
-    props: ['label', 'type', 'placeholder'],
+    props: ['label', 'type', 'value', 'placeholder'],
     methods: {
       getTemplate () {
         this.template = '<label class="form-label">' + this.label + '</label>'
         if (this.type === 'text') {
-          this.template += '<input class="form-input" type="text" placeholder="' + this.placeholder + '"/>'
+          this.template += '<input class="form-input" type="text" v-model="' + this.val + '" " placeholder="' + this.placeholder + '"/>'
         } else if (this.type === 'select') {
-          this.template += '<span class="form-select">' + this.placeholder + '</span>'
+          this.template += '<span class="form-select">' + (this.value || this.placeholder) + '</span>'
         }
+      },
+      handlerClick () {
+        this.$emit('showMenus')
+      },
+      handlerInput () {
+        this.$emit('handlerChange', this.val)
       }
     },
     mounted () {

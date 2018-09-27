@@ -106,13 +106,15 @@ const routes = [
     component: GRXX
   },
   {
-    path: '/Nav01/DZJZKBL',
+    path: '/DZJZKBL',
     name: 'DZJZKBL',
+    meta: {index: 1},
     component: DZJZKBL
   },
   {
-    path: '/Nav01/SCSFZ',
+    path: '/DZJZKBL/SCSFZ',
     name: 'SCSFZ',
+    meta: {index: 2},
     component: SCSFZ
   },
   {
@@ -126,8 +128,9 @@ const routes = [
     component: JZRLB
   },
   {
-    path: '/Nav01/JZRSFZ',
+    path: '/DZJZKBL/JZRSFZ',
     name: 'JZRSFZ',
+    meta: {index: 2},
     component: JZRSFZ
   },
   {

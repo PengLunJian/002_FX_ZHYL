@@ -10,18 +10,20 @@
       </ul>
     </div>
     <div class="module BKCZ">
-      <button class="btn btn-input" v-waves.block>输入就诊人身份证号码</button>
-      <button class="btn btn-upload" v-waves.block>上传就诊人身份证照片</button>
+      <button class="btn btn-input" @click="doCard" v-waves.block>输入就诊人身份证号码</button>
+      <button class="btn btn-upload" @click="uploadCard" v-waves.block>上传就诊人身份证照片</button>
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import Controllers from './Controller'
   export default{
     name: 'DZJZKBL',
     data () {
       return {}
-    }
+    },
+    methods: Controllers
   }
 </script>
 

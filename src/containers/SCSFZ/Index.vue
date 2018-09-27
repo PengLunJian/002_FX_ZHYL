@@ -1,7 +1,7 @@
 <template>
   <div class="FX_ZHYL_SCSFZ">
     <div class="module SCZP">
-      <button class="btn btn-photo">
+      <button class="btn btn-photo" @click="showActionSheet">
         <i class="btn-icon icon-photo"></i>
         <p class="btn-text">点击拍摄/上传人像面</p>
       </button>
@@ -17,15 +17,26 @@
         </li>
       </ul>
     </div>
+    <actionsheet v-model="value" :menus="menus" :show-cancel="showCancel"></actionsheet>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import { Actionsheet } from 'vux'
+  import Controllers from './Controller'
   export default{
     name: 'SCSFZ',
     data () {
-      return {}
-    }
+      return {
+        value: false,
+        showCancel: true,
+        menus: ['拍照', '从相册选择']
+      }
+    },
+    components: {
+      Actionsheet
+    },
+    methods: Controllers
   }
 </script>
 

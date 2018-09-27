@@ -1,27 +1,130 @@
 <template>
   <div class="FX_ZHYL_JZRSFZ">
-    <form-group label="姓名" type="text" placeholder="请输入"></form-group>
-    <form-group label="身份证号码" type="text" placeholder="请输入"></form-group>
-    <form-group label="性别" type="select" placeholder="请选择"></form-group>
-    <form-group label="名族" type="select" placeholder="请选择"></form-group>
-    <btn-next text="下一步"></btn-next>
+    <div class="form-group">
+      <label class="form-label" for="name">姓名</label>
+      <input class="form-input" id="name" type="text"
+             v-model="name" placeholder="请输入"/>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="idNumber">身份证号码</label>
+      <input class="form-input" id="idNumber" type="tel"
+             v-model="idNumber" placeholder="请输入"/>
+    </div>
+    <div class="form-group" @click="showMenus('性别')">
+      <label class="form-label">性别</label>
+      <span class="form-select">{{gender || "请选择"}}</span>
+    </div>
+    <div class="form-group" @click="showMenus('民族')">
+      <label class="form-label">民族</label>
+      <span class="form-select">{{nation || "请选择"}}</span>
+    </div>
+    <div class="form-group">
+      <button class="btn btn-next waves-effect waves-block" :class="status"
+              @click="handlerBtnClick" v-waves.block>下一步
+      </button>
+    </div>
+    <popup-picker :data="popupPicker.data" :popup-title="popupPicker.popupTitle"
+                  :show.sync="popupPicker.show" @on-change="handlerChange"></popup-picker>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import FormGroup from '../../components/FormGroup'
-  import BtnNext from '../../components/Button'
+  import { PopupPicker } from 'vux'
+  import Controllers from './Controller'
   export default{
     components: {
-      BtnNext,
-      FormGroup
+      PopupPicker
     },
     name: 'JZRSFZ',
     data () {
-      return {}
+      return {
+        name: '',
+        idNumber: '',
+        gender: '',
+        nation: '',
+        status: 'disabled',
+        popupPicker: {
+          show: false,
+          data: [['']],
+          value: null,
+          popupTitle: '请选择'
+        }
+      }
+    },
+    methods: Controllers,
+    watch: {
+      name () {
+        this.checkNotEmpty()
+      },
+      idNumber () {
+        this.checkNotEmpty()
+      },
+      gender () {
+        this.checkNotEmpty()
+      },
+      nation () {
+        this.checkNotEmpty()
+      }
     }
   }
 </script>
 
 <style lang="less">
+  @import "../../assets/less/variable";
+
+  .FX_ZHYL_JZRSFZ {
+    .form-group {
+      position: relative;
+      padding-left: 0.15rem;
+      background-color: @white;
+      .form-label {
+        line-height: 0.45rem;
+        font-size: 0.16rem;
+      }
+      .form-input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 0.45rem;
+        text-align: right;
+        padding-right: 0.15rem;
+        background-color: transparent;
+        font-size: 0.16rem;
+        color: @fontColor;
+      }
+      .form-select {
+        float: right;
+        line-height: 0.45rem;
+        padding-right: 0.15rem;
+        font-size: 0.16rem;
+        color: @fontColor;
+      }
+      .btn-next {
+        width: 100%;
+        display: block;
+        line-height: 0.47rem;
+        transition: all 300ms ease;
+        border-radius: @borderRadius;
+        border: 1px solid @buttonColor2;
+        background-color: @buttonColor2;
+        font-size: 0.16rem;
+        color: @white;
+      }
+      &:after {
+        content: '';
+        display: block;
+        border-top: 1px solid @borderColor;
+      }
+      &:nth-child(5) {
+        padding: 0.35rem 0.2rem 0;
+        background-color: transparent;
+      }
+    }
+    .vux-cell-box {
+      &:not(:first-child):before {
+        border: none;
+      }
+    }
+  }
 </style>

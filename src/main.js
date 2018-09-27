@@ -5,9 +5,9 @@ import store from './vuex/store'
 import { ToastPlugin, LoadingPlugin } from 'vux'
 import VueWaves from '../node_modules/vue-waves/dist/vue-waves.js'
 
+Vue.use(VueWaves)
 Vue.use(LoadingPlugin)
 Vue.use(ToastPlugin)
-Vue.use(VueWaves)
 
 Vue.config.productionTip = false
 

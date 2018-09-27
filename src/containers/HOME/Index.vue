@@ -1,6 +1,6 @@
 <template>
   <div class="FX_ZHYL_HOME">
-    <j-z-k-p></j-z-k-p>
+    <t-j-j-z-r></t-j-j-z-r>
     <x-x-t-s></x-x-t-s>
     <d-h-c-d></d-h-c-d>
   </div>
@@ -11,9 +11,11 @@
   import XXTS from './XXTS'
   import DHCD from './DHCD'
   import { Loading } from 'vux'
+  import TJJZR from './TJJZR'
   export default{
     name: 'Home',
     components: {
+      TJJZR,
       JZKP,
       DHCD,
       XXTS,

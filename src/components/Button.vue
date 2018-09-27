@@ -1,13 +1,13 @@
 <template>
   <div class="buttons">
-    <button class="btn btn-next" v-waves.block>{{this.text}}</button>
+    <button class="btn btn-next waves-effect waves-block" :class="this.status" v-waves.block>{{text}}</button>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   export default{
     name: 'btn-next',
-    props: ['text'],
+    props: ['text', 'status'],
     data () {
       return {}
     }
@@ -24,8 +24,8 @@
       display: block;
       line-height: 0.47rem;
       border-radius: @borderRadius;
-      border: 1px solid @buttonColor;
-      background-color: @buttonColor;
+      border: 1px solid @buttonColor2;
+      background-color: @buttonColor2;
       font-size: 0.16rem;
       color: @white;
     }

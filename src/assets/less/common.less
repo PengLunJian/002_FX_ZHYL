@@ -28,7 +28,7 @@ input, textarea {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-input:focus, textarea:focus,
+div:focus, input:focus, textarea:focus,
 select:focus, button:focus, .btn:focus {
   outline: none;
 }
@@ -123,6 +123,12 @@ li, ul {
   .weui-loading {
     margin: 20px 0 6px;
   }
+}
+
+.disabled {
+  cursor: not-allowed;
+  border-color: @buttonDisabled !important;
+  background-color: @buttonDisabled !important;
 }
 
 /*路由切换动画*/
