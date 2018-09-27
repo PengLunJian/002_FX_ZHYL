@@ -3,126 +3,177 @@ const routes = [
     path: '/',
     name: 'Home',
     meta: {index: 0},
-    component: Home
+    component: (component) => {
+      return component
+    }
   },
   {
     path: '/Nav01',
     name: 'YYGH',
     meta: {index: 1},
-    component: YYGH
+    component: (component) => {
+      return component
+    }
   },
   {
     path: '/Nav01/YSLB',
     name: 'YSLB',
-    component: YSLB
+    component: (component) => {
+      return component
+    }
   },
   {
     path: '/Nav01/YYXX',
     name: 'YYXX',
-    component: YYXX
+    component: (component) => {
+      return component
+    }
   },
   {
     path: '/Nav01/KSXX',
     name: 'KSXX',
-    component: KSXX
+    component: (component) => {
+      return component
+    }
   },
   {
     path: '/Nav01/YSZY',
     name: 'YSZY',
-    component: YSZY
+    component: (component) => {
+      return component
+    }
   },
   {
     path: '/Nav01/GRZX',
     name: 'GRZX',
-    component: GRZX
+    component: (component) => {
+      return component
+    }
   },
   {
     path: '/Nav01/WDGH',
     name: 'WDGH',
-    component: WDGH
+    component: (component) => {
+      return component
+    }
   },
   {
     path: '/Nav01/GHXQ',
     name: 'GHXQ',
-    component: GHXQ
+    component: (component) => {
+      return component
+    }
   },
   {
     path: '/Nav01/WDYY',
     name: 'WDYY',
-    component: WDYY
+    component: (component) => {
+      return component
+    }
   },
   {
     path: '/Nav01/JFJL',
     name: 'JFJL',
-    component: JFJL
+    component: (component) => {
+      return component
+    }
   },
   {
     path: '/Nav01/DJCLB',
     name: 'DJCLB',
-    component: DJCLB
+    component: (component) => {
+      return component
+    }
   },
   {
     path: '/Nav01/JKDA',
     name: 'JKDA',
-    component: JKDA
+    component: (component) => {
+      return component
+    }
   },
   {
     path: '/Nav01/JCBG',
     name: 'JCBG',
-    component: JCBG
+    component: (component) => {
+      return component
+    }
   },
   {
     path: '/Nav01/GRXX',
     name: 'GRXX',
-    component: GRXX
+    component: (component) => {
+      return component
+    }
   },
   {
-    path: '/Nav01/DZJZKBL',
+    path: '/DZJZKBL',
     name: 'DZJZKBL',
-    component: DZJZKBL
+    meta: {index: 1},
+    component: (component) => {
+      return component
+    }
   },
   {
-    path: '/Nav01/SCSFZ',
+    path: '/DZJZKBL/SCSFZ',
     name: 'SCSFZ',
-    component: SCSFZ
+    meta: {index: 2},
+    component: (component) => {
+      return component
+    }
   },
   {
     path: '/Nav01/JCXX',
     name: 'JCXX',
-    component: JCXX
+    component: (component) => {
+      return component
+    }
   },
   {
     path: '/Nav01/JZRLB',
     name: 'JZRLB',
-    component: JZRLB
+    component: (component) => {
+      return component
+    }
   },
   {
-    path: '/Nav01/JZRSFZ',
+    path: '/DZJZKBL/JZRSFZ',
     name: 'JZRSFZ',
-    component: JZRSFZ
+    meta: {index: 2},
+    component: (component) => {
+      return component
+    }
   },
   {
     path: '/Nav05',
     name: 'WDSC',
     meta: {index: 1},
-    component: WDSC
+    component: (component) => {
+      return component
+    }
   },
   {
     path: '/Nav04',
     name: 'YYJJ',
     meta: {index: 1},
-    component: YYJJ
+    component: (component) => {
+      return component
+    }
   },
   {
     path: '/JZEWM',
     name: 'JZEWM',
     meta: {index: 1},
-    component: JZEWM
+    component: (component) => {
+      return component
+    }
   },
   {
     path: '/Nav01/YYXQ',
     name: 'YYXQ',
-    component: YYXQ
+    component: (component) => {
+      return component
+    }
   }
 ]
 
