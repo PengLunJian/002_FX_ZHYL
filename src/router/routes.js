@@ -174,6 +174,22 @@ const routes = [
     component: (component) => {
       return component
     }
+  },
+  {
+    path: '/DZJZKBL/JZRSFZ/RLSM',
+    name: 'RLSM',
+    meta: {index: 3},
+    component: (component) => {
+      return component
+    }
+  },
+  {
+    path: '/DZJZKBL/JZRSFZ/RLSM/KSRLSM',
+    name: 'KSRLSM',
+    meta: {index: 4},
+    component: (component) => {
+      return component
+    }
   }
 ]
 

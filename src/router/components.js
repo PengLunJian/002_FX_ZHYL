@@ -22,6 +22,8 @@ import JZRSFZ from '../containers/JZRSFZ/Index.vue'
 import WDSC from '../containers/WDSC/Index.vue'
 import YYJJ from '../containers/YYJJ/Index.vue'
 import JZEWM from '../containers/JZEWM/Index.vue'
+import RLSM from '../containers/RLSM/Index.vue'
+import KSRLSM from '../containers/KSRLSM/Index.vue'
 
 export default {
   Home,
@@ -47,5 +49,7 @@ export default {
   JZRSFZ,
   WDSC,
   YYJJ,
-  JZEWM
+  JZEWM,
+  RLSM,
+  KSRLSM
 }
