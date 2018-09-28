@@ -73,6 +73,7 @@
   @import "../../assets/less/variable";
 
   .FX_ZHYL_JZRSFZ {
+    background-color: @bgColor;
     .form-group {
       position: relative;
       padding-left: 0.15rem;

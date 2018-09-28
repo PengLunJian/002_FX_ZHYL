@@ -36,6 +36,7 @@
 
   .FX_ZHYL_JZRLB {
     padding: 0.15rem;
+    background-color: @bgColor;
   }
 
   .desc {

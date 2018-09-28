@@ -29,6 +29,7 @@
   @import "../../assets/less/variable";
 
   .FX_ZHYL_RLSM {
+    background-color: @bgColor;
     .form-group {
       position: relative;
       padding: 0 0.15rem;

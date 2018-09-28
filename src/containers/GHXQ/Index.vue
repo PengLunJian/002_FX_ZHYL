@@ -17,4 +17,9 @@
 </script>
 
 <style lang="less">
+  @import "../../assets/less/variable";
+
+  .FX_ZHYL_GHXQ {
+    background-color: @bgColor;
+  }
 </style>

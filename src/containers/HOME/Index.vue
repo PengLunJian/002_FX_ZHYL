@@ -28,4 +28,16 @@
 </script>
 
 <style lang="less">
+  @import "../../assets/less/variable";
+
+  .FX_ZHYL_HOME {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    background-color: @bgColor;
+  }
 </style>

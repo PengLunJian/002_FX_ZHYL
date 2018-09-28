@@ -45,7 +45,7 @@
     },
     watch: {
       tabIndex: function (newValue, oldValue) {
-        this.transitionName = newValue > oldValue ? 'slide-left' : 'slide-right'
+        this.transitionName = newValue > oldValue ? 'tab-left' : 'tab-right'
       }
     }
   }
@@ -89,5 +89,39 @@
     .tab-content {
       position: relative;
     }
+
+    /*路由切换动画*/
+    .tab-right-enter-active,
+    .tab-right-leave-active,
+    .tab-left-enter-active,
+    .tab-left-leave-active {
+      position: absolute;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: auto;
+      min-height: 100vh;
+      will-change: transform;
+      transition: all 500ms ease-out;
+      background-color: @bgColor;
+    }
+
+    .tab-right-enter {
+      transform: translateX(-100%);
+    }
+
+    .tab-right-leave-active {
+      transform: translateX(100%);
+    }
+
+    .tab-left-enter {
+      transform: translateX(100%);
+    }
+
+    .tab-left-leave-active {
+      transform: translateX(-100%);
+    }
+
   }
 </style>

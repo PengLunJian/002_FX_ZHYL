@@ -43,6 +43,10 @@
 <style lang="less">
   @import "../../assets/less/variable";
 
+  .FX_ZHYL_SCSFZ {
+    background-color: @bgColor;
+  }
+
   .SCZP {
     padding: 0.2rem 0;
     .btn-photo {

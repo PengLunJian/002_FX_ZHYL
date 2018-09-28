@@ -2,7 +2,7 @@
   <div class="module TJJZR">
     <div class="content">
       <p class="desc">就诊前，请先添加就诊人</p>
-      <button class="btn btn-add" @click="addPerson" v-waves.block>
+      <button class="btn btn-add" @click="addPerson">
         <i class="btn-icon icon-add"></i>
         <span class="btn-text">添加就诊人</span>
       </button>
@@ -27,8 +27,8 @@
   .TJJZR {
     padding: 0.15rem;
     .content {
-      height: 1.75rem;
-      padding: 0.4rem 0;
+      height: auto;
+      padding: 0.375rem 0;
       position: relative;
       border-radius: @borderRadius;
       background: linear-gradient(to right, #0066ec, #00bcfa);

@@ -21,4 +21,9 @@
 </script>
 
 <style lang="less">
+  @import "../../assets/less/variable";
+
+  .FX_ZHYL_DJCLB {
+    background-color: @bgColor;
+  }
 </style>

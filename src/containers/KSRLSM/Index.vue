@@ -28,6 +28,10 @@
 <style lang="less">
   @import "../../assets/less/variable";
 
+  .FX_ZHYL_KSRLSM {
+    background-color: @bgColor;
+  }
+
   .SMMKY {
     box-shadow: none;
     padding: 0.12rem 0.12rem 0;

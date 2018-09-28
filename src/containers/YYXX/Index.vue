@@ -23,6 +23,10 @@
 <style lang="less">
   @import "../../assets/less/variable";
 
+  .FX_ZHYL_YYXX {
+    background-color: @bgColor;
+  }
+
   .patient-form {
     .module {
       background-color: transparent;

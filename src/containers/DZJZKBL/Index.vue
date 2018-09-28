@@ -32,6 +32,7 @@
 
   .FX_ZHYL_DZJZKBL {
     font-size: 0.14rem;
+    background-color: @bgColor;
     .BKXZ {
       .desc-title {
         color: @fontColor;

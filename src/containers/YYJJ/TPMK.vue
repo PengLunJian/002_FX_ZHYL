@@ -1,6 +1,6 @@
 <template>
   <div class="module TPMK">
-    <img src="../../assets/images/banner@2x.png">
+    <div class="content"></div>
   </div>
 </template>
 
@@ -15,10 +15,12 @@
 
 <style lang="less">
   .TPMK {
-    font-size: 0;
-    img {
-      width: 100%;
+    .content {
       height: 1.7rem;
+      background-size: 100% auto;
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-image: url("../../assets/images/banner@2x.png");
     }
   }
 </style>

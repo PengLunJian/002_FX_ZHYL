@@ -29,6 +29,7 @@
   @import "../../assets/less/variable";
 
   .FX_ZHYL_JCXX {
+    background-color: @bgColor;
     .form-group {
       position: relative;
       line-height: 0.45rem;
