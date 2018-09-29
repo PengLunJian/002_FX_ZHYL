@@ -17,7 +17,8 @@
         </li>
       </ul>
     </div>
-    <actionsheet v-model="value" :menus="menus" :show-cancel="showCancel"></actionsheet>
+    <actionsheet v-model="value" :menus="menus" :show-cancel="showCancel"
+                 @on-click-menu="chooseImage"></actionsheet>
   </div>
 </template>
 

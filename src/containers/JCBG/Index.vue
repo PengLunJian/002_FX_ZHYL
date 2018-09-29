@@ -7,6 +7,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import Controller from './Controller'
   import JCHZ from './JCHZ'
   import JCLB from './JCLB'
   export default{
@@ -17,7 +18,8 @@
     name: 'JCBG',
     data () {
       return {}
-    }
+    },
+    methods: Controller
   }
 </script>
 

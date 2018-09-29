@@ -1,18 +1,21 @@
 <template>
   <div class="FX_ZHYL_GHXQ">
-    <x-q-l-b></x-q-l-b>
-    <x-q-l-b></x-q-l-b>
+    <reg-detail></reg-detail>
+    <reg-detail></reg-detail>
+    <reg-detail></reg-detail>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import XQLB from './XQLB'
+  import Controller from './Controller'
+  import RegDetail from '../../components/RegDetail'
   export default{
-    components: {XQLB},
+    components: {RegDetail},
     name: '',
     data () {
       return {}
-    }
+    },
+    methods: Controller
   }
 </script>
 

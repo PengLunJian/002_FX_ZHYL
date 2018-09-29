@@ -29,6 +29,7 @@
     .form-group {
       position: relative;
       padding-left: 0.15rem;
+      font-size: 0.14rem;
       .form-label {
         position: absolute;
         top: 0;
@@ -42,6 +43,7 @@
         height: 0.45rem;
         text-align: right;
         padding-right: 0.45rem;
+        font-size: 0.14rem;
         color: @fontColor;
       }
       .form-icon {

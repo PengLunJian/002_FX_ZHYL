@@ -6,6 +6,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import Controller from './Controller'
   import Search from '../../components/Search'
   import FLCD from './FLCD'
   export default{
@@ -16,7 +17,8 @@
     name: 'YYGH',
     data () {
       return {}
-    }
+    },
+    methods: Controller
   }
 </script>
 

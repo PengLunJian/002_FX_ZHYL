@@ -7,6 +7,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import Controller from './Controller'
   import YSXX from './YSXX'
   import PBXX from './PBXX'
   import YSJJ from './YSJJ'
@@ -19,7 +20,8 @@
     name: '',
     data () {
       return {}
-    }
+    },
+    methods: Controller
   }
 </script>
 

@@ -5,7 +5,7 @@
       <i class="icon icon-next"></i>
     </div>
     <div class="content" :style="style">
-      <div class="innerContent" ref="innerContent">
+      <div class="innerContent" ref="inner">
         <div class="row-box-1">
           <p class="desc">你有一笔挂号费代支付</p>
         </div>
@@ -45,14 +45,15 @@
     name: 'XXTS',
     data () {
       return {
-        clazz: 'hide',
-        style: ''
+        clazz: '',
+        style: '',
+        height: 0
       }
     },
     methods: {
       showContent: function () {
         if (this.clazz === 'hide') {
-          const height = this.$refs.innerContent.offsetHeight
+          const height = this.$refs.inner.offsetHeight
           this.style = 'height:' + height + 'px;'
           this.clazz = ''
         } else {
@@ -61,7 +62,10 @@
         }
       }
     },
-    mounted () {}
+    mounted () {
+      this.height = this.$refs.inner.offsetHeight
+      this.style = 'height:' + this.height + 'px;'
+    }
   }
 </script>
 

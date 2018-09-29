@@ -1,18 +1,23 @@
 <template>
   <div class="FX_ZHYL_WDYY">
-    <y-y-m-k></y-y-m-k>
-    <y-y-m-k></y-y-m-k>
+    <sub-item></sub-item>
+    <sub-item></sub-item>
+    <sub-item :slotOut="slotOut"></sub-item>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import YYMK from './YYMK'
+  import Controller from './Controller'
+  import SubItem from '../../components/SubItem'
   export default{
-    components: {YYMK},
+    components: {SubItem},
     name: 'WDYY',
     data () {
-      return {}
-    }
+      return {
+        slotOut: 'slot-out'
+      }
+    },
+    methods: Controller
   }
 </script>
 

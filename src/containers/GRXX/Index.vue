@@ -6,6 +6,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import Controller from './Controller'
   import JBXX from './JBXX'
   import ZYXX from './ZYXX'
   export default{
@@ -16,7 +17,8 @@
     name: 'GRXX',
     data () {
       return {}
-    }
+    },
+    methods: Controller
   }
 </script>
 

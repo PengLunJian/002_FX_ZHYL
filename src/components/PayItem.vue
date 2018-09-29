@@ -1,6 +1,6 @@
 <template>
   <div class="module JFLB">
-    <div class="col-box-1">
+    <div class="row-box-1">
       <div class="name">
         <label class="label">代缴费用</label>
         <span class="time">09月08号</span>
@@ -10,7 +10,7 @@
         <span class="unit">元</span>
       </div>
     </div>
-    <div class="col-box-2">
+    <div class="row-box-2">
       <div class="group">
         <label class="label">费用名称：</label>
         <span class="span">挂号费</span>
@@ -24,7 +24,7 @@
         <span class="span">眼科中心挂号费</span>
       </div>
     </div>
-    <div class="col-box-3">
+    <div class="row-box-3">
       <button class="btn btn-detail" v-waves.block>查看详情</button>
     </div>
   </div>
@@ -32,7 +32,7 @@
 
 <script type="text/ecmascript-6">
   export default{
-    name: 'JFLB',
+    name: 'PayItem',
     data () {
       return {}
     }
@@ -40,11 +40,11 @@
 </script>
 
 <style lang="less">
-  @import "../../assets/less/variable";
+  @import "../assets/less/variable";
 
   .JFLB {
     height: auto;
-    .col-box-1 {
+    .row-box-1 {
       padding: 0.1rem 0.15rem;
       border-bottom: 1px solid @borderColor;
       .name {
@@ -65,7 +65,7 @@
         }
       }
     }
-    .col-box-2 {
+    .row-box-2 {
       padding: 0.1rem 0.15rem;
       border-bottom: 1px solid @borderColor;
       .group {
@@ -82,7 +82,7 @@
         }
       }
     }
-    .col-box-3 {
+    .row-box-3 {
       .btn-detail {
         width: 100%;
         display: block;

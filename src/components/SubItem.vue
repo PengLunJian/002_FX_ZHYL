@@ -1,13 +1,13 @@
 <template>
-  <div :class="'true'===expired?'module GHMK expired':'module GHMK'">
-    <div class="col-box-1">
-      <h3 class="name">眼科中心</h3>
+  <div class="module YYMK" :class="slotOut">
+    <div class="row-box-1">
+      <h3 class="name">何晗栩<span class="span">(正主任医师)</span></h3>
       <div class="date">
         <label class="label">提交时间：</label>
         <span class="span">2018/09/08 09:36</span>
       </div>
     </div>
-    <div class="col-box-2">
+    <div class="row-box-2">
       <div class="group">
         <label class="label">就诊人：</label>
         <span class="span">胡代宇</span>
@@ -25,7 +25,7 @@
         <span class="span">待支付</span>
       </div>
     </div>
-    <div class="col-box-3">
+    <div class="row-box-3">
       <button class="btn btn-detail" v-waves.block>查看详情</button>
     </div>
   </div>
@@ -33,26 +33,28 @@
 
 <script type="text/ecmascript-6">
   export default{
-    name: 'GHMK',
+    name: 'SubItem',
+    props: ['slotOut'],
     data () {
       return {}
-    },
-    props: [
-      'expired'
-    ],
-    mounted () {
-      console.log(this)
     }
   }
 </script>
 
 <style lang="less">
-  @import "../../assets/less/variable";
+  @import "../assets/less/variable";
 
-  .GHMK {
+  .YYMK {
     height: auto;
     position: relative;
-    .col-box-1 {
+    .label {
+      font-size: 0.13rem;
+    }
+    .span {
+      color: @fontColor;
+      font-size: 0.13rem;
+    }
+    .row-box-1 {
       padding: 0 0.15rem;
       border-bottom: 1px solid @borderColor;
       .name {
@@ -60,37 +62,35 @@
         font-weight: normal;
         font-size: 0.15rem;
         line-height: 0.36rem;
+        .span {
+          padding-left: 0.05rem;
+        }
       }
       .date {
         float: right;
         line-height: 0.36rem;
         font-size: 0.12rem;
         .label {
-
+          font-size: 0.12rem;
         }
         .span {
-
+          color: #333333;
+          font-size: 0.12rem;
         }
       }
     }
-    .col-box-2 {
+    .row-box-2 {
       padding: 0.1rem 0.15rem;
       border-bottom: 1px solid @borderColor;
       .group {
         line-height: 0.2rem;
         margin-bottom: 0.04rem;
-        .label {
-
-        }
-        .span {
-          color: @fontColor;
-        }
         &:last-child {
           margin: 0;
         }
       }
     }
-    .col-box-3 {
+    .row-box-3 {
       .btn-detail {
         width: 100%;
         display: block;
@@ -99,9 +99,9 @@
         font-size: 0.15rem;
       }
     }
-    &.expired {
+    &.slot-out {
       &:before {
-        content: 'Sold Out';
+        content: '';
         width: 100%;
         height: 100%;
         display: block;
@@ -113,7 +113,10 @@
         font-size: 0.3rem;
         text-align: center;
         line-height: 1.9rem;
-        background-color: rgba(0, 0, 0, .5);
+        background-size: 1.2rem auto;
+        background-repeat: no-repeat;
+        background-position: 2.4rem 0.8rem;
+        background-image: url('../assets/images/slot_out@2x.png');
       }
     }
   }

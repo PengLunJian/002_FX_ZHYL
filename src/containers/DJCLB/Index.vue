@@ -1,13 +1,14 @@
 <template>
   <div class="FX_ZHYL_DJCLB">
-    <d-j-c-m-k v-for="(item,index) in items" :key="index"></d-j-c-m-k>
+    <visit-item v-for="(item,index) in items" :key="index"></visit-item>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import DJCMK from './DJCMK'
+  import Controller from './Controller'
+  import VisitItem from '../../components/VisitItem'
   export default{
-    components: {DJCMK},
+    components: {VisitItem},
     name: 'DJCLB',
     data () {
       return {
@@ -16,7 +17,7 @@
         ]
       }
     },
-    methods: {}
+    methods: Controller
   }
 </script>
 

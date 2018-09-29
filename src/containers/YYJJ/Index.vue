@@ -7,6 +7,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import Controller from './Controller'
   import TPMK from './TPMK'
   import YYJS from './YYJS'
   import WHLN from './WHLN'
@@ -19,7 +20,8 @@
     name: 'YYJJ',
     data () {
       return {}
-    }
+    },
+    methods: Controller
   }
 </script>
 

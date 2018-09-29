@@ -54,7 +54,6 @@
           border-radius: 100%;
           margin-right: 0.1rem;
           background-color: #dbecff;
-          box-shadow: @boxShadow;
           color: @buttonColor;
           font-size: 0.15rem;
         }

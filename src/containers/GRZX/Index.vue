@@ -7,6 +7,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import Controller from './Controller'
   import DYBF from './DYMK'
   import DEBF from './DEMK'
   import DSMK from './DSMK'
@@ -19,7 +20,8 @@
     name: '',
     data () {
       return {}
-    }
+    },
+    methods: Controller
   }
 </script>
 

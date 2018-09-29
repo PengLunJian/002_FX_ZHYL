@@ -6,6 +6,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import Controller from './Controller'
   import DYBF from './DYBF'
   import DEBF from './DEBF'
   export default{
@@ -16,7 +17,8 @@
     name: 'YYXX',
     data () {
       return {}
-    }
+    },
+    methods: Controller
   }
 </script>
 

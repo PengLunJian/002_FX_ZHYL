@@ -1,18 +1,22 @@
 <template>
   <div class="FX_ZHYL_YYXQ">
-    <x-q-l-b></x-q-l-b>
-    <x-q-l-b></x-q-l-b>
+    <sub-detail></sub-detail>
+    <sub-detail></sub-detail>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import XQLB from './XQLB'
+  import Controller from './Controller'
+  import SubDetail from '../../components/SubDetail'
   export default{
-    components: {XQLB},
+    components: {
+      SubDetail
+    },
     name: 'YYXQ',
     data () {
       return {}
-    }
+    },
+    methods: Controller
   }
 </script>
 

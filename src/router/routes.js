@@ -44,15 +44,17 @@ const routes = [
     }
   },
   {
-    path: '/Nav01/GRZX',
+    path: '/GRZX',
     name: 'GRZX',
+    meta: {index: 1},
     component: (component) => {
       return component
     }
   },
   {
-    path: '/Nav01/WDGH',
+    path: '/GRZX/WDGH',
     name: 'WDGH',
+    meta: {index: 2},
     component: (component) => {
       return component
     }
@@ -65,43 +67,49 @@ const routes = [
     }
   },
   {
-    path: '/Nav01/WDYY',
+    path: '/GRZX/WDYY',
     name: 'WDYY',
+    meta: {index: 2},
     component: (component) => {
       return component
     }
   },
   {
-    path: '/Nav01/JFJL',
+    path: '/GRZX/JFJL',
     name: 'JFJL',
+    meta: {index: 2},
     component: (component) => {
       return component
     }
   },
   {
-    path: '/Nav01/DJCLB',
+    path: '/GRZX/DJCLB',
     name: 'DJCLB',
+    meta: {index: 2},
     component: (component) => {
       return component
     }
   },
   {
-    path: '/Nav01/JKDA',
+    path: '/GRZX/JKDA',
     name: 'JKDA',
+    meta: {index: 2},
     component: (component) => {
       return component
     }
   },
   {
-    path: '/Nav01/JCBG',
+    path: '/GRZX/JCBG',
     name: 'JCBG',
+    meta: {index: 2},
     component: (component) => {
       return component
     }
   },
   {
-    path: '/Nav01/GRXX',
+    path: '/GRZX/GRXX',
     name: 'GRXX',
+    meta: {index: 2},
     component: (component) => {
       return component
     }

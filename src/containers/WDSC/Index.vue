@@ -9,6 +9,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import Controller from './Controller'
   import TabContentOne from './TabContentOne.vue'
   import TabContentTwo from './TabContentTwo.vue'
   import TabSlider from '../../components/TabSlider'
@@ -35,12 +36,7 @@
         ]
       }
     },
-    methods: {
-      tabChange: function (index) {
-        this.tabIndex = index
-        this.currentComponent = this.items[index].component
-      }
-    }
+    methods: Controller
   }
 </script>
 

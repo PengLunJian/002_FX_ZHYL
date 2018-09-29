@@ -16,16 +16,13 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import Controller from './Controller'
   export default{
     name: 'JZEWM',
     data () {
       return {}
     },
-    methods: {
-      hideCode: function () {
-        this.$router.back()
-      }
-    }
+    methods: Controller
   }
 </script>
 

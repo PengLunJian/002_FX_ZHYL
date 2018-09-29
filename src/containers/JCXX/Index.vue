@@ -17,11 +17,13 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import Controller from './Controller'
   export default{
     name: 'JCXX',
     data () {
       return {}
-    }
+    },
+    methods: Controller
   }
 </script>
 

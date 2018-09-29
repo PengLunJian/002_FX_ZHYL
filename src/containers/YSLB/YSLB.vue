@@ -1,14 +1,18 @@
 <template>
   <div class="module ZZYS">
-    <Doctor v-for="item in items" :key="item.index" :logo="item.logo" :name="item.name" :post="item.post"
-            :good="item.good"></Doctor>
+    <doctor-item v-for="item in items"
+                 :key="item.index"
+                 :logo="item.logo"
+                 :name="item.name"
+                 :post="item.post"
+                 :good="item.good"></doctor-item>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import Doctor from '../../components/Doctor'
+  import DoctorItem from '../../components/DoctorItem'
   export default{
-    components: {Doctor},
+    components: {DoctorItem},
     name: 'ZZYS',
     data () {
       return {

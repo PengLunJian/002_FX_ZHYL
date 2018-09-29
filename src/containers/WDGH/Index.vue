@@ -1,20 +1,22 @@
 <template>
   <div class="FX_ZHYL_WDGH">
-    <g-h-m-k></g-h-m-k>
-    <g-h-m-k expired="true"></g-h-m-k>
+    <reg-item></reg-item>
+    <reg-item :slotOut="slotOut"></reg-item>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import GHMK from './GHMK'
+  import Controller from './Controller'
+  import RegItem from '../../components/RegItem'
   export default{
-    components: {GHMK},
+    components: {RegItem},
     name: 'WDGH',
     data () {
       return {
-        expired: true
+        slotOut: 'slot-out'
       }
-    }
+    },
+    methods: Controller
   }
 </script>
 

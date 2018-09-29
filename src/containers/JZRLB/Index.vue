@@ -23,11 +23,13 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import Controller from './Controller'
   export default{
     name: 'JZRLB',
     data () {
       return {}
-    }
+    },
+    methods: Controller
   }
 </script>
 

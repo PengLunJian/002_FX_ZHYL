@@ -1,17 +1,17 @@
 <template>
-  <div class="module DJCMK" v-waves.block>
-    <div class="col-box-1">
+  <div class="module DJCMK">
+    <div class="row-box-1">
       <div class="column">当前叫号</div>
       <div class="column">我的叫号</div>
       <div class="column">12</div>
       <div class="column">18</div>
     </div>
-    <div class="col-box-2">
+    <div class="row-box-2">
       <div class="room">眼科中心</div>
       <div class="name">何晗栩<span>(主任医师)</span></div>
       <div class="date">2018/09/08 下午</div>
     </div>
-    <div class="col-box-3">
+    <div class="row-box-3">
       <i class="icon-navigation"></i>
     </div>
   </div>
@@ -19,7 +19,7 @@
 
 <script type="text/ecmascript-6">
   export default{
-    name: 'DJCMK',
+    name: 'VisitItem',
     data () {
       return {}
     }
@@ -27,13 +27,13 @@
 </script>
 
 <style lang="less">
-  @import "../../assets/less/variable";
+  @import "../assets/less/variable";
 
   .DJCMK {
     height: 0.84rem;
     position: relative;
     padding: 0 0.7rem 0 0.84rem;
-    .col-box-1 {
+    .row-box-1 {
       width: 0.84rem;
       position: absolute;
       top: 0;
@@ -69,7 +69,7 @@
         }
       }
     }
-    .col-box-2 {
+    .row-box-2 {
       padding: 0.1rem 0.2rem;
       line-height: 0.2rem;
       .room {
@@ -90,7 +90,7 @@
         font-size: 0.14rem;
       }
     }
-    .col-box-3 {
+    .row-box-3 {
       width: 0.7rem;
       position: absolute;
       top: 0;
