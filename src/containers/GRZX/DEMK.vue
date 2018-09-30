@@ -1,33 +1,44 @@
 <template>
-  <div class="module DEMK">
-    <div class="link-item" v-waves.block>
-      <i class="link-icon icon-account"></i>
-      <span class="link-text">个人信息</span>
-      <i class="link-icon icon-next"></i>
-    </div>
-    <div class="link-item" v-waves.block>
-      <i class="link-icon icon-money"></i>
-      <span class="link-text">缴费记录</span>
-      <i class="link-icon icon-next"></i>
-    </div>
-    <div class="link-item" v-waves.block>
-      <i class="link-icon icon-before"></i>
-      <span class="link-text">我的预约</span>
-      <i class="link-icon icon-next"></i>
-    </div>
-    <div class="link-item" v-waves.block>
-      <i class="link-icon icon-plus"></i>
-      <span class="link-text">我的挂号</span>
-      <i class="link-icon icon-next"></i>
-    </div>
+  <div class="module GRZX2">
+    <router-link :to="routes[14].path">
+      <div class="link-item">
+        <i class="link-icon icon-account"></i>
+        <span class="link-text">个人信息</span>
+        <i class="link-icon icon-next"></i>
+      </div>
+    </router-link>
+    <router-link :to="routes[10].path">
+      <div class="link-item">
+        <i class="link-icon icon-money"></i>
+        <span class="link-text">缴费记录</span>
+        <i class="link-icon icon-next"></i>
+      </div>
+    </router-link>
+    <router-link :to="routes[9].path">
+      <div class="link-item">
+        <i class="link-icon icon-before"></i>
+        <span class="link-text">我的预约</span>
+        <i class="link-icon icon-next"></i>
+      </div>
+    </router-link>
+    <router-link :to="routes[7].path">
+      <div class="link-item">
+        <i class="link-icon icon-plus"></i>
+        <span class="link-text">我的挂号</span>
+        <i class="link-icon icon-next"></i>
+      </div>
+    </router-link>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import routes from '../../router/routes'
   export default{
     name: 'DEMK',
     data () {
-      return {}
+      return {
+        routes
+      }
     }
   }
 </script>
@@ -35,7 +46,7 @@
 <style lang="less">
   @import "../../assets/less/variable";
 
-  .DEMK {
+  .GRZX2 {
     min-height: 1.78rem;
     .link-item {
       line-height: 0.45rem;
@@ -68,6 +79,7 @@
         display: inline-block;
         vertical-align: middle;
         font-size: 0.15rem;
+        color: #333333;
       }
       .icon-next {
         position: absolute;
@@ -81,11 +93,6 @@
         content: '';
         display: block;
         border-top: 1px solid @borderColor;
-      }
-      &:last-child {
-        &:after {
-          border: none;
-        }
       }
     }
   }

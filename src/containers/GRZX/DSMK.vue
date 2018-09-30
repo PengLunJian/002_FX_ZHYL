@@ -1,33 +1,44 @@
 <template>
-  <div class="module DSMK">
-    <div class="link-item" v-waves.block>
-      <i class="link-icon icon-report"></i>
-      <span class="link-text">检查报告</span>
-      <i class="link-icon icon-next"></i>
-    </div>
-    <div class="link-item" v-waves.block>
-      <i class="link-icon icon-stay"></i>
-      <span class="link-text">待检查</span>
-      <i class="link-icon icon-next"></i>
-    </div>
-    <div class="link-item" v-waves.block>
-      <i class="link-icon icon-print"></i>
-      <span class="link-text">发票打印</span>
-      <i class="link-icon icon-next"></i>
-    </div>
-    <div class="link-item" v-waves.block>
-      <i class="link-icon icon-file"></i>
-      <span class="link-text">健康档案</span>
-      <i class="link-icon icon-next"></i>
-    </div>
+  <div class="module GRZX3">
+    <router-link :to="routes[13].path">
+      <div class="link-item">
+        <i class="link-icon icon-report"></i>
+        <span class="link-text">检查报告</span>
+        <i class="link-icon icon-next"></i>
+      </div>
+    </router-link>
+    <router-link :to="routes[11].path">
+      <div class="link-item">
+        <i class="link-icon icon-stay"></i>
+        <span class="link-text">待检查</span>
+        <i class="link-icon icon-next"></i>
+      </div>
+    </router-link>
+    <router-link :to="routes[13].path">
+      <div class="link-item">
+        <i class="link-icon icon-print"></i>
+        <span class="link-text">发票打印</span>
+        <i class="link-icon icon-next"></i>
+      </div>
+    </router-link>
+    <router-link :to="routes[12].path">
+      <div class="link-item">
+        <i class="link-icon icon-file"></i>
+        <span class="link-text">健康档案</span>
+        <i class="link-icon icon-next"></i>
+      </div>
+    </router-link>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import routes from '../../router/routes'
   export default{
     name: 'DSMK',
     data () {
-      return {}
+      return {
+        routes
+      }
     }
   }
 </script>
@@ -35,7 +46,7 @@
 <style lang="less">
   @import "../../assets/less/variable";
 
-  .DSMK {
+  .GRZX3 {
     min-height: 1.78rem;
     .link-item {
       line-height: 0.45rem;
@@ -65,6 +76,7 @@
         display: inline-block;
         vertical-align: middle;
         font-size: 0.15rem;
+        color: #333333;
       }
       .icon-next {
         position: absolute;
@@ -78,11 +90,6 @@
         content: '';
         display: block;
         border-top: 1px solid @borderColor;
-      }
-      &:last-child {
-        &:after {
-          border: none;
-        }
       }
     }
   }

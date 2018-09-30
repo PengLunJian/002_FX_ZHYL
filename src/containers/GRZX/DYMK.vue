@@ -1,14 +1,14 @@
 <template>
-  <div class="module DYMK">
-    <div class="col-box-1">
+  <div class="module GRZX1">
+    <div class="row-box-1">
       <img src="../../assets/images/doctor@2x.png"/>
     </div>
-    <div class="col-box-2">
+    <div class="row-box-2">
       <em class="name">杨永信</em>
       <span class="span">当前就诊卡</span>
       <span class="span">卡号：36************99</span>
     </div>
-    <div class="col-box-3">
+    <div class="row-box-3">
       <button class="btn btn-manager" v-waves.block>就诊卡管理</button>
     </div>
   </div>
@@ -26,11 +26,11 @@
 <style lang="less">
   @import "../../assets/less/variable";
 
-  .DYMK {
+  .GRZX1 {
     position: relative;
     min-height: 1.05rem;
     padding: 0.15rem 1rem;
-    .col-box-1 {
+    .row-box-1 {
       position: absolute;
       top: 0;
       left: 0;
@@ -51,7 +51,7 @@
         vertical-align: middle;
       }
     }
-    .col-box-2 {
+    .row-box-2 {
       padding: 0.1rem;
       .name {
         display: block;
@@ -64,7 +64,7 @@
         line-height: 0.2rem;
       }
     }
-    .col-box-3 {
+    .row-box-3 {
       width: 1rem;
       position: absolute;
       top: 0;
