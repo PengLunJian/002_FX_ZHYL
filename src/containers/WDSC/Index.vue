@@ -41,4 +41,9 @@
 </script>
 
 <style lang="less">
+  @import '../../assets/less/variable';
+
+  .FX_ZHYL_WDSC {
+    background-color: @bgColor;
+  }
 </style>

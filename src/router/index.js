@@ -12,6 +12,6 @@ const routes = Routes.map((item) => {
 })
 
 export default new Router({
-  mode: 'history',
+  mode: 'hash',
   routes: routes
 })

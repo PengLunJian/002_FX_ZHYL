@@ -10,7 +10,6 @@
   import JZKP from './JZKP'
   import XXTS from './XXTS'
   import DHCD from './DHCD'
-  import { Loading } from 'vux'
   import TJJZR from './TJJZR'
   export default{
     name: 'Home',
@@ -18,8 +17,7 @@
       TJJZR,
       JZKP,
       DHCD,
-      XXTS,
-      Loading
+      XXTS
     },
     data () {
       return {}
