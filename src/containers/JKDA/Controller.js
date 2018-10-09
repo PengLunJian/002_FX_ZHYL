@@ -11,8 +11,15 @@ const controllers = {
     }
   },
   checkNotEmpty: function () {
+    this.height = this.height ? this.height : '请输入';
+    this.weight = this.weight ? this.weight : '请输入';
     if (this.height && this.weight &&
-      this.blood && this.smoke && this.wine) {
+      this.blood && this.smoke && this.wine &&
+      this.height !== '请输入' &&
+      this.weight !== '请输入' &&
+      this.blood !== '请选择' &&
+      this.smoke !== '请选择' &&
+      this.wine !== '请选择') {
       this.status = '';
     } else {
       this.status = 'disabled';
@@ -29,6 +36,17 @@ const controllers = {
   },
   handlerBtnSave: function () {
     console.log(1);
+  },
+  showKeyBoard: function (type) {
+    this.show = true;
+    this.TYPE = type;
+  },
+  getNumber: function (value) {
+    if (this.TYPE === 'height') {
+      this.height = value;
+    } else if (this.TYPE === 'weight') {
+      this.weight = value;
+    }
   }
 };
 

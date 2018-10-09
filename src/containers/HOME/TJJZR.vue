@@ -11,7 +11,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import Controllers from './Controller'
+  import Controllers from './Controller';
 
   export default {
     name: 'TJJZR',

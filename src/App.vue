@@ -44,7 +44,7 @@
   };
 </script>
 
-<style scoped lang="less">
+<style lang="less">
   @import "../node_modules/normalize.css/normalize.css";
   @import "assets/less/common.less";
 

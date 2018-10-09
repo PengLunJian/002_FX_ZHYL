@@ -9,21 +9,25 @@
       <span class="span">卡号：36************99</span>
     </div>
     <div class="row-box-3">
-      <button class="btn btn-manager" v-waves.block>就诊卡管理</button>
+      <router-link :to="routes[18].path">
+        <button class="btn btn-manager" v-waves.block>就诊卡管理</button>
+      </router-link>
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  export default{
+  import routes from '../../router/routes';
+
+  export default {
     name: 'DYMK',
-    data () {
-      return {}
+    data() {
+      return {routes};
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .GRZX1 {

@@ -7,6 +7,6 @@ const controllers = {
   chooseImage: function () {
     console.log(wx);
   }
-}
+};
 
 export default controllers;

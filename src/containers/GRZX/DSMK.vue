@@ -32,18 +32,18 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import routes from '../../router/routes'
+  import routes from '../../router/routes';
   export default{
     name: 'DSMK',
     data () {
       return {
         routes
-      }
+      };
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .GRZX3 {

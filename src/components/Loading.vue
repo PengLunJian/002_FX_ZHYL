@@ -1,17 +1,14 @@
 <template>
-  <div class="loading">
-    <Loading/>
-  </div>
+  <div class="loading"></div>
 </template>
 
 <script type="text/ecmascript-6">
-  import {Loading} from 'vux';
-
   export default {
     name: 'Loading',
-    components: {Loading},
     data() {
-      return {};
+      return {
+        isLoading: false
+      };
     },
     methods: {}
   };

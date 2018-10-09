@@ -1,5 +1,5 @@
 export default {
-  host: '/ZHYL',
+  baseUrl: '/ZHYL',
   login: '/login',
   getUrl: function () {
     return '';

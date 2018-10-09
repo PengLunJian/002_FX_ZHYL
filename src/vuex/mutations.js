@@ -5,6 +5,6 @@ const mutations = {
   hideLoading (state) {
     state.LOADING = false;
   }
-}
+};
 
 export default mutations;

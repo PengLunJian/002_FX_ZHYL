@@ -2,15 +2,15 @@
   <div class="FX_ZHYL_JKDA">
     <div class="module DYMK">
       <p class="desc">建立个人健康档案，可提高就诊效率与自我健康管理</p>
-      <div class="form-group">
+      <div class="form-group" @click="showKeyBoard('height')">
         <label class="form-label">身高</label>
-        <input class="form-input" type="text" v-model="height" placeholder="请输入"/>
+        <span class="form-select">{{height}}</span>
         <i class="form-icon icon-next"></i>
       </div>
 
-      <div class="form-group">
+      <div class="form-group" @click="showKeyBoard('weight')">
         <label class="form-label">体重</label>
-        <input class="form-input" type="text" v-model="weight" placeholder="请输入"/>
+        <span class="form-select">{{weight}}</span>
         <i class="form-icon icon-next"></i>
       </div>
 
@@ -37,6 +37,7 @@
               @click="handlerBtnSave" v-waves.blcok>保存
       </button>
     </div>
+    <num-keyboard v-model="show" @cb="getNumber"/>
     <popup-picker :data="popupPicker.data" :popup-title="popupPicker.popupTitle"
                   :show.sync="popupPicker.show" @on-change="handlerChange"/>
   </div>
@@ -53,8 +54,10 @@
     name: 'JKDA',
     data() {
       return {
-        height: '',
-        weight: '',
+        TYPE: '',
+        show: false,
+        height: '请输入',
+        weight: '请输入',
         blood: '请选择',
         smoke: '请选择',
         wine: '请选择',

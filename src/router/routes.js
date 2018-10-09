@@ -138,8 +138,9 @@ const routes = [
     }
   },
   {
-    path: '/Nav01/JZRLB',
+    path: '/GRZX/JZRLB',
     name: 'JZRLB',
+    meta: {index: 2},
     component: (component) => {
       return component;
     }
