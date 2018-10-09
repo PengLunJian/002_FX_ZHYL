@@ -1,10 +1,10 @@
 const mutations = {
   showLoading (state) {
-    state.LOADING = true
+    state.LOADING = true;
   },
   hideLoading (state) {
-    state.LOADING = false
+    state.LOADING = false;
   }
 }
 
-export default mutations
+export default mutations;

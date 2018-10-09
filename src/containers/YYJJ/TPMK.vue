@@ -8,12 +8,12 @@
   export default{
     name: 'TPMK',
     data () {
-      return {}
+      return {};
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   .TPMK {
     .content {
       height: 1.7rem;

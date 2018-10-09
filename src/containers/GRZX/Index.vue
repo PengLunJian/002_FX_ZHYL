@@ -7,10 +7,10 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import Controller from './Controller'
-  import DYBF from './DYMK'
-  import DEBF from './DEMK'
-  import DSMK from './DSMK'
+  import Controller from './Controller';
+  import DYBF from './DYMK';
+  import DEBF from './DEMK';
+  import DSMK from './DSMK';
   export default{
     components: {
       DSMK,
@@ -19,13 +19,13 @@
     },
     name: '',
     data () {
-      return {}
+      return {};
     },
     methods: Controller
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .FX_ZHYL_GRZX {

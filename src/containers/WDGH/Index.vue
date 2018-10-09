@@ -6,21 +6,21 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import Controller from './Controller'
-  import RegItem from '../../components/RegItem'
+  import Controller from './Controller';
+  import RegItem from '../../components/RegItem';
   export default{
     components: {RegItem},
     name: 'WDGH',
     data () {
       return {
         slotOut: 'slot-out'
-      }
+      };
     },
     methods: Controller
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .FX_ZHYL_WDGH {

@@ -7,9 +7,9 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import Controller from './Controller'
-  import JCHZ from './JCHZ'
-  import JCLB from './JCLB'
+  import Controller from './Controller';
+  import JCHZ from './JCHZ';
+  import JCLB from './JCLB';
   export default{
     components: {
       JCLB,
@@ -17,13 +17,13 @@
     },
     name: 'JCBG',
     data () {
-      return {}
+      return {};
     },
     methods: Controller
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .FX_ZHYL_JCBG {

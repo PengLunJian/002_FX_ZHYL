@@ -26,32 +26,32 @@
       return {
         borderStyle: '',
         transitionName: 'slide-left'
-      }
+      };
     },
     methods: {
       tabChange (index) {
-        this.setBorderStyle(index)
-        this.$emit('tabChange', index)
+        this.setBorderStyle(index);
+        this.$emit('tabChange', index);
       },
       setBorderStyle (index) {
-        const value = 100 * index
-        const width = 100 / this.items.length
+        const value = 100 * index;
+        const width = 100 / this.items.length;
         this.borderStyle = 'width:' + width + '%;' +
-          'transform:translateX(' + value + '%);'
+          'transform:translateX(' + value + '%);';
       }
     },
     mounted () {
-      this.setBorderStyle(this.tabIndex)
+      this.setBorderStyle(this.tabIndex);
     },
     watch: {
       tabIndex: function (newValue, oldValue) {
-        this.transitionName = newValue > oldValue ? 'tab-left' : 'tab-right'
+        this.transitionName = newValue > oldValue ? 'tab-left' : 'tab-right';
       }
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../assets/less/variable";
 
   .tab-slider {

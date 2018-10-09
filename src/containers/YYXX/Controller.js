@@ -1,3 +1,3 @@
-const controller = {}
+const controller = {};
 
-export default controller
+export default controller;

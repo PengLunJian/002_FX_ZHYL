@@ -7,10 +7,10 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import Controller from './Controller'
-  import KSJJ from './KSJJ'
-  import KSMC from './KSMC'
-  import PBXX from './PBXX'
+  import Controller from './Controller';
+  import KSJJ from './KSJJ';
+  import KSMC from './KSMC';
+  import PBXX from './PBXX';
   export default{
     components: {
       PBXX,
@@ -19,13 +19,13 @@
     },
     name: '',
     data () {
-      return {}
+      return {};
     },
     methods: Controller
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .FX_ZHYL_KSXX {

@@ -20,12 +20,12 @@
   export default{
     name: 'KSJJ',
     data () {
-      return {}
+      return {};
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   .KSJJ {
     height: 2.5rem;
     .content {

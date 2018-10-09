@@ -7,10 +7,10 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import JZKP from './JZKP'
-  import XXTS from './XXTS'
-  import DHCD from './DHCD'
-  import TJJZR from './TJJZR'
+  import JZKP from './JZKP';
+  import XXTS from './XXTS';
+  import DHCD from './DHCD';
+  import TJJZR from './TJJZR';
   export default{
     name: 'Home',
     components: {
@@ -20,12 +20,12 @@
       XXTS
     },
     data () {
-      return {}
+      return {};
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .FX_ZHYL_HOME {

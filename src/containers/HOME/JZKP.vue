@@ -22,19 +22,19 @@
   export default{
     name: 'JZKP',
     data () {
-      return {}
+      return {};
     },
     methods: {
       showCode: function () {
         this.$router.push({
           path: '/JZEWM'
-        })
+        });
       }
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .JZKP {

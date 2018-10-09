@@ -19,15 +19,15 @@
   export default{
     name: 'DoctorItem',
     data () {
-      return {}
+      return {};
     },
     props: [
       'logo', 'name', 'post', 'good'
     ]
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../assets/less/variable";
 
   .doctor {

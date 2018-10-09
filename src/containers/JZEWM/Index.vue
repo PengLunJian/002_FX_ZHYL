@@ -16,17 +16,18 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import Controller from './Controller'
-  export default{
+  import Controller from './Controller';
+
+  export default {
     name: 'JZEWM',
-    data () {
-      return {}
+    data() {
+      return {};
     },
     methods: Controller
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .FX_ZHYL_JZEWM {

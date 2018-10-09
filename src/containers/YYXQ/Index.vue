@@ -6,21 +6,21 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import Controller from './Controller'
-  import SubDetail from '../../components/SubDetail'
+  import Controller from './Controller';
+  import SubDetail from '../../components/SubDetail';
   export default{
     components: {
       SubDetail
     },
     name: 'YYXQ',
     data () {
-      return {}
+      return {};
     },
     methods: Controller
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .FX_ZHYL_YYXQ {

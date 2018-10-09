@@ -1,7 +1,7 @@
 const controllers = {
   hideCode: function () {
-    this.$router.back()
+    this.$router.back();
   }
-}
+};
 
-export default controllers
+export default controllers;

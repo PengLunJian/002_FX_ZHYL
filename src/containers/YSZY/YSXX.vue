@@ -25,15 +25,15 @@
 </template>
 
 <script type="text/ecmascript-6">
-  export default{
+  export default {
     name: 'YSXX',
-    data () {
-      return {}
+    data() {
+      return {};
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .YSXX {

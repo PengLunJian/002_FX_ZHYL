@@ -48,28 +48,28 @@
         clazz: '',
         style: '',
         height: 0
-      }
+      };
     },
     methods: {
       showContent: function () {
         if (this.clazz === 'hide') {
-          const height = this.$refs.inner.offsetHeight
-          this.style = 'height:' + height + 'px;'
-          this.clazz = ''
+          const height = this.$refs.inner.offsetHeight;
+          this.style = 'height:' + height + 'px;';
+          this.clazz = '';
         } else {
-          this.style = 'height:' + 0 + 'px;'
-          this.clazz = 'hide'
+          this.style = 'height:' + 0 + 'px;';
+          this.clazz = 'hide';
         }
       }
     },
     mounted () {
-      this.height = this.$refs.inner.offsetHeight
-      this.style = 'height:' + this.height + 'px;'
+      this.height = this.$refs.inner.offsetHeight;
+      this.style = 'height:' + this.height + 'px;';
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .XXTS {

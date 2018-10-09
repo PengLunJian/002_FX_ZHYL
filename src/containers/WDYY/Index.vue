@@ -7,21 +7,21 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import Controller from './Controller'
-  import SubItem from '../../components/SubItem'
+  import Controller from './Controller';
+  import SubItem from '../../components/SubItem';
   export default{
     components: {SubItem},
     name: 'WDYY',
     data () {
       return {
         slotOut: 'slot-out'
-      }
+      };
     },
     methods: Controller
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .FX_ZHYL_WDYY {

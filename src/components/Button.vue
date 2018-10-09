@@ -9,9 +9,9 @@
     name: 'btn-next',
     props: ['text', 'status'],
     data () {
-      return {}
+      return {};
     }
-  }
+  };
 </script>
 
 <style lang="less">

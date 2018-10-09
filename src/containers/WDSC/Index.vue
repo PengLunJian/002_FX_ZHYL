@@ -9,10 +9,10 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import Controller from './Controller'
-  import TabContentOne from './TabContentOne.vue'
-  import TabContentTwo from './TabContentTwo.vue'
-  import TabSlider from '../../components/TabSlider'
+  import Controller from './Controller';
+  import TabContentOne from './TabContentOne.vue';
+  import TabContentTwo from './TabContentTwo.vue';
+  import TabSlider from '../../components/TabSlider';
   export default{
     components: {
       TabSlider,
@@ -34,13 +34,13 @@
             component: 'TabContentTwo'
           }
         ]
-      }
+      };
     },
     methods: Controller
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import '../../assets/less/variable';
 
   .FX_ZHYL_WDSC {

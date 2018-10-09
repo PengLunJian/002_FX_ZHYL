@@ -6,9 +6,9 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import Controller from './Controller'
-  import YYSJ from './YYSJ'
-  import ZZYS from './YSLB'
+  import Controller from './Controller';
+  import YYSJ from './YYSJ';
+  import ZZYS from './YSLB';
   export default{
     components: {
       ZZYS,
@@ -16,11 +16,11 @@
     },
     name: 'YSLB',
     data () {
-      return {}
+      return {};
     },
     methods: Controller
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
 </style>

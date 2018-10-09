@@ -2,9 +2,9 @@ export default {
   host: '/ZHYL',
   login: '/login',
   getUrl: function () {
-    return ''
+    return '';
   },
   getParams: function () {
-    return {}
+    return {};
   }
-}
+};

@@ -54,15 +54,15 @@
 </template>
 
 <script type="text/ecmascript-6">
-  export default{
+  export default {
     name: 'YYSJ',
-    data () {
-      return {}
+    data() {
+      return {};
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   .YYSJ {
     .date-items {
       width: 100%;

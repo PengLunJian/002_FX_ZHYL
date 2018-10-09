@@ -17,58 +17,57 @@
 </template>
 
 <script type="text/ecmascript-6">
-  export default{
+  export default {
     name: 'KSRLSM',
-    data () {
-      return {}
+    data() {
+      return {};
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .FX_ZHYL_KSRLSM {
     background-color: @bgColor;
-  }
-
-  .SMMKY {
-    box-shadow: none;
-    padding: 0.12rem 0.12rem 0;
-    background-color: transparent;
-    .content {
-      height: 3.55rem;
-      border-radius: @borderRadius2;
-      background-repeat: no-repeat;
-      background-size: 2.15rem auto;
-      background-position: center center;
-      background-image: url('../../assets/images/face_check@2x.png');
-      box-shadow: 0 1px 4px rgba(0, 0, 0, .15);
-      background-color: @white;
+    .SMMKY {
+      box-shadow: none;
+      padding: 0.12rem 0.12rem 0;
+      background-color: transparent;
+      .content {
+        height: 3.55rem;
+        border-radius: @borderRadius2;
+        background-repeat: no-repeat;
+        background-size: 2.15rem auto;
+        background-position: center center;
+        background-image: url('../../assets/images/face_check@2x.png');
+        box-shadow: 0 1px 4px rgba(0, 0, 0, .15);
+        background-color: @white;
+      }
     }
-  }
 
-  .SMMKE {
-    box-shadow: none;
-    background-color: transparent;
-    .content {
-      padding: 0 0.15rem;
-      font-size: 0.16rem;
-      .care {
-        line-height: 0.25rem;
-        font-weight: normal;
+    .SMMKE {
+      box-shadow: none;
+      background-color: transparent;
+      .content {
+        padding: 0 0.15rem;
         font-size: 0.16rem;
-      }
-      p {
-        line-height: 0.25rem;
-      }
-      .btn-scanner {
-        width: 100%;
-        margin-top: 0.32rem;
-        line-height: 0.47rem;
-        border-radius: @borderRadius;
-        background-color: @buttonColor2;
-        color: @white;
+        .care {
+          line-height: 0.25rem;
+          font-weight: normal;
+          font-size: 0.16rem;
+        }
+        p {
+          line-height: 0.25rem;
+        }
+        .btn-scanner {
+          width: 100%;
+          margin-top: 0.32rem;
+          line-height: 0.47rem;
+          border-radius: @borderRadius;
+          background-color: @buttonColor2;
+          color: @white;
+        }
       }
     }
   }

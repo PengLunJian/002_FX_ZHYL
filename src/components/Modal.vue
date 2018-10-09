@@ -12,25 +12,25 @@
 </template>
 
 <script type="text/ecmascript-6">
-  export default{
+  export default {
     name: 'Modal',
-    data () {
+    data() {
       return {
         clazz: 'hide'
-      }
+      };
     },
     methods: {
       show: function () {
-        this.clazz = ''
+        this.clazz = '';
       },
       hide: function () {
-        this.clazz = 'hide'
+        this.clazz = 'hide';
       }
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   .modal {
     .modal-dialog {
       .modal-bg {

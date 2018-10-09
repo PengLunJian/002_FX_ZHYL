@@ -35,14 +35,14 @@
   export default{
     name: 'RegItem',
     data () {
-      return {}
+      return {};
     },
     props: ['slotOut'],
     mounted () {}
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../assets/less/variable";
 
   .GHMK {

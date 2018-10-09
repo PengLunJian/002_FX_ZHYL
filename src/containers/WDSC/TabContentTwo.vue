@@ -8,17 +8,18 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import ListItem from '../../components/ListItem'
-  export default{
+  import ListItem from '../../components/ListItem';
+
+  export default {
     components: {ListItem},
     name: 'TabContentTwo',
-    data () {
-      return {}
+    data() {
+      return {};
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   .tab-list {
   }
 </style>

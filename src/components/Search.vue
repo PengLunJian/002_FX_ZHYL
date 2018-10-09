@@ -11,15 +11,15 @@
   export default{
     name: 'Search',
     data () {
-      return {}
+      return {};
     },
     mounted () {
 
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../assets/less/variable";
 
   .search {

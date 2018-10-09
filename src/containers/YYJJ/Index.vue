@@ -7,25 +7,26 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import Controller from './Controller'
-  import TPMK from './TPMK'
-  import YYJS from './YYJS'
-  import WHLN from './WHLN'
-  export default{
+  import Controller from './Controller';
+  import TPMK from './TPMK';
+  import YYJS from './YYJS';
+  import WHLN from './WHLN';
+
+  export default {
     components: {
       WHLN,
       YYJS,
       TPMK
     },
     name: 'YYJJ',
-    data () {
-      return {}
+    data() {
+      return {};
     },
     methods: Controller
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .FX_ZHYL_YYJJ {

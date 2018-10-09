@@ -10,12 +10,12 @@
   export default{
     name: 'KSMC',
     data () {
-      return {}
+      return {};
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   .KSMC {
     height: 1.1rem;
     position: relative;

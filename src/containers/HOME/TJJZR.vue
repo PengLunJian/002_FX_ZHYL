@@ -12,16 +12,17 @@
 
 <script type="text/ecmascript-6">
   import Controllers from './Controller'
-  export default{
+
+  export default {
     name: 'TJJZR',
-    data () {
-      return {}
+    data() {
+      return {};
     },
     methods: Controllers
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .TJJZR {

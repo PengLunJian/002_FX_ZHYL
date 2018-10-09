@@ -6,10 +6,10 @@
 </template>
 
 <script type="text/ecmascript-6">
-  export default{
+  export default {
     name: 'NavItem',
-    data () {
-      return {}
+    data() {
+      return {};
     },
     props: [
       'image', 'title', 'path', 'disabled'
@@ -19,22 +19,22 @@
         if (!this.disabled) {
           this.$router.push({
             path: this.path
-          })
+          });
         } else {
           this.$vux.toast.show({
             type: 'text',
             text: '敬请期待',
             position: 'middle'
-          })
+          });
         }
       }
     },
-    mounted () {
+    mounted() {
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../assets/less/variable";
 
   .nav-item {

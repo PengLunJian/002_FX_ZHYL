@@ -4,7 +4,7 @@ const routes = [
     name: 'Home',
     meta: {index: 0},
     component: (component) => {
-      return component
+      return component;
     }
   },
   {
@@ -12,35 +12,35 @@ const routes = [
     name: 'YYGH',
     meta: {index: 1},
     component: (component) => {
-      return component
+      return component;
     }
   },
   {
     path: '/Nav01/YSLB',
     name: 'YSLB',
     component: (component) => {
-      return component
+      return component;
     }
   },
   {
     path: '/Nav01/YYXX',
     name: 'YYXX',
     component: (component) => {
-      return component
+      return component;
     }
   },
   {
     path: '/Nav01/KSXX',
     name: 'KSXX',
     component: (component) => {
-      return component
+      return component;
     }
   },
   {
     path: '/Nav01/YSZY',
     name: 'YSZY',
     component: (component) => {
-      return component
+      return component;
     }
   },
   {
@@ -48,7 +48,7 @@ const routes = [
     name: 'GRZX',
     meta: {index: 1},
     component: (component) => {
-      return component
+      return component;
     }
   },
   {
@@ -56,14 +56,14 @@ const routes = [
     name: 'WDGH',
     meta: {index: 2},
     component: (component) => {
-      return component
+      return component;
     }
   },
   {
     path: '/Nav01/GHXQ',
     name: 'GHXQ',
     component: (component) => {
-      return component
+      return component;
     }
   },
   {
@@ -71,7 +71,7 @@ const routes = [
     name: 'WDYY',
     meta: {index: 2},
     component: (component) => {
-      return component
+      return component;
     }
   },
   {
@@ -79,7 +79,7 @@ const routes = [
     name: 'JFJL',
     meta: {index: 2},
     component: (component) => {
-      return component
+      return component;
     }
   },
   {
@@ -87,7 +87,7 @@ const routes = [
     name: 'DJCLB',
     meta: {index: 2},
     component: (component) => {
-      return component
+      return component;
     }
   },
   {
@@ -95,7 +95,7 @@ const routes = [
     name: 'JKDA',
     meta: {index: 2},
     component: (component) => {
-      return component
+      return component;
     }
   },
   {
@@ -103,7 +103,7 @@ const routes = [
     name: 'JCBG',
     meta: {index: 2},
     component: (component) => {
-      return component
+      return component;
     }
   },
   {
@@ -111,7 +111,7 @@ const routes = [
     name: 'GRXX',
     meta: {index: 2},
     component: (component) => {
-      return component
+      return component;
     }
   },
   {
@@ -119,7 +119,7 @@ const routes = [
     name: 'DZJZKBL',
     meta: {index: 1},
     component: (component) => {
-      return component
+      return component;
     }
   },
   {
@@ -127,21 +127,21 @@ const routes = [
     name: 'SCSFZ',
     meta: {index: 2},
     component: (component) => {
-      return component
+      return component;
     }
   },
   {
     path: '/Nav01/JCXX',
     name: 'JCXX',
     component: (component) => {
-      return component
+      return component;
     }
   },
   {
     path: '/Nav01/JZRLB',
     name: 'JZRLB',
     component: (component) => {
-      return component
+      return component;
     }
   },
   {
@@ -149,7 +149,7 @@ const routes = [
     name: 'JZRSFZ',
     meta: {index: 2},
     component: (component) => {
-      return component
+      return component;
     }
   },
   {
@@ -157,7 +157,7 @@ const routes = [
     name: 'WDSC',
     meta: {index: 1},
     component: (component) => {
-      return component
+      return component;
     }
   },
   {
@@ -165,7 +165,7 @@ const routes = [
     name: 'YYJJ',
     meta: {index: 1},
     component: (component) => {
-      return component
+      return component;
     }
   },
   {
@@ -173,14 +173,14 @@ const routes = [
     name: 'JZEWM',
     meta: {index: 1},
     component: (component) => {
-      return component
+      return component;
     }
   },
   {
     path: '/Nav01/YYXQ',
     name: 'YYXQ',
     component: (component) => {
-      return component
+      return component;
     }
   },
   {
@@ -188,7 +188,7 @@ const routes = [
     name: 'RLSM',
     meta: {index: 3},
     component: (component) => {
-      return component
+      return component;
     }
   },
   {
@@ -196,9 +196,9 @@ const routes = [
     name: 'KSRLSM',
     meta: {index: 4},
     component: (component) => {
-      return component
+      return component;
     }
   }
-]
+];
 
-export default routes
+export default routes;

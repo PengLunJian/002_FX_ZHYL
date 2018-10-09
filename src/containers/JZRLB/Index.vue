@@ -23,17 +23,17 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import Controller from './Controller'
+  import Controller from './Controller';
   export default{
     name: 'JZRLB',
     data () {
-      return {}
+      return {};
     },
     methods: Controller
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .FX_ZHYL_JZRLB {

@@ -6,9 +6,9 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import Controller from './Controller'
-  import JBXX from './JBXX'
-  import ZYXX from './ZYXX'
+  import Controller from './Controller';
+  import JBXX from './JBXX';
+  import ZYXX from './ZYXX';
   export default{
     components: {
       ZYXX,
@@ -16,13 +16,13 @@
     },
     name: 'GRXX',
     data () {
-      return {}
+      return {};
     },
     methods: Controller
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .FX_ZHYL_GRXX {

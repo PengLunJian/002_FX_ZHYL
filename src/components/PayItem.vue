@@ -34,12 +34,12 @@
   export default{
     name: 'PayItem',
     data () {
-      return {}
+      return {};
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../assets/less/variable";
 
   .JFLB {

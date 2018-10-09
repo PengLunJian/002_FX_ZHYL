@@ -9,17 +9,17 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import ListItem from '../../components/ListItem'
+  import ListItem from '../../components/ListItem';
   export default{
     components: {ListItem},
     name: 'TabContentOne',
     data () {
-      return {}
+      return {};
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   .tab-list {
   }
 </style>

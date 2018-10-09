@@ -7,23 +7,24 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import Controller from './Controller'
-  import YSXX from './YSXX'
-  import PBXX from './PBXX'
-  import YSJJ from './YSJJ'
-  export default{
+  import Controller from './Controller';
+  import YSXX from './YSXX';
+  import PBXX from './PBXX';
+  import YSJJ from './YSJJ';
+
+  export default {
     components: {
       YSJJ,
       PBXX,
       YSXX
     },
     name: '',
-    data () {
-      return {}
+    data() {
+      return {};
     },
     methods: Controller
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
 </style>

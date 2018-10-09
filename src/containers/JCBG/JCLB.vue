@@ -24,12 +24,12 @@
   export default{
     name: 'JCLB',
     data () {
-      return {}
+      return {};
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .JCLB {

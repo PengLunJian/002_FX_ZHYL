@@ -8,9 +8,9 @@
 </template>
 
 <script type="text/ecmascript-6">
-  export default{
+  export default {
     name: 'News',
-    data () {
+    data() {
       return {
         value: 0,
         style: '',
@@ -34,30 +34,30 @@
             text: '6.我是新闻我是新闻我是新闻我是新闻我是新闻我是新闻'
           }
         ]
-      }
+      };
     },
     methods: {
       startMove: function () {
-        this.items = this.items.concat(this.items)
+        this.items = this.items.concat(this.items);
         setInterval(function () {
-          this.value += -40
-          this.style = 'transform:translateY(' + this.value + 'px)'
+          this.value += -40;
+          this.style = 'transform:translateY(' + this.value + 'px)';
           if (-40 * (this.items.length / 2) >= this.value) {
             setTimeout(function () {
-              this.value = 0
-              this.style = 'transform:translateY(' + this.value + 'px);transition:all 0ms ease-out;'
-            }.bind(this), 300)
+              this.value = 0;
+              this.style = 'transform:translateY(' + this.value + 'px);transition:all 0ms ease-out;';
+            }.bind(this), 300);
           }
-        }.bind(this), 3000)
+        }.bind(this), 3000);
       }
     },
-    mounted () {
-      this.startMove()
+    mounted() {
+      this.startMove();
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   .news {
     position: relative;
     height: 0.4rem;

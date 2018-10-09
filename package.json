@@ -1,5 +1,5 @@
 {
-  "name": "002_fx_zhyl",
+  "name": "002_FX_ZHYL",
   "version": "1.0.0",
   "description": "This is webapp use vue",
   "author": "penglunjian <875831103@qq.com>",
@@ -18,6 +18,7 @@
     "vue-router": "^3.0.1",
     "vue-scroller": "^2.2.4",
     "vue-waves": "^0.1.1",
+    "vue2-num-keyboard": "^1.0.3",
     "vuex": "^3.0.1",
     "vux": "^2.9.2",
     "weixin-js-sdk": "^1.4.0-test",

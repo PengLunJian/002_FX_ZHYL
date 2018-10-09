@@ -30,15 +30,15 @@
 </template>
 
 <script type="text/ecmascript-6">
-  export default{
+  export default {
     name: 'WHLN',
-    data () {
-      return {}
+    data() {
+      return {};
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .WHLN {

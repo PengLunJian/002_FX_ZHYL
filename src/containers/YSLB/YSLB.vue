@@ -5,12 +5,12 @@
                  :logo="item.logo"
                  :name="item.name"
                  :post="item.post"
-                 :good="item.good"></doctor-item>
+                 :good="item.good"/>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import DoctorItem from '../../components/DoctorItem'
+  import DoctorItem from '../../components/DoctorItem';
   export default{
     components: {DoctorItem},
     name: 'ZZYS',
@@ -84,10 +84,10 @@
             good: '视网膜、青光眼、斜视等眼病'
           }
         ]
-      }
+      };
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
 </style>

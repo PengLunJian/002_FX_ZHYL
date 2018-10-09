@@ -3,38 +3,39 @@
 </template>
 
 <script type="text/ecmascript-6">
-  export default{
+  export default {
     name: 'FormGroup',
-    data () {
+    data() {
       return {
         template: '',
         val: this.value
-      }
+      };
     },
     props: ['label', 'type', 'value', 'placeholder'],
     methods: {
-      getTemplate () {
-        this.template = '<label class="form-label">' + this.label + '</label>'
+      getTemplate() {
+        this.template = '<label class="form-label">' + this.label + '</label>';
         if (this.type === 'text') {
-          this.template += '<input class="form-input" type="text" v-model="' + this.val + '" " placeholder="' + this.placeholder + '"/>'
+          this.template += '<input class="form-input" type="text" v-model="' +
+            this.val + '" " placeholder="' + this.placeholder + '"/>';
         } else if (this.type === 'select') {
-          this.template += '<span class="form-select">' + (this.value || this.placeholder) + '</span>'
+          this.template += '<span class="form-select">' + (this.value || this.placeholder) + '</span>';
         }
       },
-      handlerClick () {
-        this.$emit('showMenus')
+      handlerClick() {
+        this.$emit('showMenus');
       },
-      handlerInput () {
-        this.$emit('handlerChange', this.val)
+      handlerInput() {
+        this.$emit('handlerChange', this.val);
       }
     },
-    mounted () {
-      this.getTemplate()
+    mounted() {
+      this.getTemplate();
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../assets/less/variable";
 
   .form-group {

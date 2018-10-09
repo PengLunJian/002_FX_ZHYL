@@ -6,23 +6,24 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import Controller from './Controller'
-  import Search from '../../components/Search'
-  import FLCD from './FLCD'
-  export default{
+  import Controller from './Controller';
+  import Search from '../../components/Search';
+  import FLCD from './FLCD';
+
+  export default {
     components: {
       FLCD,
       Search
     },
     name: 'YYGH',
-    data () {
-      return {}
+    data() {
+      return {};
     },
     methods: Controller
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   .FX_ZHYL_BESPOKE {
     position: relative;
   }

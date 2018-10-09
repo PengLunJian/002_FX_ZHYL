@@ -1,12 +1,12 @@
 <template>
   <div class="module DHCD">
-    <NavItem v-for="item in items" :key="item.index" :image="item.image" :title="item.title"
-             :path="item.path" :disabled="item.disabled"></NavItem>
+    <NavItem v-for="item in items" :key="item.index" :image="item.image"
+             :title="item.title" :path="item.path" :disabled="item.disabled"/>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import NavItem from '../../components/NavItem.vue'
+  import NavItem from '../../components/NavItem.vue';
   export default{
     name: 'DHCD',
     components: {NavItem},
@@ -50,11 +50,11 @@
             disabled: true
           }
         ]
-      }
+      };
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
 
 </style>

@@ -13,19 +13,19 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import Controllers from './Controller'
+  import Controllers from './Controller';
   export default{
     name: 'RLSM',
     data () {
       return {
         status: 'disabled'
-      }
+      };
     },
     methods: Controllers
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .FX_ZHYL_RLSM {

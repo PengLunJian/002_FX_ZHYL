@@ -14,12 +14,12 @@
   export default{
     name: 'PBXX',
     data () {
-      return {}
+      return {};
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   .PBXX {
     height: auto;
     .context {

@@ -23,8 +23,8 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import { Actionsheet } from 'vux'
-  import Controllers from './Controller'
+  import { Actionsheet } from 'vux';
+  import Controllers from './Controller';
   export default{
     name: 'SCSFZ',
     data () {
@@ -32,13 +32,13 @@
         value: false,
         showCancel: true,
         menus: ['拍照', '从相册选择']
-      }
+      };
     },
     components: {
       Actionsheet
     },
     methods: Controllers
-  }
+  };
 </script>
 
 <style lang="less">

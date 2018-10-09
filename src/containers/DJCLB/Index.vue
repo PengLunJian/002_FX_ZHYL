@@ -3,32 +3,33 @@
     <scroller ref="scroller"
               :on-refresh="refresh"
               :on-infinite="infinite">
-      <visit-item v-for="(item,index) in items" :key="index"></visit-item>
+      <visit-item v-for="(item,index) in items" :key="index"/>
     </scroller>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import Controller from './Controller'
-  import VisitItem from '../../components/VisitItem'
-  export default{
+  import Controller from './Controller';
+  import VisitItem from '../../components/VisitItem';
+
+  export default {
     components: {VisitItem},
     name: 'DJCLB',
-    data () {
+    data() {
       return {
         items: [
           {}, {}, {}, {}, {}, {}, {}, {}, {}, {}
         ]
-      }
+      };
     },
     methods: Controller,
-    mounted () {
-      this.$refs.scroller.resize()
+    mounted() {
+      this.$refs.scroller.resize();
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .FX_ZHYL_DJCLB {

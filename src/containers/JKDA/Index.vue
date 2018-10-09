@@ -38,19 +38,20 @@
       </button>
     </div>
     <popup-picker :data="popupPicker.data" :popup-title="popupPicker.popupTitle"
-                  :show.sync="popupPicker.show" @on-change="handlerChange"></popup-picker>
+                  :show.sync="popupPicker.show" @on-change="handlerChange"/>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import { PopupPicker } from 'vux'
-  import Controller from './Controller'
-  export default{
+  import {PopupPicker} from 'vux';
+  import Controller from './Controller';
+
+  export default {
     components: {
       PopupPicker
     },
     name: 'JKDA',
-    data () {
+    data() {
       return {
         height: '',
         weight: '',
@@ -64,31 +65,31 @@
           value: null,
           popupTitle: '请选择'
         }
-      }
+      };
     },
     methods: Controller,
     watch: {
-      height () {
-        this.checkNotEmpty()
+      height() {
+        this.checkNotEmpty();
       },
-      weight () {
-        this.checkNotEmpty()
+      weight() {
+        this.checkNotEmpty();
       },
-      blood () {
-        this.checkNotEmpty()
+      blood() {
+        this.checkNotEmpty();
       },
-      smoke () {
-        this.checkNotEmpty()
+      smoke() {
+        this.checkNotEmpty();
       },
-      wine () {
-        this.checkNotEmpty()
+      wine() {
+        this.checkNotEmpty();
       }
     }
-  }
+  };
 </script>
 
-<style lang="less">
-  @import "../../assets/less/variable";
+<style scoped lang="less">
+  @import "../../assets/less/variable.less";
 
   .FX_ZHYL_JKDA {
     background-color: @bgColor;

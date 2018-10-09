@@ -24,19 +24,20 @@
       </button>
     </div>
     <popup-picker :data="popupPicker.data" :popup-title="popupPicker.popupTitle"
-                  :show.sync="popupPicker.show" @on-change="handlerChange"></popup-picker>
+                  :show.sync="popupPicker.show" @on-change="handlerChange"/>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import { PopupPicker } from 'vux'
-  import Controllers from './Controller'
-  export default{
+  import {PopupPicker} from 'vux';
+  import Controllers from './Controller';
+
+  export default {
     components: {
       PopupPicker
     },
     name: 'JZRSFZ',
-    data () {
+    data() {
       return {
         name: '',
         idNumber: '',
@@ -49,27 +50,27 @@
           value: null,
           popupTitle: '请选择'
         }
-      }
+      };
     },
     methods: Controllers,
     watch: {
-      name () {
-        this.checkNotEmpty()
+      name() {
+        this.checkNotEmpty();
       },
-      idNumber () {
-        this.checkNotEmpty()
+      idNumber() {
+        this.checkNotEmpty();
       },
-      gender () {
-        this.checkNotEmpty()
+      gender() {
+        this.checkNotEmpty();
       },
-      nation () {
-        this.checkNotEmpty()
+      nation() {
+        this.checkNotEmpty();
       }
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .FX_ZHYL_JZRSFZ {

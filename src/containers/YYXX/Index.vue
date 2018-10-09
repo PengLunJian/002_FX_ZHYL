@@ -6,9 +6,9 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import Controller from './Controller'
-  import DYBF from './DYBF'
-  import DEBF from './DEBF'
+  import Controller from './Controller';
+  import DYBF from './DYBF';
+  import DEBF from './DEBF';
   export default{
     components: {
       DEBF,
@@ -16,13 +16,13 @@
     },
     name: 'YYXX',
     data () {
-      return {}
+      return {};
     },
     methods: Controller
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .FX_ZHYL_YYXX {

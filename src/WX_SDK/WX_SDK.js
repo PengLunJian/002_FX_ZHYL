@@ -1,4 +1,4 @@
-import wx from 'weixin-js-sdk'
+import wx from 'weixin-js-sdk';
 
 const WX_JS_SDK = {
   getConfig: () => {
@@ -9,7 +9,7 @@ const WX_JS_SDK = {
       nonceStr: '',
       signature: '',
       jsApiList: []
-    }
+    };
   },
   chooseImage: () => {
     wx.chooseImage({
@@ -17,11 +17,11 @@ const WX_JS_SDK = {
       sizeType: ['original', 'compressed'],
       sourceType: ['album', 'camera'],
       success: function (res) {
-        let localIds = res.localIds
-        console.log(localIds)
+        let localIds = res.localIds;
+        console.log(localIds);
       }
-    })
+    });
   }
-}
+};
 
-export default WX_JS_SDK
+export default WX_JS_SDK;

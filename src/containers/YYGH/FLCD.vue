@@ -50,14 +50,14 @@
   export default{
     name: 'FLCD',
     data () {
-      return {}
+      return {};
     },
     mounted () {
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .FLCD {

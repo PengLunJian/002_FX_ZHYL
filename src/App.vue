@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <transition :name="transitionName">
-      <router-view></router-view>
+      <router-view/>
     </transition>
   </div>
 </template>
@@ -10,42 +10,41 @@
   export default {
     name: 'App',
     components: {},
-    data () {
+    data() {
       return {
         transitionName: ''
-      }
+      };
     },
     methods: {
       setRootFontSize: function () {
         const width = document.documentElement.clientWidth ||
-          document.body.clientWidth
-        const fontSize = (width / 3.75) + 'px'
-        document.querySelector('html').style.fontSize = fontSize
+          document.body.clientWidth;
+        const fontSize = (width / 3.75) + 'px';
+        document.querySelector('html').style.fontSize = fontSize;
       },
       windowOnResize: function () {
         window.onresize = () => {
-          this.setRootFontSize()
-        }
+          this.setRootFontSize();
+        };
       }
     },
-    mounted () {
-      this.setRootFontSize()
-      this.windowOnResize()
+    mounted() {
+      this.setRootFontSize();
+      this.windowOnResize();
     },
     watch: {
-      $route (to, from) {
-        // 如果to索引大于from索引,判断为前进状态,反之
+      $route(to, from) {
         if (to.meta.index > from.meta.index) {
-          this.transitionName = 'slide-left'
+          this.transitionName = 'slide-left';
         } else {
-          this.transitionName = 'slide-right'
+          this.transitionName = 'slide-right';
         }
       }
     }
-  }
+  };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../node_modules/normalize.css/normalize.css";
   @import "assets/less/common.less";
 
