@@ -1,19 +1,41 @@
 <template>
   <div class="FX_ZHYL_YYXX">
-    <d-y-b-f></d-y-b-f>
-    <d-e-b-f></d-e-b-f>
+    <div class="module DYBF">
+      <div class="form-group">
+        <label class="form-label">就诊人</label>
+        <input class="form-input icon" name="name" value="胡代宇" type="text"/>
+        <i class="form-icon icon-next"></i>
+      </div>
+      <div class="form-group">
+        <label class="form-label">就诊时间</label>
+        <input class="form-input" name="name" value="2017/07/18 下午" type="text"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label">就诊科室</label>
+        <input class="form-input" name="name" value="眼科" type="text"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label borderNone">医生姓名</label>
+        <input class="form-input" name="name" value="胡代宇" type="text"/>
+      </div>
+    </div>
+    <div class="module DEBF">
+      <div class="form-group">
+        <label class="form-label">门诊费用(不含挂号费)</label>
+        <input class="form-input" name="name" value="180元" type="text"/>
+      </div>
+      <div class="form-group">
+        <label class="form-label borderNone">支付方式</label>
+        <input class="form-input" name="name" value="去医院支付" type="text"/>
+      </div>
+      <button class="btn btn-submit" v-waves.block>提交</button>
+    </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import Controller from './Controller';
-  import DYBF from './DYBF';
-  import DEBF from './DEBF';
   export default{
-    components: {
-      DEBF,
-      DYBF
-    },
     name: 'YYXX',
     data () {
       return {};
@@ -27,9 +49,6 @@
 
   .FX_ZHYL_YYXX {
     background-color: @bgColor;
-  }
-
-  .patient-form {
     .module {
       background-color: transparent;
       box-shadow: none;

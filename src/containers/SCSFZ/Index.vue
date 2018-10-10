@@ -23,11 +23,12 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import { Actionsheet } from 'vux';
+  import {Actionsheet} from 'vux';
   import Controllers from './Controller';
-  export default{
+
+  export default {
     name: 'SCSFZ',
-    data () {
+    data() {
       return {
         value: false,
         showCancel: true,
@@ -37,11 +38,14 @@
     components: {
       Actionsheet
     },
-    methods: Controllers
+    methods: Controllers,
+    mounted() {
+      this.config();
+    }
   };
 </script>
 
-<style lang="less">
+<style scoped lang="less">
   @import "../../assets/less/variable";
 
   .FX_ZHYL_SCSFZ {

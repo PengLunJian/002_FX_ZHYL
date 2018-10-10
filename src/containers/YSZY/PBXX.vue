@@ -15,7 +15,7 @@
       <tbody>
       <tr>
         <td class="am"><span>上午</span></td>
-        <td><span class="on">预约</span></td>
+        <td><span class="on" @click="handlerClick">预约</span></td>
         <td><span class="on">预约</span></td>
         <td><span class="on">预约</span></td>
         <td><span class="off">约满</span></td>
@@ -40,10 +40,19 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import routes from '../../router/routes';
+
   export default {
     name: 'PBXX',
     data() {
       return {};
+    },
+    methods: {
+      handlerClick: function () {
+        this.$router.push({
+          path: routes[3].path
+        });
+      }
     }
   };
 </script>

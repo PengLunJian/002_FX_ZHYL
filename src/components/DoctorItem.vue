@@ -9,21 +9,30 @@
       <div class="item-good">{{good}}</div>
     </div>
     <div class="item-box-3">
-      <button class="btn btn-bespoke">预约</button>
+      <button class="btn btn-bespoke" @click="handlerClick" v-waves.block>预约</button>
       <span class="item-price">180.0元</span>
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  export default{
+  import routes from '../router/routes';
+
+  export default {
     name: 'DoctorItem',
-    data () {
+    data() {
       return {};
     },
     props: [
       'logo', 'name', 'post', 'good'
-    ]
+    ],
+    methods: {
+      handlerClick: function () {
+        this.$router.push({
+          path: routes[5].path
+        });
+      }
+    }
   };
 </script>
 

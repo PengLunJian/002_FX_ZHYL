@@ -1,7 +1,11 @@
 <template>
   <div class="module DHCD">
-    <NavItem v-for="item in items" :key="item.index" :image="item.image"
-             :title="item.title" :path="item.path" :disabled="item.disabled"/>
+    <NavItem v-for="item in items"
+             :key="item.index"
+             :image="item.image"
+             :title="item.title"
+             :path="item.path"
+             :disabled="item.disabled"/>
   </div>
 </template>
 
@@ -22,7 +26,7 @@
           {
             image: require('../../assets/images/nav_icon02@2x.png'),
             title: '挂号',
-            path: '/Nav02',
+            path: '/Nav01',
             disabled: false
           },
           {

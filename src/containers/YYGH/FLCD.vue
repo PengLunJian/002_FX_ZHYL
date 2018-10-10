@@ -23,7 +23,7 @@
         <li class="menu-button" v-waves.block>专科专病</li>
       </ul>
     </div>
-    <div class="col-xs-6 menu-rt">
+    <div class="col-xs-6 menu-rt" @click="handlerClick">
       <ul class="menu-results">
         <li class="menu-result">心里咨询</li>
         <li class="menu-result">心里咨询</li>
@@ -47,12 +47,15 @@
 </template>
 
 <script type="text/ecmascript-6">
-  export default{
+  import Controller from './Controller';
+
+  export default {
     name: 'FLCD',
-    data () {
+    data() {
       return {};
     },
-    mounted () {
+    methods: Controller,
+    mounted() {
     }
   };
 </script>

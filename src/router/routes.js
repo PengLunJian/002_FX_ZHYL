@@ -18,13 +18,15 @@ const routes = [
   {
     path: '/Nav01/YSLB',
     name: 'YSLB',
+    meta: {index: 2},
     component: (component) => {
       return component;
     }
   },
   {
-    path: '/Nav01/YYXX',
+    path: '/Nav01/YSLB/YSZY/YYXX',
     name: 'YYXX',
+    meta: {index: 4},
     component: (component) => {
       return component;
     }
@@ -37,8 +39,9 @@ const routes = [
     }
   },
   {
-    path: '/Nav01/YSZY',
+    path: '/Nav01/YSLB/YSZY',
     name: 'YSZY',
+    meta: {index: 3},
     component: (component) => {
       return component;
     }

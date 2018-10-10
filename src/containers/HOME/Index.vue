@@ -1,8 +1,9 @@
 <template>
   <div class="FX_ZHYL_HOME">
-    <t-j-j-z-r></t-j-j-z-r>
+    <j-z-k-p></j-z-k-p>
     <x-x-t-s></x-x-t-s>
     <d-h-c-d></d-h-c-d>
+    <modal :show="isShow"></modal>
   </div>
 </template>
 
@@ -11,16 +12,21 @@
   import XXTS from './XXTS';
   import DHCD from './DHCD';
   import TJJZR from './TJJZR';
-  export default{
+  import Modal from '../../components/Modal';
+
+  export default {
     name: 'Home',
     components: {
+      Modal,
       TJJZR,
       JZKP,
       DHCD,
       XXTS
     },
-    data () {
-      return {};
+    data() {
+      return {
+        isShow: false
+      };
     }
   };
 </script>
