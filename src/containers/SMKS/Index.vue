@@ -1,5 +1,5 @@
 <template>
-  <div class="FX_ZHYL_KSRLSM">
+  <div class="FX_ZHYL_SMKS">
     <div class="module SMMKY">
       <div class="content"></div>
     </div>
@@ -18,7 +18,7 @@
 
 <script type="text/ecmascript-6">
   export default {
-    name: 'KSRLSM',
+    name: 'FX_ZHYL_SMKS',
     data() {
       return {};
     }
@@ -28,7 +28,7 @@
 <style scoped lang="less">
   @import "../../assets/less/variable";
 
-  .FX_ZHYL_KSRLSM {
+  .FX_ZHYL_SMKS {
     background-color: @bgColor;
     .SMMKY {
       box-shadow: none;

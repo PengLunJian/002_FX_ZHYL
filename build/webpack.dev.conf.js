@@ -55,13 +55,11 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     before(app) {
       app.get('/api/login', (req, res) => {
         res.json({
-          code: 200,
           data: login
         })
       }),
         app.get('/api/wdyy', (req, res) => {
           res.json({
-            code: 200,
             data: wdyy
           })
         })

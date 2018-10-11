@@ -26,19 +26,25 @@
       </div>
     </div>
     <div class="row-box-3">
-      <button class="btn btn-detail" v-waves.block>查看详情</button>
+      <button class="btn btn-detail" @click="showDetails" v-waves.block>查看详情</button>
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  export default{
+  export default {
     name: 'RegItem',
-    data () {
+    data() {
       return {};
     },
     props: ['slotOut'],
-    mounted () {}
+    methods: {
+      showDetails: function () {
+        this.$router.push({
+          path: this.$routes.GHXQ.path
+        });
+      }
+    }
   };
 </script>
 

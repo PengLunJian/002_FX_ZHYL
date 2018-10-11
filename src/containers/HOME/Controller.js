@@ -1,14 +1,27 @@
-import routes from '../../router/routes';
 import apiMain from '../../apiMain/apiMain';
 
 const controllers = {
   addPerson: function () {
     this.$router.push({
-      path: routes[15].path
+      path: this.$routes.KPBL.path
     });
   },
   ajaxLogin: function () {
-    this.$http.get(apiMain.getUrl('login'));
+    this.$http(apiMain.login)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  },
+  showModal: function () {
+    this.isShow = true;
+  },
+  showCode: function () {
+    this.$router.push({
+      path: this.$routes.JZTM.path
+    });
   }
 };
 

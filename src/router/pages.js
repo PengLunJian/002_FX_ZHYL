@@ -1,4 +1,4 @@
-import Home from '../containers/HOME/Index.vue';
+import HOME from '../containers/HOME/Index.vue';
 import YYGH from '../containers/YYGH/Index.vue';
 import YSLB from '../containers/YSLB/Index.vue';
 import YYXX from '../containers/YYXX/Index.vue';
@@ -10,23 +10,23 @@ import GHXQ from '../containers/GHXQ/Index.vue';
 import YYXQ from '../containers/YYXQ/Index.vue';
 import WDYY from '../containers/WDYY/Index.vue';
 import JFJL from '../containers/JFJL/Index.vue';
-import DJCLB from '../containers/DJCLB/Index.vue';
+import DCLB from '../containers/DCLB/Index.vue';
 import JKDA from '../containers/JKDA/Index.vue';
 import JCBG from '../containers/JCBG/Index.vue';
 import GRXX from '../containers/GRXX/Index.vue';
-import SCSFZ from '../containers/SCSFZ/Index.vue';
-import DZJZKBL from '../containers/DZJZKBL/Index.vue';
+import SCKP from '../containers/SCKP/Index.vue';
+import KPBL from '../containers/KPBL/Index.vue';
 import JCXX from '../containers/JCXX/Index.vue';
-import JZRLB from '../containers/JZRLB/Index.vue';
-import JZRSFZ from '../containers/JZRSFZ/Index.vue';
+import HZLB from '../containers/HZLB/Index.vue';
+import SFLR from '../containers/SFLR/Index.vue';
 import WDSC from '../containers/WDSC/Index.vue';
 import YYJJ from '../containers/YYJJ/Index.vue';
-import JZEWM from '../containers/JZEWM/Index.vue';
-import RLSM from '../containers/RLSM/Index.vue';
-import KSRLSM from '../containers/KSRLSM/Index.vue';
+import JZTM from '../containers/JZTM/Index.vue';
+import SFYZ from '../containers/SFYZ/Index.vue';
+import SMKS from '../containers/SMKS/Index.vue';
 
 export default {
-  Home,
+  HOME,
   YYGH,
   YSLB,
   YYXX,
@@ -38,18 +38,18 @@ export default {
   YYXQ,
   WDYY,
   JFJL,
-  DJCLB,
+  DCLB,
   JKDA,
   JCBG,
   GRXX,
-  SCSFZ,
-  DZJZKBL,
+  SCKP,
+  KPBL,
   JCXX,
-  JZRLB,
-  JZRSFZ,
+  HZLB,
+  SFLR,
   WDSC,
   YYJJ,
-  JZEWM,
-  RLSM,
-  KSRLSM
+  JZTM,
+  SFYZ,
+  SMKS
 };

@@ -2,7 +2,7 @@ import routes from '../../router/routes';
 const controllers = {
   handlerScanner: function () {
     this.$router.push({
-      path: routes[25].path
+      path: routes.SMKS.path
     });
   },
   handlerBtnClick: function () {

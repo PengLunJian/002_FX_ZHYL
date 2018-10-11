@@ -16,8 +16,6 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import routes from '../router/routes';
-
   export default {
     name: 'DoctorItem',
     data() {
@@ -29,7 +27,7 @@
     methods: {
       handlerClick: function () {
         this.$router.push({
-          path: routes[5].path
+          path: this.$routes.YSZY.path
         });
       }
     }

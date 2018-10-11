@@ -1,5 +1,5 @@
 <template>
-  <div class="module YYMK" :class="slotOut">
+  <div class="module YYMK" :class="slotOut?'slot-out':''">
     <div class="row-box-1">
       <h3 class="name">何晗栩<span class="span">(正主任医师)</span></h3>
       <div class="date">
@@ -26,17 +26,24 @@
       </div>
     </div>
     <div class="row-box-3">
-      <button class="btn btn-detail" v-waves.block>查看详情</button>
+      <button @click="showDetails" class="btn btn-detail" v-waves.block>查看详情</button>
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  export default{
+  export default {
     name: 'SubItem',
     props: ['slotOut'],
-    data () {
+    data() {
       return {};
+    },
+    methods: {
+      showDetails: function () {
+        this.$router.push({
+          path: this.$routes.YYXQ.path
+        });
+      }
     }
   };
 </script>

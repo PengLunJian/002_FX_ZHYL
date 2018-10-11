@@ -1,6 +1,6 @@
 <template>
   <div class="FX_ZHYL_WDYY">
-    <sub-item v-for="(item,index) in items" :key="index"></sub-item>
+    <sub-item v-for="(item,index) in items" :slotOut="item.slotOut" :key="index"></sub-item>
   </div>
 </template>
 
@@ -13,8 +13,7 @@
     name: 'WDYY',
     data() {
       return {
-        items: [],
-        slotOut: 'slot-out'
+        items: []
       };
     },
     methods: Controller,

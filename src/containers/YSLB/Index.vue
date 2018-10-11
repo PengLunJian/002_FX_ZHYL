@@ -9,13 +9,14 @@
   import Controller from './Controller';
   import YYSJ from './YYSJ';
   import ZZYS from './YSLB';
-  export default{
+
+  export default {
     components: {
       ZZYS,
       YYSJ
     },
     name: 'YSLB',
-    data () {
+    data() {
       return {};
     },
     methods: Controller
@@ -23,4 +24,9 @@
 </script>
 
 <style scoped lang="less">
+  @import '../../assets/less/variable';
+
+  .FX_ZHYL_YSLB {
+    background-color: @bgColor;
+  }
 </style>

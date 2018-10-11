@@ -2,7 +2,21 @@
   "login": {
     "username": "Peng"
   },
-  "wdyy":[
-    {},{},{},{},{},{},{},{},{}
+  "wdyy": [
+    {
+      "slotOut": false
+    },
+    {
+      "slotOut": true
+    },
+    {
+      "slotOut": false
+    },
+    {
+      "slotOut": true
+    },
+    {
+      "slotOut": true
+    }
   ]
 }

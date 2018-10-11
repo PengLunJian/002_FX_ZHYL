@@ -1,12 +1,12 @@
 const controllers = {
   doCard: function () {
     this.$router.push({
-      path: '/DZJZKBL/JZRSFZ'
+      path: this.$routes.SFLR.path
     });
   },
   uploadCard: function () {
     this.$router.push({
-      path: '/DZJZKBL/SCSFZ'
+      path: this.$routes.SCKP.path
     });
   }
 };

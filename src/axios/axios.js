@@ -33,7 +33,7 @@ function successState(res) {
 const $http = (opts) => {
   const config = {
     method: opts.method || 'get',
-    baseURL: 'http://192.168.3.191:8080/api',
+    baseURL: '/api',
     url: opts.url,
     timeout: 10000,
     headers: opts.method === 'get' ? {

@@ -20,7 +20,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import routes from '../../router/routes';
+  import Controller from './Controller';
   import Modal from '../../components/Modal';
 
   export default {
@@ -31,16 +31,7 @@
         isShow: false
       };
     },
-    methods: {
-      showModal: function () {
-        this.isShow = true;
-      },
-      showCode: function () {
-        this.$router.push({
-          path: routes[22].path
-        });
-      }
-    }
+    methods: Controller
   };
 </script>
 

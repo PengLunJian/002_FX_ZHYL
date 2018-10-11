@@ -1,15 +1,18 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Routes from './routes';
-import components from './components';
+import Pages from './pages';
 
 Vue.use(Router);
 
-const routes = Routes.map((item) => {
-  const component = components[item['name']];
-  item.component = item.component(component);
-  return item;
-});
+const routes = (() => {
+  const tempRoutes = [];
+  for (let key in Routes) {
+    Routes[key].component = Routes[key].component(Pages[key]);
+    tempRoutes.push(Routes[key]);
+  }
+  return tempRoutes;
+})();
 
 export default new Router({
   mode: 'history',

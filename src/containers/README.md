@@ -1,34 +1,34 @@
 # 自定义容器组件
 
-# 1、DJCLB 待检查列表容器
+# 1、DCLB 待检查列表容器
 
-# 2、DZJZKBL 电子就诊卡办理容器
+# 2、KPBL 电子就诊卡办理容器
 
 # 3、GHXQ 挂号详情容器
 
-# 4、GRXX
+# 4、GRXX 个人信息容器
 
-# 5、GRZX
+# 5、GRZX 个人中心容器
 
 # 6、HOME 首页容器
 
-# 7、JCXX
+# 7、JCXX 检查信息容器
 
-# 8、JFJL
+# 8、JFJL 缴费记录容器
 
-# 9、JKDA
+# 9、JKDA 健康档案容器
 
-# 10、JZEWM 就诊二维码容器
+# 10、JZTM 就诊二维码容器
 
-# 11、JZRLB 就诊人列表容器
+# 11、HZLB 就诊人列表容器
 
 # 12、JZRSFZ 就诊人身份证容器
 
-# 13、KSRLSM
+# 13、SMKS 人脸扫描开始容器
 
-# 14、KSXX
+# 14、KSXX 科室信息容器
 
-# 15、RLSM 
+# 15、SFYZ 身份验证容器 
 
 # 16、SCSFZ 上传身份证容器
 

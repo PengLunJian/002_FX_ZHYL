@@ -1,4 +1,3 @@
-import routes from '../../router/routes';
 const controllers = {
   showMenus: function (type) {
     this.type = type;
@@ -35,7 +34,7 @@ const controllers = {
   handlerBtnClick: function () {
     if (!this.status) {
       this.$router.push({
-        path: routes[24].path
+        path: this.$routes.SFYZ.path
       });
     }
   }

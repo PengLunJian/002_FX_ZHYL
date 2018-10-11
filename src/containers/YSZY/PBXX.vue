@@ -40,8 +40,6 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import routes from '../../router/routes';
-
   export default {
     name: 'PBXX',
     data() {
@@ -50,7 +48,7 @@
     methods: {
       handlerClick: function () {
         this.$router.push({
-          path: routes[3].path
+          path: this.$routes.YYXX.path
         });
       }
     }
