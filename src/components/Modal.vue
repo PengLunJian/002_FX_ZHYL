@@ -1,5 +1,5 @@
 <template>
-  <div class="modal" :class="clazz">
+  <div class="modal" :class="getClass">
     <div class="modal-dialog">
       <div class="modal-bg" @click="hideModal"></div>
       <div class="modal-content">
@@ -16,20 +16,19 @@
     name: 'Modal',
     data() {
       return {
-        clazz: ''
+        clazz: 'hide'
       };
     },
     props: ['isShow'],
     methods: {
-      showModal: function () {
-        this.clazz = '';
-      },
       hideModal: function () {
-        this.clazz = 'hide';
+        this.$emit('update:isShow', false);
       }
     },
-    computed() {
-
+    computed: {
+      getClass: function () {
+        return this.isShow ? 'show' : 'hide';
+      }
     }
   };
 </script>
@@ -60,7 +59,7 @@
         margin-left: -1.5rem;
         box-shadow: @boxShadow;
         border-radius: @borderRadius;
-        transition: all 300ms ease;
+        transition: all 300ms ease-out;
         background-color: @white;
         .modal-header {
 
@@ -73,6 +72,16 @@
         }
       }
     }
+    &.show {
+      .modal-bg {
+        opacity: 1;
+        visibility: visible;
+      }
+      .modal-content {
+        visibility: visible;
+        animation: in 300ms;
+      }
+    }
     &.hide {
       .modal-bg {
         opacity: 0;
@@ -80,8 +89,33 @@
       }
       .modal-content {
         visibility: hidden;
-        transform: scale(0);
+        animation: out 300ms;
       }
+    }
+  }
+
+  @keyframes in {
+    0% {
+      transform: scale(0);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+  @keyframes out {
+    0% {
+      transform: scale(1);
+    }
+    25% {
+      transform: scale(0.8);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(1.2);
     }
   }
 </style>

@@ -1,6 +1,5 @@
 const states = {
-  TEXT: '加载中',
-  LOADING: false
+  isLoading: false
 };
 
 export default states;

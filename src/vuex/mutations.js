@@ -1,9 +1,9 @@
 const mutations = {
-  showLoading (state) {
-    state.LOADING = true;
+  showLoading(state) {
+    state.isLoading = true;
   },
-  hideLoading (state) {
-    state.LOADING = false;
+  hideLoading(state) {
+    state.isLoading = false;
   }
 };
 

@@ -1,10 +1,14 @@
-export default {
-  baseUrl: '/ZHYL',
-  login: '/login',
-  getUrl: function () {
-    return '';
+const apiMain = {
+  login: {
+    url: '/login',
+    params: {}
   },
-  getParams: function () {
-    return {};
+  wdyy: {
+    url: '/wdyy',
+    params: {}
   }
 };
+
+const apis = {...apiMain};
+
+export default apis;

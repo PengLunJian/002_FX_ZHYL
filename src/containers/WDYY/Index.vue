@@ -1,23 +1,26 @@
 <template>
   <div class="FX_ZHYL_WDYY">
-    <sub-item></sub-item>
-    <sub-item></sub-item>
-    <sub-item :slotOut="slotOut"></sub-item>
+    <sub-item v-for="(item,index) in items" :key="index"></sub-item>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import Controller from './Controller';
   import SubItem from '../../components/SubItem';
-  export default{
+
+  export default {
     components: {SubItem},
     name: 'WDYY',
-    data () {
+    data() {
       return {
+        items: [],
         slotOut: 'slot-out'
       };
     },
-    methods: Controller
+    methods: Controller,
+    mounted() {
+      this.ajaxWDYY();
+    }
   };
 </script>
 

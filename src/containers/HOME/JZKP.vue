@@ -5,7 +5,7 @@
         <h3 class="patient-name">胡代宇</h3>
         <span class="patient-pay">自费</span>
         <span class="patient-number">卡号：36************99</span>
-        <button class="btn btn-change" v-waves.button>
+        <button class="btn btn-change" @click="showModal" v-waves.button>
           <i class="btn-icon icon-change"></i>
           <span class="btn-text">切换就诊人</span>
         </button>
@@ -15,19 +15,29 @@
         <span class="patient-desc">点击出示就诊二维码</span>
       </div>
     </div>
+    <modal :isShow.sync="isShow"></modal>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  export default{
+  import routes from '../../router/routes';
+  import Modal from '../../components/Modal';
+
+  export default {
+    components: {Modal},
     name: 'JZKP',
-    data () {
-      return {};
+    data() {
+      return {
+        isShow: false
+      };
     },
     methods: {
+      showModal: function () {
+        this.isShow = true;
+      },
       showCode: function () {
         this.$router.push({
-          path: '/JZEWM'
+          path: routes[22].path
         });
       }
     }
