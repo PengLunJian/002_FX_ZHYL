@@ -2,7 +2,7 @@ import Vue from 'vue';
 import App from './App';
 import router from './router';
 import store from './vuex/store';
-import $http from './axios/axios';
+import axios from './axios/axios';
 import Routes from './router/routes';
 import numKeyboard from 'vue2-num-keyboard';
 import {ToastPlugin, LoadingPlugin} from 'vux';
@@ -14,7 +14,7 @@ Vue.use(LoadingPlugin);
 Vue.use(ToastPlugin);
 Vue.use(VueScroller);
 Vue.use(numKeyboard);
-Vue.prototype.$http = $http;
+Vue.prototype.$axios = axios;
 Vue.prototype.$routes = Routes;
 
 Vue.config.productionTip = false;

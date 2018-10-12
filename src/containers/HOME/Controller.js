@@ -1,4 +1,4 @@
-import apiMain from '../../apiMain/apiMain';
+import apis from '../../apiMain/index';
 
 const controllers = {
   addPerson: function () {
@@ -7,7 +7,7 @@ const controllers = {
     });
   },
   ajaxLogin: function () {
-    this.$http(apiMain.login)
+    this.$axios(apis.login)
       .then((res) => {
         console.log(res);
       })

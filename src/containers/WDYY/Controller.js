@@ -1,10 +1,10 @@
-import apiMain from '../../apiMain/apiMain';
+import apis from '../../apiMain';
 
 const controller = {
   ajaxWDYY: function () {
-    this.$http(apiMain.wdyy)
-      .then((res) => {
-        this.items = res.data.data;
+    this.$axios(apis.wdyy, {pageIndex: 2})
+      .then((response) => {
+        this.items = response.data.data;
       })
       .catch((error) => {
         console.log(error);
