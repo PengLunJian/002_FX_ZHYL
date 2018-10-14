@@ -1,14 +1,19 @@
+import Vue from 'vue';
 import axios from 'axios';
 import apis from '../apiMain';
 // 请求拦截器可添加Loading
 axios.interceptors.request.use(config => {
-  console.log('request');
+  console.log('resquest');
+  Vue.$vux.loading.show({
+    text: '加载中...'
+  });
   return config;
 }, error => {
   return Promise.reject(error);
 });
 // 响应拦截器根据状态码添加无数据等
 axios.interceptors.response.use(response => {
+  Vue.$vux.loading.hide();
   console.log('response');
   return response;
 }, error => {
@@ -38,19 +43,16 @@ const success = (res) => {
 
 const getConfig = (opts, data) => {
   const config = {};
-  opts.url = apis.baseUrl + opts.url;
-
-  console.log(apis.default);
-  console.log(opts);
-  console.log(data);
-  console.log(Object.assign(opts.params, data));
-  console.log(Object.assign(opts, apis.default));
-  console.log(opts);
-  if (opts.method && opts.method === 'POST') {
-
+  config.url = apis.baseUrl + opts.url;
+  if (opts.method && opts.method === 'GET') {
+    Object.assign(opts.params, data);
+    Object.assign(apis.default, opts);
+  } else {
+    Object.assign(opts.params, data);
+    Object.assign(apis.default, {data: opts.params});
   }
-
-  return config;
+  Object.assign(apis.default, config);
+  return apis.default;
 };
 
 const $axios = (opts, data) => {

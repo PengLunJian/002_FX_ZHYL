@@ -1,12 +1,10 @@
 const apiMain = {
   baseUrl: '/api',
   default: {
-    method: 'post',
+    method: 'POST',
     timeout: 10000,
-    responseType: 'JSON',
     headers: {
       'X-Requested-With': 'XMLHttpRequest',
-      'Accept': 'application/json',
       'Content-Type': 'application/json; charset=UTF-8'
     }
   },
@@ -18,6 +16,7 @@ const apiMain = {
   },
   wdyy: {
     url: '/wdyy',
+    method: 'GET',
     params: {
       pageSize: 10,
       pageIndex: 1
