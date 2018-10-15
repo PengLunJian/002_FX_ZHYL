@@ -2,7 +2,7 @@ const apiMain = {
   baseUrl: '/api',
   default: {
     method: 'POST',
-    timeout: 10000,
+    timeout: 5000,
     headers: {
       'X-Requested-With': 'XMLHttpRequest',
       'Content-Type': 'application/json; charset=UTF-8'

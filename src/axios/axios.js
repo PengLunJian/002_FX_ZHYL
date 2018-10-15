@@ -1,46 +1,46 @@
 import Vue from 'vue';
 import axios from 'axios';
 import apis from '../apiMain';
-// 请求拦截器可添加Loading
+
 axios.interceptors.request.use(config => {
-  console.log('resquest');
-  Vue.$vux.loading.show({
-    text: '加载中...'
-  });
+  this.timer = setTimeout(() => {
+    Vue.$vux.loading.show({
+      text: '加载中...'
+    });
+  }, 300);
   return config;
 }, error => {
   return Promise.reject(error);
 });
-// 响应拦截器根据状态码添加无数据等
+
 axios.interceptors.response.use(response => {
   Vue.$vux.loading.hide();
-  console.log('response');
-  return response;
+  clearInterval(this.timer);
+  return response.data;
 }, error => {
+  Vue.$vux.loading.hide();
+  clearInterval(this.timer);
+  handlerError(error);
   return Promise.resolve(error.response);
 });
-
-const error = (response) => {
-  if (response && (response.status === 200 ||
-      response.status === 304 ||
-      response.status === 400)) {
-    return response;
+/**
+ *
+ * @param error
+ */
+const handlerError = (error) => {
+  if (error && error.response) {
+    console.log(`连接错误${error.response.status}`);
   } else {
+    console.log('服务器连接失败');
   }
 };
 
-const success = (res) => {
-  if (res.data.errCode === '000002') {
-  } else if (res.data.errCode !== '000002' &&
-    res.data.errCode !== '000000') {
-  }
-};
-
-// const getToken = () => {
-//   const token = sessionStorage.getItem('token');
-//   return token;
-// };
-
+/**
+ *
+ * @param opts
+ * @param data
+ * @returns {{method: string, timeout: number, headers: {"X-Requested-With": string, "Content-Type": string}}|apiMain.default|{method, timeout, headers}}
+ */
 const getConfig = (opts, data) => {
   const config = {};
   config.url = apis.baseUrl + opts.url;
@@ -55,16 +55,20 @@ const getConfig = (opts, data) => {
   return apis.default;
 };
 
+/**
+ *
+ * @param opts
+ * @param data
+ * @returns {Promise<any>}
+ */
 const $axios = (opts, data) => {
   const config = getConfig(opts, data);
   return new Promise((resolve, reject) => {
     axios(config)
       .then((response) => {
-        success(response);
         resolve(response);
       })
       .catch((response) => {
-        error(response);
         reject(response);
       });
   });
