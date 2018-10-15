@@ -1,25 +1,15 @@
-import Vue from 'vue';
 import axios from 'axios';
 import apis from '../apiMain';
 
 axios.interceptors.request.use(config => {
-  this.timer = setTimeout(() => {
-    Vue.$vux.loading.show({
-      text: '加载中...'
-    });
-  }, 300);
   return config;
 }, error => {
   return Promise.reject(error);
 });
 
 axios.interceptors.response.use(response => {
-  Vue.$vux.loading.hide();
-  clearInterval(this.timer);
   return response.data;
 }, error => {
-  Vue.$vux.loading.hide();
-  clearInterval(this.timer);
   handlerError(error);
   return Promise.resolve(error.response);
 });

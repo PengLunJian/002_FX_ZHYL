@@ -1,43 +1,39 @@
 import apis from '../../apiMain';
 
 const controller = {
-  ajaxWDYY: function () {
-    this.$axios(apis.wdyy, {pageIndex: 2})
+  ajaxWDYY: function (pageCode) {
+    const params = {pageCode: pageCode};
+    this.$axios(apis.wdyy, params)
       .then((response) => {
-        const {data} = response;
+        let {data} = response;
         if (!data.length) {
           this.isShow = true;
           return;
         }
-        this.items = this.items.concat(data);
+        data = this.dataList.length > 10 ? [] : data;
+        this.dataList = this.dataList.concat(data);
+        const hasNext = data.length > 0;
+        this.pageCode = hasNext ? (this.pageCode + 1) : this.pageCode;
+        this.mescroll.endSuccess(10, hasNext);
       })
       .catch((error) => {
         console.log(error);
       });
   },
-  refresh: function () {
-    console.log('refresh');
-    this.timeout = setTimeout(() => {
-      this.$refs.scroller.finishPullToRefresh();
-    }, 1500);
-  },
-  downCallback: function () {
-    console.log('down');
-  },
-  upCallback: function (page, mescroll) {
+  infinite: function () {
+    clearInterval(this.timer);
+    this.timer = setTimeout(() => {
+      this.ajaxWDYY(this.pageCode);
+    }, 1000);
     console.log('infinite');
-    // const temp = [{slotOut: false}, {slotOut: false}];
-    // this.timeout = setTimeout(() => {
-    //   if (this.items.length >= 20) {
-    //     this.$refs.scroller.finishInfinite(true);
-    //   } else {
-    //     this.$refs.scroller.finishInfinite(false);
-    //   }
-    //   this.items = this.items.concat(temp);
-    // }, 1500);
+  },
+  refresh: function () {
+    this.dataList = [];
+    this.pageCode = 1;
+    this.ajaxWDYY(this.pageCode);
   },
   mescrollInit: function (mescroll) {
-    this.$refs.mescroll = mescroll;
+    this.mescroll = mescroll;
   }
 };
 

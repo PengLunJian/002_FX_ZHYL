@@ -19,7 +19,7 @@ const apiMain = {
     method: 'GET',
     params: {
       pageSize: 10,
-      pageIndex: 1
+      pageCode: 1
     }
   }
 };

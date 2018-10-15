@@ -1,18 +1,10 @@
 <template>
   <div class="FX_ZHYL_WDYY">
-    <!--<scroller ref="scroller"-->
-    <!--:on-refresh="refresh"-->
-    <!--:on-infinite="infinite">-->
-    <!--<sub-item v-for="(item,index) in items"-->
-    <!--:slotOut="item.slotOut"-->
-    <!--:key="index"></sub-item>-->
-    <!--</scroller>-->
-    <!--mescroll滚动区域的基本结构-->
     <mescroll-vue ref="mescroll"
-                  :down="mescrollDown"
-                  :up="mescrollUp"
+                  :down="down"
+                  :up="up"
                   @init="mescrollInit">
-      <sub-item v-for="(item,index) in items"
+      <sub-item v-for="(item,index) in dataList"
                 :slotOut="item.slotOut"
                 :key="index"></sub-item>
     </mescroll-vue>
@@ -35,22 +27,25 @@
     name: 'WDYY',
     data() {
       return {
-        items: [],
+        dataList: [],
         isShow: false,
         mescroll: null,
-        mescrollDown: {
-          callback: this.downCallback
+        up: {
+          auto: false,
+          isBoth: true,
+          callback: this.infinite,
+          htmlNodata: '<p class="upwarp-nodata">没有数据了</p>'
         },
-        mescrollUp: {
-          callback: this.upCallback
+        down: {
+          auto: false,
+          callback: this.refresh
         }
       };
     },
-    created() {
-      this.ajaxWDYY();
-    },
     methods: Controller,
     mounted() {
+      this.pageCode = 1;
+      this.ajaxWDYY(this.pageCode);
     }
   };
 </script>
@@ -59,7 +54,11 @@
   @import "../../assets/less/variable";
 
   .FX_ZHYL_WDYY {
-    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-color: @bgColor;
   }
 </style>
