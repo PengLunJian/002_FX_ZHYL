@@ -17,28 +17,28 @@
     </div>
     <div class="module DEMK">
       <router-link :to="this.$routes.GRXX.path">
-        <div class="link-item">
+        <div class="link-item btn">
           <i class="link-icon icon-account"></i>
           <span class="link-text">个人信息</span>
           <i class="link-icon icon-next"></i>
         </div>
       </router-link>
       <router-link :to="this.$routes.JFJL.path">
-        <div class="link-item">
+        <div class="link-item btn">
           <i class="link-icon icon-money"></i>
           <span class="link-text">缴费记录</span>
           <i class="link-icon icon-next"></i>
         </div>
       </router-link>
       <router-link :to="this.$routes.WDYY.path">
-        <div class="link-item">
+        <div class="link-item btn">
           <i class="link-icon icon-before"></i>
           <span class="link-text">我的预约</span>
           <i class="link-icon icon-next"></i>
         </div>
       </router-link>
       <router-link :to="this.$routes.WDGH.path">
-        <div class="link-item">
+        <div class="link-item btn">
           <i class="link-icon icon-plus"></i>
           <span class="link-text">我的挂号</span>
           <i class="link-icon icon-next"></i>
@@ -47,28 +47,28 @@
     </div>
     <div class="module DSMK">
       <router-link :to="this.$routes.JCBG.path">
-        <div class="link-item">
+        <div class="link-item btn">
           <i class="link-icon icon-report"></i>
           <span class="link-text">检查报告</span>
           <i class="link-icon icon-next"></i>
         </div>
       </router-link>
       <router-link :to="this.$routes.DCLB.path">
-        <div class="link-item">
+        <div class="link-item btn">
           <i class="link-icon icon-stay"></i>
           <span class="link-text">待检查</span>
           <i class="link-icon icon-next"></i>
         </div>
       </router-link>
       <router-link :to="this.$routes.DCLB.path">
-        <div class="link-item">
+        <div class="link-item btn">
           <i class="link-icon icon-print"></i>
           <span class="link-text">发票打印</span>
           <i class="link-icon icon-next"></i>
         </div>
       </router-link>
       <router-link :to="this.$routes.JKDA.path">
-        <div class="link-item">
+        <div class="link-item btn">
           <i class="link-icon icon-file"></i>
           <span class="link-text">健康档案</span>
           <i class="link-icon icon-next"></i>

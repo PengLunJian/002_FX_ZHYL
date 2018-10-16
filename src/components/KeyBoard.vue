@@ -71,7 +71,7 @@
           },
           {
             keyCode: 11,
-            text: '<i class="icon-delete"></i>'
+            text: '<p class="icon-delete"></p>'
           }
         ]
       };
@@ -79,9 +79,7 @@
     props: ['isShow', 'initValue'],
     methods: {
       hideKeyBoard: function () {
-        // this.value = this.initValue;
         this.$emit('update:isShow', false);
-        // this.$emit('update:initValue', this.value);
       },
       touchMove: function (ev) {
         ev.preventDefault();
@@ -163,7 +161,8 @@
             &:not(:nth-of-type(3n)) {
               border-right: 1px solid #e6e6e6;
             }
-            &:nth-child(10), &:nth-child(12) {
+            &:nth-child(10),
+            &:nth-child(12) {
               background-color: #ececec;
             }
           }

@@ -143,7 +143,7 @@ li, ul {
 
 .btn {
   position: relative;
-  &:after {
+  &:before {
     content: '';
     position: absolute;
     top: 0;
@@ -155,11 +155,18 @@ li, ul {
     transition: all 150ms ease;
   }
   &:active {
-    &:after {
+    &:before {
       visibility: visible;
       background-color: rgba(0, 0, 0, .3)
     }
   }
+}
+
+.icon-delete {
+  display: block;
+  height: 100%;
+  line-height: 0.55rem;
+  font-size: 0.3rem;
 }
 
 /*路由切换动画*/
