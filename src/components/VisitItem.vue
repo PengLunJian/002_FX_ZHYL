@@ -18,9 +18,9 @@
 </template>
 
 <script type="text/ecmascript-6">
-  export default{
+  export default {
     name: 'VisitItem',
-    data () {
+    data() {
       return {};
     }
   };
@@ -32,6 +32,7 @@
   .DJCMK {
     height: 0.84rem;
     position: relative;
+    overflow: hidden;
     padding: 0 0.7rem 0 0.84rem;
     .row-box-1 {
       width: 0.84rem;

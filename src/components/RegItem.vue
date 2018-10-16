@@ -1,5 +1,5 @@
 <template>
-  <div class="module GHMK" :class="slotOut">
+  <div class="module GHMK" :class="slotOut?'slot-out':''">
     <div class="row-box-1">
       <h3 class="name">眼科中心</h3>
       <div class="date">
@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="row-box-3">
-      <button class="btn btn-detail" @click="showDetails" v-waves.block>查看详情</button>
+      <button class="btn btn-detail" @click="showDetails">查看详情</button>
     </div>
   </div>
 </template>

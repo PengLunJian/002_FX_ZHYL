@@ -33,11 +33,11 @@
       </div>
     </div>
     <div class="module DSMK">
-      <button class="btn btn-save waves-effect waves-block" :class="status"
+      <button class="btn-save" :class="status"
               @click="handlerBtnSave" v-waves.blcok>保存
       </button>
     </div>
-    <num-keyboard v-model="show" @cb="getNumber"/>
+    <key-board :isShow.sync="isShow" :initValue.sync="initValue" @writeNumber="writeNumber"></key-board>
     <popup-picker :data="popupPicker.data" :popup-title="popupPicker.popupTitle"
                   :show.sync="popupPicker.show" @on-change="handlerChange"/>
   </div>
@@ -46,16 +46,19 @@
 <script type="text/ecmascript-6">
   import {PopupPicker} from 'vux';
   import Controller from './Controller';
+  import KeyBoard from '../../components/KeyBoard';
 
   export default {
     components: {
+      KeyBoard,
       PopupPicker
     },
     name: 'JKDA',
     data() {
       return {
         TYPE: '',
-        show: false,
+        isShow: false,
+        initValue: '',
         height: '请输入',
         weight: '请输入',
         blood: '请选择',

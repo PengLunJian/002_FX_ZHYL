@@ -8,15 +8,15 @@
                 :slotOut="item.slotOut"
                 :key="index"></sub-item>
     </mescroll-vue>
-    <!--<no-data :isShow="isShow"></no-data>-->
+    <no-data :isShow="isShow"></no-data>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import MescrollVue from 'mescroll.js/mescroll.vue';
   import Controller from './Controller';
   import SubItem from '../../components/SubItem';
   import NoData from '../../components/NoData';
+  import MescrollVue from 'mescroll.js/mescroll.vue';
 
   export default {
     components: {
@@ -32,20 +32,23 @@
         mescroll: null,
         up: {
           auto: false,
-          isBoth: true,
+          isBounce: false,
           callback: this.infinite,
           htmlNodata: '<p class="upwarp-nodata">没有数据了</p>'
         },
         down: {
-          auto: false,
-          callback: this.refresh
+          auto: true,
+          offset: 50,
+          mustToTop: true,
+          outOffsetRate: 0.3,
+          callback: this.refresh,
+          autoShowLoading: true
         }
       };
     },
     methods: Controller,
     mounted() {
       this.pageCode = 1;
-      this.ajaxWDYY(this.pageCode);
     }
   };
 </script>
@@ -60,5 +63,10 @@
     width: 100%;
     height: 100%;
     background-color: @bgColor;
+    .YYMK {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
   }
 </style>

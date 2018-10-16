@@ -1,11 +1,42 @@
+import apis from '../../apiMain';
+
 const controller = {
-  refresh: function () {
-    console.log('refresh');
+  ajaxWDYY: function (pageCode) {
+    const params = {pageCode: pageCode};
+    this.$axios(apis.wdyy, params)
+      .then((response) => {
+        let {data} = response;
+        if (!data.length && pageCode === 1) {
+          this.isShow = true;
+          return;
+        }
+        data = this.dataList.length > 10 ? [] : data;
+        this.dataList = this.dataList.concat(data);
+        const hasNext = data.length > 0;
+        this.pageCode = hasNext ? (this.pageCode + 1) : this.pageCode;
+        this.mescroll.endSuccess(10, hasNext);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   },
   infinite: function () {
-    const temp = [{}, {}, {}, {}, {}];
-    this.items = this.items.concat(temp);
-    console.log(this.$refs.scroller);
+    if (this.timer) clearInterval(this.timer);
+    this.timer = setTimeout(() => {
+      this.ajaxWDYY(this.pageCode);
+    }, 1000);
+    console.log('infinite');
+  },
+  refresh: function () {
+    if (this.timer) clearInterval(this.timer);
+    this.timer = setTimeout(() => {
+      this.dataList = [];
+      this.pageCode = 1;
+      this.ajaxWDYY(this.pageCode);
+    }, 1000);
+  },
+  mescrollInit: function (mescroll) {
+    this.mescroll = mescroll;
   }
 };
 

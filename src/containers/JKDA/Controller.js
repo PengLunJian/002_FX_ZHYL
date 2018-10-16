@@ -38,10 +38,15 @@ const controllers = {
     console.log(1);
   },
   showKeyBoard: function (type) {
-    this.show = true;
+    this.isShow = true;
     this.TYPE = type;
+    if (this.TYPE === 'height') {
+      this.initValue = this.height === '请输入' ? '' : this.height;
+    } else if (this.TYPE === 'weight') {
+      this.initValue = this.weight === '请输入' ? '' : this.weight;
+    }
   },
-  getNumber: function (value) {
+  writeNumber: function (value) {
     if (this.TYPE === 'height') {
       this.height = value;
     } else if (this.TYPE === 'weight') {

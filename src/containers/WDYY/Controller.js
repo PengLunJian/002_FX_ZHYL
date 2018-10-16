@@ -6,7 +6,7 @@ const controller = {
     this.$axios(apis.wdyy, params)
       .then((response) => {
         let {data} = response;
-        if (!data.length) {
+        if (!data.length && pageCode === 1) {
           this.isShow = true;
           return;
         }
@@ -21,16 +21,19 @@ const controller = {
       });
   },
   infinite: function () {
-    clearInterval(this.timer);
+    if (this.timer) clearInterval(this.timer);
     this.timer = setTimeout(() => {
       this.ajaxWDYY(this.pageCode);
     }, 1000);
     console.log('infinite');
   },
   refresh: function () {
-    this.dataList = [];
-    this.pageCode = 1;
-    this.ajaxWDYY(this.pageCode);
+    if (this.timer) clearInterval(this.timer);
+    this.timer = setTimeout(() => {
+      this.dataList = [];
+      this.pageCode = 1;
+      this.ajaxWDYY(this.pageCode);
+    }, 1000);
   },
   mescrollInit: function (mescroll) {
     this.mescroll = mescroll;

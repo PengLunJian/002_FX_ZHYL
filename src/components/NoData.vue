@@ -2,7 +2,7 @@
   <div class="no-data" v-if="isShow">
     <div class="content">
       <i class="icon-empty"></i>
-      <p class="text">暂无数据</p>
+      <p class="text">暂无相关数据</p>
     </div>
   </div>
 </template>
@@ -43,7 +43,8 @@
       font-size: 0.8rem;
     }
     .text {
-      font-size: 0.13rem;
+      margin-top: 0.05rem;
+      font-size: 0.14rem;
     }
   }
 </style>
