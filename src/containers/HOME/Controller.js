@@ -6,15 +6,6 @@ const controllers = {
       path: this.$routes.KPBL.path
     });
   },
-  ajaxLogin: function () {
-    this.$axios(apis.login)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  },
   showModal: function () {
     this.isShow = true;
   },
@@ -22,6 +13,15 @@ const controllers = {
     this.$router.push({
       path: this.$routes.JZTM.path
     });
+  },
+  ajaxRequestDeviceId: function () {
+    this.$axios(apis.getDeviceId)
+      .then((res) => {
+        this.deviceId = res.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 };
 

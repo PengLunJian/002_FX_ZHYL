@@ -1,5 +1,5 @@
 const apiMain = {
-  baseUrl: '/api',
+  baseUrl: 'http://118.31.65.217',
   default: {
     method: 'POST',
     timeout: 5000,
@@ -8,11 +8,9 @@ const apiMain = {
       'Content-Type': 'application/json; charset=UTF-8'
     }
   },
-  login: {
-    url: '/login',
-    params: {
-      username: 'peng'
-    }
+  getDeviceId: {
+    url: '/UserCenter/v1/refresh/did',
+    params: {}
   },
   wdyy: {
     url: '/wdyy',

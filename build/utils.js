@@ -16,8 +16,8 @@ exports.cssLoaders = function (options) {
   options = options || {}
 
   const styleLoader = {
-    loader:'style-loader',
-    options:{
+    loader: 'style-loader',
+    options: {
       sourceMap: options.sourceMap
     }
   }
@@ -37,16 +37,16 @@ exports.cssLoaders = function (options) {
   }
 
   const lessLoader = {
-    loader:'less-loader',
-    options:{
+    loader: 'less-loader',
+    options: {
       sourceMap: options.sourceMap
     }
   }
 
   // generate loader string to be used with extract text plugin
-  function generateLoaders (loader, loaderOptions) {
+  function generateLoaders(loader, loaderOptions) {
     const loaders = options.usePostCSS ?
-      [styleLoader,cssLoader, postcssLoader,lessLoader] : [cssLoader]
+      [styleLoader, cssLoader, postcssLoader, lessLoader] : [cssLoader]
 
     if (loader) {
       loaders.push({
@@ -74,7 +74,7 @@ exports.cssLoaders = function (options) {
     css: generateLoaders(),
     postcss: generateLoaders(),
     less: generateLoaders('less'),
-    sass: generateLoaders('sass', { indentedSyntax: true }),
+    sass: generateLoaders('sass', {indentedSyntax: true}),
     scss: generateLoaders('sass'),
     stylus: generateLoaders('stylus'),
     styl: generateLoaders('stylus')

@@ -11,10 +11,11 @@
 
 <script type="text/ecmascript-6">
   import NavItem from '../../components/NavItem.vue';
-  export default{
+
+  export default {
     name: 'DHCD',
     components: {NavItem},
-    data () {
+    data() {
       return {
         items: [
           {
@@ -32,7 +33,7 @@
           {
             image: require('../../assets/images/nav_icon03@2x.png'),
             title: '绑卡',
-            path: '/Nav03',
+            path: '/KPBL',
             disabled: false
           },
           {

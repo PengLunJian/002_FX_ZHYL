@@ -1,6 +1,6 @@
 <template>
   <div class="FX_ZHYL_HOME">
-    <j-z-k-p></j-z-k-p>
+    <t-j-j-z-r></t-j-j-z-r>
     <x-x-t-s></x-x-t-s>
     <d-h-c-d></d-h-c-d>
   </div>
@@ -8,6 +8,7 @@
 
 <script type="text/ecmascript-6">
   import Controller from './Controller';
+  import WeChatHelper from '../../WX_SDK/WeChatHelper';
   import JZKP from './JZKP';
   import XXTS from './XXTS';
   import DHCD from './DHCD';
@@ -22,11 +23,15 @@
       XXTS
     },
     data() {
-      return {};
+      return {
+        deviceId: ''
+      };
     },
     methods: Controller,
     mounted() {
-      this.ajaxLogin();
+      this.ajaxRequestDeviceId();
+      const weChatHelper = new WeChatHelper();
+      weChatHelper.requestOpenId();
     }
   };
 </script>
