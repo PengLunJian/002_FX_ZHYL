@@ -1,8 +1,8 @@
 <template>
   <div class="no-data" v-if="isShow">
     <div class="content">
-      <i class="icon-empty"></i>
-      <p class="text">暂无相关数据</p>
+      <img src="../assets/images/no_data.png"/>
+      <p class="text">暂无数据</p>
     </div>
   </div>
 </template>
@@ -38,13 +38,16 @@
     .content {
       display: inline-block;
       vertical-align: middle;
-    }
-    .icon-empty {
-      font-size: 0.8rem;
-    }
-    .text {
-      margin-top: 0.05rem;
-      font-size: 0.14rem;
+      img {
+        width: 1.25rem;
+        height: auto;
+      }
+      .text {
+        margin-top: 0.1rem;
+        letter-spacing: 1px;
+        font-size: 0.14rem;
+        color: #808080;
+      }
     }
   }
 </style>

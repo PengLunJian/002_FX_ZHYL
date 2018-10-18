@@ -1,8 +1,8 @@
 <template>
   <div class="error">
     <div class="content">
-      <i class="icon-error"></i>
-      <p class="text">连接失败</p>
+      <img src="../assets/images/error.png"/>
+      <p class="text">请求失败</p>
       <button class="btn btn-refresh">重新加载</button>
     </div>
   </div>
@@ -37,26 +37,26 @@
     .content {
       display: inline-block;
       vertical-align: middle;
-    }
-    .icon-error {
-      display: block;
-      margin-bottom: 0.1rem;
-      font-size: 0.3rem;
-    }
-    .text {
-      margin-right: 0.05rem;
-      display: inline-block;
-      line-height: 0.2rem;
-      font-size: 0.13rem;
-    }
-    .btn-refresh {
-      display: inline-block;
-      height: 0.2rem;
-      padding: 0 0.06rem;
-      border-radius: 0.2rem;
-      border: 1px solid @borderColor2;
-      font-size: 0.12rem;
-      color: @borderColor2;
+      img {
+        width: 1.1rem;
+        margin-bottom: 0.1rem;
+      }
+      .text {
+        margin-bottom: 0.2rem;
+        line-height: 0.2rem;
+        font-size: 0.13rem;
+        color: #969696;
+      }
+      .btn-refresh {
+        display: inline-block;
+        line-height: 0.3rem;
+        padding: 0 0.3rem;
+        overflow: hidden;
+        border-radius: 0.3rem;
+        background-color: #5f9bf1;
+        font-size: 0.12rem;
+        color: @white;
+      }
     }
   }
 </style>

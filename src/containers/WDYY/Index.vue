@@ -3,7 +3,7 @@
     <mescroll-vue ref="mescroll"
                   :down="down"
                   :up="up"
-                  @init="mescrollInit">
+                  @init="init">
       <sub-item v-for="(item,index) in dataList"
                 :slotOut="item.slotOut"
                 :key="index"></sub-item>
@@ -27,6 +27,7 @@
     name: 'WDYY',
     data() {
       return {
+        items: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
         dataList: [],
         isShow: false,
         mescroll: null,

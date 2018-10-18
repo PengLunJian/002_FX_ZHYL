@@ -11,7 +11,7 @@
       </div>
       <div class="row-box-3">
         <router-link :to="this.$routes.HZLB.path">
-          <button class="btn btn-manager" v-waves.block>就诊卡管理</button>
+          <button class="btn btn-manager">就诊卡管理</button>
         </router-link>
       </div>
     </div>

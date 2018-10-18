@@ -46,7 +46,7 @@
             image: require('../../assets/images/nav_icon05@2x.png'),
             title: '我的收藏',
             path: '/Nav05',
-            disabled: false
+            disabled: true
           },
           {
             image: require('../../assets/images/nav_icon06@2x.png'),

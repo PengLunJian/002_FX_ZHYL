@@ -13,15 +13,17 @@
   import TabContentOne from './TabContentOne.vue';
   import TabContentTwo from './TabContentTwo.vue';
   import TabSlider from '../../components/TabSlider';
-  export default{
+
+  export default {
     components: {
       TabSlider,
       'TabContentOne': TabContentOne,
       'TabContentTwo': TabContentTwo
     },
     name: 'WDSC',
-    data () {
+    data() {
       return {
+        dataList: [],
         tabIndex: 0,
         currentComponent: 'TabContentOne',
         items: [
@@ -36,7 +38,10 @@
         ]
       };
     },
-    methods: Controller
+    methods: Controller,
+    mounted() {
+      this.ajaxRequestCollection();
+    }
   };
 </script>
 

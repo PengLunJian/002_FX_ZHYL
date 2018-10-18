@@ -26,6 +26,7 @@
     name: 'DJCLB',
     data() {
       return {
+        items: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
         dataList: [],
         isShow: false,
         mescroll: null,
@@ -33,7 +34,7 @@
           auto: false,
           isBounce: false,
           callback: this.infinite,
-          htmlNodata: '<p class="upwarp-nodata">没有数据了</p>'
+          htmlNodata: '<p class="upwarp-nodata">没有更多数据</p>'
         },
         down: {
           auto: true,

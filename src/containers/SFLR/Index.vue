@@ -7,7 +7,7 @@
     </div>
     <div class="form-group">
       <label class="form-label" for="idNumber">身份证号码</label>
-      <input class="form-input" id="idNumber" type="tel"
+      <input class="form-input" id="idNumber" type="text"
              v-model="idNumber" placeholder="请输入"/>
     </div>
     <div class="form-group" @click="showMenus('性别')">
@@ -19,8 +19,8 @@
       <span class="form-select">{{nation || "请选择"}}</span>
     </div>
     <div class="form-group">
-      <button class="btn btn-next waves-effect waves-block" :class="status"
-              @click="handlerBtnClick" v-waves.block>下一步
+      <button class="btn btn-next" :class="status"
+              @click="handlerBtnClick">下一步
       </button>
     </div>
     <popup-picker :data="popupPicker.data" :popup-title="popupPicker.popupTitle"

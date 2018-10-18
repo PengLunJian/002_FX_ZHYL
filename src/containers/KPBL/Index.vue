@@ -10,8 +10,8 @@
       </ul>
     </div>
     <div class="module BKCZ">
-      <button class="btn btn-input" @click="doCard" v-waves.block>输入就诊人身份证号码</button>
-      <button class="btn btn-upload" @click="uploadCard" v-waves.block>上传就诊人身份证照片</button>
+      <button class="btn btn-input" @click="doCard">输入就诊人身份证号码</button>
+      <!--<button class="btn btn-upload" @click="uploadCard">上传就诊人身份证照片</button>-->
     </div>
   </div>
 </template>

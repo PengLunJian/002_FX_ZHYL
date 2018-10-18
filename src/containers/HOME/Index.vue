@@ -1,6 +1,7 @@
 <template>
   <div class="FX_ZHYL_HOME">
-    <t-j-j-z-r></t-j-j-z-r>
+    <t-j-j-z-r v-if="isLogin?true:false"></t-j-j-z-r>
+    <j-z-k-p v-if="isLogin?false:true"></j-z-k-p>
     <x-x-t-s></x-x-t-s>
     <d-h-c-d></d-h-c-d>
   </div>
@@ -8,7 +9,7 @@
 
 <script type="text/ecmascript-6">
   import Controller from './Controller';
-  import WeChatHelper from '../../WX_SDK/WeChatHelper';
+  // import WXHelper from '../../WX_SDK/WXHelper';
   import JZKP from './JZKP';
   import XXTS from './XXTS';
   import DHCD from './DHCD';
@@ -24,14 +25,15 @@
     },
     data() {
       return {
-        deviceId: ''
+        deviceId: '',
+        isLogin: false
       };
     },
     methods: Controller,
     mounted() {
       this.ajaxRequestDeviceId();
-      const weChatHelper = new WeChatHelper();
-      weChatHelper.requestOpenId();
+      // const wxHelper = new WXHelper();
+      // wxHelper.requestOpenId();
     }
   };
 </script>

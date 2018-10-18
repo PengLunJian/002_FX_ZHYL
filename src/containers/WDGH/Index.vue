@@ -3,7 +3,7 @@
     <mescroll-vue ref="mescroll"
                   :down="down"
                   :up="up"
-                  @init="mescrollInit">
+                  @init="init">
       <reg-item v-for="(item,index) in dataList"
                 :slotOut="item.slotOut"
                 :key="index"></reg-item>
@@ -27,6 +27,7 @@
     name: 'WDGH',
     data() {
       return {
+        items: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
         dataList: [],
         isShow: false,
         mescroll: null,
@@ -34,7 +35,7 @@
           auto: false,
           isBounce: false,
           callback: this.infinite,
-          htmlNodata: '<p class="upwarp-nodata">没有数据了</p>'
+          htmlNodata: '<p class="upwarp-nodata">没有更多数据</p>'
         },
         down: {
           auto: true,

@@ -15,7 +15,7 @@ const controllers = {
     });
   },
   ajaxRequestDeviceId: function () {
-    this.$axios(apis.getDeviceId)
+    this.$axios(apis.selectDeviceId)
       .then((res) => {
         this.deviceId = res.data;
       })

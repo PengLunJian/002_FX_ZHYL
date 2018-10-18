@@ -15,7 +15,7 @@
         <span class="span">当前就诊人</span>
       </div>
     </div>
-    <button class="btn btn-add" v-waves.block>
+    <button class="btn btn-add" @click="insertSuffer">
       <i class="btn-icon icon-add"></i>
       <span class="btn-text">添加就诊人</span>
     </button>

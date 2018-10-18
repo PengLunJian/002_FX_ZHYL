@@ -10,7 +10,7 @@
       <p class="toast">出示就诊二维码到设备扫描</p>
     </div>
     <div class="row-box-3">
-      <button class="btn btn-close" @click="hideCode" v-waves.block>关闭</button>
+      <button class="btn btn-close" @click="hideCode">关闭</button>
     </div>
   </div>
 </template>
@@ -73,6 +73,8 @@
       }
     }
     .row-box-3 {
+      font-size: 0;
+      text-align: center;
       .btn-close {
         margin: 0 auto;
         padding: 0 0.7rem;

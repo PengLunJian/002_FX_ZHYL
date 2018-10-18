@@ -106,6 +106,9 @@ li, ul {
     display: block;
     clear: both;
   }
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .mask {
@@ -129,6 +132,14 @@ li, ul {
   cursor: not-allowed;
   border-color: @buttonDisabled !important;
   background-color: @buttonDisabled !important;
+}
+
+.btn {
+  &.disabled {
+    &:before {
+      display: none !important;
+    }
+  }
 }
 
 .mescroll {

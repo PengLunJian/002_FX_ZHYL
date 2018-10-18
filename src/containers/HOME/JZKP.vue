@@ -5,7 +5,7 @@
         <h3 class="patient-name">胡代宇</h3>
         <span class="patient-pay">自费</span>
         <span class="patient-number">卡号：36************99</span>
-        <button class="btn btn-change" @click="showModal" v-waves.button>
+        <button class="btn btn-change" @click="showModal">
           <i class="btn-icon icon-change"></i>
           <span class="btn-text">切换就诊人</span>
         </button>
@@ -82,6 +82,7 @@
           padding: 0 0.1rem;
           position: absolute;
           bottom: 0.15rem;
+          overflow: hidden;
           border-radius: @borderRadius;
           background-color: rgba(255, 255, 255, 0.15);
           line-height: 0.3rem;

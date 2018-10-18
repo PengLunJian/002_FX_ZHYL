@@ -1,4 +1,4 @@
-class WeChartHelper {
+class WXHelper {
   constructor() {
     this.code = '';
     this.href = window.location.href;
@@ -24,4 +24,4 @@ class WeChartHelper {
   }
 }
 
-export default WeChartHelper;
+export default WXHelper;

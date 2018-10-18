@@ -32,8 +32,8 @@
           </div>
         </div>
         <div class="row-box-3">
-          <button class="btn btn-confirm" v-waves.block>去缴费</button>
-          <button class="btn btn-cancel" v-waves.block>取消挂号</button>
+          <button class="btn btn-confirm">去缴费</button>
+          <button class="btn btn-cancel">取消挂号</button>
         </div>
       </div>
     </div>
