@@ -1,5 +1,5 @@
-import HOME from '../containers/HOME/Index.vue';
-import YYGH from '../containers/YYGH/Index.vue';
+// import HOME from '../containers/HOME/Index.vue';
+// import YYGH from '../containers/YYGH/Index.vue';
 import YSLB from '../containers/YSLB/Index.vue';
 import YYXX from '../containers/YYXX/Index.vue';
 import KSXX from '../containers/KSXX/Index.vue';
@@ -8,7 +8,7 @@ import GRZX from '../containers/GRZX/Index.vue';
 import WDGH from '../containers/WDGH/Index.vue';
 import GHXQ from '../containers/GHXQ/Index.vue';
 import YYXQ from '../containers/YYXQ/Index.vue';
-import WDYY from '../containers/WDYY/Index.vue';
+// import WDYY from '../containers/WDYY/Index.vue';
 import JFJL from '../containers/JFJL/Index.vue';
 import DCLB from '../containers/DCLB/Index.vue';
 import JKDA from '../containers/JKDA/Index.vue';
@@ -24,6 +24,10 @@ import YYJJ from '../containers/YYJJ/Index.vue';
 import JZTM from '../containers/JZTM/Index.vue';
 import SFYZ from '../containers/SFYZ/Index.vue';
 import SMKS from '../containers/SMKS/Index.vue';
+
+const HOME = r => require.ensure([], () => r(require('../containers/HOME/Index.vue')));
+const YYGH = r => require.ensure([], () => r(require('../containers/YYGH/Index.vue')));
+const WDYY = r => require.ensure([], () => r(require('../containers/WDYY/Index.vue')));
 
 export default {
   HOME,

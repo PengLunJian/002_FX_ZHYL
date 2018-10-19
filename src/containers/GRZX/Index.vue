@@ -60,13 +60,13 @@
           <i class="link-icon icon-next"></i>
         </div>
       </router-link>
-      <router-link :to="this.$routes.DCLB.path">
-        <div class="link-item btn">
-          <i class="link-icon icon-print"></i>
-          <span class="link-text">发票打印</span>
-          <i class="link-icon icon-next"></i>
-        </div>
-      </router-link>
+      <!--<router-link :to="this.$routes.DCLB.path">-->
+      <!--<div class="link-item btn">-->
+      <!--<i class="link-icon icon-print"></i>-->
+      <!--<span class="link-text">发票打印</span>-->
+      <!--<i class="link-icon icon-next"></i>-->
+      <!--</div>-->
+      <!--</router-link>-->
       <router-link :to="this.$routes.JKDA.path">
         <div class="link-item btn">
           <i class="link-icon icon-file"></i>
@@ -161,7 +161,7 @@
       }
     }
     .DEMK {
-      min-height: 1.78rem;
+      height: auto;
       .link-item {
         line-height: 0.45rem;
         padding-left: 0.15rem;
@@ -211,7 +211,7 @@
       }
     }
     .DSMK {
-      min-height: 1.78rem;
+      height: auto;
       .link-item {
         line-height: 0.45rem;
         padding-left: 0.15rem;
