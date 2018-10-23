@@ -2,7 +2,7 @@
   <div class="module TJJZR">
     <div class="content">
       <p class="desc">就诊前，请先添加就诊人</p>
-      <button class="btn btn-add" @click="addPerson">
+      <button class="btn btn-add" @click="addVisitor">
         <i class="btn-icon icon-add"></i>
         <span class="btn-text">添加就诊人</span>
       </button>

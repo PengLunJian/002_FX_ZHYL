@@ -1,13 +1,15 @@
 import apis from '../../apiMain/index';
 
 const controllers = {
-  addPerson: function () {
+  addVisitor: function () {
     this.$router.push({
       path: this.$routes.KPBL.path
     });
   },
-  showModal: function () {
-    this.isShow = true;
+  changeVisitor: function () {
+    this.$router.push({
+      path: this.$routes.HZLB.path
+    });
   },
   showCode: function () {
     this.$router.push({
