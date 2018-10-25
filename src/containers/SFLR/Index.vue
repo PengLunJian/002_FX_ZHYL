@@ -6,9 +6,9 @@
              v-model="name" placeholder="请输入"/>
     </div>
     <div class="form-group">
-      <label class="form-label" for="idNumber">身份证号码</label>
-      <input class="form-input" id="idNumber" type="text"
-             v-model="idNumber" placeholder="请输入"/>
+      <label class="form-label" for="number">身份证号码</label>
+      <input class="form-input" id="number" type="text"
+             v-model="number" placeholder="请输入"/>
     </div>
     <div class="form-group" @click="showMenus('性别')">
       <label class="form-label">性别</label>
@@ -17,6 +17,15 @@
     <div class="form-group" @click="showMenus('民族')">
       <label class="form-label">民族</label>
       <span class="form-select">{{nation || "请选择"}}</span>
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="phone">手机号码</label>
+      <input class="form-input" id="phone" type="text"
+             v-model="phone" placeholder="请输入"/>
+    </div>
+    <div class="form-group" @click="showMenus('关系')">
+      <label class="form-label">就诊人关系</label>
+      <span class="form-select">{{relation || "请选择"}}</span>
     </div>
     <div class="form-group">
       <button class="btn btn-next" :class="status"
@@ -40,9 +49,11 @@
     data() {
       return {
         name: '',
-        idNumber: '',
+        phone: '',
+        number: '',
         gender: '',
         nation: '',
+        relation: '',
         status: 'disabled',
         popupPicker: {
           show: false,
@@ -57,7 +68,7 @@
       name() {
         this.checkNotEmpty();
       },
-      idNumber() {
+      number() {
         this.checkNotEmpty();
       },
       gender() {
@@ -118,7 +129,7 @@
         display: block;
         border-top: 1px solid @borderColor;
       }
-      &:nth-child(5) {
+      &:nth-last-child(2) {
         padding: 0.35rem 0.2rem 0;
         background-color: transparent;
       }

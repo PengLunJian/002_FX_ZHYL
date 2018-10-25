@@ -1,18 +1,9 @@
 <template>
   <div class="module ZYXX">
     <div class="row-box-1">
-      <div class="group">
-        <label class="label">费别</label>
-        <span class="span">自费</span>
-      </div>
       <h3 class="small-title">紧急联系人信息</h3>
     </div>
     <div class="row-box-2">
-      <div class="group">
-        <label class="label">紧急联系人</label>
-        <span class="span">邹非儿</span>
-        <i class="icon icon-next"></i>
-      </div>
       <div class="group">
         <label class="label">关系</label>
         <span class="span">妻子</span>
@@ -32,9 +23,9 @@
 </template>
 
 <script type="text/ecmascript-6">
-  export default{
+  export default {
     name: 'ZYXX',
-    data () {
+    data() {
       return {};
     }
   };
@@ -44,6 +35,7 @@
   @import "../../assets/less/variable";
 
   .ZYXX {
+    margin: 0;
     box-shadow: none;
     .row-box-1 {
       line-height: 0.35rem;

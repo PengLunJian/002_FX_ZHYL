@@ -1,4 +1,4 @@
-import apis from '../../apiMain';
+import apis from '../../apis';
 
 const controller = {
   ajaxTemp: function () {

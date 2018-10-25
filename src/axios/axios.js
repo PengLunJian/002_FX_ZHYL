@@ -1,5 +1,5 @@
 import axios from 'axios';
-import apis from '../apiMain';
+import apis from '../apis';
 
 axios.interceptors.request.use(config => {
   return config;

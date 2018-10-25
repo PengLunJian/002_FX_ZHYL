@@ -2,16 +2,16 @@
   <div class="module JZKP">
     <div class="patient-panel">
       <div class="patient-left">
-        <h3 class="patient-name">胡代宇</h3>
+        <h3 class="patient-name">{{DEFAULT_CARD.NAME}}</h3>
         <span class="patient-pay">自费</span>
-        <span class="patient-number">卡号：36************99</span>
+        <span class="patient-number">卡号：{{DEFAULT_CARD.DEFAULT_CARD_NO}}</span>
         <button class="btn btn-change" @click="changeVisitor">
           <i class="btn-icon icon-change"></i>
           <span class="btn-text">切换就诊人</span>
         </button>
       </div>
       <div class="patient-right">
-        <img class="patient-code" src="../../assets/images/code@2x.png" @click="showCode"/>
+        <img class="patient-code" :src="'data:image/jpg;base64,'+DEFAULT_CARD.QR_CODE_BASE64" @click="showCode"/>
         <span class="patient-desc">点击出示就诊二维码</span>
       </div>
     </div>
@@ -28,7 +28,12 @@
         isShow: false
       };
     },
-    methods: Controller
+    methods: Controller,
+    computed: {
+      DEFAULT_CARD: function () {
+        return this.$store.state.DEFAULT_CARD;
+      }
+    }
   };
 </script>
 

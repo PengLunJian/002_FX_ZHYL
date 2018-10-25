@@ -24,7 +24,7 @@ const controllers = {
     }
   },
   checkNotEmpty: function () {
-    if (this.name && this.idNumber &&
+    if (this.name && this.number &&
       this.gender && this.nation) {
       this.status = '';
     } else {

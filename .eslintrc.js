@@ -23,6 +23,7 @@ module.exports = {
   rules: {
     //语句强制分号结尾
     "semi": [2, "always"],
+    "no-unneeded-ternary": 0,
     //函数定义时括号前面要不要有空格
     "space-before-function-paren": [0, "always"],
     // allow async-await

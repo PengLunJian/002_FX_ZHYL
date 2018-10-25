@@ -2,7 +2,7 @@ const apiMain = {
   baseUrl: 'http://118.31.65.217',
   default: {
     method: 'POST',
-    timeout: 5000,
+    timeout: 20000,
     headers: {
       'Authorization': 'Bearer *CKS8PQU3_APP_LINUX',
       'X-Requested-With': 'XMLHttpRequest',
@@ -29,13 +29,9 @@ const apiMain = {
       pageSize: 10
     }
   },
-  wdyy: {
-    url: '/wdyy',
-    method: 'GET',
-    params: {
-      pageSize: 10,
-      pageCode: 1
-    }
+  selectDefaultCard: {
+    url: '/UserCard3/v1/patientCard/getDefaultCardDetail',
+    params: {}
   }
 };
 

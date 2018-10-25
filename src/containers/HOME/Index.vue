@@ -1,15 +1,15 @@
 <template>
   <div class="FX_ZHYL_HOME">
-    <t-j-j-z-r v-if="isLogin?true:false"></t-j-j-z-r>
-    <j-z-k-p v-if="isLogin?false:true"></j-z-k-p>
+    <t-j-j-z-r v-if="DEFAULT_CARD.HAS_DEFAULT_CARD?false:true"></t-j-j-z-r>
+    <j-z-k-p v-if="DEFAULT_CARD.HAS_DEFAULT_CARD?true:false"></j-z-k-p>
     <x-x-t-s></x-x-t-s>
     <d-h-c-d></d-h-c-d>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  // import mapState from 'vuex';
   import Controller from './Controller';
-  // import WXHelper from '../../WX_SDK/WXHelper';
   import JZKP from './JZKP';
   import XXTS from './XXTS';
   import DHCD from './DHCD';
@@ -23,6 +23,10 @@
       DHCD,
       XXTS
     },
+    created() {
+      this.ajaxRequestDeviceId();
+      this.ajaxRequestDefaultCard();
+    },
     data() {
       return {
         deviceId: '',
@@ -31,9 +35,11 @@
     },
     methods: Controller,
     mounted() {
-      this.ajaxRequestDeviceId();
-      // const wxHelper = new WXHelper();
-      // wxHelper.requestOpenId();
+    },
+    computed: {
+      DEFAULT_CARD: function () {
+        return this.$store.state.DEFAULT_CARD;
+      }
     }
   };
 </script>
