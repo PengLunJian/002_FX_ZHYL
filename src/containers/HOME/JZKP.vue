@@ -1,10 +1,9 @@
 <template>
   <div class="module JZKP">
-    <div class="patient-panel">
+    <div class="select" v-if="DEFAULT_CARD.HAS_DEFAULT_CARD?true:false">
       <div class="patient-left">
         <h3 class="patient-name">{{DEFAULT_CARD.NAME}}</h3>
-        <span class="patient-pay">自费</span>
-        <span class="patient-number">卡号：{{DEFAULT_CARD.DEFAULT_CARD_NO}}</span>
+        <span class="patient-number ellipsis">卡号：{{DEFAULT_CARD.DEFAULT_CARD_NO}}</span>
         <button class="btn btn-change" @click="changeVisitor">
           <i class="btn-icon icon-change"></i>
           <span class="btn-text">切换就诊人</span>
@@ -15,6 +14,13 @@
         <span class="patient-desc">点击出示就诊二维码</span>
       </div>
     </div>
+    <div class="insert" v-if="DEFAULT_CARD.HAS_DEFAULT_CARD?false:true">
+      <p class="desc">就诊前，请先添加就诊人</p>
+      <button class="btn btn-add" @click="addVisitor">
+        <i class="btn-icon icon-add"></i>
+        <span class="btn-text">添加就诊人</span>
+      </button>
+    </div>
   </div>
 </template>
 
@@ -24,9 +30,7 @@
   export default {
     name: 'JZKP',
     data() {
-      return {
-        isShow: false
-      };
+      return {};
     },
     methods: Controller,
     computed: {
@@ -41,10 +45,9 @@
   @import "../../assets/less/variable";
 
   .JZKP {
-    height: 2rem;
-    padding: 0.13rem 0.15rem;
+    padding: 0.15rem 0.15rem;
     color: @white;
-    .patient-panel {
+    .select {
       height: 1.75rem;
       overflow: hidden;
       position: relative;
@@ -123,6 +126,56 @@
           line-height: 0.25rem;
           font-size: 0.13rem;
         }
+      }
+    }
+    .insert {
+      height: auto;
+      padding: 0.375rem 0;
+      position: relative;
+      border-radius: @borderRadius;
+      background: linear-gradient(to right, #0066ec, #00bcfa);
+      text-align: center;
+      font-size: 0.18rem;
+      color: @white;
+      .desc {
+        position: relative;
+        z-index: 1;
+        margin-bottom: 0.28rem;
+      }
+      .btn-add {
+        position: relative;
+        z-index: 1;
+        margin: 0 auto;
+        padding: 0 0.65rem;
+        border-radius: 0.05rem;
+        border: 1px solid @white;
+        line-height: 0.5rem;
+        color: @white;
+        font-size: 0;
+        .btn-icon {
+          margin-right: 0.1rem;
+          display: inline-block;
+          vertical-align: middle;
+          font-size: 0.18rem;
+        }
+        .btn-text {
+          display: inline-block;
+          vertical-align: middle;
+          font-size: 0.18rem;
+        }
+      }
+      &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: 85% auto;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-image: url("../../assets/images/person@2x.png");
       }
     }
   }

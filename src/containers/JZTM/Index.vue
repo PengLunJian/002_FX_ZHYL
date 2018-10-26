@@ -23,7 +23,15 @@
     data() {
       return {};
     },
+    created() {
+      this.$vux.loading.show({
+        text: '加载中...'
+      });
+      this.ajaxRequestDefaultCard();
+    },
     methods: Controller,
+    mounted() {
+    },
     computed: {
       DEFAULT_CARD: function () {
         return this.$store.state.DEFAULT_CARD;

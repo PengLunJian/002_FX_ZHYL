@@ -31,7 +31,6 @@
     height: auto;
     box-shadow: none;
     padding: 0.1rem;
-    border-radius: @borderRadius;
     background: linear-gradient(to right, #00a9f7, #005ceb);
     color: @white;
     .row-box-1 {

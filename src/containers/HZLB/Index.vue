@@ -1,29 +1,41 @@
 <template>
   <div class="FX_ZHYL_JZRLB">
-    <p class="desc">选择/添加需要就诊的人员</p>
-    <swipeout>
-      <div class="module" v-for="(item,index) in items" :key="index">
-        <swipeout-item>
-          <div slot="right-menu">
-            <swipeout-button @click="defaultUnlock" type="warn">解绑</swipeout-button>
-            <swipeout-button @click="defaultLock" type="primary">设为默认</swipeout-button>
+    <div class="header">
+      <p class="title">选择/添加需要就诊的人员</p>
+    </div>
+    <div class="body">
+      <mescroll-vue ref="mescroll"
+                    :down="down"
+                    :up="up"
+                    @init="init">
+        <swipeout>
+          <div class="module" v-for="(item,index) in dataList" :key="index">
+            <swipeout-item>
+              <div slot="right-menu">
+                <swipeout-button @click="defaultUnlock" type="warn">解绑</swipeout-button>
+                <swipeout-button @click="defaultLock" type="primary">设为默认</swipeout-button>
+              </div>
+              <div slot="content">
+                <suffer-item :item="item"></suffer-item>
+              </div>
+            </swipeout-item>
           </div>
-          <div slot="content">
-            <suffer-item :item="item"></suffer-item>
-          </div>
-        </swipeout-item>
-      </div>
-    </swipeout>
-    <button class="btn btn-add" @click="insertSuffer">
-      <i class="btn-icon icon-add"></i>
-      <span class="btn-text">添加就诊人</span>
-    </button>
+        </swipeout>
+      </mescroll-vue>
+    </div>
+    <div class="footer">
+      <button class="btn btn-add" @click="insertSuffer">
+        <i class="btn-icon icon-add"></i>
+        <span class="btn-text">添加就诊人</span>
+      </button>
+    </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import Controller from './Controller';
   import SufferItem from '../../components/SufferItem';
+  import MescrollVue from 'mescroll.js/mescroll.vue';
   import {Swipeout, SwipeoutItem, SwipeoutButton} from 'vux';
 
   export default {
@@ -31,18 +43,41 @@
       Swipeout,
       SufferItem,
       SwipeoutItem,
-      SwipeoutButton
+      SwipeoutButton,
+      MescrollVue
     },
     name: 'HZLB',
     data() {
       return {
+        mescroll: null,
         lock: '设为默认',
         unlock: '解绑',
-        items: [{}, {}, {}, {}, {}, {}, {}, {}, {}]
+        dataList: [],
+        up: {
+          auto: false,
+          isBounce: false,
+          callback: this.infinite,
+          htmlNodata: '<p class="upwarp-nodata">没有更多数据</p>'
+        },
+        down: {
+          auto: false,
+          offset: 50,
+          mustToTop: true,
+          outOffsetRate: 0.3,
+          callback: this.refresh,
+          autoShowLoading: true
+        }
       };
+    },
+    created() {
+      this.$vux.loading.show({
+        text: '加载中...'
+      });
     },
     methods: Controller,
     mounted() {
+      this.pageCode = 1;
+      this.ajaxRequestAllCards();
     }
   };
 </script>
@@ -51,13 +86,34 @@
   @import "../../assets/less/variable";
 
   .FX_ZHYL_JZRLB {
-    padding: 0.15rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
     background-color: @bgColor;
-    .desc {
+    padding: 0.45rem 0.15rem 0.82rem;
+    .header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding: 0 0.15rem;
+    }
+    .body {
+      height: 100%;
+    }
+    .footer {
+      position: absolute;
+      width: 100%;
+      bottom: 0;
+      left: 0;
+      padding: 0 0.15rem 0.1rem;
+    }
+    .title {
       color: @fontColor;
       font-size: 0.14rem;
-      line-height: 0.15rem;
-      margin-bottom: 0.15rem;
+      line-height: 0.45rem;
       letter-spacing: 1px;
     }
     .btn-add {

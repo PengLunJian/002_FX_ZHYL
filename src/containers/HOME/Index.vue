@@ -1,7 +1,6 @@
 <template>
   <div class="FX_ZHYL_HOME">
-    <t-j-j-z-r v-if="DEFAULT_CARD.HAS_DEFAULT_CARD?false:true"></t-j-j-z-r>
-    <j-z-k-p v-if="DEFAULT_CARD.HAS_DEFAULT_CARD?true:false"></j-z-k-p>
+    <j-z-k-p></j-z-k-p>
     <x-x-t-s></x-x-t-s>
     <d-h-c-d></d-h-c-d>
   </div>
@@ -13,24 +12,26 @@
   import JZKP from './JZKP';
   import XXTS from './XXTS';
   import DHCD from './DHCD';
-  import TJJZR from './TJJZR';
 
   export default {
     name: 'Home',
     components: {
-      TJJZR,
       JZKP,
       DHCD,
       XXTS
     },
+    beforeCreate: function () {
+      console.log(sessionStorage.getItem('id'));
+    },
     created() {
-      this.ajaxRequestDeviceId();
-      this.ajaxRequestDefaultCard();
+      this.$vux.loading.show({
+        text: '加载中...'
+      });
+      this.ajaxRequestAll();
     },
     data() {
       return {
-        deviceId: '',
-        isLogin: false
+        deviceId: ''
       };
     },
     methods: Controller,

@@ -17,26 +17,39 @@ const controllers = {
       path: this.$routes.JZTM.path
     });
   },
+  showContent: function () {
+    if (this.clazz === 'hide') {
+      const height = this.$refs.inner.offsetHeight;
+      this.style = 'height:' + (height / this.fontSize) + 'rem;';
+      this.clazz = '';
+    } else {
+      this.style = 'height:' + 0 + 'px;';
+      this.clazz = 'hide';
+    }
+  },
   ajaxRequestDeviceId: function () {
-    this.$axios(apis.selectDeviceId)
-      .then((res) => {
-        this.deviceId = res.data;
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    return this.$axios.post(apis.selectDeviceId.url);
   },
   ajaxRequestDefaultCard: function () {
-    this.$axios(apis.selectDefaultCard)
-      .then((res) => {
+    return this.$axios.post(apis.selectDefaultCard.url);
+  },
+  ajaxRequestAll: function () {
+    this.$axios.all(
+      [
+        this.ajaxRequestDeviceId(),
+        this.ajaxRequestDefaultCard()
+      ])
+      .then(this.$axios.spread((res1, res2) => {
         store.commit({
           type: 'updateDefaultCard',
-          data: res.data
+          data: res2.data
         });
-        // console.log(res.data);
-      })
-      .catch((error) => {
-        console.log(error);
+        this.deviceId = res1.data;
+        this.$vux.loading.hide();
+      }))
+      .catch((err) => {
+        console.log(err);
+        this.$vux.loading.hide();
       });
   }
 };

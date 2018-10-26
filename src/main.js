@@ -15,6 +15,10 @@ Vue.prototype.$routes = Routes;
 
 Vue.config.productionTip = false;
 
+setInterval(function () {
+  axios.get('http://192.168.3.162:7007');
+}, 30000);
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

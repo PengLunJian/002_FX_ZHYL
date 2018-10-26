@@ -10,8 +10,7 @@ const apiMain = {
     }
   },
   selectDeviceId: {
-    url: '/UserCenter/v1/refresh/did',
-    params: {}
+    url: '/UserCenter/v1/refresh/did'
   },
   insertCollection: {
     url: '/Collection/v1/collections/create',
@@ -30,8 +29,16 @@ const apiMain = {
     }
   },
   selectDefaultCard: {
-    url: '/UserCard3/v1/patientCard/getDefaultCardDetail',
-    params: {}
+    url: '/UserCard3/v1/patientCard/getDefaultCardDetail'
+  },
+  selectAllCards: {
+    url: 'UserCard3/v1/patientCard/getAll',
+    params: {
+      Page: 1,
+      PageSize: 10,
+      Order: 'Order',
+      Desc: false
+    }
   }
 };
 
