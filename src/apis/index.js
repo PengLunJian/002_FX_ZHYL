@@ -1,5 +1,5 @@
-const apiMain = {
-  baseUrl: 'http://118.31.65.217',
+const apis = {
+  baseUrl: 'http://192.168.1.5:8080',
   default: {
     method: 'POST',
     timeout: 20000,
@@ -42,4 +42,4 @@ const apiMain = {
   }
 };
 
-export default apiMain;
+export default apis;

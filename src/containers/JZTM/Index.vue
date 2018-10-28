@@ -1,5 +1,5 @@
 <template>
-  <div class="FX_ZHYL_JZEWM">
+  <div class="FX_ZHYL_JZEWM" v-if="isLoading">
     <div class="row-box-1">
       <span class="name">{{DEFAULT_CARD.NAME}}</span>
       <span class="card">卡号：{{DEFAULT_CARD.DEFAULT_CARD_NO}}</span>
@@ -10,7 +10,7 @@
       <p class="toast">出示就诊二维码到设备扫描</p>
     </div>
     <div class="row-box-3">
-      <button class="btn btn-close" @click="hideCode">关闭</button>
+      <button class="btn btn-close" @click="closePage">关闭</button>
     </div>
   </div>
 </template>
@@ -21,13 +21,21 @@
   export default {
     name: 'JZEWM',
     data() {
-      return {};
+      return {
+        isLoading: false
+      };
     },
     created() {
+      if (this.DEFAULT_CARD.ID) {
+        this.isLoading = true;
+        return;
+      }
+      // if (!this.DEFAULT_CARD.ID) {
       this.$vux.loading.show({
         text: '加载中...'
       });
       this.ajaxRequestDefaultCard();
+      // }
     },
     methods: Controller,
     mounted() {
@@ -44,6 +52,12 @@
   @import "../../assets/less/variable";
 
   .FX_ZHYL_JZEWM {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
     min-height: 100vh;
     background-color: @white;
     .row-box-1 {

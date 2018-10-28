@@ -2,13 +2,13 @@ import apis from '../../apis/index';
 import store from '../../vuex/store';
 
 const controllers = {
-  hideCode: function () {
+  closePage: function () {
     this.$router.back();
   },
   ajaxRequestDefaultCard: function () {
     this.$axios.post(apis.selectDefaultCard.url)
       .then((res) => {
-        console.log(res);
+        this.isLoading = true;
         store.commit({
           type: 'updateDefaultCard',
           data: res.data

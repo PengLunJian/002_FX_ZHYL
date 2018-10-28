@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <transition :name="transitionName">
+      <keep-alive>
         <router-view></router-view>
+      </keep-alive>
     </transition>
   </div>
 </template>
@@ -34,10 +36,14 @@
     },
     watch: {
       $route(to, from) {
-        if (to.meta.index > from.meta.index) {
-          this.transitionName = 'slide-left';
-        } else {
-          this.transitionName = 'slide-right';
+        console.log(to);
+        console.log(from);
+        if (from.meta.index !== undefined) {
+          if (to.meta.index > from.meta.index) {
+            this.transitionName = 'slide-left';
+          } else {
+            this.transitionName = 'slide-right';
+          }
         }
       }
     }

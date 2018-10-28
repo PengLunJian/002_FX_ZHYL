@@ -40,6 +40,7 @@ const controllers = {
         this.ajaxRequestDefaultCard()
       ])
       .then(this.$axios.spread((res1, res2) => {
+        this.isLoading = true;
         store.commit({
           type: 'updateDefaultCard',
           data: res2.data

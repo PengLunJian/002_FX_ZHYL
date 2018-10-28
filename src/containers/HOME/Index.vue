@@ -1,5 +1,5 @@
 <template>
-  <div class="FX_ZHYL_HOME">
+  <div class="FX_ZHYL_HOME" v-if="isLoading">
     <j-z-k-p></j-z-k-p>
     <x-x-t-s></x-x-t-s>
     <d-h-c-d></d-h-c-d>
@@ -20,19 +20,17 @@
       DHCD,
       XXTS
     },
-    beforeCreate: function () {
-      console.log(sessionStorage.getItem('id'));
+    data() {
+      return {
+        deviceId: '',
+        isLoading: false
+      };
     },
     created() {
       this.$vux.loading.show({
         text: '加载中...'
       });
       this.ajaxRequestAll();
-    },
-    data() {
-      return {
-        deviceId: ''
-      };
     },
     methods: Controller,
     mounted() {
