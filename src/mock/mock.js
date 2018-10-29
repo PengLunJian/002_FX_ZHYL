@@ -4,7 +4,7 @@ Mock.setup({
   timeout: 1000
 });
 
-const data = {
+const data1 = {
   data: {
     Id: 1,
     Name: 'Peng',
@@ -14,4 +14,25 @@ const data = {
   }
 };
 
-Mock.mock('/UserCard3/v1/patientCard/getDefaultCardDetail', 'post', data);
+const data2 = {
+  data: {
+    rows: [
+      {Name: 'Peng1', Id: 1, mCardNo: '342523199007244618', IsDefault: 0},
+      {Name: 'Peng2', Id: 2, mCardNo: '342523199007244618', IsDefault: 0},
+      {Name: 'Peng3', Id: 3, mCardNo: '342523199007244618', IsDefault: 0},
+      {Name: 'Peng4', Id: 4, mCardNo: '342523199007244618', IsDefault: 0},
+      {Name: 'Peng5', Id: 5, mCardNo: '342523199007244618', IsDefault: 0},
+      {Name: 'Peng6', Id: 6, mCardNo: '342523199007244618', IsDefault: 0},
+      {Name: 'Peng7', Id: 7, mCardNo: '342523199007244618', IsDefault: 0},
+      {Name: 'Peng8', Id: 8, mCardNo: '342523199007244618', IsDefault: 0},
+      {Name: 'Peng9', Id: 9, mCardNo: '342523199007244618', IsDefault: 0}
+    ]
+  }
+};
+
+const data3 = {};
+
+Mock.mock('/UserCard3/v1/patientCard/getDefaultCardDetail', 'post', data1);
+Mock.mock('/UserCard3/v1/patientCard/getAll', 'post', data2);
+Mock.mock('/UserCard3/v1/patientCard/unbind', 'post', data3);
+Mock.mock('/UserCard3/v1/patientCard/setDefault', 'post', data3);

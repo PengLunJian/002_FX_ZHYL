@@ -1,11 +1,14 @@
 <template>
   <div class="loading">
-    <p class="text">加载中...</p>
+    <inline-loading></inline-loading>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import {InlineLoading} from 'vux';
+
   export default {
+    components: {InlineLoading},
     name: 'Loading',
     data() {
       return {};
@@ -18,16 +21,15 @@
   @import '../assets/less/variable';
 
   .loading {
-    background-color: @bgColor;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
     width: 100%;
-    height: 100%;
+    height: 1.75rem;
     text-align: center;
-    .text {
-      line-height: 100px;
+    background-color: @bgColor;
+    &:before {
+      content: '';
+      height: 100%;
+      display: inline-block;
+      vertical-align: middle;
     }
   }
 </style>

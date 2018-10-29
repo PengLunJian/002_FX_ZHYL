@@ -1,15 +1,15 @@
 <template>
-  <div class="module JZRLB">
+  <div class="module JZRLB" :class="item.IsDefault?'active':''">
     <div class="row-box-1">
-      <span class="name">胡代宇</span>
-      <span class="tag">自费</span>
+      <span class="name">{{item.Name}}</span>
+      <!--<span class="tag">自费</span>-->
       <div class="right">
         <label class="label">电子就诊卡</label>
-        <span class="card">卡号：36************99</span>
+        <span class="card">卡号：{{item.mCardNo}}</span>
       </div>
     </div>
     <div class="row-box-2">
-      <label class="label">芜湖市第二人民医院</label>
+      <label class="label">文荣医院</label>
       <span class="span">当前就诊人</span>
     </div>
   </div>
@@ -20,6 +20,9 @@
     name: 'suffer-item',
     data() {
       return {};
+    },
+    props: ['item'],
+    mounted() {
     }
   };
 </script>
@@ -28,9 +31,11 @@
   @import "../assets/less/variable";
 
   .JZRLB {
-    height: auto;
+    height: 0.91rem;
     box-shadow: none;
     padding: 0.1rem;
+    overflow-x: hidden;
+    position: relative;
     background: linear-gradient(to right, #00a9f7, #005ceb);
     color: @white;
     .row-box-1 {
@@ -85,6 +90,20 @@
         float: right;
         line-height: 0.2rem;
         font-size: 0.12rem;
+      }
+    }
+    &.active {
+      &:before {
+        content: '默认';
+        display: block;
+        padding: 0 0.2rem;
+        line-height: 0.16rem;
+        position: absolute;
+        top: 2px;
+        right: -20px;
+        background-color: #ed7f2d;
+        font-size: 0.09rem;
+        transform: rotate(45deg);
       }
     }
   }

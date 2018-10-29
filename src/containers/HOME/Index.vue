@@ -1,5 +1,5 @@
 <template>
-  <div class="FX_ZHYL_HOME" v-if="isLoading">
+  <div class="FX_ZHYL_HOME">
     <j-z-k-p></j-z-k-p>
     <x-x-t-s></x-x-t-s>
     <d-h-c-d></d-h-c-d>
@@ -22,24 +22,12 @@
     },
     data() {
       return {
-        deviceId: '',
-        isLoading: false
+        deviceId: ''
       };
     },
-    created() {
-      this.$vux.loading.show({
-        text: '加载中...'
-      });
-      this.ajaxRequestAll();
-    },
+    created() {},
     methods: Controller,
-    mounted() {
-    },
-    computed: {
-      DEFAULT_CARD: function () {
-        return this.$store.state.DEFAULT_CARD;
-      }
-    }
+    mounted() {}
   };
 </script>
 

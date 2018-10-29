@@ -9,11 +9,16 @@
                     :up="up"
                     @init="init">
         <swipeout>
-          <div class="module" v-for="(item,index) in dataList" :key="index">
+          <div class="module" :class="item.isHide?'hide':''"
+               v-for="(item,index) in dataList" :key="index">
             <swipeout-item>
               <div slot="right-menu">
-                <swipeout-button @click="defaultUnlock" type="warn">解绑</swipeout-button>
-                <swipeout-button @click="defaultLock" type="primary">设为默认</swipeout-button>
+                <swipeout-button @click.native="ajaxRequestDeleteUnbind(item.Id)"
+                                 background-color="#e7463f">解绑
+                </swipeout-button>
+                <swipeout-button @click.native="ajaxRequestUpdateDefault(item.Id)"
+                                 background-color="#ed7f2d">设为默认
+                </swipeout-button>
               </div>
               <div slot="content">
                 <suffer-item :item="item"></suffer-item>
@@ -92,7 +97,7 @@
     width: 100%;
     height: 100vh;
     background-color: @bgColor;
-    padding: 0.45rem 0.15rem 0.82rem;
+    padding: 0.45rem 0.15rem 0.7rem;
     .header {
       position: absolute;
       top: 0;
@@ -102,13 +107,22 @@
     }
     .body {
       height: 100%;
+      .module {
+        height: 0.91rem;
+        transition: all 300ms ease;
+        &.hide {
+          height: 0px;
+          overflow: hidden;
+          margin: 0;
+        }
+      }
     }
     .footer {
       position: absolute;
       width: 100%;
       bottom: 0;
       left: 0;
-      padding: 0 0.15rem 0.1rem;
+      padding: 0.1rem 0.15rem;
     }
     .title {
       color: @fontColor;
@@ -131,7 +145,8 @@
         margin-right: 0.1rem;
       }
       .btn-text {
-        line-height: 0.6rem;
+        height: 0.48rem;
+        line-height: 0.48rem;
         display: inline-block;
         vertical-align: middle;
         font-size: 0.18rem;

@@ -1,36 +1,46 @@
 <template>
   <div class="module JZKP">
-    <div class="select" v-if="DEFAULT_CARD.HAS_DEFAULT_CARD?true:false">
-      <div class="patient-left">
-        <h3 class="patient-name">{{DEFAULT_CARD.NAME}}</h3>
-        <span class="patient-number ellipsis">卡号：{{DEFAULT_CARD.DEFAULT_CARD_NO}}</span>
-        <button class="btn btn-change" @click="changeVisitor">
-          <i class="btn-icon icon-change"></i>
-          <span class="btn-text">切换就诊人</span>
+    <loading v-if="isLoading"></loading>
+    <div class="content" v-if="!isLoading">
+      <div class="select" v-if="DEFAULT_CARD.HASED?true:false">
+        <div class="patient-left">
+          <h3 class="patient-name">{{DEFAULT_CARD.NAME}}</h3>
+          <span class="patient-number ellipsis">卡号：{{DEFAULT_CARD.DEFAULT_CARD_NO}}</span>
+          <button class="btn btn-change" @click="changeVisitor">
+            <i class="btn-icon icon-change"></i>
+            <span class="btn-text">切换就诊人</span>
+          </button>
+        </div>
+        <div class="patient-right">
+          <img class="patient-code" :src="'data:image/jpg;base64,'+DEFAULT_CARD.QR_CODE_BASE64" @click="showCode"/>
+          <span class="patient-desc">点击出示就诊二维码</span>
+        </div>
+      </div>
+      <div class="insert" v-if="DEFAULT_CARD.HASED?false:true">
+        <p class="desc">就诊前，请先添加就诊人</p>
+        <button class="btn btn-add" @click="addVisitor">
+          <i class="btn-icon icon-add"></i>
+          <span class="btn-text">添加就诊人</span>
         </button>
       </div>
-      <div class="patient-right">
-        <img class="patient-code" :src="'data:image/jpg;base64,'+DEFAULT_CARD.QR_CODE_BASE64" @click="showCode"/>
-        <span class="patient-desc">点击出示就诊二维码</span>
-      </div>
-    </div>
-    <div class="insert" v-if="DEFAULT_CARD.HAS_DEFAULT_CARD?false:true">
-      <p class="desc">就诊前，请先添加就诊人</p>
-      <button class="btn btn-add" @click="addVisitor">
-        <i class="btn-icon icon-add"></i>
-        <span class="btn-text">添加就诊人</span>
-      </button>
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import Controller from './Controller';
+  import Loading from '../../components/Loading';
 
   export default {
     name: 'JZKP',
+    components: {Loading},
     data() {
-      return {};
+      return {
+        isLoading: true
+      };
+    },
+    created() {
+      this.ajaxRequestDefaultCard();
     },
     methods: Controller,
     computed: {

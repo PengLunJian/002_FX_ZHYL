@@ -32,12 +32,34 @@ const apis = {
     url: '/UserCard3/v1/patientCard/getDefaultCardDetail'
   },
   selectAllCards: {
-    url: 'UserCard3/v1/patientCard/getAll',
+    url: '/UserCard3/v1/patientCard/getAll',
     params: {
       Page: 1,
       PageSize: 10,
       Order: 'Order',
       Desc: false
+    }
+  },
+  updateDefault: {
+    url: '/UserCard3/v1/patientCard/setDefault',
+    params: {
+      Value: ''
+    }
+  },
+  insertBindCard: {
+    url: '/UserCard3/v1/patientCard/bind',
+    params: {
+      Name: '',
+      mCardNo: '',
+      Sex: '',
+      Nation: '',
+      mType: ''
+    }
+  },
+  deleteUnbindCard: {
+    url: '/UserCard3/v1/patientCard/unbind',
+    params: {
+      Value: ''
     }
   }
 };

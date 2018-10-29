@@ -6,7 +6,7 @@ const controllers = {
     this.$router.back();
   },
   ajaxRequestDefaultCard: function () {
-    this.$axios.post(apis.selectDefaultCard.url)
+    this.$axios.post(apis.selectDefaultCard)
       .then((res) => {
         this.isLoading = true;
         store.commit({

@@ -31,26 +31,16 @@ const controllers = {
     return this.$axios.post(apis.selectDeviceId.url);
   },
   ajaxRequestDefaultCard: function () {
-    return this.$axios.post(apis.selectDefaultCard.url);
-  },
-  ajaxRequestAll: function () {
-    this.$axios.all(
-      [
-        this.ajaxRequestDeviceId(),
-        this.ajaxRequestDefaultCard()
-      ])
-      .then(this.$axios.spread((res1, res2) => {
-        this.isLoading = true;
+    this.$axios.post(apis.selectDefaultCard)
+      .then((res) => {
+        this.isLoading = false;
         store.commit({
           type: 'updateDefaultCard',
-          data: res2.data
+          data: res.data
         });
-        this.deviceId = res1.data;
-        this.$vux.loading.hide();
-      }))
+      })
       .catch((err) => {
         console.log(err);
-        this.$vux.loading.hide();
       });
   }
 };

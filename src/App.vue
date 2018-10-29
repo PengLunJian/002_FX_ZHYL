@@ -36,8 +36,6 @@
     },
     watch: {
       $route(to, from) {
-        console.log(to);
-        console.log(from);
         if (from.meta.index !== undefined) {
           if (to.meta.index > from.meta.index) {
             this.transitionName = 'slide-left';
