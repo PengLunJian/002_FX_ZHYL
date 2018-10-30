@@ -17,23 +17,8 @@
         transitionName: ''
       };
     },
-    methods: {
-      setRootFontSize: function () {
-        const width = document.documentElement.clientWidth ||
-          document.body.clientWidth;
-        const fontSize = (width / 3.75) + 'px';
-        document.querySelector('html').style.fontSize = fontSize;
-      },
-      windowOnResize: function () {
-        window.onresize = () => {
-          this.setRootFontSize();
-        };
-      }
-    },
-    mounted() {
-      this.setRootFontSize();
-      this.windowOnResize();
-    },
+    methods: {},
+    mounted() {},
     watch: {
       $route(to, from) {
         if (from.meta.index !== undefined) {

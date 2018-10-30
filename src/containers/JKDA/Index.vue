@@ -33,9 +33,7 @@
       </div>
     </div>
     <div class="module DSMK">
-      <button class="btn-save" :class="status"
-              @click="handlerBtnSave" v-waves.blcok>保存
-      </button>
+      <button class="btn-save" :class="status" @click="handlerBtnSave">保存</button>
     </div>
     <key-board :isShow.sync="isShow" :initValue.sync="initValue" @writeNumber="writeNumber"></key-board>
     <popup-picker :data="popupPicker.data" :popup-title="popupPicker.popupTitle"

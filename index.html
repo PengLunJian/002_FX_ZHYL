@@ -10,5 +10,25 @@
 <body>
 <div id="app"></div>
 <!-- built files will be auto injected -->
+<script type="text/javascript">
+  class HtmlPage{
+    constructor() {
+      this.onResize();
+      this.setFontSize();
+    }
+    setFontSize() {
+      const width = document.documentElement.clientWidth ||
+        document.body.clientWidth;
+      const fontSize = (width / 3.75) + 'px';
+      document.querySelector('html').style.fontSize = fontSize;
+    }
+    onResize() {
+      window.onresize = () => {
+        this.setFontSize();
+      };
+    }
+  }
+  new HtmlPage();
+</script>
 </body>
 </html>

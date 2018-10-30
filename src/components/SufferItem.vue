@@ -97,13 +97,13 @@
         content: '默认';
         display: block;
         padding: 0 0.2rem;
-        line-height: 0.16rem;
+        line-height: 0.18rem;
         position: absolute;
-        top: 2px;
-        right: -20px;
-        background-color: #ed7f2d;
+        top: 4px;
+        right: -18px;
         font-size: 0.09rem;
         transform: rotate(45deg);
+        background-color: @activeColor;
       }
     }
   }

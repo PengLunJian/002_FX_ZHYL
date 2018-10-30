@@ -24,11 +24,24 @@ const controllers = {
     }
   },
   checkNotEmpty: function () {
+    this.phone = this.phone ? this.phone : '请输入';
     if (this.name && this.number &&
       this.gender && this.nation) {
       this.status = '';
     } else {
       this.status = 'disabled';
+    }
+  },
+  showKeyBoard: function (type) {
+    this.isShow = true;
+    this.TYPE = type;
+    if (this.TYPE === 'phone') {
+      this.initValue = this.phone === '请输入' ? '' : this.phone;
+    }
+  },
+  writeNumber: function (value) {
+    if (this.TYPE === 'phone') {
+      this.phone = value;
     }
   },
   handlerBtnClick: function () {

@@ -2,11 +2,11 @@
   <div class="FX_ZHYL_JZEWM" v-if="isLoading">
     <div class="row-box-1">
       <span class="name">{{DEFAULT_CARD.NAME}}</span>
-      <span class="card">卡号：{{DEFAULT_CARD.DEFAULT_CARD_NO}}</span>
+      <span class="card">卡号：{{DEFAULT_CARD.CARD_NO}}</span>
     </div>
     <div class="row-box-2">
-      <img class="bar-code" :src="'data:image/jpg;base64,'+DEFAULT_CARD.BAR_CODE_BASE64"/>
-      <img class="qr-code" :src="'data:image/jpg;base64,'+DEFAULT_CARD.QR_CODE_BASE64"/>
+      <img class="bar-code" :src="'data:image/jpg;base64,'+DEFAULT_CARD.BAR_CODE"/>
+      <img class="qr-code" :src="'data:image/jpg;base64,'+DEFAULT_CARD.QR_CODE"/>
       <p class="toast">出示就诊二维码到设备扫描</p>
     </div>
     <div class="row-box-3">

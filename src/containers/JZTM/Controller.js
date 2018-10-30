@@ -10,7 +10,7 @@ const controllers = {
       .then((res) => {
         this.isLoading = true;
         store.commit({
-          type: 'updateDefaultCard',
+          type: 'UPDATE_DEFAULT_CARD',
           data: res.data
         });
         this.$vux.loading.hide();

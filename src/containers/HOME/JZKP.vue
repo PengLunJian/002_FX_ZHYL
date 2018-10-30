@@ -1,22 +1,24 @@
 <template>
   <div class="module JZKP">
-    <loading v-if="isLoading"></loading>
-    <div class="content" v-if="!isLoading">
-      <div class="select" v-if="DEFAULT_CARD.HASED?true:false">
+    <div class="content">
+      <div class="select" v-if="isSelect">
         <div class="patient-left">
           <h3 class="patient-name">{{DEFAULT_CARD.NAME}}</h3>
-          <span class="patient-number ellipsis">卡号：{{DEFAULT_CARD.DEFAULT_CARD_NO}}</span>
+          <span class="patient-number ellipsis">卡号：{{DEFAULT_CARD.CARD_NO}}</span>
           <button class="btn btn-change" @click="changeVisitor">
             <i class="btn-icon icon-change"></i>
             <span class="btn-text">切换就诊人</span>
           </button>
         </div>
         <div class="patient-right">
-          <img class="patient-code" :src="'data:image/jpg;base64,'+DEFAULT_CARD.QR_CODE_BASE64" @click="showCode"/>
+          <div class="patient-image">
+            <img class="patient-code" @click="showCode"
+                 :src="'data:image/jpg;base64,'+DEFAULT_CARD.QR_CODE"/>
+          </div>
           <span class="patient-desc">点击出示就诊二维码</span>
         </div>
       </div>
-      <div class="insert" v-if="DEFAULT_CARD.HASED?false:true">
+      <div class="insert" v-if="isInsert">
         <p class="desc">就诊前，请先添加就诊人</p>
         <button class="btn btn-add" @click="addVisitor">
           <i class="btn-icon icon-add"></i>
@@ -29,17 +31,19 @@
 
 <script type="text/ecmascript-6">
   import Controller from './Controller';
-  import Loading from '../../components/Loading';
 
   export default {
     name: 'JZKP',
-    components: {Loading},
     data() {
       return {
-        isLoading: true
+        isSelect: false,
+        isInsert: false
       };
     },
     created() {
+      this.$vux.loading.show({
+        text: '加载中...'
+      });
       this.ajaxRequestDefaultCard();
     },
     methods: Controller,
@@ -57,6 +61,11 @@
   .JZKP {
     padding: 0.15rem 0.15rem;
     color: @white;
+    .content {
+      height: 1.75rem;
+      border-radius: @borderRadius;
+      background-color: @bgColor;
+    }
     .select {
       height: 1.75rem;
       overflow: hidden;
@@ -123,12 +132,17 @@
         right: 0;
         padding: 0.15rem;
         font-size: 0;
-        .patient-code {
+        .patient-image {
           width: 1.2rem;
           height: 1.2rem;
+          overflow: hidden;
           border-radius: 0.04rem;
           background-color: @white;
           border: 0.05rem solid @white;
+          .patient-code {
+            width: 100%;
+            height: 100%;
+          }
         }
         .patient-desc {
           display: block;

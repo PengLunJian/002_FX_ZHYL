@@ -17,7 +17,7 @@ const data1 = {
 const data2 = {
   data: {
     rows: [
-      {Name: 'Peng1', Id: 1, mCardNo: '342523199007244618', IsDefault: 0},
+      {Name: 'Peng1', Id: 1, mCardNo: '342523199007244618', IsDefault: 1},
       {Name: 'Peng2', Id: 2, mCardNo: '342523199007244618', IsDefault: 0},
       {Name: 'Peng3', Id: 3, mCardNo: '342523199007244618', IsDefault: 0},
       {Name: 'Peng4', Id: 4, mCardNo: '342523199007244618', IsDefault: 0},

@@ -4,13 +4,9 @@
       <p class="title">选择/添加需要就诊的人员</p>
     </div>
     <div class="body">
-      <mescroll-vue ref="mescroll"
-                    :down="down"
-                    :up="up"
-                    @init="init">
+      <mescroll-vue ref="mescroll" :down="down" :up="up" @init="init">
         <swipeout>
-          <div class="module" :class="item.isHide?'hide':''"
-               v-for="(item,index) in dataList" :key="index">
+          <div class="module" v-for="(item,index) in dataList" :key="index">
             <swipeout-item>
               <div slot="right-menu">
                 <swipeout-button @click.native="ajaxRequestDeleteUnbind(item.Id)"
@@ -83,6 +79,13 @@
     mounted() {
       this.pageCode = 1;
       this.ajaxRequestAllCards();
+    },
+    watch: {
+      $route(to, from) {
+        if (from.name === 'HZLB') {
+          this.mescroll.setBounce(true);
+        }
+      }
     }
   };
 </script>
@@ -110,11 +113,6 @@
       .module {
         height: 0.91rem;
         transition: all 300ms ease;
-        &.hide {
-          height: 0px;
-          overflow: hidden;
-          margin: 0;
-        }
       }
     }
     .footer {

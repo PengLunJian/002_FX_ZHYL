@@ -12,26 +12,26 @@
     </div>
     <div class="form-group" @click="showMenus('性别')">
       <label class="form-label">性别</label>
-      <span class="form-select">{{gender || "请选择"}}</span>
+      <span class="form-select">{{gender}}</span>
     </div>
     <div class="form-group" @click="showMenus('民族')">
       <label class="form-label">民族</label>
-      <span class="form-select">{{nation || "请选择"}}</span>
+      <span class="form-select">{{nation}}</span>
     </div>
-    <div class="form-group">
-      <label class="form-label" for="phone">手机号码</label>
-      <input class="form-input" id="phone" type="text"
-             v-model="phone" placeholder="请输入"/>
+    <div class="form-group" @click="showKeyBoard('phone')">
+      <label class="form-label">手机号码</label>
+      <span class="form-select">{{phone}}</span>
     </div>
     <div class="form-group" @click="showMenus('关系')">
       <label class="form-label">就诊人关系</label>
-      <span class="form-select">{{relation || "请选择"}}</span>
+      <span class="form-select">{{relation}}</span>
     </div>
     <div class="form-group">
-      <button class="btn btn-next" :class="status"
-              @click="handlerBtnClick">下一步
+      <button class="btn btn-confirm" :class="status"
+              @click="handlerBtnClick">绑卡
       </button>
     </div>
+    <key-board :isShow.sync="isShow" :initValue.sync="initValue" @writeNumber="writeNumber"></key-board>
     <popup-picker :data="popupPicker.data" :popup-title="popupPicker.popupTitle"
                   :show.sync="popupPicker.show" @on-change="handlerChange"/>
   </div>
@@ -39,21 +39,26 @@
 
 <script type="text/ecmascript-6">
   import {PopupPicker} from 'vux';
-  import Controllers from './Controller';
+  import Controller from './Controller';
+  import KeyBoard from '../../components/KeyBoard';
 
   export default {
     components: {
+      KeyBoard,
       PopupPicker
     },
     name: 'JZRSFZ',
     data() {
       return {
+        TYPE: '',
+        isShow: false,
+        initValue: '',
         name: '',
-        phone: '',
         number: '',
-        gender: '',
-        nation: '',
-        relation: '',
+        phone: '请输入',
+        gender: '请选择',
+        nation: '请选择',
+        relation: '请选择',
         status: 'disabled',
         popupPicker: {
           show: false,
@@ -63,12 +68,15 @@
         }
       };
     },
-    methods: Controllers,
+    methods: Controller,
     watch: {
       name() {
         this.checkNotEmpty();
       },
       number() {
+        this.checkNotEmpty();
+      },
+      phone() {
         this.checkNotEmpty();
       },
       gender() {
@@ -113,7 +121,7 @@
         font-size: 0.16rem;
         color: @fontColor;
       }
-      .btn-next {
+      .btn-confirm {
         width: 100%;
         display: block;
         line-height: 0.47rem;
@@ -129,14 +137,12 @@
         display: block;
         border-top: 1px solid @borderColor;
       }
-      &:nth-last-child(2) {
+      &:nth-last-child(3) {
         padding: 0.35rem 0.2rem 0;
         background-color: transparent;
-      }
-    }
-    .vux-cell-box {
-      &:not(:first-child):before {
-        border: none;
+        &:after {
+          border: none !important;
+        }
       }
     }
   }

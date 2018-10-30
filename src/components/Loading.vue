@@ -21,10 +21,8 @@
   @import '../assets/less/variable';
 
   .loading {
-    width: 100%;
-    height: 1.75rem;
+    display: inline-block;
     text-align: center;
-    background-color: @bgColor;
     &:before {
       content: '';
       height: 100%;

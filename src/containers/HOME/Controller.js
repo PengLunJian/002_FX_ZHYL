@@ -33,11 +33,15 @@ const controllers = {
   ajaxRequestDefaultCard: function () {
     this.$axios.post(apis.selectDefaultCard)
       .then((res) => {
-        this.isLoading = false;
-        store.commit({
-          type: 'updateDefaultCard',
-          data: res.data
-        });
+        this.$vux.loading.hide();
+        const {data} = res;
+        if (data && typeof data === 'object') {
+          store.commit({
+            type: 'UPDATE_DEFAULT_CARD',
+            data: data
+          });
+          this.isSelect = true;
+        }
       })
       .catch((err) => {
         console.log(err);
