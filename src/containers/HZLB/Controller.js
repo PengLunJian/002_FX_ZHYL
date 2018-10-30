@@ -1,40 +1,29 @@
 import apis from '../../apis';
 
 const controller = {
-  insertSuffer: function () {
+  refresh() {
+    if (this.timer) clearInterval(this.timer);
+    this.timer = setTimeout(() => {
+      this.pageCode = 1;
+      this.ajaxRequestAllCards();
+    }, 500);
+  },
+  infinite() {
+    if (this.timer) clearInterval(this.timer);
+    this.timer = setTimeout(() => {
+      this.pageCode++;
+      this.ajaxRequestAllCards();
+    }, 500);
+  },
+  init(mescroll) {
+    this.mescroll = mescroll;
+  },
+  insertSuffer() {
     this.$router.push({
       path: this.$routes.KPBL.path
     });
   },
-  ajaxRequestUpdateDefault: function (id) {
-    this.$axios.post(apis.updateDefault, {Value: id})
-      .then((res) => {
-        this.$vux.toast.show({
-          text: '设置成功'
-        });
-        this.dataList.map((item) => {
-          item.IsDefault = 0;
-          if (item.Id === id) item.IsDefault = 1;
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  },
-  ajaxRequestDeleteUnbind: function (id) {
-    this.$axios.post(apis.deleteUnbindCard, {Value: id})
-      .then((res) => {
-        console.log(res);
-        this.$vux.toast.show({
-          text: '解绑成功'
-        });
-        this.dataList = this.dataList.filter(item => item.Id !== id);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  },
-  ajaxRequestAllCards: function () {
+  ajaxRequestAllCards() {
     this.$axios.post(apis.selectAllCards, {Page: this.pageCode})
       .then((res) => {
         this.$vux.loading.hide();
@@ -49,22 +38,32 @@ const controller = {
         console.log(err);
       });
   },
-  infinite: function () {
-    if (this.timer) clearInterval(this.timer);
-    this.timer = setTimeout(() => {
-      this.pageCode++;
-      this.ajaxRequestAllCards();
-    }, 500);
+  ajaxRequestDeleteUnbind(id) {
+    this.$axios.post(apis.deleteUnbindCard, {Value: id})
+      .then((res) => {
+        this.$vux.toast.show({
+          text: '解绑成功'
+        });
+        this.dataList = this.dataList.filter(item => item.Id !== id);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
-  refresh: function () {
-    if (this.timer) clearInterval(this.timer);
-    this.timer = setTimeout(() => {
-      this.pageCode = 1;
-      this.ajaxRequestAllCards();
-    }, 500);
-  },
-  init: function (mescroll) {
-    this.mescroll = mescroll;
+  ajaxRequestUpdateDefault(id) {
+    this.$axios.post(apis.updateDefault, {Value: id})
+      .then((res) => {
+        this.$vux.toast.show({
+          text: '设置成功'
+        });
+        this.dataList.map((item) => {
+          item.IsDefault = 0;
+          if (item.Id === id) item.IsDefault = 1;
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 };
 

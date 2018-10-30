@@ -1,43 +1,41 @@
 import apis from '../../apis/index';
-import store from '../../vuex/store';
 
-const controllers = {
-  addVisitor: function () {
+const controller = {
+  addVisitor() {
     this.$router.push({
       path: this.$routes.KPBL.path
     });
   },
-  changeVisitor: function () {
-    this.$router.push({
-      path: this.$routes.HZLB.path
-    });
-  },
-  showCode: function () {
+  showQRCode() {
     this.$router.push({
       path: this.$routes.JZTM.path
     });
   },
-  showContent: function () {
+  showContent() {
     if (this.clazz === 'hide') {
+      const element = document.querySelector('html');
+      const fontSize = parseFloat(element.style.fontSize);
       const height = this.$refs.inner.offsetHeight;
-      this.style = 'height:' + (height / this.fontSize) + 'rem;';
+      this.style = 'height:' + (height / fontSize) + 'rem;';
       this.clazz = '';
     } else {
       this.style = 'height:' + 0 + 'px;';
       this.clazz = 'hide';
     }
   },
-  ajaxRequestDeviceId: function () {
-    return this.$axios.post(apis.selectDeviceId.url);
+  changeVisitor() {
+    this.$router.push({
+      path: this.$routes.HZLB.path
+    });
   },
-  ajaxRequestDefaultCard: function () {
+  ajaxRequestDefaultCard() {
     this.$axios.post(apis.selectDefaultCard)
       .then((res) => {
         this.$vux.loading.hide();
         const {data} = res;
         if (data && typeof data === 'object') {
-          store.commit({
-            type: 'UPDATE_DEFAULT_CARD',
+          this.$store.dispatch({
+            type: 'updateDefaultCard',
             data: data
           });
           this.isSelect = true;
@@ -49,4 +47,4 @@ const controllers = {
   }
 };
 
-export default controllers;
+export default controller;

@@ -1,19 +1,19 @@
 import apis from '../../apis/index';
-import store from '../../vuex/store';
 
-const controllers = {
-  closePage: function () {
+const controller = {
+  closePage() {
     this.$router.back();
   },
-  ajaxRequestDefaultCard: function () {
+  ajaxRequestDefaultCard() {
     this.$axios.post(apis.selectDefaultCard)
       .then((res) => {
-        this.isLoading = true;
-        store.commit({
-          type: 'UPDATE_DEFAULT_CARD',
-          data: res.data
-        });
         this.$vux.loading.hide();
+        this.isLoading = true;
+        const {data} = res;
+        this.$store.dispatch({
+          type: 'updateDefaultCard',
+          data: data
+        });
       })
       .catch((err) => {
         this.$vux.loading.hide();
@@ -22,4 +22,4 @@ const controllers = {
   }
 };
 
-export default controllers;
+export default controller;

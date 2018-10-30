@@ -49,12 +49,12 @@
       return {
         clazz: '',
         style: '',
-        height: 0,
-        fontSize: window.screen.width / 3.75
+        height: 0
       };
     },
     methods: Controller,
-    mounted() {}
+    mounted() {
+    }
   };
 </script>
 

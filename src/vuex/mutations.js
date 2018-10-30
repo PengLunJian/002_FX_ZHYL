@@ -1,6 +1,5 @@
 const mutations = {
-  UPDATE_DEFAULT_CARD: (state, params) => {
-    const {data} = params;
+  UPDATE_DEFAULT_CARD(state, data) {
     state.DEFAULT_CARD.ID = data.Id;
     state.DEFAULT_CARD.NAME = data.Name;
     state.DEFAULT_CARD.CARD_NO = data.CardNo;

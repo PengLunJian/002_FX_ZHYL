@@ -12,7 +12,7 @@
         </div>
         <div class="patient-right">
           <div class="patient-image">
-            <img class="patient-code" @click="showCode"
+            <img class="patient-code" @click="showQRCode"
                  :src="'data:image/jpg;base64,'+DEFAULT_CARD.QR_CODE"/>
           </div>
           <span class="patient-desc">点击出示就诊二维码</span>
@@ -67,10 +67,11 @@
       background-color: @bgColor;
     }
     .select {
-      height: 1.75rem;
+      height: 100%;
       overflow: hidden;
       position: relative;
       border-radius: 0.05rem;
+      box-shadow: @boxShadow;
       padding: 0.15rem 1.4rem 0.15rem 0.15rem;
       background: linear-gradient(to right, #0065eb, #00acf6);
       .patient-left {
@@ -153,7 +154,7 @@
       }
     }
     .insert {
-      height: auto;
+      height: 100%;
       padding: 0.375rem 0;
       position: relative;
       border-radius: @borderRadius;

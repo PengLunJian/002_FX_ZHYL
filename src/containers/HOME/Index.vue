@@ -7,7 +7,6 @@
 </template>
 
 <script type="text/ecmascript-6">
-  // import mapState from 'vuex';
   import Controller from './Controller';
   import JZKP from './JZKP';
   import XXTS from './XXTS';

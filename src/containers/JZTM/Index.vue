@@ -30,12 +30,10 @@
         this.isLoading = true;
         return;
       }
-      // if (!this.DEFAULT_CARD.ID) {
       this.$vux.loading.show({
         text: '加载中...'
       });
       this.ajaxRequestDefaultCard();
-      // }
     },
     methods: Controller,
     mounted() {

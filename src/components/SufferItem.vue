@@ -99,8 +99,8 @@
         padding: 0 0.2rem;
         line-height: 0.18rem;
         position: absolute;
-        top: 4px;
-        right: -18px;
+        top: 0.04rem;
+        right: -0.18rem;
         font-size: 0.09rem;
         transform: rotate(45deg);
         background-color: @activeColor;

@@ -9,8 +9,8 @@ Vue.use(Vuex);
 
 const store = new Vuex.Store({
   state: States,
-  action: Actions,
   getter: Getters,
+  actions: Actions,
   mutations: Mutations
 });
 
