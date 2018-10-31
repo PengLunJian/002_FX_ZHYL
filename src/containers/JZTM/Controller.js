@@ -1,4 +1,7 @@
 import apis from '../../apis/index';
+import {
+  updateDefaultCardFun
+} from '../../vuex/actions';
 
 const controller = {
   closePage() {
@@ -10,10 +13,7 @@ const controller = {
         this.$vux.loading.hide();
         this.isLoading = true;
         const {data} = res;
-        this.$store.dispatch({
-          type: 'updateDefaultCard',
-          data: data
-        });
+        this.$store.dispatch(updateDefaultCardFun(data));
       })
       .catch((err) => {
         this.$vux.loading.hide();

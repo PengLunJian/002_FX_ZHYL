@@ -23,7 +23,7 @@
       <span class="form-select">{{phone}}</span>
     </div>
     <div class="form-group" @click="showMenus('关系')">
-      <label class="form-label">就诊人关系</label>
+      <label class="form-label">与就诊人关系</label>
       <span class="form-select">{{relation}}</span>
     </div>
     <div class="form-group">
@@ -83,6 +83,9 @@
         this.checkNotEmpty();
       },
       nation() {
+        this.checkNotEmpty();
+      },
+      relation() {
         this.checkNotEmpty();
       }
     }

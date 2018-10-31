@@ -29,37 +29,35 @@ const apis = {
     }
   },
   selectDefaultCard: {
-    url: '/UserCard3/v1/patientCard/getDefaultCardDetail'
+    url: '/PatientCard3/v1/patientCard/getDefaultCardDetail'
   },
   selectAllCards: {
-    url: '/UserCard3/v1/patientCard/getAll',
+    url: '/PatientCard3/v1/patientCard/getCardList',
     params: {
-      Page: 1,
-      PageSize: 10,
-      Order: 'Order',
-      Desc: false
+      value: ''
     }
   },
   updateDefault: {
-    url: '/UserCard3/v1/patientCard/setDefault',
+    url: '/PatientCard3/v1/patientCard/setDefault',
     params: {
-      Value: ''
+      value: ''
     }
   },
   insertBindCard: {
-    url: '/UserCard3/v1/patientCard/bind',
+    url: '/PatientCard3/v1/patientCard/bind',
     params: {
-      Name: '',
-      mCardNo: '',
-      Sex: '',
-      Nation: '',
-      mType: ''
+      name: '',
+      idCardNo: '',
+      sex: '',
+      nation: '',
+      releation: '',
+      phone: ''
     }
   },
   deleteUnbindCard: {
-    url: '/UserCard3/v1/patientCard/unbind',
+    url: '/PatientCard3/v1/patientCard/unbind',
     params: {
-      Value: ''
+      value: ''
     }
   }
 };

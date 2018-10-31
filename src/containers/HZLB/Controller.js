@@ -1,18 +1,25 @@
 import apis from '../../apis';
+import {
+  updateDefaultCardFun,
+  clearVisitorListData,
+  deleteVisitorListFun,
+  updateVisitorListFun,
+  selectVisitorListFun
+} from '../../vuex/actions';
 
 const controller = {
   refresh() {
     if (this.timer) clearInterval(this.timer);
     this.timer = setTimeout(() => {
       this.pageCode = 1;
-      this.ajaxRequestAllCards();
+      this.ajaxRequestSelectVisitor();
     }, 500);
   },
   infinite() {
     if (this.timer) clearInterval(this.timer);
     this.timer = setTimeout(() => {
       this.pageCode++;
-      this.ajaxRequestAllCards();
+      this.ajaxRequestSelectVisitor();
     }, 500);
   },
   init(mescroll) {
@@ -23,14 +30,25 @@ const controller = {
       path: this.$routes.KPBL.path
     });
   },
-  ajaxRequestAllCards() {
-    this.$axios.post(apis.selectAllCards, {Page: this.pageCode})
+  ajaxRequestSelectDefault() {
+    this.$axios.post(apis.selectDefaultCard)
+      .then((res) => {
+        const {data} = res;
+        this.$store.dispatch(updateDefaultCardFun(data));
+        this.$store.dispatch(updateVisitorListFun(data.patientCardNo));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
+  ajaxRequestSelectVisitor() {
+    this.$axios.post(apis.selectAllCards, {value: this.pageCode})
       .then((res) => {
         this.$vux.loading.hide();
-        if (this.pageCode === 1) this.dataList = [];
+        this.$store.dispatch(clearVisitorListData(this.pageCode));
         const data = res.data.rows;
         const hasNext = data.length ? true : false;
-        this.dataList = this.dataList.concat(data);
+        this.$store.dispatch(selectVisitorListFun(data));
         this.mescroll.endSuccess(10, hasNext);
       })
       .catch((err) => {
@@ -38,28 +56,35 @@ const controller = {
         console.log(err);
       });
   },
-  ajaxRequestDeleteUnbind(id) {
-    this.$axios.post(apis.deleteUnbindCard, {Value: id})
+  ajaxRequestDeleteVisitor(patientCardNo) {
+    this.$axios.post(apis.deleteUnbindCard, {Value: patientCardNo})
       .then((res) => {
         this.$vux.toast.show({
           text: '解绑成功'
         });
-        this.dataList = this.dataList.filter(item => item.Id !== id);
+        this.$store.dispatch(deleteVisitorListFun(patientCardNo))
+          .then(() => {
+            if (patientCardNo === this.CARD_NO && this.CARD_NO) {
+              this.ajaxRequestSelectDefault();
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((err) => {
         console.log(err);
       });
   },
-  ajaxRequestUpdateDefault(id) {
-    this.$axios.post(apis.updateDefault, {Value: id})
+  ajaxRequestUpdateVisitor(patientCardNo) {
+    this.$axios.post(apis.updateDefault, {Value: patientCardNo})
       .then((res) => {
+        const {data} = res;
         this.$vux.toast.show({
           text: '设置成功'
         });
-        this.dataList.map((item) => {
-          item.IsDefault = 0;
-          if (item.Id === id) item.IsDefault = 1;
-        });
+        this.$store.dispatch(updateVisitorListFun(patientCardNo));
+        this.$store.dispatch(updateDefaultCardFun(data));
       })
       .catch((err) => {
         console.log(err);

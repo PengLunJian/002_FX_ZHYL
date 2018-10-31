@@ -1,11 +1,11 @@
 <template>
-  <div class="module JZRLB" :class="item.IsDefault?'active':''">
+  <div class="module JZRLB" :class="item.isDefault?'active':''">
     <div class="row-box-1">
-      <span class="name">{{item.Name}}</span>
+      <span class="name">{{item.name}}</span>
       <!--<span class="tag">自费</span>-->
       <div class="right">
         <label class="label">电子就诊卡</label>
-        <span class="card">卡号：{{item.mCardNo}}</span>
+        <span class="card">卡号：{{item.patientCardNo}}</span>
       </div>
     </div>
     <div class="row-box-2">

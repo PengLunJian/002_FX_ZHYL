@@ -6,13 +6,13 @@
     <div class="body">
       <mescroll-vue ref="mescroll" :down="down" :up="up" @init="init">
         <swipeout>
-          <div class="module" v-for="(item,index) in dataList" :key="index">
+          <div class="module" v-for="(item,index) in LIST" :key="index">
             <swipeout-item>
               <div slot="right-menu">
-                <swipeout-button @click.native="ajaxRequestDeleteUnbind(item.Id)"
+                <swipeout-button @click.native="ajaxRequestDeleteVisitor(item.patientCardNo)"
                                  background-color="#e7463f">解绑
                 </swipeout-button>
-                <swipeout-button @click.native="ajaxRequestUpdateDefault(item.Id)"
+                <swipeout-button @click.native="ajaxRequestUpdateVisitor(item.patientCardNo)"
                                  background-color="#ed7f2d">设为默认
                 </swipeout-button>
               </div>
@@ -53,7 +53,7 @@
         mescroll: null,
         lock: '设为默认',
         unlock: '解绑',
-        dataList: [],
+        dataList: this.VISITOR_LIST || [],
         up: {
           auto: false,
           isBounce: false,
@@ -78,7 +78,15 @@
     methods: Controller,
     mounted() {
       this.pageCode = 1;
-      this.ajaxRequestAllCards();
+      this.ajaxRequestSelectVisitor();
+    },
+    computed: {
+      LIST() {
+        return this.$store.state.VISITOR_LIST.LIST;
+      },
+      CARD_NO() {
+        return this.$store.state.DEFAULT_CARD.CARD_NO;
+      }
     },
     watch: {
       $route(to, from) {

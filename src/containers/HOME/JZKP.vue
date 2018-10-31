@@ -48,7 +48,7 @@
     },
     methods: Controller,
     computed: {
-      DEFAULT_CARD: function () {
+      DEFAULT_CARD() {
         return this.$store.state.DEFAULT_CARD;
       }
     }

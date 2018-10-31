@@ -5,9 +5,9 @@
         <img src="../../assets/images/doctor@2x.png"/>
       </div>
       <div class="row-box-2">
-        <em class="name">杨永信</em>
+        <em class="name">{{DEFAULT_CARD.NAME}}</em>
         <span class="span">当前就诊卡</span>
-        <span class="span">卡号：36************99</span>
+        <span class="span">卡号：{{DEFAULT_CARD.CARD_NO}}</span>
       </div>
       <div class="row-box-3">
         <router-link :to="this.$routes.HZLB.path">
@@ -60,13 +60,6 @@
           <i class="link-icon icon-next"></i>
         </div>
       </router-link>
-      <!--<router-link :to="this.$routes.DCLB.path">-->
-      <!--<div class="link-item btn">-->
-      <!--<i class="link-icon icon-print"></i>-->
-      <!--<span class="link-text">发票打印</span>-->
-      <!--<i class="link-icon icon-next"></i>-->
-      <!--</div>-->
-      <!--</router-link>-->
       <router-link :to="this.$routes.JKDA.path">
         <div class="link-item btn">
           <i class="link-icon icon-file"></i>
@@ -82,12 +75,26 @@
   import Controller from './Controller';
 
   export default {
-    components: {},
-    name: '',
+    name: 'GRZX',
     data() {
       return {};
     },
-    methods: Controller
+    created() {
+      if (this.DEFAULT_CARD.ID) {
+        this.isLoading = true;
+        return;
+      }
+      this.$vux.loading.show({
+        text: '加载中...'
+      });
+      this.ajaxRequestDefaultCard();
+    },
+    methods: Controller,
+    computed: {
+      DEFAULT_CARD() {
+        return this.$store.state.DEFAULT_CARD;
+      }
+    }
   };
 </script>
 
@@ -97,17 +104,17 @@
   .FX_ZHYL_GRZX {
     background-color: @bgColor;
     .DYMK {
+      height: 1.11rem;
+      overflow: hidden;
       position: relative;
-      min-height: 1.05rem;
-      padding: 0.15rem 1rem;
+      padding: 0.15rem 1rem 0.15rem 0.9rem;
       .row-box-1 {
         position: absolute;
         top: 0;
         left: 0;
-        width: 1rem;
         height: 100%;
         font-size: 0;
-        text-align: right;
+        padding-left: 0.15rem;
         img {
           width: 0.75rem;
           height: 0.75rem;
@@ -130,18 +137,18 @@
         }
         .span {
           display: block;
-          color: @fontColor;
           line-height: 0.2rem;
+          font-size: 0.12rem;
+          color: @fontColor;
         }
       }
       .row-box-3 {
-        width: 1rem;
         position: absolute;
         top: 0;
         right: 0;
         height: 100%;
-        text-align: left;
         font-size: 0;
+        padding-right: 0.15rem;
         .btn-manager {
           padding: 0 0.1rem;
           line-height: 0.3rem;

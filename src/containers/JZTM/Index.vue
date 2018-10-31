@@ -26,7 +26,7 @@
       };
     },
     created() {
-      if (this.DEFAULT_CARD.ID) {
+      if (this.DEFAULT_CARD.CARD_NO) {
         this.isLoading = true;
         return;
       }

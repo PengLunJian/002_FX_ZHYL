@@ -1,4 +1,7 @@
 import apis from '../../apis/index';
+import {
+  updateDefaultCardFun
+} from '../../vuex/actions';
 
 const controller = {
   addVisitor() {
@@ -34,10 +37,7 @@ const controller = {
         this.$vux.loading.hide();
         const {data} = res;
         if (data && typeof data === 'object') {
-          this.$store.dispatch({
-            type: 'updateDefaultCard',
-            data: data
-          });
+          this.$store.dispatch(updateDefaultCardFun(data));
           this.isSelect = true;
         }
       })

@@ -1,5 +1,11 @@
+import apis from '../../apis';
+import {
+  updateDefaultCardFun,
+  insertVisitorListFun
+} from '../../vuex/actions';
+
 const controllers = {
-  showMenus: function (type) {
+  showMenus(type) {
     this.type = type;
     this.popupPicker.show = true;
     if (type === '性别') {
@@ -14,42 +20,83 @@ const controllers = {
         '俄罗斯族', '鄂温克族', '德昂族', '保安族', '裕固族', '京族', '塔塔尔族', '独龙族',
         '鄂伦春族', '赫哲族', '门巴族', '珞巴族', '基诺族'
       ]];
+    } else if (type === '关系') {
+      this.popupPicker.data = [[
+        '本人', '夫妻', '子女（就诊人是我的子女）',
+        '父母（就诊人是我的父母）', '亲属'
+      ]];
     }
   },
-  handlerChange: function (value) {
-    if (this.type === '性别') {
-      this.gender = value[0];
-    } else if (this.type === '民族') {
-      this.nation = value[0];
-    }
-  },
-  checkNotEmpty: function () {
+  checkNotEmpty() {
     this.phone = this.phone ? this.phone : '请输入';
     if (this.name && this.number &&
-      this.gender && this.nation) {
+      this.gender && this.nation &&
+      this.phone && this.relation &&
+      this.gender !== '请选择' &&
+      this.nation !== '请选择' &&
+      this.phone !== '请输入' &&
+      this.relation !== '请选择') {
       this.status = '';
     } else {
       this.status = 'disabled';
     }
   },
-  showKeyBoard: function (type) {
+  showKeyBoard(type) {
     this.isShow = true;
     this.TYPE = type;
     if (this.TYPE === 'phone') {
       this.initValue = this.phone === '请输入' ? '' : this.phone;
     }
   },
-  writeNumber: function (value) {
+  writeNumber(value) {
     if (this.TYPE === 'phone') {
       this.phone = value;
     }
   },
-  handlerBtnClick: function () {
-    if (!this.status) {
-      this.$router.push({
-        path: this.$routes.SFYZ.path
-      });
+  handlerChange(value) {
+    if (this.type === '性别') {
+      this.gender = value[0];
+    } else if (this.type === '民族') {
+      this.nation = value[0];
+    } else if (this.type === '关系') {
+      this.relation = value[0];
     }
+  },
+  handlerBtnClick() {
+    if (!this.status) {
+      const data = {
+        name: this.name,
+        idCardNo: this.number,
+        sex: this.gender,
+        nation: this.nation,
+        releation: this.relation,
+        phone: this.phone
+      };
+      this.ajaxRequestInsertVisitor(data);
+    }
+  },
+  clearFormData() {
+    this.name = '';
+    this.number = '';
+    this.phone = '请输入';
+    this.gender = '请选择';
+    this.nation = '请选择';
+    this.relation = '请选择';
+  },
+  ajaxRequestInsertVisitor(data) {
+    this.$axios.post(apis.insertBindCard, data)
+      .then((res) => {
+        const {data} = res;
+        this.clearFormData();
+        this.$store.dispatch(insertVisitorListFun(data));
+        this.$store.dispatch(updateDefaultCardFun(data));
+        this.$vux.toast.show({
+          text: '绑卡成功'
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 };
 
