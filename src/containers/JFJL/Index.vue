@@ -1,27 +1,33 @@
 <template>
   <div class="FX_ZHYL_JFJL">
-    <tab-slider :tabs="tabs" :tabIndex="tabIndex" @tabChange="tabChange">
-      <keep-alive>
-        <component :is="currentComponent"></component>
-      </keep-alive>
-    </tab-slider>
+    <!--<tab-slider :tabs="tabs" :tabIndex="tabIndex" @tabChange="tabChange">-->
+    <!--<keep-alive>-->
+    <!--<component :is="currentComponent"></component>-->
+    <!--</keep-alive>-->
+    <!--</tab-slider>-->
+    <tab-bar :tabs="tabs"></tab-bar>
+    <tab-content></tab-content>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import Controller from './Controller';
-  import TabContentOne from './TabContentOne.vue';
-  import TabContentTwo from './TabContentTwo.vue';
+  import TabContentOne from './TabContentOne';
+  import TabContentTwo from './TabContentTwo';
   import TabSlider from '../../components/TabSlider';
-  import MescrollVue from 'mescroll.js/mescroll.vue';
-  export default{
+  import TabBar from '../../components/TabBar';
+  import TabContent from './TabContent';
+
+  export default {
     components: {
+      TabContent,
+      TabBar,
       TabSlider,
       'TabContentOne': TabContentOne,
       'TabContentTwo': TabContentTwo
     },
     name: '',
-    data () {
+    data() {
       return {
         tabIndex: 0,
         currentComponent: 'TabContentOne',
@@ -38,7 +44,8 @@
       };
     },
     methods: Controller,
-    mounted () {}
+    mounted() {
+    }
   };
 </script>
 
@@ -46,9 +53,12 @@
   @import "../../assets/less/variable";
 
   .FX_ZHYL_JFJL {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding-top: 0.46rem;
     background-color: @bgColor;
-    .tab-bar {
-      margin-bottom: 0.1rem;
-    }
   }
 </style>

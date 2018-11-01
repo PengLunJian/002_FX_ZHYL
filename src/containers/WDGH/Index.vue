@@ -47,14 +47,13 @@
     },
     created() {
       if (!this.isLoading) {
-        this.$vux.loading.show({
-          text: '加载中...'
-        });
+        this.$vux.loading.show({text: '加载中...'});
         this.ajaxRequestRegisterList();
       }
     },
     methods: Controller,
-    mounted() {},
+    mounted() {
+    },
     computed: mapState({
       items: state => state.REGISTER_LIST.list,
       isLoading: state => state.REGISTER_LIST.isLoading

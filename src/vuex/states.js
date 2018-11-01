@@ -19,8 +19,10 @@ const states = {
   },
   PAYMENT_RECORD: {
     isLoading: false,
-    isPayList1: [],
-    isPayList2: []
+    data: [
+      {list: []},
+      {list: []}
+    ]
   }
 };
 
