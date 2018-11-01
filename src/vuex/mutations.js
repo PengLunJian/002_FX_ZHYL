@@ -19,6 +19,20 @@ const mutations = {
   },
   SELECT_VISITOR_LIST(state, data) {
     state.VISITOR_LIST.LIST = data;
+  },
+  CLEAR_REGISTER_LIST(state, data) {
+    state.REGISTER_LIST.list = data;
+  },
+  SELECT_REGISTER_LIST(state, data) {
+    state.REGISTER_LIST.list = data;
+    state.REGISTER_LIST.isLoading = true;
+  },
+  CLEAR_SUBSCRIBE_LIST(state, data) {
+    state.SUBSCRIBE_LIST.list = data;
+  },
+  SELECT_SUBSCRIBE_LIST(state, data) {
+    state.SUBSCRIBE_LIST.list = data;
+    state.SUBSCRIBE_LIST.isLoading = true;
   }
 };
 

@@ -1,7 +1,7 @@
 const controllers = {
   tabChange: function (index) {
     this.tabIndex = index;
-    this.currentComponent = this.items[index].component;
+    this.currentComponent = this.tabs[index].component;
   }
 };
 

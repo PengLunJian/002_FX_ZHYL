@@ -1,49 +1,42 @@
 import apis from '../../apis';
+import {
+  clearSubscribeListFun,
+  selectSubscribeListFun
+} from '../../vuex/actions';
 
 const controller = {
-  ajaxTemp: function () {
-    const hasNext = !(this.dataList.length > 30);
-    if (hasNext) {
-      this.dataList = this.dataList.concat(this.items);
-    }
-    this.mescroll.endSuccess(10, hasNext);
+  init(mescroll) {
+    this.mescroll = mescroll;
   },
-  ajaxWDYY: function (pageCode) {
-    const params = {pageCode: pageCode};
-    this.$axios(apis.wdyy, params)
-      .then((response) => {
-        let {data} = response;
-        if (!data.length && pageCode === 1) {
-          this.isShow = true;
-          return;
-        }
-        data = this.dataList.length > 10 ? [] : data;
-        this.dataList = this.dataList.concat(data);
-        const hasNext = data.length > 0;
-        this.pageCode = hasNext ? (this.pageCode + 1) : this.pageCode;
+  refresh() {
+    if (this.timer) clearInterval(this.timer);
+    this.timer = setTimeout(() => {
+      this.pageCode = 1;
+      this.ajaxRequestSubscribeList();
+    }, 500);
+  },
+  infinite() {
+    if (this.timer) clearInterval(this.timer);
+    this.timer = setTimeout(() => {
+      this.pageCode++;
+      this.ajaxRequestSubscribeList();
+    }, 500);
+  },
+  ajaxRequestSubscribeList() {
+    this.$axios.post(apis.selectSubscribeList,
+      {pageIndex: this.pageCode})
+      .then((res) => {
+        this.$vux.loading.hide();
+        this.$store.dispatch(clearSubscribeListFun(this.pageCode));
+        const data = res.data;
+        const hasNext = data.length ? true : false;
+        this.$store.dispatch(selectSubscribeListFun(data));
         this.mescroll.endSuccess(10, hasNext);
       })
-      .catch((error) => {
-        console.log(error);
+      .catch((err) => {
+        this.$vux.loading.hide();
+        console.log(err);
       });
-  },
-  infinite: function () {
-    if (this.timer) clearInterval(this.timer);
-    this.timer = setTimeout(() => {
-      this.ajaxTemp();
-    }, 1000);
-    console.log('infinite');
-  },
-  refresh: function () {
-    if (this.timer) clearInterval(this.timer);
-    this.timer = setTimeout(() => {
-      // this.dataList = [];
-      // this.pageCode = 1;
-      this.ajaxTemp();
-    }, 1000);
-  },
-  init: function (mescroll) {
-    this.mescroll = mescroll;
   }
 };
 

@@ -59,6 +59,28 @@ const apis = {
     params: {
       value: ''
     }
+  },
+  selectRegisterList: {
+    url: '/WenRongBusiness/v1/personal/regist/regist',
+    params: {
+      pageIndex: 1,
+      pageSize: 10
+    }
+  },
+  selectSubscribeList: {
+    url: '/WenRongBusiness/v1/personal/appoint/regist',
+    params: {
+      pageIndex: 1,
+      pageSize: 10
+    }
+  },
+  selectPaymentRecord: {
+    url: '/WenRongBusiness/v1/personal/pay/record',
+    params: {
+      payStatus: 0,
+      pageIndex: 1,
+      pageSize: 10
+    }
   }
 };
 

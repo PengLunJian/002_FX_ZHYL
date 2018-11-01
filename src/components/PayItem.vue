@@ -25,7 +25,7 @@
       </div>
     </div>
     <div class="row-box-3">
-      <button class="btn btn-detail" v-waves.block>查看详情</button>
+      <button class="btn btn-detail">查看详情</button>
     </div>
   </div>
 </template>

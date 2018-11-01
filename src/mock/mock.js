@@ -1,4 +1,8 @@
 import Mock from 'mockjs';
+import {
+  dateFormat,
+  pagination
+} from '../utils';
 
 Mock.setup({
   timeout: 1000
@@ -40,8 +44,55 @@ const data3 = {
   }
 };
 
+const data4 = (size) => {
+  const data = [];
+  for (let i = 0; i < size; i++) {
+    const tag = (i + 1) > 9 ? '' + (i + 1) : '0' + (i + 1);
+    data.push({
+      idCardName: 'PENG' + tag,
+      idCardNo: '342523199007244618',
+      deptName: '眼科中心',
+      date: dateFormat(new Date(), 'yyyy/mm/dd hh:mm'),
+      isPay: parseInt(Math.random() * 100) % 2
+    });
+  }
+  return {data: data};
+};
+
+const data5 = (size) => {
+  const data = [];
+  for (let i = 0; i < size; i++) {
+    const tag = (i + 1) > 9 ? '' + (i + 1) : '0' + (i + 1);
+    data.push({
+      doctorName: '杨永信',
+      doctorTitle: '雷神.艾尼路',
+      idCardName: 'PENG' + tag,
+      idCardNo: '342523199007244618',
+      deptName: '一百万伏电击科',
+      date: dateFormat(new Date(), 'yyyy/mm/dd hh:mm'),
+      isPay: parseInt(Math.random() * 100) % 2
+    });
+  }
+  return {data: data};
+};
+
 Mock.mock('/PatientCard/v1/patientCard/getDefaultCardDetail', 'post', data1);
 Mock.mock('/PatientCard/v1/patientCard/getCardList', 'post', data2);
 Mock.mock('/PatientCard/v1/patientCard/unbind', 'post', data3);
 Mock.mock('/PatientCard/v1/patientCard/setDefault', 'post', data3);
 Mock.mock('/PatientCard/v1/patientCard/bind', 'post', data3);
+Mock.mock('/WenRongBusiness/v1/personal/regist/regist', 'post', function (request) {
+  const data = JSON.parse(request.body);
+  const pageCode = parseInt(data['pageIndex']);
+  const pageSize = parseInt(data['pageSize']);
+  return pagination(data4(15), pageCode, pageSize);
+});
+Mock.mock('/WenRongBusiness/v1/personal/appoint/regist', 'post', function (request) {
+  const data = JSON.parse(request.body);
+  const pageCode = parseInt(data['pageIndex']);
+  const pageSize = parseInt(data['pageSize']);
+  return pagination(data5(20), pageCode, pageSize);
+});
+Mock.mock('/WenRongBusiness/v1/personal/pay/record', 'post', function (request) {
+  console.log(request);
+});

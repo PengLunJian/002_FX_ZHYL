@@ -4,15 +4,15 @@
                   :down="down"
                   :up="up"
                   @init="init">
-      <reg-item v-for="(item,index) in dataList"
-                :slotOut="item.slotOut"
+      <reg-item v-for="(item,index) in items"
+                :item="item"
                 :key="index"></reg-item>
     </mescroll-vue>
-    <no-data :isShow="isShow"></no-data>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import {mapState} from 'vuex';
   import Controller from './Controller';
   import RegItem from '../../components/RegItem';
   import NoData from '../../components/NoData';
@@ -27,9 +27,7 @@
     name: 'WDGH',
     data() {
       return {
-        items: [{}, {}, {}, {}, {}, {}, {}, {}, {}, {}],
-        dataList: [],
-        isShow: false,
+        pageCode: 1,
         mescroll: null,
         up: {
           auto: false,
@@ -38,7 +36,7 @@
           htmlNodata: '<p class="upwarp-nodata">没有更多数据</p>'
         },
         down: {
-          auto: true,
+          auto: false,
           offset: 50,
           mustToTop: true,
           outOffsetRate: 0.3,
@@ -47,9 +45,26 @@
         }
       };
     },
+    created() {
+      if (!this.isLoading) {
+        this.$vux.loading.show({
+          text: '加载中...'
+        });
+        this.ajaxRequestRegisterList();
+      }
+    },
     methods: Controller,
-    mounted() {
-      this.pageCode = 1;
+    mounted() {},
+    computed: mapState({
+      items: state => state.REGISTER_LIST.list,
+      isLoading: state => state.REGISTER_LIST.isLoading
+    }),
+    watch: {
+      $route(to, from) {
+        if (from.name === 'WDGH') {
+          this.mescroll.setBounce(true);
+        }
+      }
     }
   };
 </script>

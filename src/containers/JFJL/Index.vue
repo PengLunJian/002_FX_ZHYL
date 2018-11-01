@@ -1,6 +1,6 @@
 <template>
   <div class="FX_ZHYL_JFJL">
-    <tab-slider :items="items" :tabIndex="tabIndex" @tabChange="tabChange">
+    <tab-slider :tabs="tabs" :tabIndex="tabIndex" @tabChange="tabChange">
       <keep-alive>
         <component :is="currentComponent"></component>
       </keep-alive>
@@ -13,6 +13,7 @@
   import TabContentOne from './TabContentOne.vue';
   import TabContentTwo from './TabContentTwo.vue';
   import TabSlider from '../../components/TabSlider';
+  import MescrollVue from 'mescroll.js/mescroll.vue';
   export default{
     components: {
       TabSlider,
@@ -24,7 +25,7 @@
       return {
         tabIndex: 0,
         currentComponent: 'TabContentOne',
-        items: [
+        tabs: [
           {
             name: '已支付',
             component: 'TabContentOne'

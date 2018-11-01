@@ -36,6 +36,30 @@ export const selectVisitorListFun = (data) => {
     data: data
   };
 };
+export const clearRegisterListFun = (data) => {
+  return {
+    type: 'clearRegisterList',
+    data: data
+  };
+};
+export const selectRegisterListFun = (data) => {
+  return {
+    type: 'selectRegisterList',
+    data: data
+  };
+};
+export const clearSubscribeListFun = (data) => {
+  return {
+    type: 'clearSubscribeList',
+    data: data
+  };
+};
+export const selectSubscribeListFun = (data) => {
+  return {
+    type: 'selectSubscribeList',
+    data: data
+  };
+};
 
 const actions = {
   updateDefaultCard({commit}, {data}) {
@@ -75,11 +99,35 @@ const actions = {
     commit(ACTION_TYPES.UPDATE_VISITOR_LIST, LIST);
   },
   selectVisitorList({commit, state}, {data}) {
-    if (!data) return;
+    if (!data || !data.length) return;
     const {VISITOR_LIST} = state;
     const {LIST} = VISITOR_LIST;
     const newData = LIST.concat(data);
     commit(ACTION_TYPES.SELECT_VISITOR_LIST, newData);
+  },
+  clearRegisterList({commit, state}, {data}) {
+    if (data === 1) {
+      commit(ACTION_TYPES.CLEAR_REGISTER_LIST, []);
+    }
+  },
+  selectRegisterList({commit, state}, {data}) {
+    if (!data || !data.length) return;
+    const {REGISTER_LIST} = state;
+    const {list} = REGISTER_LIST;
+    const newData = list.concat(data);
+    commit(ACTION_TYPES.SELECT_REGISTER_LIST, newData);
+  },
+  clearSubscribeList({commit, state}, {data}) {
+    if (data === 1) {
+      commit(ACTION_TYPES.CLEAR_SUBSCRIBE_LIST, []);
+    }
+  },
+  selectSubscribeList({commit, state}, {data}) {
+    if (!data || !data.length) return;
+    const {SUBSCRIBE_LIST} = state;
+    const {list} = SUBSCRIBE_LIST;
+    const newData = list.concat(data);
+    commit(ACTION_TYPES.SELECT_SUBSCRIBE_LIST, newData);
   }
 };
 

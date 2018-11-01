@@ -1,11 +1,10 @@
 <template>
   <div class="tab-slider">
     <div class="tab-bar">
-      <div class="tab-item waves-effect waves-block"
-           v-for="(item , index) in this.items"
+      <div class="tab-item btn"
+           v-for="(item , index) in this.tabs"
            :class="tabIndex===index?'active':''"
-           @click="tabChange(index)" :key="index"
-           v-waves.block>
+           @click="tabChange(index)" :key="index">
         <span>{{item.name}}</span>
       </div>
       <div class="border" :style="borderStyle"></div>
@@ -19,28 +18,28 @@
 </template>
 
 <script type="text/ecmascript-6">
-  export default{
+  export default {
     name: 'TabSlider',
-    props: ['items', 'tabIndex'],
-    data () {
+    props: ['tabs', 'tabIndex'],
+    data() {
       return {
         borderStyle: '',
         transitionName: 'slide-left'
       };
     },
     methods: {
-      tabChange (index) {
+      tabChange(index) {
         this.setBorderStyle(index);
         this.$emit('tabChange', index);
       },
-      setBorderStyle (index) {
+      setBorderStyle(index) {
         const value = 100 * index;
-        const width = 100 / this.items.length;
+        const width = 100 / this.tabs.length;
         this.borderStyle = 'width:' + width + '%;' +
           'transform:translateX(' + value + '%);';
       }
     },
-    mounted () {
+    mounted() {
       this.setBorderStyle(this.tabIndex);
     },
     watch: {
@@ -56,10 +55,15 @@
 
   .tab-slider {
     position: relative;
+    padding-top: 0.46rem;
     .tab-bar {
       height: auto;
       display: flex;
-      position: relative;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      width: 100%;
       text-align: center;
       background-color: @white;
       border-bottom: 1px solid @borderColor;

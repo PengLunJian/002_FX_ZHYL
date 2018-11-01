@@ -1,28 +1,28 @@
 <template>
-  <div class="module YYMK" :class="slotOut?'slot-out':''">
+  <div class="module YYMK">
     <div class="row-box-1">
-      <h3 class="name">何晗栩<span class="span">(正主任医师)</span></h3>
+      <h3 class="name">{{item.doctorName}}<span class="span">({{item.doctorTitle}})</span></h3>
       <div class="date">
         <label class="label">提交时间：</label>
-        <span class="span">2018/09/08 09:36</span>
+        <span class="span">{{item.date}}</span>
       </div>
     </div>
     <div class="row-box-2">
       <div class="group">
         <label class="label">就诊人：</label>
-        <span class="span">胡代宇</span>
+        <span class="span">{{item.idCardName}}</span>
       </div>
       <div class="group">
         <label class="label">就诊人卡号：</label>
-        <span class="span">36************99</span>
+        <span class="span">{{item.idCardNo}}</span>
       </div>
       <div class="group">
         <label class="label">就诊科室：</label>
-        <span class="span">眼科中心</span>
+        <span class="span">{{item.deptName}}</span>
       </div>
       <div class="group">
         <label class="label">支付状况：</label>
-        <span class="span">待支付</span>
+        <span class="span">{{item.isPay?'已支付':'待支付'}}</span>
       </div>
     </div>
     <div class="row-box-3">
@@ -34,7 +34,7 @@
 <script type="text/ecmascript-6">
   export default {
     name: 'SubItem',
-    props: ['slotOut'],
+    props: ['item'],
     data() {
       return {};
     },

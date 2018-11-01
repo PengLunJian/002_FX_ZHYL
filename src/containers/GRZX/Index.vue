@@ -80,7 +80,7 @@
       return {};
     },
     created() {
-      if (this.DEFAULT_CARD.ID) {
+      if (this.DEFAULT_CARD.name) {
         this.isLoading = true;
         return;
       }

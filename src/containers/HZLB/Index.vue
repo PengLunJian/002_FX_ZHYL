@@ -51,9 +51,6 @@
     data() {
       return {
         mescroll: null,
-        lock: '设为默认',
-        unlock: '解绑',
-        dataList: this.VISITOR_LIST || [],
         up: {
           auto: false,
           isBounce: false,
