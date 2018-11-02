@@ -1,4 +1,5 @@
 import Mock from 'mockjs';
+import apis from '../apis';
 import {
   dateFormat,
   pagination
@@ -76,6 +77,23 @@ const data5 = (size) => {
   return {data: data};
 };
 
+const data6 = (size) => {
+  const data = [];
+  for (let i = 0; i < size; i++) {
+    const tag = (i + 1) > 9 ? '' + (i + 1) : '0' + (i + 1);
+    data.push({
+      doctorName: '杨永信',
+      doctorTitle: '雷神.艾尼路',
+      idCardName: 'PENG' + tag,
+      idCardNo: '342523199007244618',
+      deptName: '一百万伏电击科',
+      date: dateFormat(new Date(), 'yyyy/mm/dd hh:mm'),
+      isPay: parseInt(Math.random() * 100) % 2
+    });
+  }
+  return {data: data};
+};
+
 Mock.mock('/PatientCard/v1/patientCard/getDefaultCardDetail', 'post', data1);
 Mock.mock('/PatientCard/v1/patientCard/getCardList', 'post', data2);
 Mock.mock('/PatientCard/v1/patientCard/unbind', 'post', data3);
@@ -93,6 +111,12 @@ Mock.mock('/WenRongBusiness/v1/personal/appoint/regist', 'post', function (reque
   const pageSize = parseInt(data['pageSize']);
   return pagination(data5(20), pageCode, pageSize);
 });
-Mock.mock('/WenRongBusiness/v1/personal/pay/record', 'post', function (request) {
+Mock.mock(apis.selectPaymentRecord.url, 'post', function (request) {
   console.log(request);
+  const data = JSON.parse(request.body);
+  const payStatus = parseInt(data['payStatus']);
+  const pageCode = parseInt(data['pageIndex']);
+  const pageSize = parseInt(data['pageSize']);
+  const size = payStatus ? 11 : 15;
+  return pagination(data6(size), pageCode, pageSize);
 });

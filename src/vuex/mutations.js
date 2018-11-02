@@ -33,6 +33,14 @@ const mutations = {
   SELECT_SUBSCRIBE_LIST(state, data) {
     state.SUBSCRIBE_LIST.list = data;
     state.SUBSCRIBE_LIST.isLoading = true;
+  },
+  CLEAR_PAYMENT_RECORDS(state, data) {
+    state.PAYMENT_RECORD.data[data].list = [];
+  },
+  SELECT_PAYMENT_RECORDS(state, data) {
+    const {list, payStatus} = data;
+    state.PAYMENT_RECORD.data[payStatus].list = list;
+    state.PAYMENT_RECORD.data[payStatus].isLoading = true;
   }
 };
 

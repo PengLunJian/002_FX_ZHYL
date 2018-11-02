@@ -1,45 +1,27 @@
 <template>
   <div class="FX_ZHYL_JFJL">
-    <!--<tab-slider :tabs="tabs" :tabIndex="tabIndex" @tabChange="tabChange">-->
-    <!--<keep-alive>-->
-    <!--<component :is="currentComponent"></component>-->
-    <!--</keep-alive>-->
-    <!--</tab-slider>-->
-    <tab-bar :tabs="tabs"></tab-bar>
-    <tab-content></tab-content>
+    <tab-bar :tabs="tabs" :tabIndex.sync="tabIndex"></tab-bar>
+    <tab-content :tabIndex.sync="tabIndex"></tab-content>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import Controller from './Controller';
-  import TabContentOne from './TabContentOne';
-  import TabContentTwo from './TabContentTwo';
-  import TabSlider from '../../components/TabSlider';
   import TabBar from '../../components/TabBar';
   import TabContent from './TabContent';
 
   export default {
     components: {
-      TabContent,
       TabBar,
-      TabSlider,
-      'TabContentOne': TabContentOne,
-      'TabContentTwo': TabContentTwo
+      TabContent
     },
-    name: '',
+    name: 'JFJL',
     data() {
       return {
         tabIndex: 0,
-        currentComponent: 'TabContentOne',
         tabs: [
-          {
-            name: '已支付',
-            component: 'TabContentOne'
-          },
-          {
-            name: '未支付',
-            component: 'TabContentTwo'
-          }
+          {name: '已支付'},
+          {name: '未支付'}
         ]
       };
     },
@@ -53,7 +35,7 @@
   @import "../../assets/less/variable";
 
   .FX_ZHYL_JFJL {
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     width: 100%;

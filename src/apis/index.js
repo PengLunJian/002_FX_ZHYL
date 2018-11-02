@@ -1,5 +1,5 @@
 const apis = {
-  baseUrl: 'http://192.168.1.5:8080',
+  // baseUrl: 'http://192.168.1.5:8080',
   default: {
     method: 'POST',
     timeout: 20000,

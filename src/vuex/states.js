@@ -18,10 +18,15 @@ const states = {
     list: []
   },
   PAYMENT_RECORD: {
-    isLoading: false,
     data: [
-      {list: []},
-      {list: []}
+      {
+        isLoading: false,
+        list: []
+      },
+      {
+        isLoading: false,
+        list: []
+      }
     ]
   }
 };

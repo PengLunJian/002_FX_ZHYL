@@ -60,6 +60,18 @@ export const selectSubscribeListFun = (data) => {
     data: data
   };
 };
+export const clearPaymentRecordsFun = (data) => {
+  return {
+    type: 'clearPaymentRecords',
+    data: data
+  };
+};
+export const selectPaymentRecordsFun = (data) => {
+  return {
+    type: 'selectPaymentRecords',
+    data: data
+  };
+};
 
 const actions = {
   updateDefaultCard({commit}, {data}) {
@@ -128,6 +140,21 @@ const actions = {
     const {list} = SUBSCRIBE_LIST;
     const newData = list.concat(data);
     commit(ACTION_TYPES.SELECT_SUBSCRIBE_LIST, newData);
+  },
+  clearPaymentRecords({commit, state}, {data}) {
+    const {payStatus, pageCode} = data;
+    if (pageCode === 1) {
+      commit(ACTION_TYPES.CLEAR_PAYMENT_RECORDS, payStatus);
+    }
+  },
+  selectPaymentRecords({commit, state}, {data}) {
+    const {list, payStatus} = data;
+    if (!list || !list.length) return;
+    const {PAYMENT_RECORD} = state;
+    const oldData = PAYMENT_RECORD.data[payStatus].list;
+    const newData = oldData.concat(list);
+    const params = {list: newData, payStatus: payStatus};
+    commit(ACTION_TYPES.SELECT_PAYMENT_RECORDS, params);
   }
 };
 

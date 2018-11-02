@@ -17,7 +17,7 @@
       </div>
       <div class="group">
         <label class="label">缴费对象：</label>
-        <span class="span">芜湖市第二人民第二医院</span>
+        <span class="span">{{item.idCardName}}</span>
       </div>
       <div class="group">
         <label class="label">就诊说明：</label>
@@ -31,11 +31,12 @@
 </template>
 
 <script type="text/ecmascript-6">
-  export default{
+  export default {
     name: 'PayItem',
-    data () {
+    data() {
       return {};
-    }
+    },
+    props: ['item']
   };
 </script>
 

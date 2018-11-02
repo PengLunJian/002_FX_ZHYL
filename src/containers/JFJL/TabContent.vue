@@ -1,36 +1,42 @@
 <template>
   <div class="tab-content">
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <tab-content-one></tab-content-one>
-        </div>
-        <div class="swiper-slide">
-          <tab-content-two></tab-content-two>
+    <mescroll-vue ref="mescroll" :down="down" :up="up" @init="init">
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <pay-item v-for="(item,index) in items1"
+                      :key="index"
+                      :item="item"></pay-item>
+          </div>
+          <div class="swiper-slide">
+            <pay-item v-for="(item,index) in items2"
+                      :key="index"
+                      :item="item"></pay-item>
+          </div>
         </div>
       </div>
-    </div>
+    </mescroll-vue>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import 'swiper/dist/css/swiper.min.css';
-  import Swiper from 'swiper';
+  import {mapState} from 'vuex';
   import MescrollVue from 'mescroll.js/mescroll.vue';
+  import Swiper from 'swiper';
+  import 'swiper/dist/css/swiper.min.css';
   import Controller from './Controller';
-  import TabContentOne from './TabContentOne';
-  import TabContentTwo from './TabContentTwo';
+  import PayItem from '../../components/PayItem';
 
   export default {
     name: 'tab-content',
     components: {
-      TabContentTwo,
-      TabContentOne,
+      PayItem,
       MescrollVue
     },
     data() {
       return {
         pageCode: 1,
+        swiper: null,
         mescroll: null,
         up: {
           auto: false,
@@ -48,16 +54,53 @@
         }
       };
     },
+    created() {
+      if (!this.isLoading1) {
+        this.$vux.loading.show({
+          text: '加载中...'
+        });
+        this.ajaxRequestPaymentRecords();
+      }
+    },
+    props: ['tabIndex'],
     methods: Controller,
     mounted() {
-      /* eslint-disable no-new */
-      new Swiper('.swiper-container');
+      window.onload = () => {
+        /* eslint-disable no-new */
+        const _this = this;
+        this.swiper = new Swiper('.swiper-container', {
+          autoHeight: true,
+          on: {
+            slideChangeTransitionStart() {
+              const index = this.activeIndex;
+              _this.$emit('update:tabIndex', index);
+            }
+          }
+        });
+      };
+    },
+    computed: mapState({
+      items1: state => state.PAYMENT_RECORD.data[0].list,
+      items2: state => state.PAYMENT_RECORD.data[1].list,
+      isLoading1: state => state.PAYMENT_RECORD.data[0].isLoading,
+      isLoading2: state => state.PAYMENT_RECORD.data[1].isLoading
+    }),
+    watch: {
+      tabIndex() {
+        this.swiper.slideTo(this.tabIndex, 600, true);
+        if (!this.isLoading2) {
+          this.pageCode = 1;
+          this.$vux.loading.show({
+            text: '加载中...'
+          });
+          this.ajaxRequestPaymentRecords();
+        }
+      }
     }
   };
 </script>
 
 <style scoped lang="less">
-  @import "../../assets/less/variable";
 
   .tab-content {
     position: fixed;
@@ -65,9 +108,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    overflow: auto;
+    overflow-y: auto;
     padding-top: 0.46rem;
-    -webkit-overflow-scrolling: touch;
-    background-color: @white;
   }
 </style>
