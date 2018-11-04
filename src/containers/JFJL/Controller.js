@@ -1,10 +1,26 @@
 import apis from '../../apis';
+import Swiper from 'swiper';
 import {
   clearPaymentRecordsFun,
   selectPaymentRecordsFun
 } from '../../vuex/actions';
 
 const controller = {
+  initSwiper() {
+    const _this = this;
+    if (!this.swiper) {
+      this.swiper = new Swiper('.swiper-container', {
+        autoHeight: true,
+        on: {
+          slideChangeTransitionStart() {
+            const index = this.activeIndex;
+            _this.$emit('update:tabIndex', index);
+          }
+        }
+      });
+    }
+    ;
+  },
   init(mescroll) {
     this.mescroll = mescroll;
   },

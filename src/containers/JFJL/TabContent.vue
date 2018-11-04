@@ -22,7 +22,6 @@
 <script type="text/ecmascript-6">
   import {mapState} from 'vuex';
   import MescrollVue from 'mescroll.js/mescroll.vue';
-  import Swiper from 'swiper';
   import 'swiper/dist/css/swiper.min.css';
   import Controller from './Controller';
   import PayItem from '../../components/PayItem';
@@ -66,17 +65,10 @@
     methods: Controller,
     mounted() {
       window.onload = () => {
+        // this.$nextTick(() => {
         /* eslint-disable no-new */
-        const _this = this;
-        this.swiper = new Swiper('.swiper-container', {
-          autoHeight: true,
-          on: {
-            slideChangeTransitionStart() {
-              const index = this.activeIndex;
-              _this.$emit('update:tabIndex', index);
-            }
-          }
-        });
+        this.initSwiper();
+        // });
       };
     },
     computed: mapState({
@@ -87,7 +79,10 @@
     }),
     watch: {
       tabIndex() {
+        this.initSwiper();
+        // if (this.swiper) {
         this.swiper.slideTo(this.tabIndex, 600, true);
+        // }
         if (!this.isLoading2) {
           this.pageCode = 1;
           this.$vux.loading.show({

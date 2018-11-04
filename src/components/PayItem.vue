@@ -6,7 +6,7 @@
         <span class="time">09月08号</span>
       </div>
       <div class="price">
-        <label class="label">20.00</label>
+        <label class="label">{{item.idCardName}}</label>
         <span class="unit">元</span>
       </div>
     </div>
