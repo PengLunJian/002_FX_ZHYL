@@ -20,10 +20,14 @@ const states = {
   PAYMENT_RECORD: {
     data: [
       {
+        pageCode: 1,
+        hasNext: true,
         isLoading: false,
         list: []
       },
       {
+        pageCode: 1,
+        hasNext: true,
         isLoading: false,
         list: []
       }

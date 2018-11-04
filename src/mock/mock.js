@@ -111,11 +111,11 @@ Mock.mock('/WenRongBusiness/v1/personal/appoint/regist', 'post', function (reque
   return pagination(data5(20), pageCode, pageSize);
 });
 Mock.mock(apis.selectPaymentRecord.url, 'post', function (request) {
-  console.log(request);
-  const data = JSON.parse(request.body);
-  const payStatus = parseInt(data['payStatus']);
-  const pageCode = parseInt(data['pageIndex']);
-  const pageSize = parseInt(data['pageSize']);
-  const size = payStatus ? 11 : 15;
-  return pagination(data6(size), pageCode, pageSize);
+  const params = JSON.parse(request.body);
+  const payStatus = parseInt(params['payStatus']);
+  const pageCode = parseInt(params['pageIndex']);
+  const pageSize = parseInt(params['pageSize']);
+  const size = payStatus ? 11 : 0;
+  const data = pagination(data6(size), pageCode, pageSize);
+  return data;
 });

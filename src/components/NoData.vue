@@ -1,5 +1,5 @@
 <template>
-  <div class="no-data" v-if="isShow">
+  <div class="no-data">
     <div class="content">
       <img src="../assets/images/no_data.png"/>
       <p class="text">暂无数据</p>
@@ -12,8 +12,7 @@
     name: 'no-data',
     data() {
       return {};
-    },
-    props: ['isShow']
+    }
   };
 </script>
 

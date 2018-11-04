@@ -4,11 +4,13 @@
       <div class="swiper-container">
         <div class="swiper-wrapper">
           <div class="swiper-slide">
+            <no-data v-if="isNoData1"></no-data>
             <pay-item v-for="(item,index) in items1"
                       :key="index"
                       :item="item"></pay-item>
           </div>
           <div class="swiper-slide">
+            <no-data v-if="isNoData2"></no-data>
             <pay-item v-for="(item,index) in items2"
                       :key="index"
                       :item="item"></pay-item>
@@ -25,18 +27,21 @@
   import 'swiper/dist/css/swiper.min.css';
   import Controller from './Controller';
   import PayItem from '../../components/PayItem';
+  import NoData from '../../components/NoData';
 
   export default {
     name: 'tab-content',
     components: {
+      NoData,
       PayItem,
       MescrollVue
     },
     data() {
       return {
-        pageCode: 1,
         swiper: null,
         mescroll: null,
+        isNoData1: false,
+        isNoData2: false,
         up: {
           auto: false,
           isBounce: false,
@@ -58,17 +63,14 @@
         this.$vux.loading.show({
           text: '加载中...'
         });
-        this.ajaxRequestPaymentRecords();
+        this.ajaxRequestPaymentRecords(1);
       }
     },
     props: ['tabIndex'],
     methods: Controller,
     mounted() {
       window.onload = () => {
-        // this.$nextTick(() => {
-        /* eslint-disable no-new */
         this.initSwiper();
-        // });
       };
     },
     computed: mapState({
@@ -80,15 +82,15 @@
     watch: {
       tabIndex() {
         this.initSwiper();
-        // if (this.swiper) {
+        const {PAYMENT_RECORD} = this.$store.state;
+        const hasNext = PAYMENT_RECORD.data[this.tabIndex].hasNext;
+        this.mescroll.endSuccess(10, hasNext);
         this.swiper.slideTo(this.tabIndex, 600, true);
-        // }
         if (!this.isLoading2) {
-          this.pageCode = 1;
           this.$vux.loading.show({
             text: '加载中...'
           });
-          this.ajaxRequestPaymentRecords();
+          this.ajaxRequestPaymentRecords(1);
         }
       }
     }

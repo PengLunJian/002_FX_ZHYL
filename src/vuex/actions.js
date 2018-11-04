@@ -142,10 +142,8 @@ const actions = {
     commit(ACTION_TYPES.SELECT_SUBSCRIBE_LIST, newData);
   },
   clearPaymentRecords({commit, state}, {data}) {
-    const {payStatus, pageCode} = data;
-    if (pageCode === 1) {
-      commit(ACTION_TYPES.CLEAR_PAYMENT_RECORDS, payStatus);
-    }
+    const {payStatus} = data;
+    commit(ACTION_TYPES.CLEAR_PAYMENT_RECORDS, payStatus);
   },
   selectPaymentRecords({commit, state}, {data}) {
     const {list, payStatus} = data;
@@ -153,8 +151,8 @@ const actions = {
     const {PAYMENT_RECORD} = state;
     const oldData = PAYMENT_RECORD.data[payStatus].list;
     const newData = oldData.concat(list);
-    const params = {list: newData, payStatus: payStatus};
-    commit(ACTION_TYPES.SELECT_PAYMENT_RECORDS, params);
+    data = Object.assign(data, {list: newData});
+    commit(ACTION_TYPES.SELECT_PAYMENT_RECORDS, data);
   }
 };
 

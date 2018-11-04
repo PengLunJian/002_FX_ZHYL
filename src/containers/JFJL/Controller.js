@@ -10,7 +10,6 @@ const controller = {
     const _this = this;
     if (!this.swiper) {
       this.swiper = new Swiper('.swiper-container', {
-        autoHeight: true,
         on: {
           slideChangeTransitionStart() {
             const index = this.activeIndex;
@@ -27,26 +26,38 @@ const controller = {
   refresh() {
     if (this.timer) clearInterval(this.timer);
     this.timer = setTimeout(() => {
-      this.pageCode = 1;
-      this.ajaxRequestPaymentRecords();
+      this.ajaxRequestPaymentRecords(1);
     }, 500);
   },
   infinite() {
     if (this.timer) clearInterval(this.timer);
     this.timer = setTimeout(() => {
-      this.pageCode++;
-      this.ajaxRequestPaymentRecords();
+      const tabIndex = this.tabIndex;
+      let pageCode = this.$store.state.PAYMENT_RECORD.data[tabIndex].pageCode;
+      pageCode++;
+      this.ajaxRequestPaymentRecords(pageCode);
     }, 500);
   },
-  ajaxRequestPaymentRecords() {
-    const params = {pageIndex: this.pageCode, payStatus: this.tabIndex};
+  ajaxRequestPaymentRecords(pageCode) {
+    const tabIndex = this.tabIndex;
+    const params = {pageIndex: pageCode, payStatus: tabIndex};
     this.$axios.post(apis.selectPaymentRecord, params)
       .then((res) => {
         this.$vux.loading.hide();
-        this.$store.dispatch(clearPaymentRecordsFun(params));
         const {data} = res;
+        if (pageCode === 1) {
+          this.$store.dispatch(clearPaymentRecordsFun({payStatus: tabIndex}));
+          if (!data.length) {
+            if (tabIndex === 0) {
+              this.isNoData1 = true;
+            } else {
+              this.isNoData2 = true;
+            }
+            return;
+          }
+        }
         const hasNext = data.length === 10 ? true : false;
-        const newData = Object.assign({list: data}, {payStatus: this.tabIndex});
+        const newData = {list: data, payStatus: tabIndex, hasNext: hasNext, pageCode: pageCode};
         this.$store.dispatch(selectPaymentRecordsFun(newData));
         this.mescroll.endSuccess(10, hasNext);
       })
