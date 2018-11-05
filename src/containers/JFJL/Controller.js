@@ -8,16 +8,14 @@ import {
 const controller = {
   initSwiper() {
     const _this = this;
-    if (!this.swiper) {
-      this.swiper = new Swiper('.swiper-container', {
-        on: {
-          slideChangeTransitionStart() {
-            const index = this.activeIndex;
-            _this.$emit('update:tabIndex', index);
-          }
+    this.swiper = new Swiper('.swiper-container', {
+      on: {
+        slideChangeTransitionStart() {
+          const index = this.activeIndex;
+          _this.$emit('update:tabIndex', index);
         }
-      });
-    }
+      }
+    });
   },
   initMescroll1(mescroll) {
     this.mescrolls[0] = mescroll;

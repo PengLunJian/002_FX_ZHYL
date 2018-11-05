@@ -3,16 +3,18 @@
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <mescroll-vue ref="mescroll" :down="down" :up="up" @init="initMescroll1">
-            <no-data v-if="isNoData1"></no-data>
+          <no-data v-if="isNoData1"></no-data>
+          <mescroll-vue v-if="isNoData1?false:true" ref="mescroll"
+                        :down="down" :up="up" @init="initMescroll1">
             <pay-item v-for="(item,index) in items1"
                       :key="index"
                       :item="item"></pay-item>
           </mescroll-vue>
         </div>
         <div class="swiper-slide">
-          <mescroll-vue ref="mescroll" :down="down" :up="up" @init="initMescroll2">
-            <no-data v-if="isNoData2"></no-data>
+          <no-data v-if="isNoData2"></no-data>
+          <mescroll-vue v-if="isNoData2?false:true" ref="mescroll"
+                        :down="down" :up="up" @init="initMescroll2">
             <pay-item v-for="(item,index) in items2"
                       :key="index"
                       :item="item"></pay-item>
@@ -25,9 +27,9 @@
 
 <script type="text/ecmascript-6">
   import {mapState} from 'vuex';
-  import MescrollVue from 'mescroll.js/mescroll.vue';
   import 'swiper/dist/css/swiper.min.css';
   import Controller from './Controller';
+  import MescrollVue from 'mescroll.js/mescroll.vue';
   import PayItem from '../../components/PayItem';
   import NoData from '../../components/NoData';
 
@@ -61,6 +63,9 @@
       };
     },
     created() {
+      this.$nextTick(() => {
+        this.initSwiper();
+      });
       if (!this.isLoading1) {
         this.$vux.loading.show({
           text: '加载中...'
@@ -83,10 +88,8 @@
     }),
     watch: {
       tabIndex() {
-        this.initSwiper();
         const {PAYMENT_RECORD} = this.$store.state;
         const hasNext = PAYMENT_RECORD.data[this.tabIndex].hasNext;
-
         this.mescrolls[this.tabIndex].endSuccess(10, hasNext);
         this.swiper.slideTo(this.tabIndex, 600, true);
         if (!this.isLoading2) {
