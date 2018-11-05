@@ -1,23 +1,25 @@
 <template>
   <div class="tab-content">
-    <mescroll-vue ref="mescroll" :down="down" :up="up" @init="init">
-      <div class="swiper-container">
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <mescroll-vue ref="mescroll" :down="down" :up="up" @init="initMescroll1">
             <no-data v-if="isNoData1"></no-data>
             <pay-item v-for="(item,index) in items1"
                       :key="index"
                       :item="item"></pay-item>
-          </div>
-          <div class="swiper-slide">
+          </mescroll-vue>
+        </div>
+        <div class="swiper-slide">
+          <mescroll-vue ref="mescroll" :down="down" :up="up" @init="initMescroll2">
             <no-data v-if="isNoData2"></no-data>
             <pay-item v-for="(item,index) in items2"
                       :key="index"
                       :item="item"></pay-item>
-          </div>
+          </mescroll-vue>
         </div>
       </div>
-    </mescroll-vue>
+    </div>
   </div>
 </template>
 
@@ -39,7 +41,7 @@
     data() {
       return {
         swiper: null,
-        mescroll: null,
+        mescrolls: [null, null],
         isNoData1: false,
         isNoData2: false,
         up: {
@@ -84,7 +86,8 @@
         this.initSwiper();
         const {PAYMENT_RECORD} = this.$store.state;
         const hasNext = PAYMENT_RECORD.data[this.tabIndex].hasNext;
-        this.mescroll.endSuccess(10, hasNext);
+
+        this.mescrolls[this.tabIndex].endSuccess(10, hasNext);
         this.swiper.slideTo(this.tabIndex, 600, true);
         if (!this.isLoading2) {
           this.$vux.loading.show({
@@ -98,7 +101,6 @@
 </script>
 
 <style scoped lang="less">
-
   .tab-content {
     position: fixed;
     top: 0;
@@ -107,5 +109,8 @@
     height: 100%;
     overflow-y: auto;
     padding-top: 0.46rem;
+    .swiper-container {
+      height: 100% !important;
+    }
   }
 </style>

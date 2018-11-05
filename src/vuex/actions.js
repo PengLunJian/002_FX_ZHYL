@@ -147,7 +147,6 @@ const actions = {
   },
   selectPaymentRecords({commit, state}, {data}) {
     const {list, payStatus} = data;
-    if (!list || !list.length) return;
     const {PAYMENT_RECORD} = state;
     const oldData = PAYMENT_RECORD.data[payStatus].list;
     const newData = oldData.concat(list);

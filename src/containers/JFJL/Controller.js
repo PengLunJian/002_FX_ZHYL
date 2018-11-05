@@ -18,10 +18,12 @@ const controller = {
         }
       });
     }
-    ;
   },
-  init(mescroll) {
-    this.mescroll = mescroll;
+  initMescroll1(mescroll) {
+    this.mescrolls[0] = mescroll;
+  },
+  initMescroll2(mescroll) {
+    this.mescrolls[1] = mescroll;
   },
   refresh() {
     if (this.timer) clearInterval(this.timer);
@@ -53,13 +55,12 @@ const controller = {
             } else {
               this.isNoData2 = true;
             }
-            return;
           }
         }
         const hasNext = data.length === 10 ? true : false;
         const newData = {list: data, payStatus: tabIndex, hasNext: hasNext, pageCode: pageCode};
         this.$store.dispatch(selectPaymentRecordsFun(newData));
-        this.mescroll.endSuccess(10, hasNext);
+        this.mescrolls[this.tabIndex].endSuccess(10, hasNext);
       })
       .catch((err) => {
         this.$vux.loading.hide();
