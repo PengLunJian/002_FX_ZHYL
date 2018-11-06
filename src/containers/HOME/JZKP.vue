@@ -42,7 +42,14 @@
       };
     },
     created() {
-      if (this.isLoading) return;
+      if (this.isLoading) {
+        if (this.defaultCard.name) {
+          this.isSelect = true;
+        } else {
+          this.isInsert = true;
+        }
+        return;
+      }
       this.$vux.loading.show({
         text: '加载中...'
       });
