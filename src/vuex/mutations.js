@@ -53,17 +53,16 @@ const mutations = {
     state.ISPAYED_RECORDS.isFailed = false;
     state.ISPAYED_RECORDS.data = [];
   },
-  SELECT_ISPAYED_RECORDS_FAILURE(state, data) {
-    state.ISPAYED_RECORDS.isLoading = true;
-    state.ISPAYED_RECORDS.isSuccess = false;
-    state.ISPAYED_RECORDS.isFailed = true;
-    state.ISPAYED_RECORDS.data = data;
-  },
   SELECT_ISPAYED_RECORDS_SUCCESS(state, data) {
     state.ISPAYED_RECORDS.isLoading = true;
     state.ISPAYED_RECORDS.isSuccess = true;
     state.ISPAYED_RECORDS.isFailed = false;
     state.ISPAYED_RECORDS.data = data;
+  },
+  SELECT_ISPAYED_RECORDS_FAILURE(state) {
+    state.ISPAYED_RECORDS.isLoading = true;
+    state.ISPAYED_RECORDS.isSuccess = false;
+    state.ISPAYED_RECORDS.isFailed = true;
   },
   // 未支付记录
   SELECT_NOPAYED_RECORDS_REQUEST(state) {
@@ -72,17 +71,16 @@ const mutations = {
     state.NOPAYED_RECORDS.isFailed = false;
     state.NOPAYED_RECORDS.data = [];
   },
-  SELECT_NOPAYED_RECORDS_FAILURE(state, data) {
-    state.NOPAYED_RECORDS.isLoading = true;
-    state.NOPAYED_RECORDS.isSuccess = false;
-    state.NOPAYED_RECORDS.isFailed = true;
-    state.NOPAYED_RECORDS.data = data;
-  },
   SELECT_NOPAYED_RECORDS_SUCCESS(state, data) {
     state.NOPAYED_RECORDS.isLoading = true;
     state.NOPAYED_RECORDS.isSuccess = true;
     state.NOPAYED_RECORDS.isFailed = false;
     state.NOPAYED_RECORDS.data = data;
+  },
+  SELECT_NOPAYED_RECORDS_FAILURE(state) {
+    state.NOPAYED_RECORDS.isLoading = true;
+    state.NOPAYED_RECORDS.isSuccess = false;
+    state.NOPAYED_RECORDS.isFailed = true;
   }
 };
 

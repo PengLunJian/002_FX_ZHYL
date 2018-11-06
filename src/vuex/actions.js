@@ -156,21 +156,38 @@ const actions = {
   // 查询已支付记录
   selectIsPayedRecords({commit, state}, data) {
     const {pageIndex} = data;
-    return axios.post(apis.selectPaymentRecord, data)
-      .then((res) => {
-        const {data} = res;
-        if (pageIndex === 1) {
-          commit(ACTION_TYPES.SELECT_ISPAYED_RECORDS_REQUEST);
-        }
-        const oldData = state.ISPAYED_RECORDS.data;
-        const newData = oldData.concat(data);
-        commit(ACTION_TYPES.SELECT_ISPAYED_RECORDS_SUCCESS, newData);
-        return data;
-      })
-      .catch((err) => {
-        const {data} = err;
-        commit(ACTION_TYPES.SELECT_ISPAYED_RECORDS_FAILURE, data);
-      });
+    return new Promise((resolve, reject) => {
+      axios.post(apis.selectPaymentRecord, data)
+        .then((res) => {
+          const {data} = res;
+          if (pageIndex === 1) {
+            commit(ACTION_TYPES.SELECT_ISPAYED_RECORDS_REQUEST);
+          }
+          const oldData = state.ISPAYED_RECORDS.data;
+          const newData = oldData.concat(data);
+          commit(ACTION_TYPES.SELECT_ISPAYED_RECORDS_SUCCESS, newData);
+          resolve(data);
+        })
+        .catch((err) => {
+          commit(ACTION_TYPES.SELECT_ISPAYED_RECORDS_FAILURE);
+          reject(err);
+        });
+    });
+    // return axios.post(url, data)
+    //   .then((res) => {
+    //     const {data} = res;
+    //     if (pageIndex === 1) {
+    //       commit(ACTION_TYPES.SELECT_ISPAYED_RECORDS_REQUEST);
+    //     }
+    //     const oldData = state.ISPAYED_RECORDS.data;
+    //     const newData = oldData.concat(data);
+    //     commit(ACTION_TYPES.SELECT_ISPAYED_RECORDS_SUCCESS, newData);
+    //     return data;
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //     commit(ACTION_TYPES.SELECT_ISPAYED_RECORDS_FAILURE);
+    //   });
   },
   // 查询未支付记录
   selectNoPayedRecords({commit, state}, data) {

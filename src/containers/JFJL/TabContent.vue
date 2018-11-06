@@ -3,8 +3,9 @@
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <no-data v-if="isPayedNoData"></no-data>
-          <mescroll-vue v-if="isPayedNoData?false:true" ref="mescroll"
+          <no-data v-if="isPayedSuccess && !isPayedItems.length"></no-data>
+          <error v-if="isPayedFailed && !isPayedItems.length" @refresh="this.exeSelectPaymentRecords"></error>
+          <mescroll-vue v-if="isPayedItems.length" ref="mescroll"
                         :down="down" :up="up" @init="initMescroll1">
             <pay-item v-for="(item,index) in isPayedItems"
                       :key="index"
@@ -12,8 +13,9 @@
           </mescroll-vue>
         </div>
         <div class="swiper-slide">
-          <no-data v-if="noPayedNoData"></no-data>
-          <mescroll-vue v-if="noPayedNoData?false:true" ref="mescroll"
+          <no-data v-if="noPayedSuccess && !noPayedItems.length"></no-data>
+          <error v-if="noPayedFailed && !noPayedItems.length" @refresh="this.exeSelectPaymentRecords"></error>
+          <mescroll-vue v-if="noPayedItems.length" ref="mescroll"
                         :down="down" :up="up" @init="initMescroll2">
             <pay-item v-for="(item,index) in noPayedItems"
                       :key="index"
@@ -32,10 +34,12 @@
   import MescrollVue from 'mescroll.js/mescroll.vue';
   import PayItem from '../../components/PayItem';
   import NoData from '../../components/NoData';
+  import Error from '../../components/Error';
 
   export default {
     name: 'tab-content',
     components: {
+      Error,
       NoData,
       PayItem,
       MescrollVue
@@ -44,8 +48,6 @@
       return {
         swiper: null,
         pageCode: [1, 1],
-        isPayedNoData: false,
-        noPayedNoData: false,
         hasNexts: [true, true],
         mescrolls: [null, null],
         up: {
@@ -85,13 +87,19 @@
     computed: mapState({
       isPayedItems: state => state.ISPAYED_RECORDS.data,
       noPayedItems: state => state.NOPAYED_RECORDS.data,
+      isPayedFailed: state => state.ISPAYED_RECORDS.isFailed,
+      noPayedFailed: state => state.NOPAYED_RECORDS.isFailed,
+      isPayedSuccess: state => state.ISPAYED_RECORDS.isSuccess,
+      noPayedSuccess: state => state.NOPAYED_RECORDS.isSuccess,
       isPayedIsLoading: state => state.ISPAYED_RECORDS.isLoading,
       noPayedIsLoading: state => state.NOPAYED_RECORDS.isLoading
     }),
     watch: {
       tabIndex() {
-        const hasNext = this.hasNexts[this.tabIndex];
-        this.mescrolls[this.tabIndex].endSuccess(10, hasNext);
+        if (this.mescrolls[this.tabIndex]) {
+          const hasNext = this.hasNexts[this.tabIndex];
+          this.mescrolls[this.tabIndex].endSuccess(10, hasNext);
+        }
         this.swiper.slideTo(this.tabIndex, 600, true);
         if (!this.noPayedIsLoading) {
           this.$vux.loading.show({

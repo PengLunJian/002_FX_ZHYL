@@ -114,7 +114,7 @@ Mock.mock(apis.selectPaymentRecord.url, 'post', function (request) {
   const payStatus = parseInt(params['payStatus']);
   const pageCode = parseInt(params['pageIndex']);
   const pageSize = parseInt(params['pageSize']);
-  const size = payStatus ? 0 : 0;
+  const size = payStatus ? 0 : 21;
   const data = pagination(data6(size), pageCode, pageSize);
   return data;
 });

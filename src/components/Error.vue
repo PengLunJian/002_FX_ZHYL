@@ -3,7 +3,7 @@
     <div class="content">
       <img src="../assets/images/error.png"/>
       <p class="text">请求失败</p>
-      <button class="btn btn-refresh">重新加载</button>
+      <button class="btn btn-refresh" @click="handlerRefresh">重新加载</button>
     </div>
   </div>
 </template>
@@ -11,7 +11,14 @@
 <script type="text/ecmascript-6">
   export default {
     name: 'error',
-    props: ['isShow']
+    data() {
+      return {};
+    },
+    methods: {
+      handlerRefresh() {
+        this.$emit('refresh');
+      }
+    }
   };
 </script>
 
