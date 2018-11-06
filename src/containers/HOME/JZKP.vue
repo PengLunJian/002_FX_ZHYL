@@ -3,8 +3,8 @@
     <div class="content">
       <div class="select" v-if="isSelect">
         <div class="patient-left">
-          <h3 class="patient-name">{{DEFAULT_CARD.NAME}}</h3>
-          <span class="patient-number ellipsis">卡号：{{DEFAULT_CARD.CARD_NO}}</span>
+          <h3 class="patient-name">{{defaultCard.name}}</h3>
+          <span class="patient-number ellipsis">卡号：{{defaultCard.patientCardNo}}</span>
           <button class="btn btn-change" @click="changeVisitor">
             <i class="btn-icon icon-change"></i>
             <span class="btn-text">切换就诊人</span>
@@ -13,7 +13,7 @@
         <div class="patient-right">
           <div class="patient-image">
             <img class="patient-code" @click="showQRCode"
-                 :src="'data:image/jpg;base64,'+DEFAULT_CARD.QR_CODE"/>
+                 :src="'data:image/jpg;base64,'+defaultCard.qrcodeBase64"/>
           </div>
           <span class="patient-desc">点击出示就诊二维码</span>
         </div>
@@ -30,6 +30,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {mapState} from 'vuex';
   import Controller from './Controller';
 
   export default {
@@ -41,17 +42,25 @@
       };
     },
     created() {
+      if (this.isLoading) return;
       this.$vux.loading.show({
         text: '加载中...'
       });
-      this.ajaxRequestDefaultCard();
+      this.selectDefaultCard()
+        .then((res) => {
+          this.$vux.loading.hide();
+          if (res.name) {
+            this.isSelect = true;
+          } else {
+            this.isInsert = true;
+          }
+        });
     },
     methods: Controller,
-    computed: {
-      DEFAULT_CARD() {
-        return this.$store.state.DEFAULT_CARD;
-      }
-    }
+    computed: mapState({
+      defaultCard: state => state.DEFAULT_CARD.data,
+      isLoading: state => state.DEFAULT_CARD.isLoading
+    })
   };
 </script>
 

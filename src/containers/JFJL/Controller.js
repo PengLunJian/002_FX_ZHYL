@@ -1,9 +1,5 @@
-import apis from '../../apis';
 import Swiper from 'swiper';
-import {
-  clearPaymentRecordsFun,
-  selectPaymentRecordsFun
-} from '../../vuex/actions';
+import {mapActions} from 'vuex';
 
 const controller = {
   initSwiper() {
@@ -26,45 +22,53 @@ const controller = {
   refresh() {
     if (this.timer) clearInterval(this.timer);
     this.timer = setTimeout(() => {
-      this.ajaxRequestPaymentRecords(1);
+      this.pageCode[this.tabIndex] = 1;
+      this.exeSelectPaymentRecords();
     }, 500);
   },
   infinite() {
     if (this.timer) clearInterval(this.timer);
     this.timer = setTimeout(() => {
-      const tabIndex = this.tabIndex;
-      let pageCode = this.$store.state.PAYMENT_RECORD.data[tabIndex].pageCode;
-      pageCode++;
-      this.ajaxRequestPaymentRecords(pageCode);
+      this.pageCode[this.tabIndex]++;
+      this.exeSelectPaymentRecords();
     }, 500);
   },
-  ajaxRequestPaymentRecords(pageCode) {
-    const tabIndex = this.tabIndex;
-    const params = {pageIndex: pageCode, payStatus: tabIndex};
-    this.$axios.post(apis.selectPaymentRecord, params)
-      .then((res) => {
-        this.$vux.loading.hide();
-        const {data} = res;
-        if (pageCode === 1) {
-          this.$store.dispatch(clearPaymentRecordsFun({payStatus: tabIndex}));
-          if (!data.length) {
-            if (tabIndex === 0) {
-              this.isNoData1 = true;
-            } else {
-              this.isNoData2 = true;
+  exeSelectPaymentRecords() {
+    const data = {
+      pageIndex: this.pageCode[this.tabIndex],
+      payStatus: this.tabIndex
+    };
+    switch (this.tabIndex) {
+      case 0:
+        this.selectIsPayedRecords(data)
+          .then((res) => {
+            this.$vux.loading.hide();
+            if (data.pageIndex === 1 && (!res.length)) {
+              this.isPayedNoData = true;
             }
-          }
-        }
-        const hasNext = data.length === 10 ? true : false;
-        const newData = {list: data, payStatus: tabIndex, hasNext: hasNext, pageCode: pageCode};
-        this.$store.dispatch(selectPaymentRecordsFun(newData));
-        this.mescrolls[this.tabIndex].endSuccess(10, hasNext);
-      })
-      .catch((err) => {
-        this.$vux.loading.hide();
-        console.log(err);
-      });
-  }
+            const hasNext = res.length === 10 ? true : false;
+            this.hasNexts[this.tabIndex] = hasNext;
+            this.mescrolls[this.tabIndex].endSuccess(10, hasNext);
+          });
+        break;
+      case 1:
+        this.selectNoPayedRecords(data)
+          .then((res) => {
+            this.$vux.loading.hide();
+            if (data.pageIndex === 1 && (!res.length)) {
+              this.noPayedNoData = true;
+            }
+            const hasNext = res.length === 10 ? true : false;
+            this.hasNexts[this.tabIndex] = hasNext;
+            this.mescrolls[this.tabIndex].endSuccess(10, hasNext);
+          });
+        break;
+    }
+  },
+  ...mapActions([
+    'selectIsPayedRecords',
+    'selectNoPayedRecords'
+  ])
 };
 
 export default controller;

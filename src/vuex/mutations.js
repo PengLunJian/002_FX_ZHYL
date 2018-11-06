@@ -1,10 +1,22 @@
 const mutations = {
-  UPDATE_DEFAULT_CARD(state, data) {
-    state.DEFAULT_CARD.NAME = data.name;
-    state.DEFAULT_CARD.CARD_NO = data.patientCardNo;
-    state.DEFAULT_CARD.QR_CODE = data.qrcodeBase64;
-    state.DEFAULT_CARD.BAR_CODE = data.barcodeBase64;
+  // 查询默认就诊卡信息
+  SELECT_DEFAULT_CARD_REQUEST(state) {
+    state.DEFAULT_CARD.isLoading = false;
+    state.DEFAULT_CARD.isSuccess = false;
+    state.DEFAULT_CARD.isFailed = false;
   },
+  SELECT_DEFAULT_CARD_SUCCESS(state, data) {
+    state.DEFAULT_CARD.isLoading = true;
+    state.DEFAULT_CARD.isSuccess = true;
+    state.DEFAULT_CARD.isFailed = false;
+    state.DEFAULT_CARD.data = data;
+  },
+  SELECT_DEFAULT_CARD_FAILURE(state) {
+    state.DEFAULT_CARD.isLoading = true;
+    state.DEFAULT_CARD.isSuccess = false;
+    state.DEFAULT_CARD.isFailed = true;
+  },
+  // xxx
   CLEAR_VISITOR_LIST(state, data) {
     state.VISITOR_LIST.LIST = data;
   },
@@ -34,17 +46,43 @@ const mutations = {
     state.SUBSCRIBE_LIST.list = data;
     state.SUBSCRIBE_LIST.isLoading = true;
   },
-  CLEAR_PAYMENT_RECORDS(state, data) {
-    state.PAYMENT_RECORD.data[data].list = [];
-    state.PAYMENT_RECORD.data[data].pageCode = 1;
-    state.PAYMENT_RECORD.data[data].hasNext = true;
+  // 已支付记录
+  SELECT_ISPAYED_RECORDS_REQUEST(state) {
+    state.ISPAYED_RECORDS.isLoading = false;
+    state.ISPAYED_RECORDS.isSuccess = false;
+    state.ISPAYED_RECORDS.isFailed = false;
+    state.ISPAYED_RECORDS.data = [];
   },
-  SELECT_PAYMENT_RECORDS(state, data) {
-    const {list, payStatus, hasNext, pageCode} = data;
-    state.PAYMENT_RECORD.data[payStatus].list = list;
-    state.PAYMENT_RECORD.data[payStatus].isLoading = true;
-    state.PAYMENT_RECORD.data[payStatus].hasNext = hasNext;
-    state.PAYMENT_RECORD.data[payStatus].pageCode = pageCode;
+  SELECT_ISPAYED_RECORDS_FAILURE(state, data) {
+    state.ISPAYED_RECORDS.isLoading = true;
+    state.ISPAYED_RECORDS.isSuccess = false;
+    state.ISPAYED_RECORDS.isFailed = true;
+    state.ISPAYED_RECORDS.data = data;
+  },
+  SELECT_ISPAYED_RECORDS_SUCCESS(state, data) {
+    state.ISPAYED_RECORDS.isLoading = true;
+    state.ISPAYED_RECORDS.isSuccess = true;
+    state.ISPAYED_RECORDS.isFailed = false;
+    state.ISPAYED_RECORDS.data = data;
+  },
+  // 未支付记录
+  SELECT_NOPAYED_RECORDS_REQUEST(state) {
+    state.NOPAYED_RECORDS.isLoading = false;
+    state.NOPAYED_RECORDS.isSuccess = false;
+    state.NOPAYED_RECORDS.isFailed = false;
+    state.NOPAYED_RECORDS.data = [];
+  },
+  SELECT_NOPAYED_RECORDS_FAILURE(state, data) {
+    state.NOPAYED_RECORDS.isLoading = true;
+    state.NOPAYED_RECORDS.isSuccess = false;
+    state.NOPAYED_RECORDS.isFailed = true;
+    state.NOPAYED_RECORDS.data = data;
+  },
+  SELECT_NOPAYED_RECORDS_SUCCESS(state, data) {
+    state.NOPAYED_RECORDS.isLoading = true;
+    state.NOPAYED_RECORDS.isSuccess = true;
+    state.NOPAYED_RECORDS.isFailed = false;
+    state.NOPAYED_RECORDS.data = data;
   }
 };
 

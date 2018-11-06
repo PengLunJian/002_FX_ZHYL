@@ -1,3 +1,5 @@
+import apis from '../apis';
+import axios from '../axios/axios';
 import * as ACTION_TYPES from './actionTypes';
 
 export const updateDefaultCardFun = (data) => {
@@ -74,9 +76,19 @@ export const selectPaymentRecordsFun = (data) => {
 };
 
 const actions = {
-  updateDefaultCard({commit}, {data}) {
-    if (!data || typeof data !== 'object') return;
-    commit(ACTION_TYPES.UPDATE_DEFAULT_CARD, data);
+  // 查询默认就诊卡
+  selectDefaultCard({commit}) {
+    commit(ACTION_TYPES.SELECT_DEFAULT_CARD_REQUEST);
+    return axios.post(apis.selectDefaultCard)
+      .then((res) => {
+        const {data} = res;
+        commit(ACTION_TYPES.SELECT_DEFAULT_CARD_SUCCESS, data);
+        return data;
+      })
+      .catch((err) => {
+        const {data} = err;
+        commit(ACTION_TYPES.SELECT_DEFAULT_CARD_FAILURE, data);
+      });
   },
   clearVisitorList({commit}, {data}) {
     if (data === 1) {
@@ -141,17 +153,43 @@ const actions = {
     const newData = list.concat(data);
     commit(ACTION_TYPES.SELECT_SUBSCRIBE_LIST, newData);
   },
-  clearPaymentRecords({commit, state}, {data}) {
-    const {payStatus} = data;
-    commit(ACTION_TYPES.CLEAR_PAYMENT_RECORDS, payStatus);
+  // 查询已支付记录
+  selectIsPayedRecords({commit, state}, data) {
+    const {pageIndex} = data;
+    return axios.post(apis.selectPaymentRecord, data)
+      .then((res) => {
+        const {data} = res;
+        if (pageIndex === 1) {
+          commit(ACTION_TYPES.SELECT_ISPAYED_RECORDS_REQUEST);
+        }
+        const oldData = state.ISPAYED_RECORDS.data;
+        const newData = oldData.concat(data);
+        commit(ACTION_TYPES.SELECT_ISPAYED_RECORDS_SUCCESS, newData);
+        return data;
+      })
+      .catch((err) => {
+        const {data} = err;
+        commit(ACTION_TYPES.SELECT_ISPAYED_RECORDS_FAILURE, data);
+      });
   },
-  selectPaymentRecords({commit, state}, {data}) {
-    const {list, payStatus} = data;
-    const {PAYMENT_RECORD} = state;
-    const oldData = PAYMENT_RECORD.data[payStatus].list;
-    const newData = oldData.concat(list);
-    data = Object.assign(data, {list: newData});
-    commit(ACTION_TYPES.SELECT_PAYMENT_RECORDS, data);
+  // 查询未支付记录
+  selectNoPayedRecords({commit, state}, data) {
+    const {pageIndex} = data;
+    return axios.post(apis.selectPaymentRecord, data)
+      .then((res) => {
+        const {data} = res;
+        if (pageIndex === 1) {
+          commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_REQUEST);
+        }
+        const oldData = state.NOPAYED_RECORDS.data;
+        const newData = oldData.concat(data);
+        commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_SUCCESS, newData);
+        return data;
+      })
+      .catch((err) => {
+        const {data} = err;
+        commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_FAILURE, data);
+      });
   }
 };
 

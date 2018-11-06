@@ -3,19 +3,19 @@
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <no-data v-if="isNoData1"></no-data>
-          <mescroll-vue v-if="isNoData1?false:true" ref="mescroll"
+          <no-data v-if="isPayedNoData"></no-data>
+          <mescroll-vue v-if="isPayedNoData?false:true" ref="mescroll"
                         :down="down" :up="up" @init="initMescroll1">
-            <pay-item v-for="(item,index) in items1"
+            <pay-item v-for="(item,index) in isPayedItems"
                       :key="index"
                       :item="item"></pay-item>
           </mescroll-vue>
         </div>
         <div class="swiper-slide">
-          <no-data v-if="isNoData2"></no-data>
-          <mescroll-vue v-if="isNoData2?false:true" ref="mescroll"
+          <no-data v-if="noPayedNoData"></no-data>
+          <mescroll-vue v-if="noPayedNoData?false:true" ref="mescroll"
                         :down="down" :up="up" @init="initMescroll2">
-            <pay-item v-for="(item,index) in items2"
+            <pay-item v-for="(item,index) in noPayedItems"
                       :key="index"
                       :item="item"></pay-item>
           </mescroll-vue>
@@ -43,9 +43,11 @@
     data() {
       return {
         swiper: null,
+        pageCode: [1, 1],
+        isPayedNoData: false,
+        noPayedNoData: false,
+        hasNexts: [true, true],
         mescrolls: [null, null],
-        isNoData1: false,
-        isNoData2: false,
         up: {
           auto: false,
           isBounce: false,
@@ -66,11 +68,11 @@
       this.$nextTick(() => {
         this.initSwiper();
       });
-      if (!this.isLoading1) {
+      if (!this.isPayedIsLoading) {
         this.$vux.loading.show({
           text: '加载中...'
         });
-        this.ajaxRequestPaymentRecords(1);
+        this.exeSelectPaymentRecords();
       }
     },
     props: ['tabIndex'],
@@ -81,22 +83,21 @@
       };
     },
     computed: mapState({
-      items1: state => state.PAYMENT_RECORD.data[0].list,
-      items2: state => state.PAYMENT_RECORD.data[1].list,
-      isLoading1: state => state.PAYMENT_RECORD.data[0].isLoading,
-      isLoading2: state => state.PAYMENT_RECORD.data[1].isLoading
+      isPayedItems: state => state.ISPAYED_RECORDS.data,
+      noPayedItems: state => state.NOPAYED_RECORDS.data,
+      isPayedIsLoading: state => state.ISPAYED_RECORDS.isLoading,
+      noPayedIsLoading: state => state.NOPAYED_RECORDS.isLoading
     }),
     watch: {
       tabIndex() {
-        const {PAYMENT_RECORD} = this.$store.state;
-        const hasNext = PAYMENT_RECORD.data[this.tabIndex].hasNext;
+        const hasNext = this.hasNexts[this.tabIndex];
         this.mescrolls[this.tabIndex].endSuccess(10, hasNext);
         this.swiper.slideTo(this.tabIndex, 600, true);
-        if (!this.isLoading2) {
+        if (!this.noPayedIsLoading) {
           this.$vux.loading.show({
             text: '加载中...'
           });
-          this.ajaxRequestPaymentRecords(1);
+          this.exeSelectPaymentRecords();
         }
       }
     }

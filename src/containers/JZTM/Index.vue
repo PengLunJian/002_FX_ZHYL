@@ -1,12 +1,12 @@
 <template>
-  <div class="FX_ZHYL_JZEWM" v-if="isLoading">
+  <div class="FX_ZHYL_JZEWM" v-if="this.isLoading">
     <div class="row-box-1">
-      <span class="name">{{DEFAULT_CARD.NAME}}</span>
-      <span class="card">卡号：{{DEFAULT_CARD.CARD_NO}}</span>
+      <span class="name">{{defaultCard.name}}</span>
+      <span class="card">卡号：{{defaultCard.patientCardNo}}</span>
     </div>
     <div class="row-box-2">
-      <img class="bar-code" :src="'data:image/jpg;base64,'+DEFAULT_CARD.BAR_CODE"/>
-      <img class="qr-code" :src="'data:image/jpg;base64,'+DEFAULT_CARD.QR_CODE"/>
+      <img class="bar-code" :src="'data:image/jpg;base64,'+defaultCard.barcodeBase64"/>
+      <img class="qr-code" :src="'data:image/jpg;base64,'+defaultCard.qrcodeBase64"/>
       <p class="toast">出示就诊二维码到设备扫描</p>
     </div>
     <div class="row-box-3">
@@ -16,33 +16,31 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {mapState} from 'vuex';
   import Controller from './Controller';
 
   export default {
     name: 'JZEWM',
     data() {
-      return {
-        isLoading: false
-      };
+      return {};
     },
     created() {
-      if (this.DEFAULT_CARD.CARD_NO) {
-        this.isLoading = true;
-        return;
-      }
+      if (this.isLoading) return;
       this.$vux.loading.show({
         text: '加载中...'
       });
-      this.ajaxRequestDefaultCard();
+      this.selectDefaultCard()
+        .then((res) => {
+          this.$vux.loading.hide();
+        });
     },
     methods: Controller,
     mounted() {
     },
-    computed: {
-      DEFAULT_CARD: function () {
-        return this.$store.state.DEFAULT_CARD;
-      }
-    }
+    computed: mapState({
+      defaultCard: state => state.DEFAULT_CARD.data,
+      isLoading: state => state.DEFAULT_CARD.isLoading
+    })
   };
 </script>
 

@@ -1,37 +1,44 @@
 const states = {
   DEFAULT_CARD: {
-    NAME: '',
-    QR_CODE: '',
-    CARD_NO: '',
-    BAR_CODE: ''
+    isLoading: false,
+    isSuccess: false,
+    isFailed: false,
+    data: {
+      name: '',
+      qrcodeBase64: '',
+      patientCardNo: '',
+      barcodeBase64: ''
+    }
   },
   VISITOR_LIST: {
     isLoading: false,
-    LIST: []
+    isSuccess: false,
+    isFailed: false,
+    data: []
   },
   REGISTER_LIST: {
     isLoading: false,
-    list: []
+    isSuccess: false,
+    isFailed: false,
+    data: []
   },
   SUBSCRIBE_LIST: {
     isLoading: false,
-    list: []
+    isSuccess: false,
+    isFailed: false,
+    data: []
   },
-  PAYMENT_RECORD: {
-    data: [
-      {
-        pageCode: 1,
-        hasNext: true,
-        isLoading: false,
-        list: []
-      },
-      {
-        pageCode: 1,
-        hasNext: true,
-        isLoading: false,
-        list: []
-      }
-    ]
+  ISPAYED_RECORDS: {
+    isLoading: false,
+    isSuccess: false,
+    isFailed: false,
+    data: []
+  },
+  NOPAYED_RECORDS: {
+    isLoading: false,
+    isSuccess: false,
+    isFailed: false,
+    data: []
   }
 };
 

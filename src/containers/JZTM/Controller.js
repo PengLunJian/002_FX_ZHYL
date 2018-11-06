@@ -1,25 +1,12 @@
-import apis from '../../apis/index';
-import {
-  updateDefaultCardFun
-} from '../../vuex/actions';
+import {mapActions} from 'vuex';
 
 const controller = {
   closePage() {
     this.$router.back();
   },
-  ajaxRequestDefaultCard() {
-    this.$axios.post(apis.selectDefaultCard)
-      .then((res) => {
-        this.$vux.loading.hide();
-        this.isLoading = true;
-        const {data} = res;
-        this.$store.dispatch(updateDefaultCardFun(data));
-      })
-      .catch((err) => {
-        this.$vux.loading.hide();
-        console.log(err);
-      });
-  }
+  ...mapActions([
+    'selectDefaultCard'
+  ])
 };
 
 export default controller;
