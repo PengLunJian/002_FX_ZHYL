@@ -4,7 +4,7 @@ import router from './router';
 import store from './vuex/store';
 import axios from './axios/axios';
 import Routes from './router/routes';
-import {ToastPlugin, LoadingPlugin} from 'vux';
+import {ToastPlugin, LoadingPlugin, ConfirmPlugin} from 'vux';
 import VueWaves from '../node_modules/vue-waves/dist/vue-waves.js';
 
 require('./mock/mock.js');
@@ -12,6 +12,7 @@ require('./mock/mock.js');
 Vue.use(VueWaves);
 Vue.use(LoadingPlugin);
 Vue.use(ToastPlugin);
+Vue.use(ConfirmPlugin);
 Vue.prototype.$axios = axios;
 Vue.prototype.$routes = Routes;
 

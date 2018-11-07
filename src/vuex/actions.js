@@ -73,12 +73,13 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post(apis.selectVisitorList, data)
         .then((res) => {
-          if (Value === 1) {
-            commit(ACTION_TYPES.SELECT_VISITOR_LIST_REQUEST);
-          }
           const data = res.data.rows;
           const oldData = state.VISITOR_LIST.data;
-          const newData = oldData.concat(data);
+          let newData = oldData.concat(data);
+          if (Value === 1) {
+            newData = data;
+            commit(ACTION_TYPES.SELECT_VISITOR_LIST_REQUEST);
+          }
           commit(ACTION_TYPES.SELECT_VISITOR_LIST_SUCCESS, newData);
           resolve(res);
         })

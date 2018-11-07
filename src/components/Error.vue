@@ -2,7 +2,6 @@
   <div class="error">
     <div class="content">
       <img src="../assets/images/error.png"/>
-      <p class="text">请求失败</p>
       <button class="btn btn-refresh" @click="handlerRefresh">重新加载</button>
     </div>
   </div>
@@ -31,7 +30,6 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: @white;
     text-align: center;
     font-size: 0;
     color: @borderColor2;
@@ -45,14 +43,9 @@
       display: inline-block;
       vertical-align: middle;
       img {
+        display: block;
         width: 1.1rem;
         margin-bottom: 0.1rem;
-      }
-      .text {
-        margin-bottom: 0.1rem;
-        line-height: 0.2rem;
-        font-size: 0.13rem;
-        color: #969696;
       }
       .btn-refresh {
         display: inline-block;

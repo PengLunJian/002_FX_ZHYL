@@ -1,31 +1,29 @@
 <template>
   <div class="module JZKP">
-    <div class="content">
-      <error v-if="isFailure" @refresh="exeSelectDefaultCard"></error>
-      <div class="select" v-if="isSuccess&&data.name">
-        <div class="patient-left">
-          <h3 class="patient-name">{{data.name}}</h3>
-          <span class="patient-number ellipsis">卡号：{{data.patientCardNo}}</span>
-          <button class="btn btn-change" @click="changeVisitor">
-            <i class="btn-icon icon-change"></i>
-            <span class="btn-text">切换就诊人</span>
-          </button>
-        </div>
-        <div class="patient-right">
-          <div class="patient-image">
-            <img class="patient-code" @click="showQRCode"
-                 :src="'data:image/jpg;base64,'+data.qrcodeBase64"/>
-          </div>
-          <span class="patient-desc">点击出示就诊二维码</span>
-        </div>
-      </div>
-      <div class="insert" v-if="isSuccess&&!data.name">
-        <p class="desc">就诊前，请先添加就诊人</p>
-        <button class="btn btn-add" @click="addVisitor">
-          <i class="btn-icon icon-add"></i>
-          <span class="btn-text">添加就诊人</span>
+    <error v-if="isFailure" @refresh="exeSelectDefaultCard"></error>
+    <div class="select" v-if="isSuccess&&data.name">
+      <div class="patient-left">
+        <h3 class="patient-name">{{data.name}}</h3>
+        <span class="patient-number ellipsis">卡号：{{data.patientCardNo}}</span>
+        <button class="btn btn-change" @click="changeVisitor">
+          <i class="btn-icon icon-change"></i>
+          <span class="btn-text">切换就诊人</span>
         </button>
       </div>
+      <div class="patient-right">
+        <div class="patient-image">
+          <img class="patient-code" @click="showQRCode"
+               :src="'data:image/jpg;base64,'+data.qrcodeBase64"/>
+        </div>
+        <span class="patient-desc">点击出示就诊二维码</span>
+      </div>
+    </div>
+    <div class="insert" v-if="isSuccess&&!data.name">
+      <p class="desc">就诊前，请先添加就诊人</p>
+      <button class="btn btn-add" @click="addVisitor">
+        <i class="btn-icon icon-add"></i>
+        <span class="btn-text">添加就诊人</span>
+      </button>
     </div>
   </div>
 </template>
@@ -61,14 +59,10 @@
   @import "../../assets/less/variable";
 
   .JZKP {
+    height: 2.05rem;
+    position: relative;
     padding: 0.15rem 0.15rem;
     color: @white;
-    .content {
-      height: 1.75rem;
-      position: relative;
-      border-radius: @borderRadius;
-      background-color: @bgColor;
-    }
     .select {
       height: 100%;
       overflow: hidden;

@@ -10,14 +10,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
 
-const express = require('express')
-const app = express()
-const appData = require('../src/mock/data')
-const login = appData.login
-const wdyy = appData.wdyy
-const apiRoutes = express.Router()
-app.use('/api', apiRoutes)
-
 const HOST = process.env.HOST
 const PORT = process.env.PORT && Number(process.env.PORT)
 
@@ -51,20 +43,6 @@ const devWebpackConfig = merge(baseWebpackConfig, {
     watchOptions: {
       poll: config.dev.poll,
     },
-
-    before(app) {
-      app.get('/api/login', (req, res) => {
-        res.json({
-          data: login
-        })
-      }),
-        app.get('/api/wdyy', (req, res) => {
-          res.json({
-            data: wdyy
-          })
-        })
-    }
-
   },
   plugins: [
     new webpack.DefinePlugin({

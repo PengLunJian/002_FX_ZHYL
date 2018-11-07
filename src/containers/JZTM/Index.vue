@@ -34,8 +34,6 @@
       this.exeSelectDefaultCard();
     },
     methods: Controller,
-    mounted() {
-    },
     computed: mapState({
       isLoading: state => state.DEFAULT_CARD.isLoading,
       isSuccess: state => state.DEFAULT_CARD.isSuccess,
@@ -55,10 +53,11 @@
     z-index: 1000;
     width: 100%;
     height: 100%;
-    min-height: 100vh;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     background-color: @white;
     .content {
-      height: 100%;
+      height: auto;
       .row-box-1 {
         text-align: center;
         line-height: 0.2rem;
@@ -101,7 +100,7 @@
       .row-box-3 {
         font-size: 0;
         text-align: center;
-        padding-bottom: 0.25rem;
+        padding-bottom: 0.3rem;
         .btn-close {
           margin: 0 auto;
           padding: 0 0.7rem;

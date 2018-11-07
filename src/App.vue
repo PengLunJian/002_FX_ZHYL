@@ -18,7 +18,6 @@
       };
     },
     methods: {},
-    mounted() {},
     watch: {
       $route(to, from) {
         if (from.meta.index !== undefined) {

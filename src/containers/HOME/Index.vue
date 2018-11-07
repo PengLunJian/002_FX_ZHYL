@@ -24,9 +24,11 @@
         deviceId: ''
       };
     },
-    created() {},
+    created() {
+    },
     methods: Controller,
-    mounted() {}
+    mounted() {
+    }
   };
 </script>
 

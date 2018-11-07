@@ -1,6 +1,6 @@
 import Mock from 'mockjs';
 import apis from '../apis';
-import data from './data.js';
+import data from './data';
 import {
   pagination
 } from '../utils';
@@ -10,19 +10,19 @@ Mock.setup({
 });
 
 Mock.mock(apis.selectDefaultCard.url, 'post', function (request) {
-  const resData = parseInt(Math.random() * 100) % 2 === 0 ? null : data.data1;
+  const resData = parseInt(Math.random() * 100) % 3 === 0 ? null : data.data1;
   return resData;
 });
 Mock.mock(apis.insertVisitorList.url, 'post', function (request) {
-  const resData = parseInt(Math.random() * 100) % 2 === 0 ? null : data.data3;
+  const resData = parseInt(Math.random() * 100) % 3 === 0 ? null : data.data3;
   return resData;
 });
 Mock.mock(apis.deleteVisitorList.url, 'post', function (request) {
-  const resData = parseInt(Math.random() * 100) % 2 === 0 ? null : data.data3;
+  const resData = parseInt(Math.random() * 100) % 3 === 0 ? null : data.data3;
   return resData;
 });
 Mock.mock(apis.updateVisitorList.url, 'post', function (request) {
-  const resData = parseInt(Math.random() * 100) % 2 === 0 ? null : data.data3;
+  const resData = parseInt(Math.random() * 100) % 3 === 0 ? null : data.data3;
   return resData;
 });
 Mock.mock(apis.selectVisitorList.url, 'post', function (request) {
@@ -30,7 +30,7 @@ Mock.mock(apis.selectVisitorList.url, 'post', function (request) {
   const pageCode = parseInt(params['Value']);
   const pageSize = 10;
   const filterData = pagination(data.data2(25), pageCode, pageSize);
-  const resData = parseInt(Math.random() * 100) % 2 === 0 ? null : {data: {rows: filterData.data}};
+  const resData = parseInt(Math.random() * 100) % 10 === 0 ? null : {data: {rows: filterData.data}};
   return resData;
 });
 Mock.mock(apis.selectRegisterList.url, 'post', function (request) {
