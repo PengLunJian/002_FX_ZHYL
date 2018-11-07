@@ -49,7 +49,7 @@
         margin-bottom: 0.1rem;
       }
       .text {
-        margin-bottom: 0.2rem;
+        margin-bottom: 0.1rem;
         line-height: 0.2rem;
         font-size: 0.13rem;
         color: #969696;

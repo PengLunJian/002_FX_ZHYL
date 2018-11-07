@@ -3,16 +3,17 @@
     <div class="header">
       <p class="title">选择/添加需要就诊的人员</p>
     </div>
-    <div class="body">
+    <error v-if="isFailure&&this.pageCode===1" @refresh="exeSelectVisitorList"></error>
+    <div class="body" v-if="data.length">
       <mescroll-vue ref="mescroll" :down="down" :up="up" @init="init">
         <swipeout>
-          <div class="module" v-for="(item,index) in LIST" :key="index">
+          <div class="module" v-for="(item,index) in data" :key="index">
             <swipeout-item>
               <div slot="right-menu">
-                <swipeout-button @click.native="ajaxRequestDeleteVisitor(item.patientCardNo)"
+                <swipeout-button @click.native="this.deleteVisitorList(item.patientCardNo)"
                                  background-color="#e7463f">解绑
                 </swipeout-button>
-                <swipeout-button @click.native="ajaxRequestUpdateVisitor(item.patientCardNo)"
+                <swipeout-button @click.native="this.updateVisitorList(item.patientCardNo)"
                                  background-color="#ed7f2d">设为默认
                 </swipeout-button>
               </div>
@@ -34,13 +35,16 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {mapState} from 'vuex';
   import Controller from './Controller';
   import SufferItem from '../../components/SufferItem';
   import MescrollVue from 'mescroll.js/mescroll.vue';
   import {Swipeout, SwipeoutItem, SwipeoutButton} from 'vux';
+  import Error from '../../components/Error';
 
   export default {
     components: {
+      Error,
       Swipeout,
       SufferItem,
       SwipeoutItem,
@@ -50,6 +54,7 @@
     name: 'HZLB',
     data() {
       return {
+        pageCode: 1,
         mescroll: null,
         up: {
           auto: false,
@@ -68,23 +73,16 @@
       };
     },
     created() {
-      this.$vux.loading.show({
-        text: '加载中...'
-      });
+      if (this.isLoading) return;
+      this.exeSelectVisitorList();
     },
     methods: Controller,
-    mounted() {
-      this.pageCode = 1;
-      this.ajaxRequestSelectVisitor();
-    },
-    computed: {
-      LIST() {
-        return this.$store.state.VISITOR_LIST.LIST;
-      },
-      CARD_NO() {
-        return this.$store.state.DEFAULT_CARD.CARD_NO;
-      }
-    },
+    computed: mapState({
+      isLoading: state => state.VISITOR_LIST.isLoading,
+      isSuccess: state => state.VISITOR_LIST.isSuccess,
+      isFailure: state => state.VISITOR_LIST.isFailure,
+      data: state => state.VISITOR_LIST.data
+    }),
     watch: {
       $route(to, from) {
         if (from.name === 'HZLB') {
@@ -110,8 +108,10 @@
       position: absolute;
       top: 0;
       left: 0;
+      z-index: 1000;
       width: 100%;
       padding: 0 0.15rem;
+      background-color: @bgColor;
     }
     .body {
       height: 100%;
@@ -125,7 +125,9 @@
       width: 100%;
       bottom: 0;
       left: 0;
+      z-index: 1000;
       padding: 0.1rem 0.15rem;
+      background-color: @bgColor;
     }
     .title {
       color: @fontColor;

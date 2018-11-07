@@ -31,19 +31,7 @@ const apis = {
   selectDefaultCard: {
     url: '/PatientCard3/v1/patientCard/getDefaultCardDetail'
   },
-  selectAllCards: {
-    url: '/PatientCard3/v1/patientCard/getCardList',
-    params: {
-      value: ''
-    }
-  },
-  updateDefault: {
-    url: '/PatientCard3/v1/patientCard/setDefault',
-    params: {
-      value: ''
-    }
-  },
-  insertBindCard: {
+  insertVisitorList: {
     url: '/PatientCard3/v1/patientCard/bind',
     params: {
       name: '',
@@ -54,8 +42,20 @@ const apis = {
       phone: ''
     }
   },
-  deleteUnbindCard: {
+  deleteVisitorList: {
     url: '/PatientCard3/v1/patientCard/unbind',
+    params: {
+      value: ''
+    }
+  },
+  updateVisitorList: {
+    url: '/PatientCard3/v1/patientCard/setDefault',
+    params: {
+      value: ''
+    }
+  },
+  selectVisitorList: {
+    url: '/PatientCard3/v1/patientCard/getCardList',
     params: {
       value: ''
     }

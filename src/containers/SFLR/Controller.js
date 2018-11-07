@@ -1,8 +1,4 @@
-import apis from '../../apis';
-import {
-  updateDefaultCardFun,
-  insertVisitorListFun
-} from '../../vuex/actions';
+import {mapActions} from 'vuex';
 
 const controllers = {
   showMenus(type) {
@@ -83,21 +79,13 @@ const controllers = {
     this.nation = '请选择';
     this.relation = '请选择';
   },
-  ajaxRequestInsertVisitor(data) {
-    this.$axios.post(apis.insertBindCard, data)
-      .then((res) => {
-        const {data} = res;
-        this.clearFormData();
-        this.$store.dispatch(insertVisitorListFun(data));
-        this.$store.dispatch(updateDefaultCardFun(data));
-        this.$vux.toast.show({
-          text: '绑卡成功'
-        });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
+  exeInsertVisitorList(data) {
+    this.clearFormData();
+  },
+  ...mapActions([
+    'insertVisitorList',
+    'updateVisitorList'
+  ])
 };
 
 export default controllers;

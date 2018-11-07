@@ -4,7 +4,7 @@
                   :down="down"
                   :up="up"
                   @init="init">
-      <sub-item v-for="(item,index) in items"
+      <sub-item v-for="(item,index) in data"
                 :item="item"
                 :key="index"></sub-item>
     </mescroll-vue>
@@ -46,19 +46,19 @@
       };
     },
     created() {
-      if (!this.isLoading) {
-        this.$vux.loading.show({
-          text: '加载中...'
-        });
-        this.ajaxRequestSubscribeList();
+      if (this.isLoading) {
+        return;
       }
+      this.exeSelectSubscribeList();
     },
     methods: Controller,
     mounted() {
     },
     computed: mapState({
-      items: state => state.SUBSCRIBE_LIST.list,
-      isLoading: state => state.SUBSCRIBE_LIST.isLoading
+      isLoading: state => state.SUBSCRIBE_LIST.isLoading,
+      isSuccess: state => state.SUBSCRIBE_LIST.isSuccess,
+      isFailure: state => state.SUBSCRIBE_LIST.isFailure,
+      data: state => state.SUBSCRIBE_LIST.data
     }),
     watch: {
       $route(to, from) {

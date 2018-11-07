@@ -5,9 +5,9 @@
         <img src="../../assets/images/doctor@2x.png"/>
       </div>
       <div class="row-box-2">
-        <em class="name">{{DEFAULT_CARD.NAME}}</em>
+        <em class="name">{{data.name}}</em>
         <span class="span">当前就诊卡</span>
-        <span class="span">卡号：{{DEFAULT_CARD.CARD_NO}}</span>
+        <span class="span">卡号：{{data.patientCardNo}}</span>
       </div>
       <div class="row-box-3">
         <router-link :to="this.$routes.HZLB.path">
@@ -72,29 +72,27 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {mapState} from 'vuex';
   import Controller from './Controller';
+  import Error from '../../components/Error';
 
   export default {
+    components: {Error},
     name: 'GRZX',
     data() {
       return {};
     },
     created() {
-      if (this.DEFAULT_CARD.name) {
-        this.isLoading = true;
-        return;
-      }
-      this.$vux.loading.show({
-        text: '加载中...'
-      });
-      this.ajaxRequestDefaultCard();
+      if (this.isLoading) return;
+      this.exeSelectDefaultCard();
     },
     methods: Controller,
-    computed: {
-      DEFAULT_CARD() {
-        return this.$store.state.DEFAULT_CARD;
-      }
-    }
+    computed: mapState({
+      isLoading: state => state.DEFAULT_CARD.isLoading,
+      isSuccess: state => state.DEFAULT_CARD.isSuccess,
+      isFailure: state => state.DEFAULT_CARD.isFailure,
+      data: state => state.DEFAULT_CARD.data
+    })
   };
 </script>
 
@@ -104,7 +102,7 @@
   .FX_ZHYL_GRZX {
     background-color: @bgColor;
     .DYMK {
-      height: 1.11rem;
+      min-height: 1.11rem;
       overflow: hidden;
       position: relative;
       padding: 0.15rem 1rem 0.15rem 0.9rem;

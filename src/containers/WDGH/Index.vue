@@ -4,7 +4,7 @@
                   :down="down"
                   :up="up"
                   @init="init">
-      <reg-item v-for="(item,index) in items"
+      <reg-item v-for="(item,index) in data"
                 :item="item"
                 :key="index"></reg-item>
     </mescroll-vue>
@@ -46,17 +46,18 @@
       };
     },
     created() {
-      if (!this.isLoading) {
-        this.$vux.loading.show({text: '加载中...'});
-        this.ajaxRequestRegisterList();
+      if (this.loading) {
+        return;
       }
+      this.exeSelectRegisterList();
     },
     methods: Controller,
-    mounted() {
-    },
+    mounted() {},
     computed: mapState({
-      items: state => state.REGISTER_LIST.list,
-      isLoading: state => state.REGISTER_LIST.isLoading
+      isLoading: state => state.REGISTER_LIST.isLoading,
+      isSuccess: state => state.REGISTER_LIST.isSuccess,
+      isFailure: state => state.REGISTER_LIST.isFailure,
+      data: state => state.REGISTER_LIST.data
     }),
     watch: {
       $route(to, from) {

@@ -1,22 +1,23 @@
-import apis from '../../apis';
-import {
-  updateDefaultCardFun
-} from '../../vuex/actions';
+import {mapActions} from 'vuex';
 
 const controller = {
-  ajaxRequestDefaultCard() {
-    this.$axios.post(apis.selectDefaultCard)
+  exeSelectDefaultCard() {
+    this.$vux.loading.show({
+      text: '加载中...'
+    });
+    this.selectDefaultCard()
       .then((res) => {
+        console.log(res);
         this.$vux.loading.hide();
-        const {data} = res;
-        if (data && typeof data === 'object') {
-          this.$store.dispatch(updateDefaultCardFun(data));
-        }
       })
       .catch((err) => {
+        this.$vux.loading.hide();
         console.log(err);
       });
-  }
+  },
+  ...mapActions([
+    'selectDefaultCard'
+  ])
 };
 
 export default controller;

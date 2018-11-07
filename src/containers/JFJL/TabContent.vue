@@ -4,7 +4,8 @@
       <div class="swiper-wrapper">
         <div class="swiper-slide">
           <no-data v-if="isPayedSuccess && !isPayedItems.length"></no-data>
-          <error v-if="isPayedFailed && !isPayedItems.length" @refresh="this.exeSelectPaymentRecords"></error>
+          <error v-if="isPayedFailed && !isPayedItems.length"
+                 @refresh="this.exeSelectPaymentRecords"></error>
           <mescroll-vue v-if="isPayedItems.length" ref="mescroll"
                         :down="down" :up="up" @init="initMescroll1">
             <pay-item v-for="(item,index) in isPayedItems"
@@ -14,7 +15,8 @@
         </div>
         <div class="swiper-slide">
           <no-data v-if="noPayedSuccess && !noPayedItems.length"></no-data>
-          <error v-if="noPayedFailed && !noPayedItems.length" @refresh="this.exeSelectPaymentRecords"></error>
+          <error v-if="noPayedFailed && !noPayedItems.length"
+                 @refresh="this.exeSelectPaymentRecords"></error>
           <mescroll-vue v-if="noPayedItems.length" ref="mescroll"
                         :down="down" :up="up" @init="initMescroll2">
             <pay-item v-for="(item,index) in noPayedItems"
@@ -87,8 +89,8 @@
     computed: mapState({
       isPayedItems: state => state.ISPAYED_RECORDS.data,
       noPayedItems: state => state.NOPAYED_RECORDS.data,
-      isPayedFailed: state => state.ISPAYED_RECORDS.isFailed,
-      noPayedFailed: state => state.NOPAYED_RECORDS.isFailed,
+      isPayedFailed: state => state.ISPAYED_RECORDS.isFailure,
+      noPayedFailed: state => state.NOPAYED_RECORDS.isFailure,
       isPayedSuccess: state => state.ISPAYED_RECORDS.isSuccess,
       noPayedSuccess: state => state.NOPAYED_RECORDS.isSuccess,
       isPayedIsLoading: state => state.ISPAYED_RECORDS.isLoading,

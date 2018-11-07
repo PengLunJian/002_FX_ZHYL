@@ -1,10 +1,11 @@
 <template>
   <div class="module JZKP">
     <div class="content">
-      <div class="select" v-if="isSelect">
+      <error v-if="isFailure" @refresh="exeSelectDefaultCard"></error>
+      <div class="select" v-if="isSuccess&&data.name">
         <div class="patient-left">
-          <h3 class="patient-name">{{defaultCard.name}}</h3>
-          <span class="patient-number ellipsis">卡号：{{defaultCard.patientCardNo}}</span>
+          <h3 class="patient-name">{{data.name}}</h3>
+          <span class="patient-number ellipsis">卡号：{{data.patientCardNo}}</span>
           <button class="btn btn-change" @click="changeVisitor">
             <i class="btn-icon icon-change"></i>
             <span class="btn-text">切换就诊人</span>
@@ -13,12 +14,12 @@
         <div class="patient-right">
           <div class="patient-image">
             <img class="patient-code" @click="showQRCode"
-                 :src="'data:image/jpg;base64,'+defaultCard.qrcodeBase64"/>
+                 :src="'data:image/jpg;base64,'+data.qrcodeBase64"/>
           </div>
           <span class="patient-desc">点击出示就诊二维码</span>
         </div>
       </div>
-      <div class="insert" v-if="isInsert">
+      <div class="insert" v-if="isSuccess&&!data.name">
         <p class="desc">就诊前，请先添加就诊人</p>
         <button class="btn btn-add" @click="addVisitor">
           <i class="btn-icon icon-add"></i>
@@ -32,41 +33,26 @@
 <script type="text/ecmascript-6">
   import {mapState} from 'vuex';
   import Controller from './Controller';
+  import Error from '../../components/Error';
 
   export default {
+    components: {Error},
     name: 'JZKP',
     data() {
-      return {
-        isSelect: false,
-        isInsert: false
-      };
+      return {};
     },
     created() {
       if (this.isLoading) {
-        if (this.defaultCard.name) {
-          this.isSelect = true;
-        } else {
-          this.isInsert = true;
-        }
         return;
       }
-      this.$vux.loading.show({
-        text: '加载中...'
-      });
-      this.selectDefaultCard()
-        .then((res) => {
-          this.$vux.loading.hide();
-          if (res.name) {
-            this.isSelect = true;
-          } else {
-            this.isInsert = true;
-          }
-        });
+      this.exeSelectDefaultCard();
     },
     methods: Controller,
     computed: mapState({
-      defaultCard: state => state.DEFAULT_CARD.data,
-      isLoading: state => state.DEFAULT_CARD.isLoading
+      isLoading: state => state.DEFAULT_CARD.isLoading,
+      isSuccess: state => state.DEFAULT_CARD.isSuccess,
+      isFailure: state => state.DEFAULT_CARD.isFailure,
+      data: state => state.DEFAULT_CARD.data
     })
   };
 </script>
@@ -79,6 +65,7 @@
     color: @white;
     .content {
       height: 1.75rem;
+      position: relative;
       border-radius: @borderRadius;
       background-color: @bgColor;
     }

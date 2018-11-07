@@ -2,7 +2,7 @@ const states = {
   DEFAULT_CARD: {
     isLoading: false,
     isSuccess: false,
-    isFailed: false,
+    isFailure: false,
     data: {
       name: '',
       qrcodeBase64: '',
@@ -13,31 +13,31 @@ const states = {
   VISITOR_LIST: {
     isLoading: false,
     isSuccess: false,
-    isFailed: false,
+    isFailure: false,
     data: []
   },
   REGISTER_LIST: {
     isLoading: false,
     isSuccess: false,
-    isFailed: false,
+    isFailure: false,
     data: []
   },
   SUBSCRIBE_LIST: {
     isLoading: false,
     isSuccess: false,
-    isFailed: false,
+    isFailure: false,
     data: []
   },
   ISPAYED_RECORDS: {
     isLoading: false,
     isSuccess: false,
-    isFailed: false,
+    isFailure: false,
     data: []
   },
   NOPAYED_RECORDS: {
     isLoading: false,
     isSuccess: false,
-    isFailed: false,
+    isFailure: false,
     data: []
   }
 };

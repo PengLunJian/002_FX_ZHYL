@@ -21,9 +21,7 @@
     data() {
       return {};
     },
-    props: ['item'],
-    mounted() {
-    }
+    props: ['item']
   };
 </script>
 
