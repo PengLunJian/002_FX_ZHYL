@@ -12,7 +12,7 @@ export default class LoginHelper {
   }
 
   init() {
-    this.getUrl();
+    this.getWeChatCode();
     this.selectDeviceId()
       .then((res) => {
         this.selectWechatCode(res);
@@ -25,14 +25,11 @@ export default class LoginHelper {
       });
   };
 
-  getUrl() {
-    const ACCESS_URL = 'https://open.weixin.qq.com/connect/oauth2/authorize?' +
-      'appid=' + this.appId +
-      '&redirect_uri=' + encodeURIComponent(this.url) +
-      '&response_type=code&scope=snsapi_base&state=STATE&connect_redirect=1#wechat_redirect';
+  getWeChatCode() {
+    const ACCESS_URL = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' +
+      this.appId + '&redirect_uri=' + encodeURIComponent(this.url) +
+      '&response_type=code&scope=snsapi_base&state=STATE&connect_redirect=123#wechat_redirect';
     window.location.href = ACCESS_URL;
-
-    // alert(window.location.search('code'));
   };
 
   selectDeviceId() {
