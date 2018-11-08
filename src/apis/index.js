@@ -12,27 +12,23 @@ const apis = {
   selectDeviceId: {
     url: '/UserCenter/v1/refresh/did'
   },
-  insertCollection: {
-    url: '/Collection/v1/collections/create',
+  selectWechatCode: {
+    url: '/FlyshAuthority100/v1/account/loginByWechatCode',
     params: {
-      SCLX: 0,
-      BH: '',
-      MC: ''
+      Value: ''
     }
   },
-  selectCollection: {
-    url: '/Collection/v1/collections/page',
+  selectUserInfo: {
+    url: '/FlyshAuthority100/v1/account/fillUserInfoWithWechatCode',
     params: {
-      SCLX: 0,
-      pageIndex: 1,
-      pageSize: 10
+      Value: ''
     }
   },
   selectDefaultCard: {
-    url: '/PatientCard3/v1/patientCard/getDefaultCardDetail'
+    url: '/PatientCard100/v1/patientCard/getDefaultCardDetail'
   },
   insertVisitorList: {
-    url: '/PatientCard3/v1/patientCard/bind',
+    url: '/PatientCard100/v1/patientCard/bind',
     params: {
       name: '',
       idCardNo: '',
@@ -43,19 +39,19 @@ const apis = {
     }
   },
   deleteVisitorList: {
-    url: '/PatientCard3/v1/patientCard/unbind',
+    url: '/PatientCard100/v1/patientCard/unbind',
     params: {
       value: ''
     }
   },
   updateVisitorList: {
-    url: '/PatientCard3/v1/patientCard/setDefault',
+    url: '/PatientCard100/v1/patientCard/setDefault',
     params: {
       value: ''
     }
   },
   selectVisitorList: {
-    url: '/PatientCard3/v1/patientCard/getCardList',
+    url: '/PatientCard100/v1/patientCard/getCardList',
     params: {
       value: ''
     }

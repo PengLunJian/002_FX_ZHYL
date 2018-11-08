@@ -34,14 +34,10 @@ const controller = {
   exeUpdateVisitorList(params) {
   },
   exeSelectVisitorList() {
-    this.$vux.loading.show({
-      text: '加载中...'
-    });
     const data = {Value: this.pageCode};
     this.selectVisitorList(data)
       .then((res) => {
         const data = res.data.rows;
-        this.$vux.loading.hide();
         const hasNext = data.length !== 10 ? false : true;
         if (this.mescroll) {
           this.mescroll.endSuccess(data.length, hasNext);
@@ -51,7 +47,6 @@ const controller = {
         console.log(err);
         this.pageCode--;
         this.pageCode = this.pageCode <= 0 ? 1 : this.pageCode;
-        this.$vux.loading.hide();
         if (this.data.length !== 0) {
           this.$vux.toast.show({
             type: 'cancel',

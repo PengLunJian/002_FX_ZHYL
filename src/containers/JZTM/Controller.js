@@ -5,16 +5,12 @@ const controller = {
     this.$router.back();
   },
   exeSelectDefaultCard() {
-    this.$vux.loading.show({
-      text: '加载中...'
-    });
     this.selectDefaultCard()
       .then((res) => {
-        this.$vux.loading.hide();
+        console.log(res);
       })
       .catch((err) => {
         console.log(err);
-        this.$vux.loading.hide();
       });
   },
   ...mapActions([

@@ -1,9 +1,7 @@
 <template>
   <div class="FX_ZHYL_JZRLB">
-    <!--<div class="header">-->
-    <!--<p class="title">选择/添加需要就诊的人员</p>-->
-    <!--</div>-->
     <div class="content">
+      <no-data v-if="isLoading&&!isFailure&&!data.length"></no-data>
       <error v-if="isFailure&&!data.length" @refresh="exeSelectVisitorList"></error>
       <mescroll-vue v-if="data.length" ref="mescroll" :down="down" :up="up" @init="init">
         <swipeout>
@@ -28,12 +26,6 @@
         <i class="btn-icon icon-add"></i>
       </button>
     </div>
-    <!--<div class="footer">-->
-    <!--<button class="btn btn-add" @click="insertSuffer">-->
-    <!--<i class="btn-icon icon-add"></i>-->
-    <!--<span class="btn-text">添加就诊人</span>-->
-    <!--</button>-->
-    <!--</div>-->
   </div>
 </template>
 
@@ -44,9 +36,11 @@
   import MescrollVue from 'mescroll.js/mescroll.vue';
   import {Swipeout, SwipeoutItem, SwipeoutButton} from 'vux';
   import Error from '../../components/Error';
+  import NoData from '../../components/NoData';
 
   export default {
     components: {
+      NoData,
       Error,
       Swipeout,
       SufferItem,

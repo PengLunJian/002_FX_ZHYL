@@ -1,20 +1,27 @@
+import Vue from 'vue';
 import axios from 'axios';
 
 axios.defaults.timeout = 10000;
-// axios.defaults.baseURL = 'http://118.31.65.217';
+axios.defaults.baseURL = 'http://192.168.1.196';
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 
 axios.interceptors.request.use(config => {
+  Vue.$vux.loading.show({
+    text: '加载中...'
+  });
   config = getConfig(config);
   return config;
 }, error => {
+  Vue.$vux.loading.hide();
   return Promise.reject(error);
 });
 
 axios.interceptors.response.use(response => {
+  Vue.$vux.loading.hide();
   return response.data;
 }, error => {
+  Vue.$vux.loading.hide();
   return Promise.resolve(error.response);
 });
 

@@ -30,6 +30,13 @@
   @import "../../assets/less/variable";
 
   .FX_ZHYL_YYJJ {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     background-color: @bgColor;
   }
 </style>

@@ -9,15 +9,19 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import LoginHelper from './loginHelper';
+
   export default {
     name: 'App',
-    components: {},
     data() {
       return {
         transitionName: ''
       };
     },
-    methods: {},
+    created() {
+      /* eslint-disable no-new */
+      new LoginHelper();
+    },
     watch: {
       $route(to, from) {
         if (from.meta.index !== undefined) {

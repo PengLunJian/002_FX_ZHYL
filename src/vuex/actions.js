@@ -3,17 +3,35 @@ import axios from '../axios/axios';
 import * as ACTION_TYPES from './actionTypes';
 
 const actions = {
+  selectLoginToken({commit}) {
+    return new Promise((resolve, reject) => {
+      axios.post(apis.selectLoginToken)
+        .then((res) => {
+          console.log(res);
+          resolve(res);
+        })
+        .catch((err) => {
+          console.log(err);
+          reject(err);
+        });
+    });
+  },
   // 查询默认就诊卡
   selectDefaultCard({commit}) {
     return new Promise((resolve, reject) => {
       axios.post(apis.selectDefaultCard)
         .then((res) => {
-          const {data} = res;
-          commit(ACTION_TYPES.SELECT_DEFAULT_CARD_REQUEST);
-          commit(ACTION_TYPES.SELECT_DEFAULT_CARD_SUCCESS, data);
+          const {data, success} = res;
+          if (!success) {
+            commit(ACTION_TYPES.SELECT_DEFAULT_CARD_FAILURE);
+          } else {
+            commit(ACTION_TYPES.SELECT_DEFAULT_CARD_REQUEST);
+            commit(ACTION_TYPES.SELECT_DEFAULT_CARD_SUCCESS, data);
+          }
           resolve(data);
         })
         .catch((err) => {
+          console.log(err);
           commit(ACTION_TYPES.SELECT_DEFAULT_CARD_FAILURE);
           reject(err);
         });
