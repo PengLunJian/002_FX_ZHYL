@@ -7,6 +7,7 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import LoginHelper from '../../loginHelper';
   import Controller from './Controller';
   import JZKP from './JZKP';
   import XXTS from './XXTS';
@@ -20,15 +21,16 @@
       XXTS
     },
     data() {
-      return {
-        deviceId: ''
-      };
+      return {};
     },
     created() {
+      /* eslint-disable no-new */
+      new LoginHelper({
+        appId: 'wxe790a197b8d02b72',
+        finish: this.exeSelectDefaultCard
+      });
     },
-    methods: Controller,
-    mounted() {
-    }
+    methods: Controller
   };
 </script>
 
@@ -44,5 +46,8 @@
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     background-color: @bgColor;
+    &.hide {
+      display: none !important;
+    }
   }
 </style>

@@ -9,7 +9,6 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import LoginHelper from './loginHelper';
 
   export default {
     name: 'App',
@@ -17,10 +16,6 @@
       return {
         transitionName: ''
       };
-    },
-    created() {
-      /* eslint-disable no-new */
-      new LoginHelper();
     },
     watch: {
       $route(to, from) {
@@ -44,5 +39,6 @@
     min-height: 100vh;
     position: relative;
     overflow-x: hidden;
+    background-color: @white;
   }
 </style>

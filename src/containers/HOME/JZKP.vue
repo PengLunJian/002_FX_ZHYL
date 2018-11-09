@@ -40,10 +40,10 @@
       return {};
     },
     created() {
-      if (this.isLoading) {
-        return;
-      }
-      this.exeSelectDefaultCard();
+      // if (this.isLoading) {
+      //   return;
+      // }
+      // this.exeSelectDefaultCard();
     },
     methods: Controller,
     computed: mapState({

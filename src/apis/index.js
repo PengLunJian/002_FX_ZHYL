@@ -10,16 +10,16 @@ const apis = {
     }
   },
   selectDeviceId: {
-    url: '/UserCenter/v1/refresh/did'
+    url: '/UserCenter100/v1/refresh/did'
   },
   selectWechatCode: {
-    url: '/FlyshAuthority100/v1/account/loginByWechatCode',
+    url: '/UserCenter100/v1/account/loginByWechatCode',
     params: {
       Value: ''
     }
   },
   selectUserInfo: {
-    url: '/FlyshAuthority100/v1/account/fillUserInfoWithWechatCode',
+    url: '/UserCenter100/v1/account/fillUserInfoWithWechatCode',
     params: {
       Value: ''
     }

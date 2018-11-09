@@ -3,23 +3,38 @@ import axios from './axios/axios';
 
 export default class LoginHelper {
   constructor() {
-    this.apis = apis;
-    this.deviceId = '';
+    this.appId = arguments[0].appId;
     this.url = window.location.href;
-    this.appId = 'wxe790a197b8d02b72';
-    this.code = sessionStorage.getItem('code');
-
-    this.init();
+    this.code = arguments[0].code || '';
+    this.finish = arguments[0].finish || '';
+    this.initLoginHelper();
   }
 
-  init() {
-    this.getWeChatCode();
+  initLoginHelper() {
+    this.getWeChatCode('base');
     this.selectDeviceId()
       .then((res) => {
-        this.selectWechatCode(res);
-      })
-      .then((res) => {
-        this.selectUserInfo(res);
+        const {data} = res;
+        if (!data || !this.code) return;
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + data;
+        this.selectWechatCode()
+          .then((res) => {
+            const {data, success} = res;
+            if (!data || !success) {
+              this.code = '';
+              this.getWeChatCode('userinfo');
+              this.selectUserInfo();
+            } else {
+              const {AccessToken, RefreshToken} = data;
+              sessionStorage.setItem('accessToken', AccessToken);
+              sessionStorage.setItem('refreshToken', RefreshToken);
+              axios.defaults.headers.common['Authorization'] = AccessToken;
+              this.finish();
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((err) => {
         console.log(err);
@@ -33,24 +48,21 @@ export default class LoginHelper {
     return null;
   }
 
-  getWeChatCode() {
+  getWeChatCode(scope) {
+    this.code = this.querySearch('code');
+    this.code = scope === 'userinfo' ? '' : this.code;
     if (!this.code) {
       const ACCESS_URL = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' +
         this.appId + '&redirect_uri=' + encodeURIComponent(this.url) +
-        '&response_type=code&scope=snsapi_base&state=STATE&connect_redirect=123#wechat_redirect';
+        '&response_type=code&scope=snsapi_' + scope + '&state=STATE&connect_redirect=123#wechat_redirect';
       window.location.href = ACCESS_URL;
-      this.code = this.querySearch('code');
-      sessionStorage.setItem('code', this.code);
     }
-    alert(this.querySearch('code'));
   };
 
   selectDeviceId() {
     return new Promise((resolve, reject) => {
-      axios.post(this.apis.selectDeviceId)
+      axios.post(apis.selectDeviceId)
         .then((res) => {
-          const {data} = res;
-          this.deviceId = data;
           resolve(res);
         })
         .catch((err) => {
@@ -60,9 +72,10 @@ export default class LoginHelper {
     });
   };
 
-  selectUserInfo() {
+  selectWechatCode() {
     return new Promise((resolve, reject) => {
-      axios.post(this.apis.selectUserInfo)
+      const params = {Value: this.code};
+      axios.post(apis.selectWechatCode, params)
         .then((res) => {
           resolve(res);
         })
@@ -72,10 +85,18 @@ export default class LoginHelper {
     });
   };
 
-  selectWechatCode() {
+  selectUserInfo() {
     return new Promise((resolve, reject) => {
-      axios.post(this.apis.selectWechatCode)
+      const params = {Value: this.code};
+      axios.post(apis.selectUserInfo, params)
         .then((res) => {
+          const {data, success} = res;
+          if (!data || !success) return;
+          const {AccessToken, RefreshToken} = data;
+          sessionStorage.setItem('accessToken', AccessToken);
+          sessionStorage.setItem('refreshToken', RefreshToken);
+          axios.defaults.headers.common['Authorization'] = AccessToken;
+          this.finish();
           resolve(res);
         })
         .catch((err) => {
