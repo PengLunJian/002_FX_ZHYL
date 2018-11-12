@@ -12,13 +12,13 @@ const apis = {
   selectDeviceId: {
     url: '/UserCenter100/v1/refresh/did'
   },
-  selectWechatCode: {
+  selectBaseLogin: {
     url: '/UserCenter100/v1/account/loginByWechatCode',
     params: {
       Value: ''
     }
   },
-  selectUserInfo: {
+  selectUserLogin: {
     url: '/UserCenter100/v1/account/fillUserInfoWithWechatCode',
     params: {
       Value: ''

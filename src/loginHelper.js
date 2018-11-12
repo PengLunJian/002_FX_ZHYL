@@ -3,42 +3,22 @@ import axios from './axios/axios';
 
 export default class LoginHelper {
   constructor() {
-    this.appId = arguments[0].appId;
-    this.url = window.location.href;
-    this.code = arguments[0].code || '';
-    this.finish = arguments[0].finish || '';
-    this.initLoginHelper();
+    const args = arguments.length ? arguments[0] : arguments;
+    this.code = args['code'] ? args['code'] : '';
+    this.appId = args['appId'] ? args['appId'] : '';
+    this.url = args['url'] ? args['url'] : window.location.href;
+    this.finish = args['finish'] ? args['finish'] : function () {
+    };
+
+    this.selectDeviceId();
   }
 
-  initLoginHelper() {
-    this.getWeChatCode('base');
-    this.selectDeviceId()
-      .then((res) => {
-        const {data} = res;
-        if (!data || !this.code) return;
-        axios.defaults.headers.common['Authorization'] = 'Bearer ' + data;
-        this.selectWechatCode()
-          .then((res) => {
-            const {data, success} = res;
-            if (!data || !success) {
-              this.code = '';
-              this.getWeChatCode('userinfo');
-              this.selectUserInfo();
-            } else {
-              const {AccessToken, RefreshToken} = data;
-              sessionStorage.setItem('accessToken', AccessToken);
-              sessionStorage.setItem('refreshToken', RefreshToken);
-              axios.defaults.headers.common['Authorization'] = AccessToken;
-              this.finish();
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  redirectUrl(scope) {
+    const ACCESS_URL = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' +
+      this.appId + '&redirect_uri=' + encodeURIComponent(this.url) +
+      '&response_type=code&scope=snsapi_' + scope + '&state=STATE&' +
+      'connect_redirect=123#wechat_redirect';
+    window.location.href = ACCESS_URL;
   };
 
   querySearch(name) {
@@ -48,60 +28,58 @@ export default class LoginHelper {
     return null;
   }
 
-  getWeChatCode(scope) {
-    this.code = this.querySearch('code');
-    this.code = scope === 'userinfo' ? '' : this.code;
-    if (!this.code) {
-      const ACCESS_URL = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' +
-        this.appId + '&redirect_uri=' + encodeURIComponent(this.url) +
-        '&response_type=code&scope=snsapi_' + scope + '&state=STATE&connect_redirect=123#wechat_redirect';
-      window.location.href = ACCESS_URL;
-    }
-  };
-
   selectDeviceId() {
-    return new Promise((resolve, reject) => {
+    this.code = this.querySearch('code');
+    if (!this.code) {
+      this.redirectUrl('base');
+    } else {
       axios.post(apis.selectDeviceId)
         .then((res) => {
-          resolve(res);
+          const {data} = res;
+          axios.defaults.headers.common['Authorization'] = 'Bearer ' + data;
+          this.selectBaseLogin();
         })
         .catch((err) => {
           console.log(err);
-          reject(err);
         });
-    });
+    }
   };
 
-  selectWechatCode() {
-    return new Promise((resolve, reject) => {
-      const params = {Value: this.code};
-      axios.post(apis.selectWechatCode, params)
-        .then((res) => {
-          resolve(res);
-        })
-        .catch((err) => {
-          reject(err);
-        });
-    });
+  selectBaseLogin() {
+    const params = {Value: this.code};
+    axios.post(apis.selectBaseLogin, params)
+      .then((res) => {
+        const {data, success} = res;
+        if (data && success) {
+          this.setLocalStorage(data);
+        } else {
+          this.redirectUrl('userinfo');
+          this.selectUserLogin();
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
-  selectUserInfo() {
-    return new Promise((resolve, reject) => {
-      const params = {Value: this.code};
-      axios.post(apis.selectUserInfo, params)
-        .then((res) => {
-          const {data, success} = res;
-          if (!data || !success) return;
-          const {AccessToken, RefreshToken} = data;
-          sessionStorage.setItem('accessToken', AccessToken);
-          sessionStorage.setItem('refreshToken', RefreshToken);
-          axios.defaults.headers.common['Authorization'] = AccessToken;
-          this.finish();
-          resolve(res);
-        })
-        .catch((err) => {
-          reject(err);
-        });
-    });
+  selectUserLogin() {
+    const params = {Value: this.code};
+    axios.post(apis.selectUserLogin, params)
+      .then((res) => {
+        const {data, success} = res;
+        if (!data || !success) return;
+        this.setLocalStorage(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
+
+  setLocalStorage(data) {
+    const {AccessToken, RefreshToken} = data;
+    localStorage.setItem('accessToken', AccessToken);
+    localStorage.setItem('refreshToken', RefreshToken);
+    axios.defaults.headers.common['Authorization'] = AccessToken;
+    this.finish();
+  }
 };
