@@ -3,15 +3,48 @@ import axios from '../axios/axios';
 import * as ACTION_TYPES from './actionTypes';
 
 const actions = {
-  selectLoginToken({commit}) {
+  // 查询设备标识
+  selectDeviceId({commit}) {
     return new Promise((resolve, reject) => {
-      axios.post(apis.selectLoginToken)
+      commit(ACTION_TYPES.SELECT_DEVICEID_REQUEST);
+      axios.post(apis.selectDeviceId)
         .then((res) => {
-          console.log(res);
+          const data = {id: res.data};
+          commit(ACTION_TYPES.SELECT_DEVICEID_SUCCESS, data);
           resolve(res);
         })
         .catch((err) => {
-          console.log(err);
+          commit(ACTION_TYPES.SELECT_DEVICEID_FAILURE);
+          reject(err);
+        });
+    });
+  },
+  // 使用静默方式查询用户信息
+  selectAutoLogin({commit}, data) {
+    commit(ACTION_TYPES.SELECT_AUTO_LOGIN_REQUEST);
+    return new Promise((resolve, reject) => {
+      axios.post(apis.selectAutoLogin, data)
+        .then((res) => {
+          commit(ACTION_TYPES.SELECT_AUTO_LOGIN_SUCCESS, data);
+          resolve(res);
+        })
+        .catch((err) => {
+          commit(ACTION_TYPES.SELECT_AUTO_LOGIN_FAILURE);
+          reject(err);
+        });
+    });
+  },
+  // 使用非静默方式查询用户信息
+  selectManuLogin({commit}, data) {
+    commit(ACTION_TYPES.SELECT_MANU_LOGIN_REQUEST);
+    return new Promise((resolve, reject) => {
+      axios.post(apis.selectManuLogin, data)
+        .then((res) => {
+          commit(ACTION_TYPES.SELECT_MANU_LOGIN_SUCCESS, data);
+          resolve(res);
+        })
+        .catch((err) => {
+          commit(ACTION_TYPES.SELECT_MANU_LOGIN_FAILURE);
           reject(err);
         });
     });

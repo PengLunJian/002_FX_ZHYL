@@ -64,3 +64,14 @@ export const pagination = (data, pageCode, pageSize) => {
   });
   return {data: newData || []};
 };
+/**
+ * 获取请求路径参数
+ * @param name
+ * @returns {*}
+ */
+export const getQueryParams = (name) => {
+  const reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
+  const r = window.location.search.substr(1).match(reg);
+  if (r != null) return unescape(r[2]);
+  return null;
+};

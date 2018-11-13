@@ -1,5 +1,5 @@
 <template>
-  <div class="FX_ZHYL_HOME hide">
+  <div class="FX_ZHYL_HOME" :class="isLoading?'':'hide'">
     <j-z-k-p></j-z-k-p>
     <x-x-t-s></x-x-t-s>
     <d-h-c-d></d-h-c-d>
@@ -7,7 +7,7 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import LoginHelper from '../../loginHelper';
+  import {mapState} from 'vuex';
   import Controller from './Controller';
   import JZKP from './JZKP';
   import XXTS from './XXTS';
@@ -21,16 +21,17 @@
       XXTS
     },
     data() {
-      return {};
+      return {
+        appId: 'wxe790a197b8d02b72'
+      };
     },
     created() {
-      /* eslint-disable no-new */
-      new LoginHelper({
-        appId: 'wxe790a197b8d02b72',
-        finish: this.exeSelectDefaultCard
-      });
+      this.init();
     },
-    methods: Controller
+    methods: Controller,
+    computed: mapState({
+      isLoading: state => state.DEFAULT_CARD.isLoading
+    })
   };
 </script>
 

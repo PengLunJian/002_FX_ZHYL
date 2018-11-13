@@ -1,4 +1,24 @@
 const states = {
+  DEVICEID: {
+    isLoading: false,
+    isSuccess: false,
+    isFailure: false,
+    data: {
+      id: ''
+    }
+  },
+  MANU_LOGIN: {
+    isLoading: false,
+    isSuccess: false,
+    isFailure: false,
+    data: {}
+  },
+  AUTO_LOGIN: {
+    isLoading: false,
+    isSuccess: false,
+    isFailure: false,
+    data: {}
+  },
   DEFAULT_CARD: {
     isLoading: false,
     isSuccess: false,

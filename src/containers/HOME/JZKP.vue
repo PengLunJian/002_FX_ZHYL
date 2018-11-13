@@ -1,7 +1,7 @@
 <template>
   <div class="module JZKP">
     <error v-if="isFailure" @refresh="exeSelectDefaultCard"></error>
-    <div class="select" v-if="isSuccess&&data.name">
+    <div class="select" v-if="isSuccess&&data">
       <div class="patient-left">
         <h3 class="patient-name">{{data.name}}</h3>
         <span class="patient-number ellipsis">卡号：{{data.patientCardNo}}</span>
@@ -18,7 +18,7 @@
         <span class="patient-desc">点击出示就诊二维码</span>
       </div>
     </div>
-    <div class="insert" v-if="isSuccess&&!data.name">
+    <div class="insert" v-if="isSuccess&&!data">
       <p class="desc">就诊前，请先添加就诊人</p>
       <button class="btn btn-add" @click="addVisitor">
         <i class="btn-icon icon-add"></i>
@@ -38,12 +38,6 @@
     name: 'JZKP',
     data() {
       return {};
-    },
-    created() {
-      // if (this.isLoading) {
-      //   return;
-      // }
-      // this.exeSelectDefaultCard();
     },
     methods: Controller,
     computed: mapState({
