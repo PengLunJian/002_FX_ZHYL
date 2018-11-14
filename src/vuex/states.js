@@ -59,6 +59,12 @@ const states = {
     isSuccess: false,
     isFailure: false,
     data: []
+  },
+  DOCTOR_LIST: {
+    isLoading: false,
+    isSuccess: false,
+    isFailure: false,
+    data: []
   }
 };
 

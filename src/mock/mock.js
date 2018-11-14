@@ -53,3 +53,11 @@ Mock.mock(apis.selectPaymentRecord.url, 'post', function (request) {
   const size = payStatus ? 0 : 21;
   return pagination(data.data6(size), pageCode, pageSize);
 });
+Mock.mock(apis.selectDoctorList.url, 'post', function (request) {
+  const params = JSON.parse(request.body);
+  const date = parseInt(params['date']);
+  const pageCode = parseInt(params['pageIndex']);
+  const pageSize = parseInt(params['pageSize']);
+  const size = date * 5 + parseInt(Math.random() * 100);
+  return pagination(data.data7(size), pageCode, pageSize);
+});

@@ -88,6 +88,22 @@ const data = {
       data: data,
       success: true
     };
+  },
+  data7: (size) => {
+    const data = [];
+    for (let i = 0; i < size; i++) {
+      const tag = (i + 1) > 9 ? '' + (i + 1) : '0' + (i + 1);
+      data.push({
+        logo: require('../assets/images/doctor@2x.png'),
+        name: '胡代宇' + tag,
+        post: '职称：正主任医师' + parseInt(Math.random() * 100),
+        good: '视网膜、青光眼、斜视等眼病'
+      });
+    }
+    return {
+      data: data,
+      success: true
+    };
   }
 };
 

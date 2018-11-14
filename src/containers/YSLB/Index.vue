@@ -1,10 +1,9 @@
 <template>
   <div class="FX_ZHYL_YSLB">
     <div class="module YYSJ">
-      <ul class="date-filter">
-        <li class="filter-item" :class="index===0?' active':''"
-            v-for="(item,index) in filters"
-            :key="index">
+      <ul class="date-filter mescroll-touch">
+        <li class="filter-item" :class="index===status?' active':''"
+            v-for="(item,index) in filters" :key="index" @click="handleFilter(index)">
           <span class="filter-number">{{item.number}}</span>
           <span class="filter-text">{{item.text}}</span>
         </li>
@@ -12,11 +11,11 @@
     </div>
     <div class="module ZZYS">
       <no-data v-if="isLoading&&!isFailure&&!data.length"></no-data>
-      <error v-if="isFailure&&!data.length" @refresh="exeSelectSubscribeList"></error>
+      <error v-if="isFailure&&!data.length" @refresh="exeSelectDoctorList"></error>
       <mescroll-vue v-if="data.length" ref="mescroll" :down="down" :up="up" @init="init">
-        <doctor-item v-for="(item,index) in items"
-                     :key="index"
-                     :item="item"></doctor-item>
+        <div class="doctorList">
+          <doctor-item v-for="(item,index) in data" :key="index" :item="item"></doctor-item>
+        </div>
       </mescroll-vue>
     </div>
   </div>
@@ -40,6 +39,8 @@
     name: 'YSLB',
     data() {
       return {
+        status: 0,
+        date: 0,
         pageCode: 1,
         mescroll: null,
         up: {
@@ -97,74 +98,6 @@
             number: '09 - 05',
             text: '周三'
           }
-        ],
-        items: [
-          {
-            logo: require('../../assets/images/doctor@2x.png'),
-            name: '胡代宇',
-            post: '职称：正主任医师',
-            good: '视网膜、青光眼、斜视等眼病'
-          },
-          {
-            logo: require('../../assets/images/doctor@2x.png'),
-            name: '胡代宇',
-            post: '职称：正主任医师',
-            good: '视网膜、青光眼、斜视等眼病'
-          },
-          {
-            logo: require('../../assets/images/doctor@2x.png'),
-            name: '胡代宇',
-            post: '职称：正主任医师',
-            good: '视网膜、青光眼、斜视等眼病'
-          },
-          {
-            logo: require('../../assets/images/doctor@2x.png'),
-            name: '胡代宇',
-            post: '职称：正主任医师',
-            good: '视网膜、青光眼、斜视等眼病'
-          },
-          {
-            logo: require('../../assets/images/doctor@2x.png'),
-            name: '胡代宇',
-            post: '职称：正主任医师',
-            good: '视网膜、青光眼、斜视等眼病'
-          },
-          {
-            logo: require('../../assets/images/doctor@2x.png'),
-            name: '胡代宇',
-            post: '职称：正主任医师',
-            good: '视网膜、青光眼、斜视等眼病'
-          },
-          {
-            logo: require('../../assets/images/doctor@2x.png'),
-            name: '胡代宇',
-            post: '职称：正主任医师',
-            good: '视网膜、青光眼、斜视等眼病'
-          },
-          {
-            logo: require('../../assets/images/doctor@2x.png'),
-            name: '胡代宇',
-            post: '职称：正主任医师',
-            good: '视网膜、青光眼、斜视等眼病'
-          },
-          {
-            logo: require('../../assets/images/doctor@2x.png'),
-            name: '胡代宇',
-            post: '职称：正主任医师',
-            good: '视网膜、青光眼、斜视等眼病'
-          },
-          {
-            logo: require('../../assets/images/doctor@2x.png'),
-            name: '胡代宇',
-            post: '职称：正主任医师',
-            good: '视网膜、青光眼、斜视等眼病'
-          },
-          {
-            logo: require('../../assets/images/doctor@2x.png'),
-            name: '胡代宇',
-            post: '职称：正主任医师',
-            good: '视网膜、青光眼、斜视等眼病'
-          }
         ]
       };
     },
@@ -174,14 +107,14 @@
     },
     methods: Controller,
     computed: mapState({
-      isLoading: state => state.REGISTER_LIST.isLoading,
-      isSuccess: state => state.REGISTER_LIST.isSuccess,
-      isFailure: state => state.REGISTER_LIST.isFailure,
-      data: state => state.REGISTER_LIST.data
+      isLoading: state => state.DOCTOR_LIST.isLoading,
+      isSuccess: state => state.DOCTOR_LIST.isSuccess,
+      isFailure: state => state.DOCTOR_LIST.isFailure,
+      data: state => state.DOCTOR_LIST.data
     }),
     watch: {
       $route(to, from) {
-        if (from.name === 'WDGH') {
+        if (from.name === 'YSLB') {
           this.mescroll.setBounce(true);
         }
       }
@@ -193,7 +126,7 @@
   @import '../../assets/less/variable';
 
   .FX_ZHYL_YSLB {
-    min-height: 100vh;
+    height: 100vh;
     padding-top: 0.5rem;
     background-color: @bgColor;
     .module {
@@ -206,7 +139,7 @@
       z-index: 1000;
       width: 100%;
       overflow-y: auto;
-      box-shadow: @boxShadow;
+      box-shadow: @boxShadow2;
       background-color: @white;
       -webkit-overflow-scrolling: touch;
       .date-filter {
@@ -264,8 +197,11 @@
       }
     }
     .ZZYS {
+      height: 100%;
       position: relative;
-      z-index: 0;
+      .doctorList {
+        padding-top: 0.1rem;
+      }
     }
   }
 </style>

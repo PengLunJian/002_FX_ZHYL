@@ -205,6 +205,24 @@ const mutations = {
     state.NOPAYED_RECORDS.isLoading = true;
     state.NOPAYED_RECORDS.isSuccess = false;
     state.NOPAYED_RECORDS.isFailure = true;
+  },
+  // 查询医生列表
+  SELECT_DOCTOR_LIST_REQUEST(state) {
+    state.DOCTOR_LIST.isLoading = false;
+    state.DOCTOR_LIST.isSuccess = false;
+    state.DOCTOR_LIST.isFailure = false;
+    state.DOCTOR_LIST.data = [];
+  },
+  SELECT_DOCTOR_LIST_SUCCESS(state, data) {
+    state.DOCTOR_LIST.isLoading = true;
+    state.DOCTOR_LIST.isSuccess = true;
+    state.DOCTOR_LIST.isFailure = false;
+    state.DOCTOR_LIST.data = data;
+  },
+  SELECT_DOCTOR_LIST_FAILURE(state) {
+    state.DOCTOR_LIST.isLoading = true;
+    state.DOCTOR_LIST.isSuccess = false;
+    state.DOCTOR_LIST.isFailure = true;
   }
 };
 

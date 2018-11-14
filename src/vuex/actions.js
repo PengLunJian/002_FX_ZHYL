@@ -54,6 +54,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post(apis.selectDefaultCard)
         .then((res) => {
+          console.log(res);
           const {data, success} = res;
           if (!success) {
             commit(ACTION_TYPES.SELECT_DEFAULT_CARD_FAILURE);
@@ -226,6 +227,27 @@ const actions = {
         })
         .catch((err) => {
           commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_FAILURE);
+          reject(err);
+        });
+    });
+  },
+  // 查询医生列表
+  selectDoctorList({commit, state}, data) {
+    const {pageIndex} = data;
+    return new Promise((resolve, reject) => {
+      axios.post(apis.selectDoctorList, data)
+        .then((res) => {
+          const {data} = res;
+          if (pageIndex === 1) {
+            commit(ACTION_TYPES.SELECT_DOCTOR_LIST_REQUEST);
+          }
+          const oldData = state.DOCTOR_LIST.data;
+          const newData = oldData.concat(data);
+          commit(ACTION_TYPES.SELECT_DOCTOR_LIST_SUCCESS, newData);
+          resolve(res);
+        })
+        .catch((err) => {
+          commit(ACTION_TYPES.SELECT_DOCTOR_LIST_FAILURE);
           reject(err);
         });
     });

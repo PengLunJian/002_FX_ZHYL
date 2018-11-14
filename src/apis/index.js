@@ -77,6 +77,14 @@ const apis = {
       pageIndex: 1,
       pageSize: 10
     }
+  },
+  selectDoctorList: {
+    url: '/SelectDoctorList',
+    params: {
+      date: 0,
+      pageIndex: 1,
+      pageSize: 10
+    }
   }
 };
 
