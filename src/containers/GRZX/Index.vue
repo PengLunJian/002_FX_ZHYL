@@ -100,6 +100,7 @@
   @import "../../assets/less/variable";
 
   .FX_ZHYL_GRZX {
+    min-height: 100vh;
     background-color: @bgColor;
     .DYMK {
       min-height: 1.11rem;

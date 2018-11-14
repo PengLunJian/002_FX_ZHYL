@@ -1,5 +1,5 @@
 <template>
-  <div class="FX_ZHYL_HOME" :class="isLoading?'':'hide'">
+  <div class="FX_ZHYL_HOME">
     <j-z-k-p></j-z-k-p>
     <x-x-t-s></x-x-t-s>
     <d-h-c-d></d-h-c-d>
@@ -12,10 +12,12 @@
   import JZKP from './JZKP';
   import XXTS from './XXTS';
   import DHCD from './DHCD';
+  import Error from '../../components/Error';
 
   export default {
     name: 'Home',
     components: {
+      Error,
       JZKP,
       DHCD,
       XXTS
@@ -30,7 +32,10 @@
     },
     methods: Controller,
     computed: mapState({
-      isLoading: state => state.DEFAULT_CARD.isLoading
+      isLoading: state => state.AUTO_LOGIN.isLoading,
+      isSuccess: state => state.AUTO_LOGIN.isSuccess,
+      isFailure: state => state.AUTO_LOGIN.isFailure,
+      data: state => state.AUTO_LOGIN.data
     })
   };
 </script>

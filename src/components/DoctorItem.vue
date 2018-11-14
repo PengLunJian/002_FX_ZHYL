@@ -1,12 +1,12 @@
 <template>
   <div class="doctor">
     <div class="item-box-1">
-      <img :src="logo"/>
+      <img :src="item.logo"/>
     </div>
     <div class="item-box-2">
-      <div class="item-name">{{name}}</div>
-      <div class="item-post">{{post}}</div>
-      <div class="item-good">{{good}}</div>
+      <div class="item-name">{{item.name}}</div>
+      <div class="item-post">{{item.post}}</div>
+      <div class="item-good">{{item.good}}</div>
     </div>
     <div class="item-box-3">
       <button class="btn btn-bespoke" @click="handlerClick" v-waves.block>预约</button>
@@ -21,9 +21,7 @@
     data() {
       return {};
     },
-    props: [
-      'logo', 'name', 'post', 'good'
-    ],
+    props: ['item'],
     methods: {
       handlerClick: function () {
         this.$router.push({
@@ -93,6 +91,9 @@
       .item-price {
         color: #fa0002;
       }
+    }
+    &:last-child {
+      border: none;
     }
   }
 </style>

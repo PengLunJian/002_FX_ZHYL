@@ -11,13 +11,13 @@ const states = {
     isLoading: false,
     isSuccess: false,
     isFailure: false,
-    data: {}
+    data: null
   },
   AUTO_LOGIN: {
     isLoading: false,
     isSuccess: false,
     isFailure: false,
-    data: {}
+    data: null
   },
   DEFAULT_CARD: {
     isLoading: false,

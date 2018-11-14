@@ -58,7 +58,7 @@ const controllers = {
       this.relation = value[0];
     }
   },
-  handlerBtnClick() {
+  exeInsertVisitorList() {
     if (!this.status) {
       const data = {
         name: this.name,
@@ -68,7 +68,23 @@ const controllers = {
         releation: this.relation,
         phone: this.phone
       };
-      this.ajaxRequestInsertVisitor(data);
+      this.insertVisitorList(data)
+        .then((res) => {
+          const {data, success} = res;
+          if (data && success) {
+            this.$vux.toast.show({
+              text: '操作成功'
+            });
+            this.clearFormData();
+          } else {
+            this.$vux.toast.show({
+              text: '操作失败'
+            });
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   },
   clearFormData() {
@@ -78,9 +94,6 @@ const controllers = {
     this.gender = '请选择';
     this.nation = '请选择';
     this.relation = '请选择';
-  },
-  exeInsertVisitorList(data) {
-    this.clearFormData();
   },
   ...mapActions([
     'insertVisitorList',

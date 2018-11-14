@@ -76,8 +76,10 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post(apis.insertVisitorList, data)
         .then((res) => {
-          const {data} = res;
-          commit(ACTION_TYPES.INSERT_VISITOR_LIST_SUCCESS, data);
+          const {data, success} = res;
+          if (data && success) {
+            commit(ACTION_TYPES.INSERT_VISITOR_LIST_SUCCESS, data);
+          }
           resolve(res);
         })
         .catch((err) => {
@@ -92,8 +94,10 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post(apis.deleteVisitorList, data)
         .then((res) => {
-          const {data} = res;
-          commit(ACTION_TYPES.DELETE_VISITOR_LIST_SUCCESS, data);
+          const {data, success} = res;
+          if (data && success) {
+            commit(ACTION_TYPES.DELETE_VISITOR_LIST_SUCCESS, data);
+          }
           resolve(res);
         })
         .catch((err) => {
@@ -142,12 +146,18 @@ const actions = {
   },
   // 查询我的挂号
   selectRegisterList({commit, state}, data) {
-    commit(ACTION_TYPES.SELECT_REGISTER_LIST_REQUEST);
+    const {pageIndex} = data;
     return new Promise((resolve, reject) => {
       axios.post(apis.selectRegisterList, data)
         .then((res) => {
           const {data} = res;
-          commit(ACTION_TYPES.SELECT_REGISTER_LIST_SUCCESS, data);
+          const oldData = state.REGISTER_LIST.data;
+          let newData = oldData.concat(data);
+          if (pageIndex === 1) {
+            newData = data;
+            commit(ACTION_TYPES.SELECT_REGISTER_LIST_REQUEST);
+          }
+          commit(ACTION_TYPES.SELECT_REGISTER_LIST_SUCCESS, newData);
           resolve(res);
         })
         .catch((err) => {
@@ -158,12 +168,18 @@ const actions = {
   },
   // 查询我的预约
   selectSubscribeList({commit, state}, data) {
-    commit(ACTION_TYPES.SELECT_SUBSCRIBE_LIST_REQUEST);
+    const {pageIndex} = data;
     return new Promise((resolve, reject) => {
       axios.post(apis.selectSubscribeList, data)
         .then((res) => {
           const {data} = res;
-          commit(ACTION_TYPES.SELECT_SUBSCRIBE_LIST_SUCCESS, data);
+          const oldData = state.SUBSCRIBE_LIST.data;
+          let newData = oldData.concat(data);
+          if (pageIndex === 1) {
+            newData = data;
+            commit(ACTION_TYPES.SELECT_SUBSCRIBE_LIST_REQUEST);
+          }
+          commit(ACTION_TYPES.SELECT_SUBSCRIBE_LIST_SUCCESS, newData);
           resolve(res);
         })
         .catch((err) => {

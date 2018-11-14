@@ -1,5 +1,5 @@
 <template>
-  <div class="FX_ZHYL_DZJZKBL">
+  <div class="FX_ZHYL_KPBL">
     <div class="module BKXZ">
       <p class="desc-title">办理电子就诊卡须知</p>
       <ul class="desc-context">
@@ -18,9 +18,10 @@
 
 <script type="text/ecmascript-6">
   import Controllers from './Controller';
-  export default{
-    name: 'DZJZKBL',
-    data () {
+
+  export default {
+    name: 'KPBL',
+    data() {
       return {};
     },
     methods: Controllers
@@ -30,9 +31,10 @@
 <style scoped lang="less">
   @import "../../assets/less/variable";
 
-  .FX_ZHYL_DZJZKBL {
-    font-size: 0.14rem;
+  .FX_ZHYL_KPBL {
+    min-height: 100vh;
     background-color: @bgColor;
+    font-size: 0.14rem;
     .BKXZ {
       .desc-title {
         color: @fontColor;
@@ -71,7 +73,6 @@
         border-radius: @borderRadius;
         &.btn-input {
           color: @white;
-          margin-bottom: 0.15rem;
           background-color: @buttonColor2;
         }
         &.btn-upload {

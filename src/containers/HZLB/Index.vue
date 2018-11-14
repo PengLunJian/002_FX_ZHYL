@@ -1,5 +1,5 @@
 <template>
-  <div class="FX_ZHYL_JZRLB">
+  <div class="FX_ZHYL_HZLB">
     <div class="content">
       <no-data v-if="isLoading&&!isFailure&&!data.length"></no-data>
       <error v-if="isFailure&&!data.length" @refresh="exeSelectVisitorList"></error>
@@ -93,7 +93,7 @@
 <style scoped lang="less">
   @import "../../assets/less/variable";
 
-  .FX_ZHYL_JZRLB {
+  .FX_ZHYL_HZLB {
     position: relative;
     top: 0;
     left: 0;

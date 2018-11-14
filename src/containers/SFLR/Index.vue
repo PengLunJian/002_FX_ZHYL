@@ -1,5 +1,5 @@
 <template>
-  <div class="FX_ZHYL_JZRSFZ">
+  <div class="FX_ZHYL_SFLR">
     <div class="form-group">
       <label class="form-label" for="name">姓名</label>
       <input class="form-input" id="name" type="text"
@@ -28,7 +28,7 @@
     </div>
     <div class="form-group">
       <button class="btn btn-confirm" :class="status"
-              @click="handlerBtnClick">绑卡
+              @click="exeInsertVisitorList">绑卡
       </button>
     </div>
     <key-board :isShow.sync="isShow" :initValue.sync="initValue" @writeNumber="writeNumber"></key-board>
@@ -47,7 +47,7 @@
       KeyBoard,
       PopupPicker
     },
-    name: 'JZRSFZ',
+    name: 'SFLR',
     data() {
       return {
         TYPE: '',
@@ -95,7 +95,8 @@
 <style scoped lang="less">
   @import "../../assets/less/variable";
 
-  .FX_ZHYL_JZRSFZ {
+  .FX_ZHYL_SFLR {
+    min-height: 100vh;
     background-color: @bgColor;
     .form-group {
       position: relative;

@@ -1,9 +1,8 @@
 <template>
   <div class="FX_ZHYL_WDGH">
-    <mescroll-vue ref="mescroll"
-                  :down="down"
-                  :up="up"
-                  @init="init">
+    <no-data v-if="isLoading&&!isFailure&&!data.length"></no-data>
+    <error v-if="isFailure&&!data.length" @refresh="exeSelectRegisterList"></error>
+    <mescroll-vue v-if="data.length" ref="mescroll" :down="down" :up="up" @init="init">
       <reg-item v-for="(item,index) in data"
                 :item="item"
                 :key="index"></reg-item>
@@ -46,13 +45,10 @@
       };
     },
     created() {
-      if (this.loading) {
-        return;
-      }
+      if (this.loading) return;
       this.exeSelectRegisterList();
     },
     methods: Controller,
-    mounted() {},
     computed: mapState({
       isLoading: state => state.REGISTER_LIST.isLoading,
       isSuccess: state => state.REGISTER_LIST.isSuccess,

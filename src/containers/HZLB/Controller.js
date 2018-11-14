@@ -1,6 +1,9 @@
 import {mapActions} from 'vuex';
 
 const controller = {
+  init(mescroll) {
+    this.mescroll = mescroll;
+  },
   refresh() {
     if (this.timer) clearInterval(this.timer);
     this.timer = setTimeout(() => {
@@ -14,9 +17,6 @@ const controller = {
       this.pageCode++;
       this.exeSelectVisitorList();
     }, 500);
-  },
-  init(mescroll) {
-    this.mescroll = mescroll;
   },
   insertVisitor() {
     this.$router.push({

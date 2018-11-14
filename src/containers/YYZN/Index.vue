@@ -1,5 +1,5 @@
 <template>
-  <div class="FX_ZHYL_YYJJ">
+  <div class="FX_ZHYL_YYZN">
     <t-p-m-k></t-p-m-k>
     <y-y-j-s></y-y-j-s>
     <w-h-l-n></w-h-l-n>
@@ -18,7 +18,7 @@
       YYJS,
       TPMK
     },
-    name: 'YYJJ',
+    name: 'YYZN',
     data() {
       return {};
     },
@@ -29,7 +29,7 @@
 <style scoped lang="less">
   @import "../../assets/less/variable";
 
-  .FX_ZHYL_YYJJ {
+  .FX_ZHYL_YYZN {
     position: absolute;
     top: 0;
     left: 0;

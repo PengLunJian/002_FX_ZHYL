@@ -1,12 +1,9 @@
 <template>
   <div class="FX_ZHYL_WDYY">
-    <mescroll-vue ref="mescroll"
-                  :down="down"
-                  :up="up"
-                  @init="init">
-      <sub-item v-for="(item,index) in data"
-                :item="item"
-                :key="index"></sub-item>
+    <no-data v-if="isLoading&&!isFailure&&!data.length"></no-data>
+    <error v-if="isFailure&&!data.length" @refresh="exeSelectSubscribeList"></error>
+    <mescroll-vue v-if="data.length" ref="mescroll" :down="down" :up="up" @init="init">
+      <sub-item v-for="(item,index) in data" :item="item" :key="index"></sub-item>
     </mescroll-vue>
   </div>
 </template>
@@ -46,14 +43,10 @@
       };
     },
     created() {
-      if (this.isLoading) {
-        return;
-      }
+      if (this.isLoading) return;
       this.exeSelectSubscribeList();
     },
     methods: Controller,
-    mounted() {
-    },
     computed: mapState({
       isLoading: state => state.SUBSCRIBE_LIST.isLoading,
       isSuccess: state => state.SUBSCRIBE_LIST.isSuccess,

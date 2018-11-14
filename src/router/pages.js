@@ -20,7 +20,7 @@ import CONST_JCXX from '../containers/JCXX/Index.vue';
 import CONST_HZLB from '../containers/HZLB/Index.vue';
 import CONST_SFLR from '../containers/SFLR/Index.vue';
 import CONST_WDSC from '../containers/WDSC/Index.vue';
-import CONST_YYJJ from '../containers/YYJJ/Index.vue';
+import CONST_YYZN from '../containers/YYZN/Index.vue';
 import CONST_JZTM from '../containers/JZTM/Index.vue';
 import CONST_SFYZ from '../containers/SFYZ/Index.vue';
 import CONST_SMKS from '../containers/SMKS/Index.vue';
@@ -47,7 +47,7 @@ const JCXX = r => require.ensure([], () => r(CONST_JCXX));
 const HZLB = r => require.ensure([], () => r(CONST_HZLB));
 const SFLR = r => require.ensure([], () => r(CONST_SFLR));
 const WDSC = r => require.ensure([], () => r(CONST_WDSC));
-const YYJJ = r => require.ensure([], () => r(CONST_YYJJ));
+const YYZN = r => require.ensure([], () => r(CONST_YYZN));
 const JZTM = r => require.ensure([], () => r(CONST_JZTM));
 const SFYZ = r => require.ensure([], () => r(CONST_SFYZ));
 const SMKS = r => require.ensure([], () => r(CONST_SMKS));
@@ -75,7 +75,7 @@ export default {
   HZLB,
   SFLR,
   WDSC,
-  YYJJ,
+  YYZN,
   JZTM,
   SFYZ,
   SMKS

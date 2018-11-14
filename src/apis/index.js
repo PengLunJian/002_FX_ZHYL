@@ -25,10 +25,10 @@ const apis = {
     }
   },
   selectDefaultCard: {
-    url: '/PatientCard100/v1/patientCard/getDefaultCardDetail'
+    url: '/PatientCard101/v1/patientCard/getDefaultCardDetail'
   },
   insertVisitorList: {
-    url: '/PatientCard100/v1/patientCard/bind',
+    url: '/PatientCard101/v1/patientCard/bind',
     params: {
       name: '',
       idCardNo: '',
@@ -39,19 +39,19 @@ const apis = {
     }
   },
   deleteVisitorList: {
-    url: '/PatientCard100/v1/patientCard/unbind',
+    url: '/PatientCard101/v1/patientCard/unbind',
     params: {
       value: ''
     }
   },
   updateVisitorList: {
-    url: '/PatientCard100/v1/patientCard/setDefault',
+    url: '/PatientCard101/v1/patientCard/setDefault',
     params: {
       value: ''
     }
   },
   selectVisitorList: {
-    url: '/PatientCard100/v1/patientCard/getCardList',
+    url: '/PatientCard101/v1/patientCard/getCardList',
     params: {
       value: ''
     }

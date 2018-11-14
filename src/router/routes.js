@@ -8,7 +8,7 @@ const routes = {
     }
   },
   YYGH: {
-    path: '/Nav01',
+    path: '/YYGH',
     name: 'YYGH',
     meta: {index: 1},
     component: (component) => {
@@ -16,7 +16,7 @@ const routes = {
     }
   },
   YSLB: {
-    path: '/Nav01/YSLB',
+    path: '/YYGH/YSLB',
     name: 'YSLB',
     meta: {index: 2},
     component: (component) => {
@@ -24,7 +24,7 @@ const routes = {
     }
   },
   YYXX: {
-    path: '/Nav01/YSLB/YSZY/YYXX',
+    path: '/YYGH/YSLB/YSZY/YYXX',
     name: 'YYXX',
     meta: {index: 4},
     component: (component) => {
@@ -32,14 +32,14 @@ const routes = {
     }
   },
   KSXX: {
-    path: '/Nav01/KSXX',
+    path: '/YYGH/KSXX',
     name: 'KSXX',
     component: (component) => {
       return component;
     }
   },
   YSZY: {
-    path: '/Nav01/YSLB/YSZY',
+    path: '/YYGH/YSLB/YSZY',
     name: 'YSZY',
     meta: {index: 3},
     component: (component) => {
@@ -111,7 +111,7 @@ const routes = {
     }
   },
   JCXX: {
-    path: '/Nav01/JCXX',
+    path: '/YYGH/JCXX',
     name: 'JCXX',
     component: (component) => {
       return component;
@@ -125,9 +125,9 @@ const routes = {
       return component;
     }
   },
-  YYJJ: {
-    path: '/Nav04',
-    name: 'YYJJ',
+  YYZN: {
+    path: '/YYZN',
+    name: 'YYZN',
     meta: {index: 1},
     component: (component) => {
       return component;

@@ -21,25 +21,25 @@
           {
             image: require('../../assets/images/nav_icon01@2x.png'),
             title: '预约',
-            path: '/Nav01',
+            path: this.$routes.YYGH.path,
             disabled: false
           },
           {
             image: require('../../assets/images/nav_icon02@2x.png'),
             title: '挂号',
-            path: '/Nav01',
+            path: this.$routes.YYGH.path,
             disabled: false
           },
           {
             image: require('../../assets/images/nav_icon03@2x.png'),
             title: '绑卡',
-            path: '/KPBL',
+            path: this.$routes.KPBL.path,
             disabled: false
           },
           {
             image: require('../../assets/images/nav_icon04@2x.png'),
             title: '医院指南',
-            path: '/Nav04',
+            path: this.$routes.YYZN.path,
             disabled: false
           },
           {
