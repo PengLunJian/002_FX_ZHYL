@@ -79,11 +79,20 @@ const apis = {
     }
   },
   selectDoctorList: {
-    url: '/SelectDoctorList',
+    url: '/WenRongBusiness/v1/SelectDoctorList',
     params: {
       date: 0,
       pageIndex: 1,
       pageSize: 10
+    }
+  },
+  selectRegisterPay: {
+    url: 'WenRongBusiness/v1/register/pay/register',
+    params: {
+      payWayCode: '1', // 1、微信支付
+      isPre: '0',
+      onlyNo: '',
+      openId: 'oM5On1EWYcDJaFuqUBc0NHAGjSsU'
     }
   }
 };

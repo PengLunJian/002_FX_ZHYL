@@ -251,6 +251,22 @@ const actions = {
           reject(err);
         });
     });
+  },
+  // 查询支付需要的入参
+  selectRegisterPay({commit, state}, data) {
+    commit(ACTION_TYPES.SELECT_REGISTER_PAY_REQUEST);
+    return new Promise((resolve, reject) => {
+      axios.post(apis.selectRegisterPay, data)
+        .then((res) => {
+          const {data} = res;
+          commit(ACTION_TYPES.SELECT_REGISTER_PAY_SUCCESS, data);
+          resolve(res);
+        })
+        .catch((err) => {
+          commit(ACTION_TYPES.SELECT_REGISTER_PAY_FAILURE);
+          reject(err);
+        });
+    });
   }
 };
 

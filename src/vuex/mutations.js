@@ -223,6 +223,23 @@ const mutations = {
     state.DOCTOR_LIST.isLoading = true;
     state.DOCTOR_LIST.isSuccess = false;
     state.DOCTOR_LIST.isFailure = true;
+  },
+  // 查询医生列表
+  SELECT_REGISTER_PAY_REQUEST(state) {
+    state.REGISTER_PAY.isLoading = false;
+    state.REGISTER_PAY.isSuccess = false;
+    state.REGISTER_PAY.isFailure = false;
+  },
+  SELECT_REGISTER_PAY_SUCCESS(state, data) {
+    state.REGISTER_PAY.isLoading = true;
+    state.REGISTER_PAY.isSuccess = true;
+    state.REGISTER_PAY.isFailure = false;
+    state.REGISTER_PAY.data = data;
+  },
+  SELECT_REGISTER_PAY_FAILURE(state) {
+    state.REGISTER_PAY.isLoading = true;
+    state.REGISTER_PAY.isSuccess = false;
+    state.REGISTER_PAY.isFailure = true;
   }
 };
 

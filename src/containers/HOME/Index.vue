@@ -28,7 +28,8 @@
       };
     },
     created() {
-      this.init();
+      this.exeSelectDefaultCard();
+      // this.init();
     },
     methods: Controller,
     computed: mapState({
@@ -52,8 +53,5 @@
     overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
     background-color: @bgColor;
-    &.hide {
-      display: none !important;
-    }
   }
 </style>

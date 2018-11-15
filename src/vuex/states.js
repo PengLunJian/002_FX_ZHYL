@@ -65,6 +65,19 @@ const states = {
     isSuccess: false,
     isFailure: false,
     data: []
+  },
+  REGISTER_PAY: {
+    isLoading: false,
+    isSuccess: false,
+    isFailure: false,
+    data: {
+      appId: '',
+      nonceStr: '',
+      package: '',
+      paySign: '',
+      signType: '',
+      timeStamp: ''
+    }
   }
 };
 

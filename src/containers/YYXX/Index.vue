@@ -28,17 +28,23 @@
         <label class="form-label borderNone">支付方式</label>
         <input class="form-input" name="name" value="去医院支付" type="text"/>
       </div>
-      <button class="btn btn-submit" v-waves.block>提交</button>
+    </div>
+    <div class="module DSMK">
+      <button class="btn btn-submit" @click="handlerSubmit">提交</button>
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import Controller from './Controller';
-  export default{
+
+  export default {
     name: 'YYXX',
-    data () {
+    data() {
       return {};
+    },
+    created() {
+      this.exeSelectRegisterPay();
     },
     methods: Controller
   };
@@ -48,6 +54,7 @@
   @import "../../assets/less/variable";
 
   .FX_ZHYL_YYXX {
+    min-height: 100vh;
     background-color: @bgColor;
     .module {
       background-color: transparent;
@@ -94,6 +101,7 @@
       width: 90%;
       height: 0.5rem;
       display: block;
+      overflow: hidden;
       margin: 0.35rem auto;
       line-height: 0.5rem;
       background-color: #0062eb;
