@@ -1,7 +1,7 @@
 <template>
   <div class="FX_ZHYL_JZEWM">
     <error v-if="isFailure" @refresh="exeSelectDefaultCard"></error>
-    <div class="content" v-if="isSuccess">
+    <div class="content" v-if="isSuccess&&data">
       <div class="row-box-1">
         <span class="name">{{data.name}}</span>
         <span class="card">卡号：{{data.patientCardNo}}</span>

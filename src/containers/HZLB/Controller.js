@@ -20,7 +20,7 @@ const controller = {
   },
   insertVisitor() {
     this.$router.push({
-      path: this.$routes.KPBL.path
+      path: this.$routes.SFLR.path
     });
   },
   exeDeleteVisitorList(params) {

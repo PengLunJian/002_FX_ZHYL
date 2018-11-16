@@ -79,11 +79,15 @@ const apis = {
     }
   },
   selectDoctorList: {
-    url: '/WenRongBusiness/v1/SelectDoctorList',
+    url: '/WenRongBusiness/v1/regist/schedul/doctor',
     params: {
+      isPre: 0,
       date: 0,
+      regType: '',
+      deptCode: '',
       pageIndex: 1,
-      pageSize: 10
+      pageSize: 10,
+      sort: '1'
     }
   },
   selectRegisterPay: {
@@ -93,6 +97,13 @@ const apis = {
       isPre: '0',
       onlyNo: '',
       openId: 'oM5On1EWYcDJaFuqUBc0NHAGjSsU'
+    }
+  },
+  selectDepartment: {
+    url: '/WenRongBusiness/v1/regist/schedul/dept',
+    params: {
+      isPre: 0, // 0 当日挂号 1 预约挂号
+      regType: 'PT' // PT 普通门诊 ZJ专家门诊
     }
   }
 };

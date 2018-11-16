@@ -25,9 +25,7 @@
         ]
       };
     },
-    methods: Controller,
-    mounted() {
-    }
+    methods: Controller
   };
 </script>
 

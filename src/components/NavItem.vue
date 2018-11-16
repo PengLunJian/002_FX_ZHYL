@@ -1,7 +1,7 @@
 <template>
   <div class="nav-item" @click="handlerClick">
-    <img :src="image" class="nav-image"/>
-    <span class="nav-title">{{title}}</span>
+    <img :src="item.image" class="nav-image"/>
+    <span class="nav-title">{{item.title}}</span>
   </div>
 </template>
 
@@ -12,13 +12,14 @@
       return {};
     },
     props: [
-      'image', 'title', 'path', 'disabled'
+      'item'
     ],
     methods: {
       handlerClick: function () {
-        if (!this.disabled) {
+        if (!this.item.disabled) {
           this.$router.push({
-            path: this.path
+            path: this.item.path,
+            query: this.item.query
           });
         } else {
           this.$vux.toast.show({
@@ -28,8 +29,6 @@
           });
         }
       }
-    },
-    mounted() {
     }
   };
 </script>

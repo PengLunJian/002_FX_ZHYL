@@ -1,7 +1,7 @@
 <template>
   <div class="FX_ZHYL_YSLB">
     <div class="module YYSJ">
-      <ul class="date-filter mescroll-touch">
+      <ul class="date-filter">
         <li class="filter-item" :class="index===status?' active':''"
             v-for="(item,index) in filters" :key="index" @click="handleFilter(index)">
           <span class="filter-number">{{item.number}}</span>
@@ -12,11 +12,7 @@
     <div class="module ZZYS">
       <no-data v-if="isLoading&&!isFailure&&!data.length"></no-data>
       <error v-if="isFailure&&!data.length" @refresh="exeSelectDoctorList"></error>
-      <mescroll-vue v-if="data.length" ref="mescroll" :down="down" :up="up" @init="init">
-        <div class="doctorList">
-          <doctor-item v-for="(item,index) in data" :key="index" :item="item"></doctor-item>
-        </div>
-      </mescroll-vue>
+      <doctor-item v-for="(item,index) in data" :key="index" :item="item"></doctor-item>
     </div>
   </div>
 </template>
@@ -25,38 +21,21 @@
   import {mapState} from 'vuex';
   import Controller from './Controller';
   import DoctorItem from '../../components/DoctorItem';
-  import MescrollVue from 'mescroll.js/mescroll.vue';
   import Error from '../../components/Error';
   import NoData from '../../components/NoData';
 
   export default {
     components: {
       DoctorItem,
-      MescrollVue,
       Error,
       NoData
     },
     name: 'YSLB',
     data() {
       return {
-        status: 0,
         date: 0,
+        status: 0,
         pageCode: 1,
-        mescroll: null,
-        up: {
-          auto: false,
-          isBounce: false,
-          callback: this.infinite,
-          htmlNodata: '<p class="upwarp-nodata">没有更多数据</p>'
-        },
-        down: {
-          auto: false,
-          offset: 50,
-          mustToTop: true,
-          outOffsetRate: 0.3,
-          callback: this.refresh,
-          autoShowLoading: true
-        },
         filters: [
           {
             number: '09 - 05',
@@ -111,14 +90,7 @@
       isSuccess: state => state.DOCTOR_LIST.isSuccess,
       isFailure: state => state.DOCTOR_LIST.isFailure,
       data: state => state.DOCTOR_LIST.data
-    }),
-    watch: {
-      $route(to, from) {
-        if (from.name === 'YSLB') {
-          this.mescroll.setBounce(true);
-        }
-      }
-    }
+    })
   };
 </script>
 
@@ -127,7 +99,7 @@
 
   .FX_ZHYL_YSLB {
     height: 100vh;
-    padding-top: 0.5rem;
+    padding-top: 0.6rem;
     background-color: @bgColor;
     .module {
       background-color: transparent;
@@ -139,7 +111,7 @@
       z-index: 1000;
       width: 100%;
       overflow-y: auto;
-      box-shadow: @boxShadow2;
+      box-shadow: @boxShadow;
       background-color: @white;
       -webkit-overflow-scrolling: touch;
       .date-filter {

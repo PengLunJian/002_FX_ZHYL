@@ -1,11 +1,7 @@
 <template>
   <div class="module DHCD">
-    <NavItem v-for="item in items"
-             :key="item.index"
-             :image="item.image"
-             :title="item.title"
-             :path="item.path"
-             :disabled="item.disabled"/>
+    <NavItem v-for="(item,index) in items"
+             :key="index" :item="item"/>
   </div>
 </template>
 
@@ -21,12 +17,14 @@
           {
             image: require('../../assets/images/nav_icon01@2x.png'),
             title: '预约',
+            query: {isPre: 1},
             path: this.$routes.YYGH.path,
             disabled: false
           },
           {
             image: require('../../assets/images/nav_icon02@2x.png'),
             title: '挂号',
+            query: {isPre: 0},
             path: this.$routes.YYGH.path,
             disabled: false
           },

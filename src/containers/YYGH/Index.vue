@@ -1,30 +1,40 @@
 <template>
-  <div class="FX_ZHYL_YYGH">
-    <search></search>
-    <f-l-c-d></f-l-c-d>
+  <div class="FX_ZHYL_MENU">
+    <tab-bar :tabs="tabs" :tabIndex.sync="tabIndex"></tab-bar>
+    <menus></menus>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import Controller from './Controller';
-  import Search from '../../components/Search';
-  import FLCD from './FLCD';
+  import TabBar from '../../components/TabBar';
+  import Menus from './FLCD';
 
   export default {
     components: {
-      FLCD,
-      Search
+      Menus,
+      TabBar
     },
     name: 'YYGH',
     data() {
-      return {};
+      return {
+        tabIndex: 0,
+        tabs: [
+          {name: '专家号'},
+          {name: '普通号'}
+        ]
+      };
     },
     methods: Controller
   };
 </script>
 
 <style scoped lang="less">
-  .FX_ZHYL_BESPOKE {
-    position: relative;
+  @import '../../assets/less/variable';
+
+  .FX_ZHYL_MENU {
+    height: 100vh;
+    padding-top: 0.56rem;
+    background-color: @bgColor;
   }
 </style>

@@ -54,7 +54,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post(apis.selectDefaultCard)
         .then((res) => {
-          console.log(res);
+          res = res || {};
           const {data, success} = res;
           if (!success) {
             commit(ACTION_TYPES.SELECT_DEFAULT_CARD_FAILURE);
@@ -65,7 +65,6 @@ const actions = {
           resolve(data);
         })
         .catch((err) => {
-          console.log(err);
           commit(ACTION_TYPES.SELECT_DEFAULT_CARD_FAILURE);
           reject(err);
         });
@@ -237,6 +236,7 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post(apis.selectDoctorList, data)
         .then((res) => {
+          res = res || {};
           const {data} = res;
           if (pageIndex === 1) {
             commit(ACTION_TYPES.SELECT_DOCTOR_LIST_REQUEST);

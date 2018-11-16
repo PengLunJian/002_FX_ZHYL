@@ -1,45 +1,44 @@
 <template>
   <div class="module FLCD">
-    <div class="col-xs-6 menu-lt">
-      <ul class="menu-buttons">
-        <li class="menu-button active" v-waves.block>专科专病</li>
-        <li class="menu-button" v-waves.block>专科专病</li>
-        <li class="menu-button" v-waves.block>专科专病</li>
-        <li class="menu-button" v-waves.block>专科专病</li>
-        <li class="menu-button" v-waves.block>专科专病</li>
-        <li class="menu-button" v-waves.block>专科专病</li>
-        <li class="menu-button" v-waves.block>专科专病</li>
-        <li class="menu-button" v-waves.block>专科专病</li>
-        <li class="menu-button" v-waves.block>专科专病</li>
-        <li class="menu-button" v-waves.block>专科专病</li>
-        <li class="menu-button" v-waves.block>专科专病</li>
-        <li class="menu-button" v-waves.block>专科专病</li>
-        <li class="menu-button" v-waves.block>专科专病</li>
-        <li class="menu-button" v-waves.block>专科专病</li>
-        <li class="menu-button" v-waves.block>专科专病</li>
-        <li class="menu-button" v-waves.block>专科专病</li>
-        <li class="menu-button" v-waves.block>专科专病</li>
-        <li class="menu-button" v-waves.block>专科专病</li>
-        <li class="menu-button" v-waves.block>专科专病</li>
+    <div class="col-xs-6 filter">
+      <ul class="inner-block">
+        <li class="btn btn-filter active" @click="handlerFilter">专科专病</li>
+        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
+        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
+        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
+        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
+        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
+        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
+        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
+        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
+        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
+        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
+        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
+        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
+        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
+        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
+        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
+        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
       </ul>
     </div>
-    <div class="col-xs-6 menu-rt" @click="handlerClick">
-      <ul class="menu-results">
-        <li class="menu-result">心里咨询</li>
-        <li class="menu-result">心里咨询</li>
-        <li class="menu-result">心里咨询</li>
-        <li class="menu-result">心里咨询</li>
-        <li class="menu-result">心里咨询</li>
-        <li class="menu-result">心里咨询</li>
-        <li class="menu-result">心里咨询</li>
-        <li class="menu-result">心里咨询</li>
-        <li class="menu-result">心里咨询</li>
-        <li class="menu-result">心里咨询</li>
-        <li class="menu-result">心里咨询</li>
-        <li class="menu-result">心里咨询</li>
-        <li class="menu-result">心里咨询</li>
-        <li class="menu-result">心里咨询</li>
-        <li class="menu-result">心里咨询</li>
+    <div class="col-xs-6 result">
+      <ul class="inner-block">
+        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
+        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
+        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
+        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
+        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
+        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
+        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
+        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
+        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
+        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
+        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
+        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
+        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
+        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
+        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
+        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
       </ul>
     </div>
     <div class="clear"></div>
@@ -50,13 +49,11 @@
   import Controller from './Controller';
 
   export default {
-    name: 'FLCD',
+    name: 'Menus',
     data() {
       return {};
     },
-    methods: Controller,
-    mounted() {
-    }
+    methods: Controller
   };
 </script>
 
@@ -64,15 +61,15 @@
   @import "../../assets/less/variable";
 
   .FLCD {
+    height: 100%;
     margin-bottom: 0;
-    height: calc(100vh - 0.45rem);
-    .menu-lt {
+    .filter {
       height: 100%;
       overflow-y: auto;
-      background-color: #f5f5f5;
+      background-color: @bgColor;
       -webkit-overflow-scrolling: touch;
-      .menu-buttons {
-        .menu-button {
+      .inner-block {
+        .btn-filter {
           height: 0.45rem;
           position: relative;
           line-height: 0.45rem;
@@ -82,12 +79,15 @@
           &.active {
             color: @activeColor;
             background-color: @white;
-            &:before {
+            &:after {
               content: '';
+              width: auto;
+              height: auto;
               display: block;
               position: absolute;
               top: 50%;
               left: 0.15rem;
+              visibility: visible;
               margin-top: -0.05rem;
               border-top: 0.05rem solid transparent;
               border-left: 0.08rem solid @activeColor;
@@ -97,12 +97,12 @@
         }
       }
     }
-    .menu-rt {
+    .result {
       height: 100%;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
-      .menu-results {
-        .menu-result {
+      .inner-block {
+        .btn-result {
           height: 0.45rem;
           line-height: 0.45rem;
           padding-left: 0.3rem;
