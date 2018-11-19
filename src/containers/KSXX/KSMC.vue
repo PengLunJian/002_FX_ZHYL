@@ -2,7 +2,7 @@
   <div class="module KSMC">
     <h3 class="name">眼科中心</h3>
     <p class="desc">开展业务：各种屈光疾病、白内障、青光眼、玻璃体及视网膜等眼底病</p>
-    <button class="btn btn-collection" v-waves.block>收藏科室</button>
+    <!--<button class="btn btn-collection" v-waves.block>收藏科室</button>-->
   </div>
 </template>
 

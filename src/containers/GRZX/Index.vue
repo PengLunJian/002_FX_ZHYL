@@ -53,13 +53,6 @@
           <i class="link-icon icon-next"></i>
         </div>
       </router-link>
-      <router-link :to="this.$routes.DCLB.path">
-        <div class="link-item btn">
-          <i class="link-icon icon-stay"></i>
-          <span class="link-text">待检查</span>
-          <i class="link-icon icon-next"></i>
-        </div>
-      </router-link>
       <router-link :to="this.$routes.JKDA.path">
         <div class="link-item btn">
           <i class="link-icon icon-file"></i>

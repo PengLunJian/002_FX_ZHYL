@@ -96,6 +96,7 @@
   @import "../../assets/less/variable.less";
 
   .FX_ZHYL_JKDA {
+    min-height: 100vh;
     background-color: @bgColor;
     .form-group {
       position: relative;
@@ -136,6 +137,11 @@
         content: '';
         display: block;
         border-top: 1px solid @borderColor;
+      }
+      &:last-child {
+        &:after {
+          display: none;
+        }
       }
     }
     .DYMK {

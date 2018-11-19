@@ -10,13 +10,14 @@
   import Controller from './Controller';
   import JCHZ from './JCHZ';
   import JCLB from './JCLB';
-  export default{
+
+  export default {
     components: {
       JCLB,
       JCHZ
     },
     name: 'JCBG',
-    data () {
+    data() {
       return {};
     },
     methods: Controller
@@ -27,6 +28,7 @@
   @import "../../assets/less/variable";
 
   .FX_ZHYL_JCBG {
+    min-height: 100vh;
     background-color: @bgColor;
   }
 </style>

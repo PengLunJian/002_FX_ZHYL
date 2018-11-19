@@ -25,6 +25,8 @@ const states = {
     isFailure: false,
     data: {
       name: '',
+      phone: '',
+      releation: '',
       qrcodeBase64: '',
       patientCardNo: '',
       barcodeBase64: ''

@@ -1,3 +1,12 @@
-const controllers = {};
+import {mapActions} from 'vuex';
 
-export default controllers;
+const controller = {
+  exeSelectDefaultCard() {
+    this.selectDefaultCard();
+  },
+  ...mapActions([
+    'selectDefaultCard'
+  ])
+};
+
+export default controller;
