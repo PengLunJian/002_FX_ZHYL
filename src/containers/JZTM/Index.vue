@@ -7,8 +7,8 @@
         <span class="card">卡号：{{data.patientCardNo}}</span>
       </div>
       <div class="row-box-2">
-        <img class="bar-code" :src="'data:image/jpg;base64,'+data.barcodeBase64"/>
-        <img class="qr-code" :src="'data:image/jpg;base64,'+data.qrcodeBase64"/>
+        <img class="bar-code" ref="jsbarcode" src=""/>
+        <img class="qr-code" :src="data.qrcodeUrl"/>
         <p class="toast">出示就诊二维码到设备扫描</p>
       </div>
       <div class="row-box-3">
@@ -22,7 +22,7 @@
   import {mapState} from 'vuex';
   import Controller from './Controller';
   import Error from '../../components/Error';
-
+  import JsBarcode from 'jsbarcode';
   export default {
     components: {Error},
     name: 'JZEWM',
@@ -32,6 +32,14 @@
     created() {
       if (this.isLoading) return;
       this.exeSelectDefaultCard();
+    },
+    mounted() {
+      if (this.isLoading && this.data) {
+        console.log('data2:');
+        JsBarcode(this.$refs.jsbarcode, 'hello', {
+          displayValue: false
+        });
+      }
     },
     methods: Controller,
     computed: mapState({
