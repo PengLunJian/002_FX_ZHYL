@@ -7,13 +7,7 @@ const states = {
       id: ''
     }
   },
-  MANU_LOGIN: {
-    isLoading: false,
-    isSuccess: false,
-    isFailure: false,
-    data: null
-  },
-  AUTO_LOGIN: {
+  GRANT_LOGIN: {
     isLoading: false,
     isSuccess: false,
     isFailure: false,

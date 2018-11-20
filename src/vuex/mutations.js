@@ -16,39 +16,22 @@ const mutations = {
     state.DEVICEID.isSuccess = false;
     state.DEVICEID.isFailure = true;
   },
-  // 静默方式登录获取用户信息
-  SELECT_AUTO_LOGIN_REQUEST(state) {
-    state.AUTO_LOGIN.isLoading = false;
-    state.AUTO_LOGIN.isSuccess = false;
-    state.AUTO_LOGIN.isFailure = false;
-  },
-  SELECT_AUTO_LOGIN_SUCCESS(state, data) {
-    state.AUTO_LOGIN.isLoading = true;
-    state.AUTO_LOGIN.isSuccess = true;
-    state.AUTO_LOGIN.isFailure = false;
-    state.AUTO_LOGIN.data = data;
-  },
-  SELECT_AUTO_LOGIN_FAILURE(state) {
-    state.AUTO_LOGIN.isLoading = true;
-    state.AUTO_LOGIN.isSuccess = false;
-    state.AUTO_LOGIN.isFailure = true;
-  },
   // 非静默方式登录获取用户信息
-  SELECT_MANU_LOGIN_REQUEST(state) {
-    state.MANU_LOGIN.isLoading = false;
-    state.MANU_LOGIN.isSuccess = false;
-    state.MANU_LOGIN.isFailure = false;
+  SELECT_GRANT_LOGIN_REQUEST(state) {
+    state.GRANT_LOGIN.isLoading = false;
+    state.GRANT_LOGIN.isSuccess = false;
+    state.GRANT_LOGIN.isFailure = false;
   },
-  SELECT_MANU_LOGIN_SUCCESS(state, data) {
-    state.MANU_LOGIN.isLoading = true;
-    state.MANU_LOGIN.isSuccess = true;
-    state.MANU_LOGIN.isFailure = false;
-    state.MANU_LOGIN.data = data;
+  SELECT_GRANT_LOGIN_SUCCESS(state, data) {
+    state.GRANT_LOGIN.isLoading = true;
+    state.GRANT_LOGIN.isSuccess = true;
+    state.GRANT_LOGIN.isFailure = false;
+    state.GRANT_LOGIN.data = data;
   },
-  SELECT_MANU_LOGIN_FAILURE(state) {
-    state.MANU_LOGIN.isLoading = true;
-    state.MANU_LOGIN.isSuccess = false;
-    state.MANU_LOGIN.isFailure = true;
+  SELECT_GRANT_LOGIN_FAILURE(state) {
+    state.GRANT_LOGIN.isLoading = true;
+    state.GRANT_LOGIN.isSuccess = false;
+    state.GRANT_LOGIN.isFailure = true;
   },
   // 查询默认就诊卡信息
   SELECT_DEFAULT_CARD_REQUEST(state) {

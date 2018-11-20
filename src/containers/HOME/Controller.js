@@ -2,7 +2,7 @@ import axios from '../../axios/axios';
 import {mapActions} from 'vuex';
 import {getQueryParams} from '../../utils';
 import {
-  redirectUrl,
+  jumpToWeChatUrl,
   saveLocalStorage
 } from '../../login';
 
@@ -10,7 +10,7 @@ const controller = {
   init() {
     const code = getQueryParams('code');
     if (!code) {
-      redirectUrl(this.appId, 'base');
+      jumpToWeChatUrl(this.appId, 'userinfo');
     } else {
       const params = {Value: code};
       this.exeSelectDeviceId(params);
@@ -48,32 +48,17 @@ const controller = {
       .then((res) => {
         const {data} = res;
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + data;
-        const state = getQueryParams('state');
-        if (state === 'base' || !state) {
-          this.selectAutoLogin(params)
-            .then((res) => {
-              const {data, success} = res;
-              if (data && success) {
-                saveLocalStorage(data, this.exeSelectDefaultCard);
-              } else {
-                redirectUrl(this.appId, 'userinfo');
-              }
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        } else if (state === 'userinfo') {
-          this.selectManuLogin(params)
-            .then((res) => {
-              const {data, success} = res;
-              if (data && success) {
-                saveLocalStorage(data, this.exeSelectDefaultCard);
-              }
-            })
-            .catch((err) => {
-              console.log(err);
-            });
-        }
+        this.selectGrantLogin(params)
+          .then((res) => {
+            const {data, success} = res;
+            if (data && success) {
+              saveLocalStorage(data);
+              this.exeSelectDefaultCard();
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((err) => {
         console.log(err);
@@ -89,8 +74,7 @@ const controller = {
   },
   ...mapActions([
     'selectDeviceId',
-    'selectAutoLogin',
-    'selectManuLogin',
+    'selectGrantLogin',
     'selectDefaultCard'
   ])
 };

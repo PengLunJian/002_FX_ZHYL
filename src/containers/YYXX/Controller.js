@@ -22,7 +22,13 @@ const controller = {
         const config = Object.assign(data, {jsApiList: jsApiList});
         handlerWXConfig(config)
           .then(() => {
-            handlerCheckJsApi(config);
+            handlerCheckJsApi(config)
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
           })
           .catch((err) => {
             console.log(err);

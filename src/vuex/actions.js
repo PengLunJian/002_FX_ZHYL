@@ -19,32 +19,17 @@ const actions = {
         });
     });
   },
-  // 使用静默方式查询用户信息
-  selectAutoLogin({commit}, data) {
-    commit(ACTION_TYPES.SELECT_AUTO_LOGIN_REQUEST);
-    return new Promise((resolve, reject) => {
-      axios.post(apis.selectAutoLogin, data)
-        .then((res) => {
-          commit(ACTION_TYPES.SELECT_AUTO_LOGIN_SUCCESS, data);
-          resolve(res);
-        })
-        .catch((err) => {
-          commit(ACTION_TYPES.SELECT_AUTO_LOGIN_FAILURE);
-          reject(err);
-        });
-    });
-  },
   // 使用非静默方式查询用户信息
-  selectManuLogin({commit}, data) {
-    commit(ACTION_TYPES.SELECT_MANU_LOGIN_REQUEST);
+  selectGrantLogin({commit}, data) {
+    commit(ACTION_TYPES.SELECT_GRANT_LOGIN_REQUEST);
     return new Promise((resolve, reject) => {
-      axios.post(apis.selectManuLogin, data)
+      axios.post(apis.selectGrantLogin, data)
         .then((res) => {
-          commit(ACTION_TYPES.SELECT_MANU_LOGIN_SUCCESS, data);
+          commit(ACTION_TYPES.SELECT_GRANT_LOGIN_SUCCESS, data);
           resolve(res);
         })
         .catch((err) => {
-          commit(ACTION_TYPES.SELECT_MANU_LOGIN_FAILURE);
+          commit(ACTION_TYPES.SELECT_GRANT_LOGIN_FAILURE);
           reject(err);
         });
     });
