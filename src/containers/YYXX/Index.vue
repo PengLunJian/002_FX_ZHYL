@@ -41,7 +41,9 @@
   export default {
     name: 'YYXX',
     data() {
-      return {};
+      return {
+        config: null
+      };
     },
     created() {
       this.exeSelectRegisterPay();

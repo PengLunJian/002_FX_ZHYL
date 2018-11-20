@@ -3,7 +3,7 @@ import wx from 'weixin-js-sdk';
 export const handlerWXConfig = (config) => {
   return new Promise((resolve, reject) => {
     wx.config({
-      // debug: true,
+      debug: true,
       appId: config.appId,
       timestamp: config.timeStamp,
       nonceStr: config.nonceStr,
@@ -44,7 +44,7 @@ export const handlerCheckJsApi = (config) => {
     wx.checkJsApi({
       jsApiList: config.jsApiList,
       success: (res) => {
-        console.log(config);
+        console.log(res);
         resolve(res);
       },
       error: (err) => {
