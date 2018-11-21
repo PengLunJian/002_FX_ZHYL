@@ -19,10 +19,10 @@ const apis = {
     }
   },
   selectDefaultCard: {
-    url: '/PatientCard101/v1/patientCard/getDefaultCardDetail'
+    url: '/PatientCard/v1/patientCard/getDefaultCardDetail'
   },
   insertVisitorList: {
-    url: '/PatientCard101/v1/patientCard/bind',
+    url: '/PatientCard/v1/patientCard/bind',
     params: {
       name: '',
       idCardNo: '',
@@ -33,19 +33,19 @@ const apis = {
     }
   },
   deleteVisitorList: {
-    url: '/PatientCard101/v1/patientCard/unbind',
+    url: '/PatientCard/v1/patientCard/unbind',
     params: {
       value: ''
     }
   },
   updateVisitorList: {
-    url: '/PatientCard101/v1/patientCard/setDefault',
+    url: '/PatientCard/v1/patientCard/setDefault',
     params: {
       value: ''
     }
   },
   selectVisitorList: {
-    url: '/PatientCard101/v1/patientCard/getCardList',
+    url: '/PatientCard/v1/patientCard/getCardList',
     params: {
       value: ''
     }
@@ -58,7 +58,7 @@ const apis = {
     }
   },
   selectSubscribeList: {
-    url: '/WenRongBusiness/v1/personal/appoint/regist',
+    url: '/WenRongBusiness/v1/personal/appointreg/list',
     params: {
       pageIndex: 1,
       pageSize: 10

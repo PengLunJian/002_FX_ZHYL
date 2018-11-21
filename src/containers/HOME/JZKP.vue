@@ -13,7 +13,7 @@
       <div class="patient-right">
         <div class="patient-image">
           <img class="patient-code" @click="showQRCode"
-               :src="'data:image/jpg;base64,'+data.qrcodeBase64"/>
+               :src="data.qrcodeUrl"/>
         </div>
         <span class="patient-desc">点击出示就诊二维码</span>
       </div>

@@ -11,7 +11,7 @@
         </div>
         <div class="group">
           <label class="label">身份证号</label>
-          <span class="span">342523199007244618</span>
+          <span class="span">{{data.idCardNo}}</span>
         </div>
         <div class="group">
           <label class="label">就诊卡</label>
@@ -19,7 +19,7 @@
         </div>
         <div class="group">
           <label class="label">手机号</label>
-          <span class="span">18130278679</span>
+          <span class="span">{{data.phone}}</span>
         </div>
       </div>
     </div>
@@ -30,11 +30,11 @@
       <div class="row-box-2">
         <div class="group">
           <label class="label">关系</label>
-          <span class="span">妻子</span>
+          <span class="span">{{data.releation}}</span>
         </div>
         <div class="group">
           <label class="label">手机号</label>
-          <span class="span">18130278679</span>
+          <span class="span">{{data.linkmanTel}}</span>
         </div>
       </div>
       <div class="row-box-3">

@@ -24,8 +24,34 @@
         <label class="label">支付状况：</label>
         <span class="span">{{item.isPay?'已支付':'待支付'}}</span>
       </div>
+      <div class="group">
+        <label class="label">就诊医院</label>
+        <span class="span">芜湖市第二人民医院</span>
+      </div>
+      <div class="group">
+        <label class="label">就诊科室</label>
+        <span class="span">眼科</span>
+      </div>
+      <div class="group">
+        <label class="label">就诊类别</label>
+        <span class="span">专家门诊</span>
+      </div>
+      <div class="group">
+        <label class="label">就诊时间</label>
+        <span class="span">2018/09/08/ 下午</span>
+      </div>
+      <div class="group">
+        <label class="label">就诊患者</label>
+        <span class="span">胡代宇</span>
+      </div>
+      <div class="group">
+        <label class="label">门诊费用</label>
+        <span class="span">120.00元(不含挂号费)</span>
+      </div>
     </div>
     <div class="row-box-3">
+      <button class="btn btn-confirm" v-waves.block>去缴费</button>
+      <button class="btn btn-cancel" v-waves.block>取消预约</button>
       <button @click="showDetails" class="btn btn-detail">查看详情</button>
     </div>
   </div>
@@ -98,13 +124,33 @@
       }
     }
     .row-box-3 {
-      .btn-detail {
-        width: 100%;
-        display: block;
-        line-height: 0.4rem;
-        text-align: center;
-        font-size: 0.15rem;
+      font-size: 0;
+      text-align: right;
+      padding: 0.1rem 0.15rem;
+      .btn {
+        line-height: 0.3rem;
+        padding: 0 0.15rem;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 0.15rem;
+        border-radius: @borderRadius;
+        font-size: 0.13rem;
+        &.btn-confirm {
+          color: @buttonColor;
+          border: 1px solid @buttonColor;
+        }
+        &.btn-cancel {
+          color: @fontColor;
+          border: 1px solid @borderColor;
+        }
       }
+      /*.btn-detail {*/
+        /*width: 100%;*/
+        /*display: block;*/
+        /*line-height: 0.4rem;*/
+        /*text-align: center;*/
+        /*font-size: 0.15rem;*/
+      /*}*/
     }
     &.slot-out {
       &:before {

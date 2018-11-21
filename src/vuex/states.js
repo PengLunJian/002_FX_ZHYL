@@ -24,12 +24,18 @@ const states = {
     isSuccess: false,
     isFailure: false,
     data: {
+      idCardNo: '',
+      isDefault: '',
+      linkmanAddr: '',
+      linkmanName: '',
+      linkmanTel: '',
       name: '',
-      phone: '',
-      releation: '',
-      qrcodeBase64: '',
+      nation: '',
       patientCardNo: '',
-      barcodeBase64: ''
+      phone: '',
+      qrcodeUrl: '',
+      releation: '',
+      sex: ''
     }
   },
   VISITOR_LIST: {
