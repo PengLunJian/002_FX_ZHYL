@@ -1,4 +1,10 @@
 const states = {
+  JSAPI_TICKET: {
+    isLoading: false,
+    isSuccess: false,
+    isFailure: false,
+    data: null
+  },
   DEVICEID: {
     isLoading: false,
     isSuccess: false,

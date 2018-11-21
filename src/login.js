@@ -1,5 +1,3 @@
-import axios from './axios/axios';
-
 export const jumpToWeChatUrl = (appId, scope) => {
   const ACCESS_URL = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' +
     appId + '&redirect_uri=' + encodeURIComponent('http://192.168.3.189:8080') +
@@ -13,5 +11,4 @@ export const saveLocalStorage = (data) => {
   const accessToken = 'Bearer ' + AccessToken;
   localStorage.setItem('accessToken', accessToken);
   localStorage.setItem('refreshToken', RefreshToken);
-  axios.defaults.headers.common['Authorization'] = accessToken;
 };

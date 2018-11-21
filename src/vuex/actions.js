@@ -34,6 +34,20 @@ const actions = {
         });
     });
   },
+  selectJsApiTicket({commit}, data) {
+    const params = {
+      access_token: 'ACCESS_TOKEN',
+      type: 'jsapi'
+    };
+    const url = 'https://api.weixin.qq.com/cgi-bin/ticket/getticket';
+    axios.get({url: url}, {params: params})
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
   // 查询默认就诊卡
   selectDefaultCard({commit}) {
     return new Promise((resolve, reject) => {
