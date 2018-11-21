@@ -4,9 +4,14 @@ import axios from 'axios';
 axios.defaults.timeout = 10000;
 axios.defaults.baseURL = 'http://192.168.1.196';
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-axios.defaults.headers.common['Authorization'] = localStorage.getItem('accessToken');
 
 axios.interceptors.request.use(config => {
+  const accessToken = localStorage.getItem('accessToken');
+  if (accessToken) {
+    config.headers = {
+      'Authorization': accessToken
+    };
+  }
   Vue.$vux.loading.show({
     text: '加载中...'
   });

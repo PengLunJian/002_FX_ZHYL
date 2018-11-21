@@ -10,16 +10,10 @@ const apis = {
     }
   },
   selectDeviceId: {
-    url: '/UserCenter100/v1/refresh/did'
+    url: '/UserCenter/v1/refresh/did'
   },
-  selectAutoLogin: {
-    url: '/UserCenter100/v1/account/loginByWechatCode',
-    params: {
-      Value: ''
-    }
-  },
-  selectManuLogin: {
-    url: '/UserCenter100/v1/account/fillUserInfoWithWechatCode',
+  selectGrantLogin: {
+    url: '/UserCenter/v1/account/fillUserInfoWithWechatCode',
     params: {
       Value: ''
     }

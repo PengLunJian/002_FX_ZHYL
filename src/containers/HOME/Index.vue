@@ -28,8 +28,8 @@
       };
     },
     created() {
-      this.exeSelectDefaultCard();
-      // this.init();
+      // this.exeSelectDefaultCard();
+      this.init();
     },
     methods: Controller,
     computed: mapState({

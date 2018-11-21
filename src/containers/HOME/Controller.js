@@ -1,4 +1,3 @@
-import axios from '../../axios/axios';
 import {mapActions} from 'vuex';
 import {getQueryParams} from '../../utils';
 import {
@@ -47,13 +46,13 @@ const controller = {
     this.selectDeviceId()
       .then((res) => {
         const {data} = res;
-        axios.defaults.headers.common['Authorization'] = 'Bearer ' + data;
+        localStorage.setItem('accessToken', 'Bearer ' + data);
         this.selectGrantLogin(params)
           .then((res) => {
             const {data, success} = res;
             if (data && success) {
               saveLocalStorage(data);
-              this.exeSelectDefaultCard();
+              this.selectDefaultCard();
             }
           })
           .catch((err) => {
@@ -65,12 +64,7 @@ const controller = {
       });
   },
   exeSelectDefaultCard() {
-    this.selectDefaultCard()
-      .then((res) => {
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    this.selectDefaultCard();
   },
   ...mapActions([
     'selectDeviceId',

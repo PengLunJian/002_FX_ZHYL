@@ -1,4 +1,21 @@
 const mutations = {
+  // 获取微信jsapi_ticket
+  SELECT_JSAPI_TICKET_REQUEST(state) {
+    state.JSAPI_TICKET.isLoading = false;
+    state.JSAPI_TICKET.isSuccess = false;
+    state.JSAPI_TICKET.isFailure = false;
+  },
+  SELECT_JSAPI_TICKET_SUCCESS(state, data) {
+    state.JSAPI_TICKET.isLoading = true;
+    state.JSAPI_TICKET.isSuccess = true;
+    state.JSAPI_TICKET.isFailure = false;
+    state.JSAPI_TICKET.data = data;
+  },
+  SELECT_JSAPI_TICKET_FAILURE(state) {
+    state.JSAPI_TICKET.isLoading = true;
+    state.JSAPI_TICKET.isSuccess = false;
+    state.JSAPI_TICKET.isFailure = true;
+  },
   // 查询默认就诊卡信息
   SELECT_DEVICEID_REQUEST(state) {
     state.DEVICEID.isLoading = false;
