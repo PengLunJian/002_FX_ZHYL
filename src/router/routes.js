@@ -1,7 +1,15 @@
 const routes = {
+  LOGIN: {
+    path: '/LOGIN',
+    name: 'LOGIN',
+    meta: {index: 0},
+    component: (component) => {
+      return component;
+    }
+  },
   HOME: {
     path: '/',
-    name: 'Home',
+    name: 'HOME',
     meta: {index: 0, keepAlive: true},
     component: (component) => {
       return component;

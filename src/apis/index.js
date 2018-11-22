@@ -18,6 +18,9 @@ const apis = {
       Value: ''
     }
   },
+  selectWechatToken: {
+    url: 'WechatApi/v1/wechat/getAccesstoken'
+  },
   selectDefaultCard: {
     url: '/PatientCard/v1/patientCard/getDefaultCardDetail'
   },

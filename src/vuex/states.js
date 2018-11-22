@@ -1,19 +1,17 @@
 const states = {
-  JSAPI_TICKET: {
+  DEVICEID: {
     isLoading: false,
     isSuccess: false,
     isFailure: false,
     data: null
   },
-  DEVICEID: {
+  GRANT_LOGIN: {
     isLoading: false,
     isSuccess: false,
     isFailure: false,
-    data: {
-      id: ''
-    }
+    data: null
   },
-  GRANT_LOGIN: {
+  WECHAT_TOKEN: {
     isLoading: false,
     isSuccess: false,
     isFailure: false,

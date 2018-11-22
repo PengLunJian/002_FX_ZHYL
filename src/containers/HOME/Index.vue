@@ -7,37 +7,22 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import {mapState} from 'vuex';
   import Controller from './Controller';
   import JZKP from './JZKP';
   import XXTS from './XXTS';
   import DHCD from './DHCD';
-  import Error from '../../components/Error';
 
   export default {
     name: 'Home',
     components: {
-      Error,
       JZKP,
       DHCD,
       XXTS
     },
     data() {
-      return {
-        appId: 'wxe790a197b8d02b72'
-      };
+      return {};
     },
-    created() {
-      // this.exeSelectDefaultCard();
-      this.init();
-    },
-    methods: Controller,
-    computed: mapState({
-      isLoading: state => state.AUTO_LOGIN.isLoading,
-      isSuccess: state => state.AUTO_LOGIN.isSuccess,
-      isFailure: state => state.AUTO_LOGIN.isFailure,
-      data: state => state.AUTO_LOGIN.data
-    })
+    methods: Controller
   };
 </script>
 

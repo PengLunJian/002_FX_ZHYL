@@ -1,20 +1,6 @@
 import {mapActions} from 'vuex';
-import {getQueryParams} from '../../utils';
-import {
-  jumpToWeChatUrl,
-  saveLocalStorage
-} from '../../login';
 
 const controller = {
-  init() {
-    const code = getQueryParams('code');
-    if (!code) {
-      jumpToWeChatUrl(this.appId, 'userinfo');
-    } else {
-      const params = {Value: code};
-      this.exeSelectDeviceId(params);
-    }
-  },
   addVisitor() {
     this.$router.push({
       path: this.$routes.KPBL.path
@@ -42,33 +28,10 @@ const controller = {
       path: this.$routes.HZLB.path
     });
   },
-  exeSelectDeviceId(params) {
-    this.selectDeviceId()
-      .then((res) => {
-        const {data} = res;
-        localStorage.setItem('accessToken', 'Bearer ' + data);
-        this.selectGrantLogin(params)
-          .then((res) => {
-            const {data, success} = res;
-            if (data && success) {
-              saveLocalStorage(data);
-              this.selectDefaultCard();
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  },
   exeSelectDefaultCard() {
     this.selectDefaultCard();
   },
   ...mapActions([
-    'selectDeviceId',
-    'selectGrantLogin',
     'selectDefaultCard'
   ])
 };

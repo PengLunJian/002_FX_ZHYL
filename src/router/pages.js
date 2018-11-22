@@ -1,4 +1,4 @@
-import HOME from '../containers/HOME/Index.vue';
+import CONST_HOME from '../containers/HOME/Index.vue';
 import CONST_YYGH from '../containers/YYGH/Index.vue';
 import CONST_YSLB from '../containers/YSLB/Index.vue';
 import CONST_YYXX from '../containers/YYXX/Index.vue';
@@ -24,8 +24,9 @@ import CONST_YYZN from '../containers/YYZN/Index.vue';
 import CONST_JZTM from '../containers/JZTM/Index.vue';
 import CONST_SFYZ from '../containers/SFYZ/Index.vue';
 import CONST_SMKS from '../containers/SMKS/Index.vue';
+import CONST_LOGIN from '../containers/LOGIN/Index.vue';
 
-// const HOME = r => require.ensure([], () => r(CONST_HOME));
+const HOME = r => require.ensure([], () => r(CONST_HOME));
 const YYGH = r => require.ensure([], () => r(CONST_YYGH));
 const YSLB = r => require.ensure([], () => r(CONST_YSLB));
 const YYXX = r => require.ensure([], () => r(CONST_YYXX));
@@ -51,8 +52,10 @@ const YYZN = r => require.ensure([], () => r(CONST_YYZN));
 const JZTM = r => require.ensure([], () => r(CONST_JZTM));
 const SFYZ = r => require.ensure([], () => r(CONST_SFYZ));
 const SMKS = r => require.ensure([], () => r(CONST_SMKS));
+const LOGIN = r => require.ensure([], () => r(CONST_LOGIN));
 
 export default {
+  LOGIN,
   HOME,
   YYGH,
   YSLB,

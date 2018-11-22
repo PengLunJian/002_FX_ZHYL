@@ -5,8 +5,8 @@ import * as ACTION_TYPES from './actionTypes';
 const actions = {
   // 查询设备标识
   selectDeviceId({commit}) {
+    commit(ACTION_TYPES.SELECT_DEVICEID_REQUEST);
     return new Promise((resolve, reject) => {
-      commit(ACTION_TYPES.SELECT_DEVICEID_REQUEST);
       axios.post(apis.selectDeviceId)
         .then((res) => {
           const data = {id: res.data};
@@ -19,7 +19,7 @@ const actions = {
         });
     });
   },
-  // 使用非静默方式查询用户信息
+  // 授权登录查询用户信息
   selectGrantLogin({commit}, data) {
     commit(ACTION_TYPES.SELECT_GRANT_LOGIN_REQUEST);
     return new Promise((resolve, reject) => {
@@ -34,19 +34,21 @@ const actions = {
         });
     });
   },
-  selectJsApiTicket({commit}, data) {
-    const params = {
-      access_token: 'ACCESS_TOKEN',
-      type: 'jsapi'
-    };
-    const url = 'https://api.weixin.qq.com/cgi-bin/ticket/getticket';
-    axios.get({url: url}, {params: params})
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  // xxx
+  selectWechatToken({commit}) {
+    commit(ACTION_TYPES.SELECT_WECHAT_TOKEN_REQUEST);
+    return new Promise((resolve, reject) => {
+      axios.post(apis.selectWechatToken)
+        .then((res) => {
+          const {data} = res;
+          commit(ACTION_TYPES.SELECT_WECHAT_TOKEN_SUCCESS, data);
+          resolve(res);
+        })
+        .catch((err) => {
+          commit(ACTION_TYPES.SELECT_WECHAT_TOKEN_FAILURE);
+          reject(err);
+        });
+    });
   },
   // 查询默认就诊卡
   selectDefaultCard({commit}) {

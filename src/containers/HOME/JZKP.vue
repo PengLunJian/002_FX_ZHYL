@@ -39,6 +39,10 @@
     data() {
       return {};
     },
+    created() {
+      if (this.isLoading) return;
+      this.exeSelectDefaultCard();
+    },
     methods: Controller,
     computed: mapState({
       isLoading: state => state.DEFAULT_CARD.isLoading,

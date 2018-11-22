@@ -1,20 +1,20 @@
 const mutations = {
   // 获取微信jsapi_ticket
-  SELECT_JSAPI_TICKET_REQUEST(state) {
-    state.JSAPI_TICKET.isLoading = false;
-    state.JSAPI_TICKET.isSuccess = false;
-    state.JSAPI_TICKET.isFailure = false;
+  SELECT_WECHAT_TOKEN_REQUEST(state) {
+    state.WECHAT_TOKEN.isLoading = false;
+    state.WECHAT_TOKEN.isSuccess = false;
+    state.WECHAT_TOKEN.isFailure = false;
   },
-  SELECT_JSAPI_TICKET_SUCCESS(state, data) {
-    state.JSAPI_TICKET.isLoading = true;
-    state.JSAPI_TICKET.isSuccess = true;
-    state.JSAPI_TICKET.isFailure = false;
-    state.JSAPI_TICKET.data = data;
+  SELECT_WECHAT_TOKEN_SUCCESS(state, data) {
+    state.WECHAT_TOKEN.isLoading = true;
+    state.WECHAT_TOKEN.isSuccess = true;
+    state.WECHAT_TOKEN.isFailure = false;
+    state.WECHAT_TOKEN.data = data;
   },
-  SELECT_JSAPI_TICKET_FAILURE(state) {
-    state.JSAPI_TICKET.isLoading = true;
-    state.JSAPI_TICKET.isSuccess = false;
-    state.JSAPI_TICKET.isFailure = true;
+  SELECT_WECHAT_TOKEN_FAILURE(state) {
+    state.WECHAT_TOKEN.isLoading = true;
+    state.WECHAT_TOKEN.isSuccess = false;
+    state.WECHAT_TOKEN.isFailure = true;
   },
   // 查询默认就诊卡信息
   SELECT_DEVICEID_REQUEST(state) {
