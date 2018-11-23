@@ -1,15 +1,15 @@
 import Vue from 'vue';
 import axios from 'axios';
 
-axios.defaults.timeout = 10000;
+axios.defaults.timeout = 20000;
 axios.defaults.baseURL = 'http://192.168.1.196';
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 axios.interceptors.request.use(config => {
-  const accessToken = localStorage.getItem('accessToken');
-  if (accessToken) {
+  const AccessToken = localStorage.getItem('AccessToken');
+  if (AccessToken) {
     config.headers = {
-      'Authorization': accessToken
+      'Authorization': AccessToken
     };
   }
   Vue.$vux.loading.show({

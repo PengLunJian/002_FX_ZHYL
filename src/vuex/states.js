@@ -11,6 +11,12 @@ const states = {
     isFailure: false,
     data: null
   },
+  JSSDK_CONFIG: {
+    isLoading: false,
+    isSuccess: false,
+    isFailure: false,
+    data: null
+  },
   WECHAT_TOKEN: {
     isLoading: false,
     isSuccess: false,

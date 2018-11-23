@@ -21,6 +21,14 @@ const apis = {
   selectWechatToken: {
     url: 'WechatApi/v1/wechat/getAccesstoken'
   },
+  selectJSSDKConfig: {
+    url: 'http://22uj113640.iok.la/fx-pay-web-gateway/sign/getSignature',
+    params: {
+      url: '',
+      appid: '',
+      access_token: ''
+    }
+  },
   selectDefaultCard: {
     url: '/PatientCard/v1/patientCard/getDefaultCardDetail'
   },

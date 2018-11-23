@@ -1,6 +1,6 @@
 const routes = {
   LOGIN: {
-    path: '/LOGIN',
+    path: '/',
     name: 'LOGIN',
     meta: {index: 0},
     component: (component) => {
@@ -8,7 +8,7 @@ const routes = {
     }
   },
   HOME: {
-    path: '/',
+    path: '/HOME',
     name: 'HOME',
     meta: {index: 0, keepAlive: true},
     component: (component) => {

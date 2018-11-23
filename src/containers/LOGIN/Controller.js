@@ -20,13 +20,13 @@ const controller = {
     this.selectDeviceId()
       .then((res) => {
         const {data} = res;
-        localStorage.setItem('accessToken', 'Bearer ' + data);
+        localStorage.setItem('AccessToken', 'Bearer ' + data);
         this.selectGrantLogin(params)
           .then((res) => {
             const {data, success} = res;
             if (data && success) {
               saveLocalStorage(data);
-              window.location.replace('http://192.168.3.240:8080');
+              window.location.replace('/HOME');
             }
           })
           .catch((err) => {

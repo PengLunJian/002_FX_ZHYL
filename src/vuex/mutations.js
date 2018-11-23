@@ -1,21 +1,4 @@
 const mutations = {
-  // 获取微信jsapi_ticket
-  SELECT_WECHAT_TOKEN_REQUEST(state) {
-    state.WECHAT_TOKEN.isLoading = false;
-    state.WECHAT_TOKEN.isSuccess = false;
-    state.WECHAT_TOKEN.isFailure = false;
-  },
-  SELECT_WECHAT_TOKEN_SUCCESS(state, data) {
-    state.WECHAT_TOKEN.isLoading = true;
-    state.WECHAT_TOKEN.isSuccess = true;
-    state.WECHAT_TOKEN.isFailure = false;
-    state.WECHAT_TOKEN.data = data;
-  },
-  SELECT_WECHAT_TOKEN_FAILURE(state) {
-    state.WECHAT_TOKEN.isLoading = true;
-    state.WECHAT_TOKEN.isSuccess = false;
-    state.WECHAT_TOKEN.isFailure = true;
-  },
   // 查询默认就诊卡信息
   SELECT_DEVICEID_REQUEST(state) {
     state.DEVICEID.isLoading = false;
@@ -49,6 +32,40 @@ const mutations = {
     state.GRANT_LOGIN.isLoading = true;
     state.GRANT_LOGIN.isSuccess = false;
     state.GRANT_LOGIN.isFailure = true;
+  },
+  // 查询JSSDK的Token
+  SELECT_WECHAT_TOKEN_REQUEST(state) {
+    state.WECHAT_TOKEN.isLoading = false;
+    state.WECHAT_TOKEN.isSuccess = false;
+    state.WECHAT_TOKEN.isFailure = false;
+  },
+  SELECT_WECHAT_TOKEN_SUCCESS(state, data) {
+    state.WECHAT_TOKEN.isLoading = true;
+    state.WECHAT_TOKEN.isSuccess = true;
+    state.WECHAT_TOKEN.isFailure = false;
+    state.WECHAT_TOKEN.data = data;
+  },
+  SELECT_WECHAT_TOKEN_FAILURE(state) {
+    state.WECHAT_TOKEN.isLoading = true;
+    state.WECHAT_TOKEN.isSuccess = false;
+    state.WECHAT_TOKEN.isFailure = true;
+  },
+  // 查询JSSDK的Token
+  SELECT_JSSDK_CONFIG_REQUEST(state) {
+    state.JSSDK_CONFIG.isLoading = false;
+    state.JSSDK_CONFIG.isSuccess = false;
+    state.JSSDK_CONFIG.isFailure = false;
+  },
+  SELECT_JSSDK_CONFIG_SUCCESS(state, data) {
+    state.JSSDK_CONFIG.isLoading = true;
+    state.JSSDK_CONFIG.isSuccess = true;
+    state.JSSDK_CONFIG.isFailure = false;
+    state.JSSDK_CONFIG.data = data;
+  },
+  SELECT_JSSDK_CONFIG_FAILURE(state) {
+    state.JSSDK_CONFIG.isLoading = true;
+    state.JSSDK_CONFIG.isSuccess = false;
+    state.JSSDK_CONFIG.isFailure = true;
   },
   // 查询默认就诊卡信息
   SELECT_DEFAULT_CARD_REQUEST(state) {

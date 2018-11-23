@@ -34,7 +34,7 @@ const actions = {
         });
     });
   },
-  // xxx
+  // 查询微信JSSDK的Token
   selectWechatToken({commit}) {
     commit(ACTION_TYPES.SELECT_WECHAT_TOKEN_REQUEST);
     return new Promise((resolve, reject) => {
@@ -46,6 +46,21 @@ const actions = {
         })
         .catch((err) => {
           commit(ACTION_TYPES.SELECT_WECHAT_TOKEN_FAILURE);
+          reject(err);
+        });
+    });
+  },
+  // 查询微信JSSDK的配置参数
+  selectJSSDKConfig({commit}, data) {
+    commit(ACTION_TYPES.SELECT_JSSDK_CONFIG_REQUEST);
+    return new Promise((resolve, reject) => {
+      axios.post(apis.selectJSSDKConfig, data)
+        .then((res) => {
+          commit(ACTION_TYPES.SELECT_JSSDK_CONFIG_SUCCESS, data);
+          resolve(res);
+        })
+        .catch((err) => {
+          commit(ACTION_TYPES.SELECT_JSSDK_CONFIG_FAILURE);
           reject(err);
         });
     });

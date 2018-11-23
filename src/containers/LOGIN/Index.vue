@@ -1,11 +1,14 @@
 <template>
-  <div class="login"></div>
+  <error v-if="isDeviceIdFailure||isLoginFailure"></error>
 </template>
 
 <script type="text/ecmascript-6">
+  import {mapState} from 'vuex';
   import Controller from './Controller';
+  import Error from '../../components/Error';
 
   export default {
+    components: {Error},
     name: 'Login',
     data() {
       return {
@@ -15,7 +18,11 @@
     created() {
       this.initLogin();
     },
-    methods: Controller
+    methods: Controller,
+    computed: mapState({
+      isDeviceIdFailure: state => state.DEVICEID.isFailure,
+      isLoginFailure: state => state.GRANT_LOGIN.isFailure
+    })
   };
 </script>
 

@@ -7,8 +7,16 @@ export const jumpToWeChatUrl = (appId, scope) => {
 };
 
 export const saveLocalStorage = (data) => {
-  const {AccessToken, RefreshToken} = data;
-  const accessToken = 'Bearer ' + AccessToken;
-  localStorage.setItem('accessToken', accessToken);
-  localStorage.setItem('refreshToken', RefreshToken);
+  const {
+    WechatAppId,
+    AccessToken,
+    RefreshToken,
+    WechatAccessToken,
+    WechatRefreshToken
+  } = data;
+  localStorage.setItem('WechatAppId', WechatAppId);
+  localStorage.setItem('AccessToken', 'Bearer ' + AccessToken);
+  localStorage.setItem('RefreshToken', RefreshToken);
+  localStorage.setItem('WechatAccessToken', WechatAccessToken);
+  localStorage.setItem('WechatRefreshToken', WechatRefreshToken);
 };

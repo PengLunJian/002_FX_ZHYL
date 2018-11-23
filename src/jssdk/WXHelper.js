@@ -22,7 +22,7 @@ export const handlerWXConfig = (config) => {
 };
 
 export const handlerChooseWXPay = (config) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     wx.chooseWXPay({
       timestamp: config.timeStamp,
       nonceStr: config.nonceStr,
@@ -31,40 +31,18 @@ export const handlerChooseWXPay = (config) => {
       paySign: config.paySign,
       success: (res) => {
         resolve(res);
-      },
-      error: (err) => {
-        reject(err);
       }
     });
   });
 };
 
 export const handlerCheckJsApi = (config) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     wx.checkJsApi({
       jsApiList: config.jsApiList,
       success: (res) => {
         console.log(res);
         resolve(res);
-      },
-      error: (err) => {
-        console.log(err);
-        reject(err);
-      }
-    });
-  });
-};
-
-export const handlerChooseImage = (config) => {
-  return new Promise((resolve, reject) => {
-    wx.chooseImage({
-      count: config.count,
-      success: (res) => {
-        console.log(res);
-        resolve(res);
-      },
-      error: (err) => {
-        reject(err);
       }
     });
   });
