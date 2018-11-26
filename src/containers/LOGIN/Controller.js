@@ -25,7 +25,7 @@ const controller = {
           .then((res) => {
             const {data} = res;
             saveLocalStorage(data);
-            window.location.replace('/#/HOME');
+            window.location.replace(this.$router.HOME.path);
           })
           .catch((err) => {
             console.log(err);
