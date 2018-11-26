@@ -42,6 +42,7 @@ const routes = {
   KSXX: {
     path: '/YYGH/KSXX',
     name: 'KSXX',
+    meta: {index: 2},
     component: (component) => {
       return component;
     }

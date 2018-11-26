@@ -1,14 +1,14 @@
 <template>
   <div class="FX_ZHYL_MENU">
     <tab-bar :tabs="tabs" :tabIndex.sync="tabIndex"></tab-bar>
-    <menus></menus>
+    <menus :tabIndex="tabIndex"></menus>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import Controller from './Controller';
-  import TabBar from '../../components/TabBar';
   import Menus from './FLCD';
+  import TabBar from '../../components/TabBar';
 
   export default {
     components: {
@@ -16,6 +16,10 @@
       TabBar
     },
     name: 'YYGH',
+    created() {
+      if (this.isLoading) return;
+      this.exeSelectDepartment();
+    },
     data() {
       return {
         tabIndex: 0,

@@ -23,11 +23,9 @@ const controller = {
         localStorage.setItem('AccessToken', 'Bearer ' + data);
         this.selectGrantLogin(params)
           .then((res) => {
-            const {data, success} = res;
-            if (data && success) {
-              saveLocalStorage(data);
-              window.location.replace('/HOME');
-            }
+            const {data} = res;
+            saveLocalStorage(data);
+            window.location.replace('/#/HOME');
           })
           .catch((err) => {
             console.log(err);

@@ -11,14 +11,15 @@
   import KSJJ from './KSJJ';
   import KSMC from './KSMC';
   import PBXX from './PBXX';
-  export default{
+
+  export default {
     components: {
       PBXX,
       KSMC,
       KSJJ
     },
-    name: '',
-    data () {
+    name: 'KSXX',
+    data() {
       return {};
     },
     methods: Controller
@@ -29,6 +30,7 @@
   @import "../../assets/less/variable";
 
   .FX_ZHYL_KSXX {
+    min-height: 100vh;
     background-color: @bgColor;
   }
 </style>

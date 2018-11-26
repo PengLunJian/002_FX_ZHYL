@@ -22,11 +22,9 @@ const apis = {
     url: 'WechatApi/v1/wechat/getAccesstoken'
   },
   selectJSSDKConfig: {
-    url: 'http://22uj113640.iok.la/fx-pay-web-gateway/sign/getSignature',
+    url: 'WechatApi/v1/wechat/app/generateJsSdkConfig',
     params: {
-      url: '',
-      appid: '',
-      access_token: ''
+      Value: ''
     }
   },
   selectDefaultCard: {
@@ -87,11 +85,8 @@ const apis = {
     url: '/WenRongBusiness/v1/regist/schedul/doctor',
     params: {
       isPre: 0,
-      date: 0,
-      regType: '',
+      regType: 'ZJ',
       deptCode: '',
-      pageIndex: 1,
-      pageSize: 10,
       sort: '1'
     }
   },
@@ -100,15 +95,20 @@ const apis = {
     params: {
       payWayCode: '1', // 1、微信支付
       isPre: '0',
-      onlyNo: '',
-      openId: 'oM5On1EWYcDJaFuqUBc0NHAGjSsU'
+      onlyNo: ''
     }
   },
   selectDepartment: {
     url: '/WenRongBusiness/v1/regist/schedul/dept',
     params: {
       isPre: 0, // 0 当日挂号 1 预约挂号
-      regType: 'PT' // PT 普通门诊 ZJ专家门诊
+      regType: 'ZJ' // PT 普通门诊 ZJ专家门诊
+    }
+  },
+  selectSubDepartment: {
+    url: '/WenRongBusiness/v1/regist/dept/subgrade',
+    params: {
+      deptCode: ''
     }
   }
 };

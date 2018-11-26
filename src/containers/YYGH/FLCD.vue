@@ -1,44 +1,26 @@
 <template>
   <div class="module FLCD">
     <div class="col-xs-6 filter">
-      <ul class="inner-block">
-        <li class="btn btn-filter active" @click="handlerFilter">专科专病</li>
-        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
-        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
-        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
-        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
-        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
-        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
-        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
-        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
-        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
-        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
-        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
-        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
-        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
-        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
-        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
-        <li class="btn btn-filter" @click="handlerFilter">专科专病</li>
+      <no-data v-if="isParentSuccess&&!isParentData"></no-data>
+      <error v-if="isParentFailure&&!isParentData"></error>
+      <ul class="inner-block" v-if="isParentSuccess&&isParentData">
+        <li class="btn btn-filter"
+            :class="index===activeIndex?' active':''"
+            @click="handlerFilter(index,item.deptCode)"
+            v-for="(item,index) in isParentData"
+            :key="index">{{item.deptName}}
+        </li>
       </ul>
     </div>
     <div class="col-xs-6 result">
-      <ul class="inner-block">
-        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
-        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
-        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
-        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
-        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
-        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
-        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
-        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
-        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
-        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
-        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
-        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
-        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
-        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
-        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
-        <li class="btn btn-result" @click="handlerResult">心里咨询</li>
+      <no-data v-if="isChildSuccess&&!isChildData"></no-data>
+      <error v-if="isChildFailure" @refresh="exeSelectSubDepartment"></error>
+      <ul class="inner-block" v-if="isChildSuccess&&isChildData">
+        <li class="btn btn-result"
+            @click="handlerResult(item.deptCode)"
+            v-for="(item,index) in isChildData"
+            :key="index">{{item.deptName}}
+        </li>
       </ul>
     </div>
     <div class="clear"></div>
@@ -46,14 +28,32 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {mapState} from 'vuex';
   import Controller from './Controller';
+  import Error from '../../components/Error';
+  import NoData from '../../components/NoData';
 
   export default {
+    components: {
+      Error,
+      NoData
+    },
     name: 'Menus',
     data() {
-      return {};
+      return {
+        activeIndex: 0
+      };
     },
-    methods: Controller
+    props: ['tabIndex'],
+    methods: Controller,
+    computed: mapState({
+      isParentSuccess: state => state.DEPARTMENT.isSuccess,
+      isParentFailure: state => state.DEPARTMENT.isFailure,
+      isParentData: state => state.DEPARTMENT.data,
+      isChildSuccess: state => state.SUB_DEPARTMENT.isSuccess,
+      isChildFailure: state => state.SUB_DEPARTMENT.isFailure,
+      isChildData: state => state.SUB_DEPARTMENT.data
+    })
   };
 </script>
 
@@ -66,6 +66,7 @@
     .filter {
       height: 100%;
       overflow-y: auto;
+      position: relative;
       background-color: @bgColor;
       -webkit-overflow-scrolling: touch;
       .inner-block {
@@ -100,6 +101,7 @@
     .result {
       height: 100%;
       overflow-y: auto;
+      position: relative;
       -webkit-overflow-scrolling: touch;
       .inner-block {
         .btn-result {

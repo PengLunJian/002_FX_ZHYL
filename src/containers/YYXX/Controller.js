@@ -10,9 +10,7 @@ const controller = {
   },
   exeSelectJSSDKConfig() {
     const data = {
-      url: window.location.href,
-      appid: localStorage.getItem('WechatAppId'),
-      access_token: localStorage.getItem('WechatAccessToken')
+      Value: window.location.href.split('#')[0]
     };
     this.selectJSSDKConfig(data)
       .then((res) => {

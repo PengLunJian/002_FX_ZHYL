@@ -9,9 +9,14 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post(apis.selectDeviceId)
         .then((res) => {
-          const data = {id: res.data};
-          commit(ACTION_TYPES.SELECT_DEVICEID_SUCCESS, data);
-          resolve(res);
+          res = res || {};
+          const {data, success} = res;
+          if (data && success) {
+            commit(ACTION_TYPES.SELECT_DEVICEID_SUCCESS, data);
+            resolve(res);
+          } else {
+            commit(ACTION_TYPES.SELECT_DEVICEID_FAILURE);
+          }
         })
         .catch((err) => {
           commit(ACTION_TYPES.SELECT_DEVICEID_FAILURE);
@@ -25,8 +30,14 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post(apis.selectGrantLogin, data)
         .then((res) => {
-          commit(ACTION_TYPES.SELECT_GRANT_LOGIN_SUCCESS, data);
-          resolve(res);
+          res = res || {};
+          const {data, success} = res;
+          if (data && success) {
+            commit(ACTION_TYPES.SELECT_GRANT_LOGIN_SUCCESS, data);
+            resolve(res);
+          } else {
+            commit(ACTION_TYPES.SELECT_GRANT_LOGIN_FAILURE);
+          }
         })
         .catch((err) => {
           commit(ACTION_TYPES.SELECT_GRANT_LOGIN_FAILURE);
@@ -280,6 +291,53 @@ const actions = {
         })
         .catch((err) => {
           commit(ACTION_TYPES.SELECT_REGISTER_PAY_FAILURE);
+          reject(err);
+        });
+    });
+  },
+  // 查询排班科室
+  selectDepartment({commit, state}, data) {
+    commit(ACTION_TYPES.SELECT_DEPARTMENT_REQUEST);
+    commit(ACTION_TYPES.SELECT_SUB_DEPARTMENT_REQUEST);
+    return new Promise((resolve, reject) => {
+      axios.post(apis.selectDepartment, data)
+        .then((res) => {
+          res = res || {};
+          const {data, success} = res;
+          if (data && success) {
+            const {parents, subgrades} = data;
+            commit(ACTION_TYPES.SELECT_DEPARTMENT_SUCCESS, parents);
+            commit(ACTION_TYPES.SELECT_SUB_DEPARTMENT_SUCCESS, subgrades);
+            resolve(res);
+          } else {
+            commit(ACTION_TYPES.SELECT_DEPARTMENT_FAILURE);
+            commit(ACTION_TYPES.SELECT_SUB_DEPARTMENT_FAILURE);
+          }
+        })
+        .catch((err) => {
+          commit(ACTION_TYPES.SELECT_DEPARTMENT_FAILURE);
+          commit(ACTION_TYPES.SELECT_SUB_DEPARTMENT_FAILURE);
+          reject(err);
+        });
+    });
+  },
+  // 查询子级科室
+  selectSubDepartment({commit, state}, data) {
+    commit(ACTION_TYPES.SELECT_SUB_DEPARTMENT_REQUEST);
+    return new Promise((resolve, reject) => {
+      axios.post(apis.selectSubDepartment, data)
+        .then((res) => {
+          res = res || {};
+          const {data, success} = res;
+          if (data && success) {
+            commit(ACTION_TYPES.SELECT_SUB_DEPARTMENT_SUCCESS, data);
+            resolve(res);
+          } else {
+            commit(ACTION_TYPES.SELECT_SUB_DEPARTMENT_FAILURE);
+          }
+        })
+        .catch((err) => {
+          commit(ACTION_TYPES.SELECT_SUB_DEPARTMENT_FAILURE);
           reject(err);
         });
     });

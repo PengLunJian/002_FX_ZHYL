@@ -5,9 +5,9 @@ export const handlerWXConfig = (config) => {
     wx.config({
       debug: true,
       appId: config.appId,
-      timestamp: config.timeStamp,
+      timestamp: config.timestamp,
       nonceStr: config.nonceStr,
-      signature: config.paySign,
+      signature: config.signature,
       jsApiList: config.jsApiList
     });
     wx.ready(() => {
@@ -17,6 +17,18 @@ export const handlerWXConfig = (config) => {
     wx.error((res) => {
       console.log('error');
       reject(res);
+    });
+  });
+};
+
+export const handlerCheckJsApi = (config) => {
+  return new Promise((resolve) => {
+    wx.checkJsApi({
+      jsApiList: config.jsApiList,
+      success: (res) => {
+        console.log(res);
+        resolve(res);
+      }
     });
   });
 };
@@ -36,10 +48,12 @@ export const handlerChooseWXPay = (config) => {
   });
 };
 
-export const handlerCheckJsApi = (config) => {
+export const handlerChooseImage = (config) => {
   return new Promise((resolve) => {
-    wx.checkJsApi({
-      jsApiList: config.jsApiList,
+    wx.chooseImage({
+      count: config.count, // 默认9
+      sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+      sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
       success: (res) => {
         console.log(res);
         resolve(res);

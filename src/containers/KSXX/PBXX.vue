@@ -5,7 +5,7 @@
     </h2>
     <div class="context clear">2018/09/08&nbsp;全天&nbsp;
       <span>挂号时间：(07:30-16:30)</span>
-      <button class="btn btn-register" v-waves.block>去挂号</button>
+      <button class="btn btn-register">去挂号</button>
     </div>
   </div>
 </template>

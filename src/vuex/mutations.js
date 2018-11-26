@@ -257,6 +257,40 @@ const mutations = {
     state.REGISTER_PAY.isLoading = true;
     state.REGISTER_PAY.isSuccess = false;
     state.REGISTER_PAY.isFailure = true;
+  },
+  // 查询医生列表
+  SELECT_DEPARTMENT_REQUEST(state) {
+    state.DEPARTMENT.isLoading = false;
+    state.DEPARTMENT.isSuccess = false;
+    state.DEPARTMENT.isFailure = false;
+  },
+  SELECT_DEPARTMENT_SUCCESS(state, data) {
+    state.DEPARTMENT.isLoading = true;
+    state.DEPARTMENT.isSuccess = true;
+    state.DEPARTMENT.isFailure = false;
+    state.DEPARTMENT.data = data;
+  },
+  SELECT_DEPARTMENT_FAILURE(state) {
+    state.DEPARTMENT.isLoading = true;
+    state.DEPARTMENT.isSuccess = false;
+    state.DEPARTMENT.isFailure = true;
+  },
+// 查询医生列表
+  SELECT_SUB_DEPARTMENT_REQUEST(state) {
+    state.SUB_DEPARTMENT.isLoading = false;
+    state.SUB_DEPARTMENT.isSuccess = false;
+    state.SUB_DEPARTMENT.isFailure = false;
+  },
+  SELECT_SUB_DEPARTMENT_SUCCESS(state, data) {
+    state.SUB_DEPARTMENT.isLoading = true;
+    state.SUB_DEPARTMENT.isSuccess = true;
+    state.SUB_DEPARTMENT.isFailure = false;
+    state.SUB_DEPARTMENT.data = data;
+  },
+  SELECT_SUB_DEPARTMENT_FAILURE(state) {
+    state.SUB_DEPARTMENT.isLoading = true;
+    state.SUB_DEPARTMENT.isSuccess = false;
+    state.SUB_DEPARTMENT.isFailure = true;
   }
 };
 

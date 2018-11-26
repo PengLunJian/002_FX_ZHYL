@@ -90,6 +90,18 @@ const states = {
       signType: '',
       timeStamp: ''
     }
+  },
+  DEPARTMENT: {
+    isLoading: false,
+    isSuccess: false,
+    isFailure: false,
+    data: []
+  },
+  SUB_DEPARTMENT: {
+    isLoading: false,
+    isSuccess: false,
+    isFailure: false,
+    data: []
   }
 };
 

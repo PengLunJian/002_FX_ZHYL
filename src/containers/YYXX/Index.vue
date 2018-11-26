@@ -41,12 +41,7 @@
   export default {
     name: 'YYXX',
     data() {
-      return {
-        config: null
-      };
-    },
-    created() {
-      this.exeSelectRegisterPay();
+      return {};
     },
     methods: Controller
   };

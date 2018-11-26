@@ -1,5 +1,6 @@
 <template>
-  <error v-if="isDeviceIdFailure||isLoginFailure"></error>
+  <error v-if="isDeviceIdFailure||isLoginFailure"
+         @refresh="initLogin"></error>
 </template>
 
 <script type="text/ecmascript-6">
