@@ -1,4 +1,5 @@
 import {mapActions} from 'vuex';
+import JsBarcode from 'jsbarcode';
 
 const controller = {
   closePage() {
@@ -7,7 +8,11 @@ const controller = {
   exeSelectDefaultCard() {
     this.selectDefaultCard()
       .then((res) => {
-        console.log(res);
+        const {data} = res || {};
+        const {patientCardNo} = data || '';
+        JsBarcode(this.$refs.jsbarcode, patientCardNo, {
+          displayValue: false
+        });
       })
       .catch((err) => {
         console.log(err);

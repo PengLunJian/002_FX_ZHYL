@@ -78,18 +78,18 @@ const actions = {
   },
   // 查询默认就诊卡
   selectDefaultCard({commit}) {
+    commit(ACTION_TYPES.SELECT_DEFAULT_CARD_REQUEST);
     return new Promise((resolve, reject) => {
       axios.post(apis.selectDefaultCard)
         .then((res) => {
           res = res || {};
           const {data, success} = res;
-          if (!success) {
-            commit(ACTION_TYPES.SELECT_DEFAULT_CARD_FAILURE);
-          } else {
-            commit(ACTION_TYPES.SELECT_DEFAULT_CARD_REQUEST);
+          if (data && success) {
             commit(ACTION_TYPES.SELECT_DEFAULT_CARD_SUCCESS, data);
+            resolve(res);
+          } else {
+            commit(ACTION_TYPES.SELECT_DEFAULT_CARD_FAILURE);
           }
-          resolve(data);
         })
         .catch((err) => {
           commit(ACTION_TYPES.SELECT_DEFAULT_CARD_FAILURE);
@@ -103,9 +103,14 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post(apis.insertVisitorList, data)
         .then((res) => {
+          res = res || {};
           const {data, success} = res;
           if (data && success) {
-            commit(ACTION_TYPES.INSERT_VISITOR_LIST_SUCCESS, data);
+            const oldData = state.VISITOR_LIST.data;
+            const newData = oldData.concat(data);
+            commit(ACTION_TYPES.INSERT_VISITOR_LIST_SUCCESS, newData);
+          } else {
+            commit(ACTION_TYPES.INSERT_VISITOR_LIST_FAILURE);
           }
           resolve(res);
         })
@@ -117,13 +122,20 @@ const actions = {
   },
   // 删除就诊卡
   deleteVisitorList({commit, state}, data) {
+    const {value} = data;
     commit(ACTION_TYPES.DELETE_VISITOR_LIST_REQUEST);
     return new Promise((resolve, reject) => {
       axios.post(apis.deleteVisitorList, data)
         .then((res) => {
-          const {data, success} = res;
-          if (data && success) {
-            commit(ACTION_TYPES.DELETE_VISITOR_LIST_SUCCESS, data);
+          res = res || {};
+          const {success} = res;
+          if (success) {
+            const oldData = state.VISITOR_LIST.data;
+            const newData = oldData.filter(item => value !== item.patientCardNo);
+            if (newData.length) newData[0].isDefault = true;
+            commit(ACTION_TYPES.DELETE_VISITOR_LIST_SUCCESS, newData);
+          } else {
+            commit(ACTION_TYPES.DELETE_VISITOR_LIST_FAILURE);
           }
           resolve(res);
         })
@@ -139,8 +151,21 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post(apis.updateVisitorList, data)
         .then((res) => {
-          const {data} = res;
-          commit(ACTION_TYPES.UPDATE_VISITOR_LIST_SUCCESS, data);
+          res = res || {};
+          const {data, success} = res;
+          if (data && success) {
+            const oldData = state.VISITOR_LIST.data;
+            const newData = oldData.map((item) => {
+              item.isDefault = false;
+              if (data.patientCardNo === item.patientCardNo) {
+                item.isDefault = true;
+              }
+              return item;
+            });
+            commit(ACTION_TYPES.UPDATE_VISITOR_LIST_SUCCESS, newData);
+          } else {
+            commit(ACTION_TYPES.UPDATE_VISITOR_LIST_FAILURE);
+          }
           resolve(res);
         })
         .catch((err) => {
@@ -151,19 +176,25 @@ const actions = {
   },
   // 查询就诊卡
   selectVisitorList({commit, state}, data) {
-    const {Value} = data;
+    const {value} = data;
     return new Promise((resolve, reject) => {
       axios.post(apis.selectVisitorList, data)
         .then((res) => {
-          const data = res.data.rows;
-          const oldData = state.VISITOR_LIST.data;
-          let newData = oldData.concat(data);
-          if (Value === 1) {
-            newData = data;
-            commit(ACTION_TYPES.SELECT_VISITOR_LIST_REQUEST);
+          res = res || {};
+          const {data, success} = res;
+          if (data && success) {
+            const {rows} = data;
+            const oldData = state.VISITOR_LIST.data;
+            let newData = oldData.concat(rows);
+            if (value === 1) {
+              newData = rows;
+              commit(ACTION_TYPES.SELECT_VISITOR_LIST_REQUEST);
+            }
+            commit(ACTION_TYPES.SELECT_VISITOR_LIST_SUCCESS, newData);
+            resolve(res);
+          } else {
+            commit(ACTION_TYPES.SELECT_VISITOR_LIST_FAILURE);
           }
-          commit(ACTION_TYPES.SELECT_VISITOR_LIST_SUCCESS, newData);
-          resolve(res);
         })
         .catch((err) => {
           commit(ACTION_TYPES.SELECT_VISITOR_LIST_FAILURE);
@@ -259,18 +290,17 @@ const actions = {
   },
   // 查询医生列表
   selectDoctorList({commit, state}, data) {
-    const {pageIndex} = data;
+    commit(ACTION_TYPES.SELECT_DOCTOR_LIST_REQUEST);
     return new Promise((resolve, reject) => {
       axios.post(apis.selectDoctorList, data)
         .then((res) => {
           res = res || {};
-          const {data} = res;
-          if (pageIndex === 1) {
-            commit(ACTION_TYPES.SELECT_DOCTOR_LIST_REQUEST);
+          const {data, success} = res;
+          if (data && success) {
+            commit(ACTION_TYPES.SELECT_DOCTOR_LIST_SUCCESS, data);
+          } else {
+            commit(ACTION_TYPES.SELECT_DOCTOR_LIST_FAILURE);
           }
-          const oldData = state.DOCTOR_LIST.data;
-          const newData = oldData.concat(data);
-          commit(ACTION_TYPES.SELECT_DOCTOR_LIST_SUCCESS, newData);
           resolve(res);
         })
         .catch((err) => {
@@ -338,6 +368,27 @@ const actions = {
         })
         .catch((err) => {
           commit(ACTION_TYPES.SELECT_SUB_DEPARTMENT_FAILURE);
+          reject(err);
+        });
+    });
+  },
+  // 查询医生详情
+  selectDoctorDetail({commit, state}, data) {
+    commit(ACTION_TYPES.SELECT_DOCTOR_DETAIL_REQUEST);
+    return new Promise((resolve, reject) => {
+      axios.post(apis.selectDoctorDetail, data)
+        .then((res) => {
+          res = res || {};
+          const {data, success} = res;
+          if (data && success) {
+            commit(ACTION_TYPES.SELECT_DOCTOR_DETAIL_SUCCESS, data);
+            resolve(res);
+          } else {
+            commit(ACTION_TYPES.SELECT_DOCTOR_DETAIL_FAILURE);
+          }
+        })
+        .catch((err) => {
+          commit(ACTION_TYPES.SELECT_DOCTOR_DETAIL_FAILURE);
           reject(err);
         });
     });

@@ -1,5 +1,5 @@
 <template>
-  <div class="FX_ZHYL_JZEWM">
+  <div class="FX_ZHYL_JZTM">
     <error v-if="isFailure" @refresh="exeSelectDefaultCard"></error>
     <div class="content" v-if="isSuccess&&data">
       <div class="row-box-1">
@@ -22,24 +22,15 @@
   import {mapState} from 'vuex';
   import Controller from './Controller';
   import Error from '../../components/Error';
-  import JsBarcode from 'jsbarcode';
+
   export default {
     components: {Error},
-    name: 'JZEWM',
+    name: 'JZTM',
     data() {
       return {};
     },
     created() {
-      if (this.isLoading) return;
       this.exeSelectDefaultCard();
-    },
-    mounted() {
-      if (this.isLoading && this.data) {
-        console.log('data2:');
-        JsBarcode(this.$refs.jsbarcode, 'hello', {
-          displayValue: false
-        });
-      }
     },
     methods: Controller,
     computed: mapState({
@@ -54,7 +45,7 @@
 <style scoped lang="less">
   @import "../../assets/less/variable";
 
-  .FX_ZHYL_JZEWM {
+  .FX_ZHYL_JZTM {
     position: absolute;
     top: 0;
     left: 0;

@@ -102,6 +102,12 @@ const states = {
     isSuccess: false,
     isFailure: false,
     data: []
+  },
+  DOCTOR_DETAIL: {
+    isLoading: false,
+    isSuccess: false,
+    isFailure: false,
+    data: null
   }
 };
 

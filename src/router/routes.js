@@ -10,7 +10,7 @@ const routes = {
   HOME: {
     path: '/HOME',
     name: 'HOME',
-    meta: {index: 0, keepAlive: true},
+    meta: {index: 0},
     component: (component) => {
       return component;
     }
@@ -193,7 +193,7 @@ const routes = {
   JZTM: {
     path: '/JZTM',
     name: 'JZTM',
-    meta: {index: 1, keepAlive: true},
+    meta: {index: 1},
     component: (component) => {
       return component;
     }
@@ -201,7 +201,7 @@ const routes = {
   SFLR: {
     path: '/KPBL/SFLR',
     name: 'SFLR',
-    meta: {index: 2},
+    meta: {index: 3},
     component: (component) => {
       return component;
     }

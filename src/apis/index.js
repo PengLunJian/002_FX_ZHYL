@@ -82,12 +82,21 @@ const apis = {
     }
   },
   selectDoctorList: {
-    url: '/WenRongBusiness/v1/regist/schedul/doctor',
+    url: '/WenRongBusiness/v1/regist/doctor/list',
     params: {
       isPre: 0,
       regType: 'ZJ',
       deptCode: '',
       sort: '1'
+    }
+  },
+  selectDoctorDetail: {
+    url: '/WenRongBusiness/v1/regist/doctor/detail',
+    params: {
+      isPre: 0,
+      regType: 'ZJ',
+      deptCode: '',
+      doctCode: ''
     }
   },
   selectRegisterPay: {

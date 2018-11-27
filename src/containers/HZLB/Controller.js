@@ -24,17 +24,57 @@ const controller = {
     });
   },
   exeDeleteVisitorList(params) {
-    const result = confirm('确认解绑就诊卡吗?');
-    if (result) {
-      alert(true);
-    } else {
-      alert(false);
-    }
+    params = {value: params};
+    this.deleteVisitorList(params)
+      .then((res) => {
+        res = res || {};
+        const {success} = res;
+        if (success) {
+          this.$vux.toast.show({
+            text: '操作成功'
+          });
+        } else {
+          this.$vux.toast.show({
+            type: 'cancel',
+            text: '操作失败'
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        this.$vux.toast.show({
+          type: 'cancel',
+          text: '操作失败'
+        });
+      });
   },
   exeUpdateVisitorList(params) {
+    params = {value: params};
+    this.updateVisitorList(params)
+      .then((res) => {
+        res = res || {};
+        const {data, success} = res;
+        if (data && success) {
+          this.$vux.toast.show({
+            text: '操作成功'
+          });
+        } else {
+          this.$vux.toast.show({
+            type: 'cancel',
+            text: '操作失败'
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        this.$vux.toast.show({
+          type: 'cancel',
+          text: '操作失败'
+        });
+      });
   },
   exeSelectVisitorList() {
-    const data = {Value: this.pageCode};
+    const data = {value: this.pageCode};
     this.selectVisitorList(data)
       .then((res) => {
         const data = res.data.rows;

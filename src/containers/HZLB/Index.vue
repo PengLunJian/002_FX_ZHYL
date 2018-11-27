@@ -55,7 +55,7 @@
         mescroll: null,
         up: {
           auto: false,
-          isBounce: false,
+          isBounce: true,
           callback: this.infinite,
           htmlNodata: '<p class="upwarp-nodata">无更多数据</p>'
         },
@@ -70,7 +70,6 @@
       };
     },
     created() {
-      if (this.isLoading) return;
       this.exeSelectVisitorList();
     },
     methods: Controller,
@@ -79,14 +78,7 @@
       isSuccess: state => state.VISITOR_LIST.isSuccess,
       isFailure: state => state.VISITOR_LIST.isFailure,
       data: state => state.VISITOR_LIST.data
-    }),
-    watch: {
-      $route(to, from) {
-        if (from.name === 'HZLB') {
-          this.mescroll.setBounce(true);
-        }
-      }
-    }
+    })
   };
 </script>
 
@@ -99,8 +91,8 @@
     left: 0;
     width: 100%;
     height: 100vh;
+    padding: 0.15rem 0.15rem;
     background-color: @bgColor;
-    padding: 0.15rem 0.15rem 0rem;
     .header {
       position: absolute;
       top: 0;

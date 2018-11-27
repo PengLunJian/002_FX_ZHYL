@@ -28,7 +28,7 @@
         mescroll: null,
         up: {
           auto: false,
-          isBounce: false,
+          isBounce: true,
           callback: this.infinite,
           htmlNodata: '<p class="upwarp-nodata">没有更多数据</p>'
         },
@@ -43,7 +43,6 @@
       };
     },
     created() {
-      if (this.isLoading) return;
       this.exeSelectSubscribeList();
     },
     methods: Controller,
@@ -52,14 +51,7 @@
       isSuccess: state => state.SUBSCRIBE_LIST.isSuccess,
       isFailure: state => state.SUBSCRIBE_LIST.isFailure,
       data: state => state.SUBSCRIBE_LIST.data
-    }),
-    watch: {
-      $route(to, from) {
-        if (from.name === 'WDYY') {
-          this.mescroll.setBounce(true);
-        }
-      }
-    }
+    })
   };
 </script>
 

@@ -18,9 +18,6 @@
         <span class="span">让孩子告别网瘾、用心戒网瘾</span>
       </div>
     </div>
-    <!--<div class="col-box-3">-->
-      <!--<button class="btn btn-collection" v-waves.block>收藏医生</button>-->
-    <!--</div>-->
   </div>
 </template>
 

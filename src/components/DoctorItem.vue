@@ -1,16 +1,16 @@
 <template>
   <div class="doctor">
     <div class="item-box-1">
-      <img :src="item.logo"/>
+      <img :src="item.doctImg||require('../assets/images/doctor@2x.png')"/>
     </div>
     <div class="item-box-2">
-      <div class="item-name">{{item.name}}</div>
-      <div class="item-post">{{item.post}}</div>
-      <div class="item-good">{{item.good}}</div>
+      <div class="item-name">{{item.doctName}}</div>
+      <div class="item-post">{{item.reglevelName}}</div>
+      <div class="item-good">{{item.goodDisease}}</div>
     </div>
     <div class="item-box-3">
-      <button class="btn btn-bespoke" @click="handlerClick" v-waves.block>预约</button>
-      <span class="item-price">180.0元</span>
+      <button class="btn btn-bespoke" @click="handlerClick(item.doctCode)">预约</button>
+      <span class="item-price">{{item.totalFee}}元</span>
     </div>
   </div>
 </template>
@@ -23,9 +23,13 @@
     },
     props: ['item'],
     methods: {
-      handlerClick: function () {
+      handlerClick(doctCode) {
+        const {query} = this.$route || {};
+        const newQuery = {doctCode: doctCode};
+        const params = Object.assign(query, newQuery);
         this.$router.push({
-          path: this.$routes.YSZY.path
+          path: this.$routes.YSZY.path,
+          query: params
         });
       }
     }
@@ -82,6 +86,7 @@
         width: 0.5rem;
         height: 0.25rem;
         line-height: 0.25rem;
+        overflow: hidden;
         margin-bottom: 0.13rem;
         border-radius: 0.04rem;
         background-color: #dbecff;

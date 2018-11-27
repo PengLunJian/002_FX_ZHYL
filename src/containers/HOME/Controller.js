@@ -29,7 +29,12 @@ const controller = {
     });
   },
   exeSelectDefaultCard() {
-    this.selectDefaultCard();
+    this.selectDefaultCard()
+      .then((res) => {
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   },
   ...mapActions([
     'selectDefaultCard'

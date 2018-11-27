@@ -18,7 +18,7 @@
       <div class="col-xs-6 right">
         <no-data v-if="isChildSuccess&&!isChildData"></no-data>
         <error v-if="isChildFailure" @refresh="exeSelectSubDepartment"></error>
-        <ul class="inner-blotck" v-if="isChildSuccess&&isChildData">
+        <ul class="inner-block" v-if="isChildSuccess&&isChildData">
           <li class="btn btn-result"
               @click="handlerResult(item.deptCode)"
               v-for="(item,index) in isChildData"

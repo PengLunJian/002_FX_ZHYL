@@ -228,7 +228,6 @@ const mutations = {
     state.DOCTOR_LIST.isLoading = false;
     state.DOCTOR_LIST.isSuccess = false;
     state.DOCTOR_LIST.isFailure = false;
-    state.DOCTOR_LIST.data = [];
   },
   SELECT_DOCTOR_LIST_SUCCESS(state, data) {
     state.DOCTOR_LIST.isLoading = true;
@@ -291,6 +290,23 @@ const mutations = {
     state.SUB_DEPARTMENT.isLoading = true;
     state.SUB_DEPARTMENT.isSuccess = false;
     state.SUB_DEPARTMENT.isFailure = true;
+  },
+  // 查询医生详细
+  SELECT_DOCTOR_DETAIL_REQUEST(state) {
+    state.DOCTOR_DETAIL.isLoading = false;
+    state.DOCTOR_DETAIL.isSuccess = false;
+    state.DOCTOR_DETAIL.isFailure = false;
+  },
+  SELECT_DOCTOR_DETAIL_SUCCESS(state, data) {
+    state.DOCTOR_DETAIL.isLoading = true;
+    state.DOCTOR_DETAIL.isSuccess = true;
+    state.DOCTOR_DETAIL.isFailure = false;
+    state.DOCTOR_DETAIL.data = data;
+  },
+  SELECT_DOCTOR_DETAIL_FAILURE(state) {
+    state.DOCTOR_DETAIL.isLoading = true;
+    state.DOCTOR_DETAIL.isSuccess = false;
+    state.DOCTOR_DETAIL.isFailure = true;
   }
 };
 
