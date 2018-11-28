@@ -11,6 +11,7 @@ const controller = {
         const {data} = res || {};
         const {patientCardNo} = data || '';
         JsBarcode(this.$refs.jsbarcode, patientCardNo, {
+          format: 'CODE39',
           displayValue: false
         });
       })

@@ -1,14 +1,6 @@
 const routes = {
-  LOGIN: {
-    path: '/',
-    name: 'LOGIN',
-    meta: {index: 0},
-    component: (component) => {
-      return component;
-    }
-  },
   HOME: {
-    path: '/HOME',
+    path: '/',
     name: 'HOME',
     meta: {index: 0},
     component: (component) => {
@@ -201,7 +193,7 @@ const routes = {
   SFLR: {
     path: '/KPBL/SFLR',
     name: 'SFLR',
-    meta: {index: 3},
+    meta: {index: 4},
     component: (component) => {
       return component;
     }
@@ -209,7 +201,7 @@ const routes = {
   KPBL: {
     path: '/KPBL',
     name: 'KPBL',
-    meta: {index: 1},
+    meta: {index: 3},
     component: (component) => {
       return component;
     }

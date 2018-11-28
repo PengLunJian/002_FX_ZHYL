@@ -79,9 +79,9 @@
         padding-bottom: 0.25rem;
         .bar-code {
           width: 3rem;
-          height: 0.85rem;
+          height: auto;
           display: block;
-          margin: 0.24rem auto;
+          margin: 0.25rem auto 0.1rem;
         }
         .qr-code {
           width: 2.35rem;

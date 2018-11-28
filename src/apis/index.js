@@ -1,10 +1,10 @@
 const apis = {
-  // baseUrl: 'http://192.168.1.5:8080',
   default: {
+    baseUrl: 'http://192.168.1.196',
     method: 'POST',
     timeout: 20000,
     headers: {
-      'Authorization': 'Bearer *CKS8PQU3_APP_LINUX',
+      'Authorization': '',
       'X-Requested-With': 'XMLHttpRequest',
       'Content-Type': 'application/json; charset=UTF-8'
     }
@@ -15,7 +15,7 @@ const apis = {
   selectGrantLogin: {
     url: '/UserCenter/v1/account/fillUserInfoWithWechatCode',
     params: {
-      Value: ''
+      value: ''
     }
   },
   selectWechatToken: {
@@ -24,7 +24,7 @@ const apis = {
   selectJSSDKConfig: {
     url: 'WechatApi/v1/wechat/app/generateJsSdkConfig',
     params: {
-      Value: ''
+      value: ''
     }
   },
   selectDefaultCard: {

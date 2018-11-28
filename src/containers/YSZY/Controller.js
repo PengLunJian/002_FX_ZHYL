@@ -1,10 +1,11 @@
 import {mapActions} from 'vuex';
 
 const controller = {
-  handlerClick() {
-    this.$router.push({
-      path: this.$routes.YYXX.path
-    });
+  handlerClick(item) {
+    console.log(item);
+    // this.$router.push({
+    //   path: this.$routes.YYXX.path
+    // });
   },
   exeSelectDoctorDetail() {
     const {query} = this.$route || {};

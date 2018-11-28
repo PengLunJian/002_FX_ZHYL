@@ -1,5 +1,5 @@
 <template>
-  <div class="module XXTS" :class="clazz">
+  <div class="module XXTS hide" :class="clazz">
     <div class="trigger" @click="showContent">
       <p class="info">缴费提醒</p>
       <i class="icon icon-next"></i>
@@ -28,7 +28,7 @@
           </div>
           <div class="group">
             <label class="label">挂号费用：</label>
-            <span class="span">20:00元</span>
+            <span class="span">20.00元</span>
           </div>
         </div>
         <div class="row-box-3">
@@ -47,7 +47,7 @@
     name: 'XXTS',
     data() {
       return {
-        clazz: '',
+        clazz: 'hide',
         style: '',
         height: 0
       };

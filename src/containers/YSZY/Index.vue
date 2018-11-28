@@ -1,6 +1,8 @@
 <template>
   <div class="FX_ZHYL_YSZY">
-    <div class="content">
+    <error v-if="isFailure" @refresh="exeSelectDoctorDetail"></error>
+    <no-data v-if="isSuccess&&!data"></no-data>
+    <div class="content" v-if="isSuccess&&data">
       <div class="module YSXX">
         <div class="col-box-1">
           <img :src="data.doctImage||require('../../assets/images/doctor@2x.png')"/>
@@ -42,13 +44,13 @@
               <tr>
                 <td v-for="(item,index) in data.schedulWeek" :key="index">
                   <span :class="item.schedulDay[0].isRegister?'on':'off'"
-                        @click="handlerClick">{{item.schedulDay[0].isRegister?'预约':'约满'}}</span>
+                        @click="handlerClick(index)">{{item.schedulDay[0].isRegister?'预约':'约满'}}</span>
                 </td>
               </tr>
               <tr>
                 <td v-for="(item,index) in data.schedulWeek" :key="index">
-                  <span :class="item.schedulDay[0].isRegister?'on':'off'"
-                        @click="handlerClick">{{item.schedulDay[0].isRegister?'预约':'约满'}}</span>
+                  <span :class="item.schedulDay[1].isRegister?'on':'off'"
+                        @click="handlerClick(index)">{{item.schedulDay[1].isRegister?'预约':'约满'}}</span>
                 </td>
               </tr>
               </tbody>
@@ -212,9 +214,6 @@
               }
               span {
                 display: block;
-              }
-              &.am, &.pm {
-                font-size: 0.16rem;
               }
             }
             thead {

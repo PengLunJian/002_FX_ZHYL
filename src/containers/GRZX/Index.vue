@@ -76,7 +76,6 @@
       return {};
     },
     created() {
-      if (this.isLoading) return;
       this.exeSelectDefaultCard();
     },
     methods: Controller,

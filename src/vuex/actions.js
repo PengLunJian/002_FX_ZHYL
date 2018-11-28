@@ -10,16 +10,19 @@ const actions = {
       axios.post(apis.selectDeviceId)
         .then((res) => {
           res = res || {};
+          // res.success = parseInt((Math.random() * 100)) % 2 === 0 ? false : true;
           const {data, success} = res;
-          if (data && success) {
+          if (success) {
             commit(ACTION_TYPES.SELECT_DEVICEID_SUCCESS, data);
-            resolve(res);
           } else {
             commit(ACTION_TYPES.SELECT_DEVICEID_FAILURE);
+            commit(ACTION_TYPES.SELECT_GRANT_LOGIN_FAILURE);
           }
+          resolve(res);
         })
         .catch((err) => {
           commit(ACTION_TYPES.SELECT_DEVICEID_FAILURE);
+          commit(ACTION_TYPES.SELECT_GRANT_LOGIN_FAILURE);
           reject(err);
         });
     });
@@ -32,12 +35,12 @@ const actions = {
         .then((res) => {
           res = res || {};
           const {data, success} = res;
-          if (data && success) {
+          if (success) {
             commit(ACTION_TYPES.SELECT_GRANT_LOGIN_SUCCESS, data);
-            resolve(res);
           } else {
             commit(ACTION_TYPES.SELECT_GRANT_LOGIN_FAILURE);
           }
+          resolve(res);
         })
         .catch((err) => {
           commit(ACTION_TYPES.SELECT_GRANT_LOGIN_FAILURE);
@@ -84,12 +87,12 @@ const actions = {
         .then((res) => {
           res = res || {};
           const {data, success} = res;
-          if (data && success) {
+          if (success) {
             commit(ACTION_TYPES.SELECT_DEFAULT_CARD_SUCCESS, data);
-            resolve(res);
           } else {
             commit(ACTION_TYPES.SELECT_DEFAULT_CARD_FAILURE);
           }
+          resolve(res);
         })
         .catch((err) => {
           commit(ACTION_TYPES.SELECT_DEFAULT_CARD_FAILURE);
@@ -105,7 +108,7 @@ const actions = {
         .then((res) => {
           res = res || {};
           const {data, success} = res;
-          if (data && success) {
+          if (success) {
             const oldData = state.VISITOR_LIST.data;
             const newData = oldData.concat(data);
             commit(ACTION_TYPES.INSERT_VISITOR_LIST_SUCCESS, newData);
@@ -132,7 +135,13 @@ const actions = {
           if (success) {
             const oldData = state.VISITOR_LIST.data;
             const newData = oldData.filter(item => value !== item.patientCardNo);
-            if (newData.length) newData[0].isDefault = true;
+            let isHasDefault = false;
+            newData.map((item) => {
+              if (item.isDefault) {
+                isHasDefault = true;
+              }
+            });
+            if (newData.length && !isHasDefault) newData[0].isDefault = true;
             commit(ACTION_TYPES.DELETE_VISITOR_LIST_SUCCESS, newData);
           } else {
             commit(ACTION_TYPES.DELETE_VISITOR_LIST_FAILURE);
@@ -153,7 +162,7 @@ const actions = {
         .then((res) => {
           res = res || {};
           const {data, success} = res;
-          if (data && success) {
+          if (success) {
             const oldData = state.VISITOR_LIST.data;
             const newData = oldData.map((item) => {
               item.isDefault = false;

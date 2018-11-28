@@ -75,3 +75,13 @@ export const getQueryParams = (name) => {
   if (r != null) return unescape(r[2]);
   return null;
 };
+/**
+ *
+ * @param params
+ * @returns {string}
+ */
+export const getBaseUrl = (params) => {
+  let url = window.location.href.split(params)[0];
+  url = url.substr(0, url.length - 2);
+  return url;
+};

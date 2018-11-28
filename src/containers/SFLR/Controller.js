@@ -76,6 +76,7 @@ const controllers = {
               text: '操作成功'
             });
             this.clearFormData();
+            this.$router.back();
           } else {
             this.$vux.toast.show({
               text: '操作失败'
