@@ -45,6 +45,7 @@
   import {PopupPicker} from 'vux';
   import Controller from './Controller';
   import KeyBoard from '../../components/KeyBoard';
+  import {getIndexOf} from '../../utils';
 
   export default {
     components: {
@@ -59,17 +60,15 @@
         initValue: '',
         id: 0,
         cardNo: '1',
-        // height: '请输入',
-        // weight: '请输入',
-        // blood: '请选择',
-        // smoke: '请选择',
-        // wine: '请选择',
-        height: '187',
-        weight: '150',
-        blood: '1',
-        smoke: '1',
-        wine: '1',
+        height: '请输入',
+        weight: '请输入',
+        bloodTypeIndex: '',
+        smokingIndex: '',
+        drinkIndex: '',
         status: 'disabled',
+        bloodArr: ['A型', 'B型', 'AB型', 'O型'],
+        isSmokeArr: ['无', '有'],
+        isDrink: ['无', '有'],
         popupPicker: {
           show: false,
           data: [['']],
@@ -77,6 +76,32 @@
           popupTitle: '请选择'
         }
       };
+    },
+    computed: {
+      blood: {
+        get: function () {
+          return this.bloodArr[this.bloodTypeIndex - 1];
+        },
+        set: function (newValue) {
+          this.bloodTypeIndex = getIndexOf(this.bloodArr, newValue) + 1;
+        }
+      },
+      smoke: {
+        get: function () {
+          return this.isSmokeArr[this.smokingIndex - 1];
+        },
+        set: function (newValue) {
+          this.smokingIndex = getIndexOf(this.isSmokeArr, newValue) + 1;
+        }
+      },
+      wine: {
+        get: function () {
+          return this.isDrink[this.drinkIndex - 1];
+        },
+        set: function (newValue) {
+          this.drinkIndex = getIndexOf(this.isDrink, newValue) + 1;
+        }
+      }
     },
     methods: Controller,
     created() {

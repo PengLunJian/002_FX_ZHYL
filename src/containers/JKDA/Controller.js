@@ -7,9 +7,9 @@ const controllers = {
     if (type === 'blood') {
       this.popupPicker.data = [['A型', 'B型', 'AB型', 'O型']];
     } else if (type === 'smoke') {
-      this.popupPicker.data = [['有', '无']];
+      this.popupPicker.data = [['无', '有']];
     } else if (type === 'wine') {
-      this.popupPicker.data = [['有', '无']];
+      this.popupPicker.data = [['无', '有']];
     }
   },
   checkNotEmpty: function () {
@@ -52,9 +52,9 @@ const controllers = {
       cardNo: this.cardNo,
       height: this.height,
       weight: this.weight,
-      bloodType: this.blood,
-      smoking: this.smoke, // 1是无，2抽烟
-      drink: this.wine
+      bloodType: this.bloodTypeIndex,
+      smoking: this.smokingIndex, // 1是无，2抽烟
+      drink: this.drinkIndex
     };
     this.insertHealthList(data)
       .then((res) => {
@@ -63,7 +63,6 @@ const controllers = {
           this.$vux.toast.show({
             text: '操作成功'
           });
-          this.clearFormData();
         } else {
           this.$vux.toast.show({
             text: '操作失败'
@@ -91,19 +90,13 @@ const controllers = {
     }
   },
   fillFormData(data) {
+    this.id = data.id;
     this.cardNo = data.cardNo;
     this.height = data.height;
     this.weight = data.weight;
-    this.blood = data.bloodType;
-    this.smoke = data.smoking;
-    this.wine = data.drink;
-  },
-  clearFormData() {
-    this.height = '';
-    this.weight = '';
-    this.blood = '请选择';
-    this.smoke = '请选择';
-    this.wine = '请选择';
+    this.bloodTypeIndex = data.bloodType;
+    this.smokingIndex = data.smoking;
+    this.drinkIndex = data.drink;
   },
   ...mapActions([
     'insertHealthList',
