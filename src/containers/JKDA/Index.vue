@@ -57,11 +57,18 @@
         TYPE: '',
         isShow: false,
         initValue: '',
-        height: '请输入',
-        weight: '请输入',
-        blood: '请选择',
-        smoke: '请选择',
-        wine: '请选择',
+        id: 0,
+        cardNo: '1',
+        // height: '请输入',
+        // weight: '请输入',
+        // blood: '请选择',
+        // smoke: '请选择',
+        // wine: '请选择',
+        height: '187',
+        weight: '150',
+        blood: '1',
+        smoke: '1',
+        wine: '1',
         status: 'disabled',
         popupPicker: {
           show: false,
@@ -72,6 +79,10 @@
       };
     },
     methods: Controller,
+    created() {
+      if (this.isLoading) return;
+      this.exeSelectHealthList();
+    },
     watch: {
       height() {
         this.checkNotEmpty();

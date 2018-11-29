@@ -50,16 +50,16 @@ const actions = {
   },
   // 查询默认就诊卡
   selectDefaultCard({commit}) {
+    commit(ACTION_TYPES.SELECT_DEFAULT_CARD_REQUEST);
     return new Promise((resolve, reject) => {
       axios.post(apis.selectDefaultCard)
         .then((res) => {
           res = res || {};
           const {data, success} = res;
-          if (!success) {
-            commit(ACTION_TYPES.SELECT_DEFAULT_CARD_FAILURE);
-          } else {
-            commit(ACTION_TYPES.SELECT_DEFAULT_CARD_REQUEST);
+          if (success) {
             commit(ACTION_TYPES.SELECT_DEFAULT_CARD_SUCCESS, data);
+          } else {
+            commit(ACTION_TYPES.SELECT_DEFAULT_CARD_FAILURE);
           }
           resolve(data);
         })
@@ -263,6 +263,63 @@ const actions = {
         })
         .catch((err) => {
           commit(ACTION_TYPES.SELECT_REGISTER_PAY_FAILURE);
+          reject(err);
+        });
+    });
+  },
+  // 查询检查报告列表
+  selectReportList({commit, state}, data) {
+    commit(ACTION_TYPES.SELECT_REPORT_LIST_REQUEST);
+    return new Promise((resolve, reject) => {
+      axios.post(apis.selectReportList, data)
+        .then((res) => {
+          const {data} = res;
+          console.log('res1:');
+          console.log(data);
+          commit(ACTION_TYPES.SELECT_REPORT_LIST_SUCCESS, data);
+          resolve(data);
+        })
+        .catch((err) => {
+          commit(ACTION_TYPES.SELECT_REPORT_LIST_FAILURE);
+          reject(err);
+        });
+    });
+  },
+  // 新增&修改健康档案
+  insertHealthList ({commit, state}, data) {
+    commit(ACTION_TYPES.INSERT_HEALTH_LIST_REQUEST);
+    return new Promise((resolve, reject) => {
+      axios.post(apis.insertHealthList, data)
+        .then((res) => {
+          const {data, success} = res;
+          console.log('res2:');
+          console.log(res);
+          console.log(data);
+          if (data && success) {
+            commit(ACTION_TYPES.INSERT_HEALTH_LIST_SUCCESS, data);
+          }
+          resolve(data);
+        })
+        .catch((err) => {
+          commit(ACTION_TYPES.INSERT_HEALTH_LIST_FAILURE);
+          reject(err);
+        });
+    });
+  },
+  // 查询健康档案
+  selectHealthList ({commit, state}, data) {
+    commit(ACTION_TYPES.SELECT_HEALTH_LIST_REQUEST);
+    return new Promise((resolve, reject) => {
+      axios.post(apis.selectHealthList, data)
+        .then((res) => {
+          const {data} = res;
+          console.log('res1:');
+          console.log(data);
+          commit(ACTION_TYPES.SELECT_HEALTH_LIST_SUCCESS, data);
+          resolve(data);
+        })
+        .catch((err) => {
+          commit(ACTION_TYPES.SELECT_HEALTH_LIST_FAILURE);
           reject(err);
         });
     });
