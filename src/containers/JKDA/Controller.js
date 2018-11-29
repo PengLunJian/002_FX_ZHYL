@@ -63,6 +63,7 @@ const controllers = {
           this.$vux.toast.show({
             text: '操作成功'
           });
+          this.goGrzx();
         } else {
           this.$vux.toast.show({
             text: '操作失败'
@@ -72,6 +73,9 @@ const controllers = {
       .catch((err) => {
         console.log(err);
       });
+  },
+  goGrzx: function () {
+    this.$router.push({path: this.$routes.GRZX.path});
   },
   showKeyBoard: function (type) {
     this.isShow = true;
