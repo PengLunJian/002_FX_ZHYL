@@ -32,25 +32,35 @@
             <span class="pm">下午</span>
           </div>
           <div class="table-body">
-            <table border="0" cellpadding="0" cellspacing="0">
+            <table border="0" cellpadding="0" cellspacing="0" :style="isPre?'width:100%;':''">
               <thead>
               <tr>
-                <th v-for="(item,index) in data.schedulWeek" :key="index">
+                <th v-for="(item,index) in data.schedulWeek" :key="index" :colspan="isPre?2:1">
                   <span>{{item.seeDate}}</span><span>{{item.week}}</span>
                 </th>
               </tr>
               </thead>
               <tbody>
               <tr>
+                <td v-if="isPre">
+                  <span>{{data.schedulWeek[0].schedulDay[0].timeSolt}}</span>
+                </td>
                 <td v-for="(item,index) in data.schedulWeek" :key="index">
                   <span :class="item.schedulDay[0].isRegister?'on':'off'"
-                        @click="handlerClick(index)">{{item.schedulDay[0].isRegister?'预约':'约满'}}</span>
+                        @click="handlerClick(index)">
+                    {{item.schedulDay[0].isRegister?(isPre?'挂号':'预约'):(isPre?'已满':'约满')}}
+                  </span>
                 </td>
               </tr>
               <tr>
+                <td v-if="isPre">
+                  <span>{{data.schedulWeek[0].schedulDay[1].timeSolt}}</span>
+                </td>
                 <td v-for="(item,index) in data.schedulWeek" :key="index">
                   <span :class="item.schedulDay[1].isRegister?'on':'off'"
-                        @click="handlerClick(index)">{{item.schedulDay[1].isRegister?'预约':'约满'}}</span>
+                        @click="handlerClick(index)">
+                    {{item.schedulDay[1].isRegister?(isPre?'挂号':'预约'):(isPre?'已满':'约满')}}
+                  </span>
                 </td>
               </tr>
               </tbody>
@@ -82,7 +92,9 @@
     },
     name: 'YSZY',
     data() {
-      return {};
+      return {
+        isPre: this.$route.query.isPre === '0'
+      };
     },
     created() {
       this.exeSelectDoctorDetail();
@@ -205,6 +217,9 @@
             width: 5rem;
             text-align: center;
             color: #808080;
+            &.clazz {
+              width: 100% !important;
+            }
             th, td {
               height: 0.5rem;
               border-right: 1px solid @tableBorder;

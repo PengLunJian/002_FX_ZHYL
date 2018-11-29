@@ -9,7 +9,10 @@
       <div class="item-good">{{item.goodDisease}}</div>
     </div>
     <div class="item-box-3">
-      <button class="btn btn-bespoke" @click="handlerClick(item.doctCode)">预约</button>
+      <button class="btn btn-bespoke"
+              @click="handlerClick(item.doctCode)">
+        {{this.isPre?'挂号':'预约'}}
+      </button>
       <span class="item-price">{{item.totalFee}}元</span>
     </div>
   </div>
@@ -21,7 +24,7 @@
     data() {
       return {};
     },
-    props: ['item'],
+    props: ['item', 'isPre'],
     methods: {
       handlerClick(doctCode) {
         const {query} = this.$route || {};

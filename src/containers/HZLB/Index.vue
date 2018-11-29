@@ -91,7 +91,7 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    padding: 0.15rem 0.15rem;
+    padding: 0.15rem 0.15rem 0;
     background-color: @bgColor;
     .header {
       position: absolute;

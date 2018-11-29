@@ -3,9 +3,9 @@ import {mapActions} from 'vuex';
 const controller = {
   handlerClick(item) {
     console.log(item);
-    // this.$router.push({
-    //   path: this.$routes.YYXX.path
-    // });
+    this.$router.push({
+      path: this.$routes.YYXX.path
+    });
   },
   exeSelectDoctorDetail() {
     const {query} = this.$route || {};

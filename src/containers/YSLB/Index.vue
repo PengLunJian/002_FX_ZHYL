@@ -13,9 +13,10 @@
         </ul>
       </div>
       <div class="module ZZYS">
-        <no-data v-if="!data||!data.doctor.length"></no-data>
+        <no-data v-if="isSuccess&&!data.doctor.length"></no-data>
         <error v-if="isFailure" @refresh="exeSelectDoctorList"></error>
-        <doctor-item v-for="(item,index) in data.doctor" :key="index" :item="item"></doctor-item>
+        <doctor-item v-for="(item,index) in data.doctor"
+          :key="index" :item="item" :isPre="isPre"></doctor-item>
       </div>
     </div>
   </div>
@@ -37,7 +38,8 @@
     name: 'YSLB',
     data() {
       return {
-        activeIndex: 0
+        activeIndex: 0,
+        isPre: this.$route.query.isPre === '0'
       };
     },
     created() {
@@ -134,7 +136,7 @@
               left: 50%;
               bottom: 0;
               margin-left: -0.2rem;
-              border-top: 2px solid #0061e8;
+              border-top: 0.03rem solid #0061e8;
             }
           }
         }

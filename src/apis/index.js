@@ -119,6 +119,13 @@ const apis = {
     params: {
       deptCode: ''
     }
+  },
+  selectDepartmentDetail: {
+    url: '/WenRongBusiness/v1/regist/dept/detail',
+    params: {
+      isPre: '',
+      deptCode: ''
+    }
   }
 };
 

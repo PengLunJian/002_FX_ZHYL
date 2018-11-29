@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <error v-if="isFailure" @refresh="initLogin"></error>
+    <error v-if="isFailure" @refresh="exeRefresh"></error>
     <transition :name="transitionName" v-if="token">
       <router-view></router-view>
     </transition>
@@ -29,24 +29,40 @@
       };
     },
     created() {
-      this.initLogin();
+      this.exeLogin();
     },
     methods: {
-      initLogin() {
+      exeLogin() {
         const {AccessToken} = sessionStorage;
         if (!AccessToken) {
-          const url = window.location.href;
-          const uri = '/#' + url.split('#')[1];
           const code = getQueryParams('code');
           if (!code) {
+            const baseUrl = window.location.href;
+            sessionStorage.setItem('baseUrl', baseUrl);
             jumpToWeChatUrl(this.appId);
           } else {
+            if (this.exeCheckCode(code)) {
+              this.exeRefresh();
+            }
+            sessionStorage.setItem('baseCode', code);
             const params = {value: code};
-            this.exeSelectDeviceId(params, uri);
+            this.exeSelectDeviceId(params);
           }
         }
       },
-      exeSelectDeviceId(params, uri) {
+      exeRefresh() {
+        const {baseUrl} = sessionStorage || window.location.href;
+        window.location.replace(baseUrl);
+      },
+      exeCheckCode(code) {
+        let result = false;
+        const {baseCode} = sessionStorage;
+        if (baseCode && baseCode === code) {
+          result = true;
+        }
+        return result;
+      },
+      exeSelectDeviceId(params) {
         this.selectDeviceId()
           .then((res) => {
             res = res || {};
@@ -58,7 +74,8 @@
                   const {data, success} = res;
                   if (success) {
                     saveLocalStorage(data);
-                    window.location.replace(uri);
+                    const {baseUrl} = sessionStorage;
+                    window.location.replace(baseUrl);
                   } else {
                     sessionStorage.removeItem('AccessToken');
                   }

@@ -24,11 +24,15 @@ axios.interceptors.request.use(config => {
 });
 
 axios.interceptors.response.use(response => {
-  Vue.$vux.loading.hide();
-  return response.data;
+  // setTimeout(() => {
+    Vue.$vux.loading.hide();
+    return response.data;
+  // }, 2000);
 }, error => {
-  Vue.$vux.loading.hide();
-  return Promise.resolve(error.response);
+  // setTimeout(() => {
+    Vue.$vux.loading.hide();
+    return Promise.resolve(error.response);
+  // }, 2000);
 });
 
 const getConfig = (config) => {

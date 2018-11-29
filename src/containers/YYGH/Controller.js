@@ -7,16 +7,11 @@ const controller = {
     this.exeSelectSubDepartment(data);
   },
   handlerResult(deptCode) {
-    if (this.tabIndex) {
-      this.$router.push({
-        path: this.$routes.KSXX.path
-      });
-      return;
-    }
+    const path = this.tabIndex ? this.$routes.KSXX.path : this.$routes.YSLB.path;
     const {query} = this.$route || {};
     const params = Object.assign(query, {deptCode: deptCode});
     this.$router.push({
-      path: this.$routes.YSLB.path,
+      path: path,
       query: params
     });
   },

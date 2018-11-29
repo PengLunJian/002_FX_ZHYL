@@ -108,6 +108,12 @@ const states = {
     isSuccess: false,
     isFailure: false,
     data: null
+  },
+  DEPT_DETAIL: {
+    isLoading: false,
+    isSuccess: false,
+    isFailure: false,
+    data: null
   }
 };
 

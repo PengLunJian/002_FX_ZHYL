@@ -1,7 +1,7 @@
 <template>
   <div class="module FLCD">
-    <no-data v-if="isParentSuccess&&!isParentData"></no-data>
     <error v-if="isParentFailure" @refresh="exeSelectDepartment"></error>
+    <no-data v-if="isParentSuccess&&!isParentData"></no-data>
     <div class="content clear" v-if="isParentSuccess&&isParentData">
       <div class="col-xs-6 left">
         <no-data v-if="isParentSuccess&&!isParentData"></no-data>

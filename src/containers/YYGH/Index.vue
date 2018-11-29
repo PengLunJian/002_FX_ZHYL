@@ -17,7 +17,6 @@
     },
     name: 'YYGH',
     created() {
-      if (this.isLoading) return;
       this.exeSelectDepartment();
     },
     data() {

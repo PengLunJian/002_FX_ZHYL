@@ -291,7 +291,7 @@ const mutations = {
     state.SUB_DEPARTMENT.isSuccess = false;
     state.SUB_DEPARTMENT.isFailure = true;
   },
-  // 查询医生详细
+  // 查询医生详情
   SELECT_DOCTOR_DETAIL_REQUEST(state) {
     state.DOCTOR_DETAIL.isLoading = false;
     state.DOCTOR_DETAIL.isSuccess = false;
@@ -307,6 +307,23 @@ const mutations = {
     state.DOCTOR_DETAIL.isLoading = true;
     state.DOCTOR_DETAIL.isSuccess = false;
     state.DOCTOR_DETAIL.isFailure = true;
+  },
+  // 查询科室详情
+  SELECT_DEPT_DETAIL_REQUEST(state) {
+    state.DEPT_DETAIL.isLoading = false;
+    state.DEPT_DETAIL.isSuccess = false;
+    state.DEPT_DETAIL.isFailure = false;
+  },
+  SELECT_DEPT_DETAIL_SUCCESS(state, data) {
+    state.DEPT_DETAIL.isLoading = true;
+    state.DEPT_DETAIL.isSuccess = true;
+    state.DEPT_DETAIL.isFailure = false;
+    state.DEPT_DETAIL.data = data;
+  },
+  SELECT_DEPT_DETAIL_FAILURE(state) {
+    state.DEPT_DETAIL.isLoading = true;
+    state.DEPT_DETAIL.isSuccess = false;
+    state.DEPT_DETAIL.isFailure = true;
   }
 };
 

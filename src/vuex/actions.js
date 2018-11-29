@@ -10,7 +10,6 @@ const actions = {
       axios.post(apis.selectDeviceId)
         .then((res) => {
           res = res || {};
-          // res.success = parseInt((Math.random() * 100)) % 2 === 0 ? false : true;
           const {data, success} = res;
           if (success) {
             commit(ACTION_TYPES.SELECT_DEVICEID_SUCCESS, data);
@@ -34,6 +33,7 @@ const actions = {
       axios.post(apis.selectGrantLogin, data)
         .then((res) => {
           res = res || {};
+          res.success = parseInt((Math.random() * 100)) % 2 === 0 ? false : true;
           const {data, success} = res;
           if (success) {
             commit(ACTION_TYPES.SELECT_GRANT_LOGIN_SUCCESS, data);
@@ -54,8 +54,13 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post(apis.selectWechatToken)
         .then((res) => {
-          const {data} = res;
-          commit(ACTION_TYPES.SELECT_WECHAT_TOKEN_SUCCESS, data);
+          res = res || {};
+          const {data, success} = res;
+          if (success) {
+            commit(ACTION_TYPES.SELECT_WECHAT_TOKEN_SUCCESS, data);
+          } else {
+            commit(ACTION_TYPES.SELECT_WECHAT_TOKEN_FAILURE);
+          }
           resolve(res);
         })
         .catch((err) => {
@@ -70,7 +75,13 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post(apis.selectJSSDKConfig, data)
         .then((res) => {
-          commit(ACTION_TYPES.SELECT_JSSDK_CONFIG_SUCCESS, data);
+          res = res || {};
+          const {data, success} = res;
+          if (success) {
+            commit(ACTION_TYPES.SELECT_JSSDK_CONFIG_SUCCESS, data);
+          } else {
+            commit(ACTION_TYPES.SELECT_JSSDK_CONFIG_FAILURE);
+          }
           resolve(res);
         })
         .catch((err) => {
@@ -191,7 +202,7 @@ const actions = {
         .then((res) => {
           res = res || {};
           const {data, success} = res;
-          if (data && success) {
+          if (success) {
             const {rows} = data;
             const oldData = state.VISITOR_LIST.data;
             let newData = oldData.concat(rows);
@@ -217,14 +228,19 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post(apis.selectRegisterList, data)
         .then((res) => {
-          const {data} = res;
-          const oldData = state.REGISTER_LIST.data;
-          let newData = oldData.concat(data);
-          if (pageIndex === 1) {
-            newData = data;
-            commit(ACTION_TYPES.SELECT_REGISTER_LIST_REQUEST);
+          res = res || {};
+          const {data, success} = res;
+          if (success) {
+            const oldData = state.REGISTER_LIST.data;
+            let newData = oldData.concat(data);
+            if (pageIndex === 1) {
+              newData = data;
+              commit(ACTION_TYPES.SELECT_REGISTER_LIST_REQUEST);
+            }
+            commit(ACTION_TYPES.SELECT_REGISTER_LIST_SUCCESS, newData);
+          } else {
+            commit(ACTION_TYPES.SELECT_REGISTER_LIST_FAILURE);
           }
-          commit(ACTION_TYPES.SELECT_REGISTER_LIST_SUCCESS, newData);
           resolve(res);
         })
         .catch((err) => {
@@ -239,14 +255,19 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post(apis.selectSubscribeList, data)
         .then((res) => {
-          const {data} = res;
-          const oldData = state.SUBSCRIBE_LIST.data;
-          let newData = oldData.concat(data);
-          if (pageIndex === 1) {
-            newData = data;
-            commit(ACTION_TYPES.SELECT_SUBSCRIBE_LIST_REQUEST);
+          res = res || {};
+          const {data, success} = res;
+          if (success) {
+            const oldData = state.SUBSCRIBE_LIST.data;
+            let newData = oldData.concat(data);
+            if (pageIndex === 1) {
+              newData = data;
+              commit(ACTION_TYPES.SELECT_SUBSCRIBE_LIST_REQUEST);
+            }
+            commit(ACTION_TYPES.SELECT_SUBSCRIBE_LIST_SUCCESS, newData);
+          } else {
+            commit(ACTION_TYPES.SELECT_SUBSCRIBE_LIST_FAILURE);
           }
-          commit(ACTION_TYPES.SELECT_SUBSCRIBE_LIST_SUCCESS, newData);
           resolve(res);
         })
         .catch((err) => {
@@ -261,14 +282,19 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post(apis.selectPaymentRecord, data)
         .then((res) => {
-          const {data} = res;
-          if (pageIndex === 1) {
-            commit(ACTION_TYPES.SELECT_ISPAYED_RECORDS_REQUEST);
+          res = res || {};
+          const {data, success} = res;
+          if (success) {
+            if (pageIndex === 1) {
+              commit(ACTION_TYPES.SELECT_ISPAYED_RECORDS_REQUEST);
+            }
+            const oldData = state.ISPAYED_RECORDS.data;
+            const newData = oldData.concat(data);
+            commit(ACTION_TYPES.SELECT_ISPAYED_RECORDS_SUCCESS, newData);
+          } else {
+            commit(ACTION_TYPES.SELECT_ISPAYED_RECORDS_FAILURE);
           }
-          const oldData = state.ISPAYED_RECORDS.data;
-          const newData = oldData.concat(data);
-          commit(ACTION_TYPES.SELECT_ISPAYED_RECORDS_SUCCESS, newData);
-          resolve(data);
+          resolve(res);
         })
         .catch((err) => {
           commit(ACTION_TYPES.SELECT_ISPAYED_RECORDS_FAILURE);
@@ -282,14 +308,19 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post(apis.selectPaymentRecord, data)
         .then((res) => {
-          const {data} = res;
-          if (pageIndex === 1) {
-            commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_REQUEST);
+          res = res || {};
+          const {data, success} = res;
+          if (success) {
+            if (pageIndex === 1) {
+              commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_REQUEST);
+            }
+            const oldData = state.NOPAYED_RECORDS.data;
+            const newData = oldData.concat(data);
+            commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_SUCCESS, newData);
+          } else {
+            commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_FAILURE);
           }
-          const oldData = state.NOPAYED_RECORDS.data;
-          const newData = oldData.concat(data);
-          commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_SUCCESS, newData);
-          resolve(data);
+          resolve(res);
         })
         .catch((err) => {
           commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_FAILURE);
@@ -305,7 +336,7 @@ const actions = {
         .then((res) => {
           res = res || {};
           const {data, success} = res;
-          if (data && success) {
+          if (success) {
             commit(ACTION_TYPES.SELECT_DOCTOR_LIST_SUCCESS, data);
           } else {
             commit(ACTION_TYPES.SELECT_DOCTOR_LIST_FAILURE);
@@ -324,8 +355,13 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post(apis.selectRegisterPay, data)
         .then((res) => {
-          const {data} = res;
-          commit(ACTION_TYPES.SELECT_REGISTER_PAY_SUCCESS, data);
+          res = res || {};
+          const {data, success} = res;
+          if (success) {
+            commit(ACTION_TYPES.SELECT_REGISTER_PAY_SUCCESS, data);
+          } else {
+            commit(ACTION_TYPES.SELECT_REGISTER_PAY_FAILURE);
+          }
           resolve(res);
         })
         .catch((err) => {
@@ -343,15 +379,15 @@ const actions = {
         .then((res) => {
           res = res || {};
           const {data, success} = res;
-          if (data && success) {
+          if (success) {
             const {parents, subgrades} = data;
             commit(ACTION_TYPES.SELECT_DEPARTMENT_SUCCESS, parents);
             commit(ACTION_TYPES.SELECT_SUB_DEPARTMENT_SUCCESS, subgrades);
-            resolve(res);
           } else {
             commit(ACTION_TYPES.SELECT_DEPARTMENT_FAILURE);
             commit(ACTION_TYPES.SELECT_SUB_DEPARTMENT_FAILURE);
           }
+          resolve(res);
         })
         .catch((err) => {
           commit(ACTION_TYPES.SELECT_DEPARTMENT_FAILURE);
@@ -368,12 +404,12 @@ const actions = {
         .then((res) => {
           res = res || {};
           const {data, success} = res;
-          if (data && success) {
+          if (success) {
             commit(ACTION_TYPES.SELECT_SUB_DEPARTMENT_SUCCESS, data);
-            resolve(res);
           } else {
             commit(ACTION_TYPES.SELECT_SUB_DEPARTMENT_FAILURE);
           }
+          resolve(res);
         })
         .catch((err) => {
           commit(ACTION_TYPES.SELECT_SUB_DEPARTMENT_FAILURE);
@@ -389,15 +425,36 @@ const actions = {
         .then((res) => {
           res = res || {};
           const {data, success} = res;
-          if (data && success) {
+          if (success) {
             commit(ACTION_TYPES.SELECT_DOCTOR_DETAIL_SUCCESS, data);
-            resolve(res);
           } else {
             commit(ACTION_TYPES.SELECT_DOCTOR_DETAIL_FAILURE);
           }
+          resolve(res);
         })
         .catch((err) => {
           commit(ACTION_TYPES.SELECT_DOCTOR_DETAIL_FAILURE);
+          reject(err);
+        });
+    });
+  },
+  // 查询科室详情
+  selectDepartmentDetail({commit, state}, data) {
+    commit(ACTION_TYPES.SELECT_DEPT_DETAIL_REQUEST);
+    return new Promise((resolve, reject) => {
+      axios.post(apis.selectDepartmentDetail, data)
+        .then((res) => {
+          res = res || {};
+          const {data, success} = res;
+          if (success) {
+            commit(ACTION_TYPES.SELECT_DEPT_DETAIL_SUCCESS, data);
+          } else {
+            commit(ACTION_TYPES.SELECT_DEPT_DETAIL_FAILURE);
+          }
+          resolve(res);
+        })
+        .catch((err) => {
+          commit(ACTION_TYPES.SELECT_DEPT_DETAIL_FAILURE);
           reject(err);
         });
     });

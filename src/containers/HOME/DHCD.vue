@@ -17,14 +17,14 @@
           {
             image: require('../../assets/images/nav_icon01@2x.png'),
             title: '预约',
-            query: {isPre: 1},
+            query: {isPre: '1'},
             path: this.$routes.YYGH.path,
             disabled: false
           },
           {
             image: require('../../assets/images/nav_icon02@2x.png'),
             title: '挂号',
-            query: {isPre: 0},
+            query: {isPre: '0'},
             path: this.$routes.YYGH.path,
             disabled: false
           },
