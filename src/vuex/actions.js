@@ -274,8 +274,6 @@ const actions = {
       axios.post(apis.selectReportList, data)
         .then((res) => {
           const {data} = res;
-          console.log('res1:');
-          console.log(data);
           commit(ACTION_TYPES.SELECT_REPORT_LIST_SUCCESS, data);
           resolve(data);
         })
@@ -292,9 +290,6 @@ const actions = {
       axios.post(apis.insertHealthList, data)
         .then((res) => {
           const {data, success} = res;
-          console.log('res2:');
-          console.log(res);
-          console.log(data);
           if (data && success) {
             commit(ACTION_TYPES.INSERT_HEALTH_LIST_SUCCESS, data);
           }
@@ -313,8 +308,6 @@ const actions = {
       axios.post(apis.selectHealthList, data)
         .then((res) => {
           const {data} = res;
-          console.log('res1:');
-          console.log(data);
           commit(ACTION_TYPES.SELECT_HEALTH_LIST_SUCCESS, data);
           resolve(data);
         })
