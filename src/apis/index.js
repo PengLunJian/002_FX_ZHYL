@@ -127,8 +127,8 @@ const apis = {
       deptCode: ''
     }
   },
-  insertAppointmentCreate: {
-    url: '/WenRongBusinessv1/regist/appointment/create',
+  selectAppointmentCreate: {
+    url: '/WenRongBusiness/v1/regist/appointment/create',
     params: {
       classId: '',
       deptCode: '',

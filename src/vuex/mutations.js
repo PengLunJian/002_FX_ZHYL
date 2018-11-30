@@ -324,6 +324,23 @@ const mutations = {
     state.DEPT_DETAIL.isLoading = true;
     state.DEPT_DETAIL.isSuccess = false;
     state.DEPT_DETAIL.isFailure = true;
+  },
+  // 查询科室详情
+  SELECT_APPO_CREATE_REQUEST(state) {
+    state.APPO_CREATE.isLoading = false;
+    state.APPO_CREATE.isSuccess = false;
+    state.APPO_CREATE.isFailure = false;
+  },
+  SELECT_APPO_CREATE_SUCCESS(state, data) {
+    state.APPO_CREATE.isLoading = true;
+    state.APPO_CREATE.isSuccess = true;
+    state.APPO_CREATE.isFailure = false;
+    state.APPO_CREATE.data = data;
+  },
+  SELECT_APPO_CREATE_FAILURE(state) {
+    state.APPO_CREATE.isLoading = true;
+    state.APPO_CREATE.isSuccess = false;
+    state.APPO_CREATE.isFailure = true;
   }
 };
 

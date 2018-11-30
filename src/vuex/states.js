@@ -114,6 +114,12 @@ const states = {
     isSuccess: false,
     isFailure: false,
     data: null
+  },
+  APPO_CREATE: {
+    isLoading: false,
+    isSuccess: false,
+    isFailure: false,
+    data: null
   }
 };
 
