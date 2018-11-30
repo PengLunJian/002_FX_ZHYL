@@ -1,36 +1,43 @@
 <template>
   <div class="FX_ZHYL_JCBG">
-    <div class="module JCHZ">
-      <div class="row-box-1">
-        <label class="label">就诊人</label>
-        <span class="span">{{data.realName}}</span>
-        <i class="icon icon-next"></i>
-      </div>
-    </div>
-    <div class="module JCLB">
-      <div class="row-box-1">
-        <time class="time">{{data.checkDate}}</time>
-      </div>
-      <div class="row-box-2">
-        <div class="group" v-for="(item, index) in data.testReport" :key="index">
-          <label class="label">{{item.itemName}}</label>
-          <i class="icon icon-next"></i>
-        </div>
-        <div class="group off">
-          <label class="label">B超</label>
+    <error v-if="isFailure"></error>
+    <div class="select" v-if="isSuccess&&data">
+      <div class="module JCHZ">
+        <div class="row-box-1">
+          <label class="label">就诊人</label>
+          <span class="span">{{data.realName}}</span>
           <i class="icon icon-next"></i>
         </div>
       </div>
+      <div class="module JCLB">
+        <div class="row-box-1">
+          <time class="time">{{data.checkDate}}</time>
+        </div>
+        <div class="row-box-2">
+          <div class="group" v-for="(item, index) in data.testReport" :key="index">
+            <label class="label">{{item.itemName}}</label>
+            <i class="icon icon-next"></i>
+          </div>
+          <div class="group off">
+            <label class="label">B超</label>
+            <i class="icon icon-next"></i>
+          </div>
+        </div>
+      </div>
     </div>
+    <no-data v-if="isSuccess&&!data"></no-data>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import {mapState} from 'vuex';
   import Controller from './Controller';
+  import Error from '../../components/Error';
+  import NoData from '../../components/NoData';
 
   export default {
     name: 'JCBG',
+    components: {Error, NoData},
     data() {
       return {
         queryId: 0
