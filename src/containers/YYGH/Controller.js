@@ -9,7 +9,9 @@ const controller = {
   handlerResult(deptCode) {
     const path = this.tabIndex ? this.$routes.KSXX.path : this.$routes.YSLB.path;
     const {query} = this.$route || {};
-    const params = Object.assign(query, {deptCode: deptCode});
+    const isExpert = this.tabIndex ? {isExpert: '0'} : {isExpert: '1'};
+    let params = Object.assign(query, {deptCode: deptCode});
+    params = Object.assign(query, isExpert);
     this.$router.push({
       path: path,
       query: params

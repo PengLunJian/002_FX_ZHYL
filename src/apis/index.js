@@ -126,6 +126,18 @@ const apis = {
       isPre: '',
       deptCode: ''
     }
+  },
+  insertAppointmentCreate: {
+    url: '/WenRongBusinessv1/regist/appointment/create',
+    params: {
+      classId: '',
+      deptCode: '',
+      isExpert: '',
+      preTime: '',
+      clinicFee: '',
+      subSource: '',
+      doctCode: ''
+    }
   }
 };
 

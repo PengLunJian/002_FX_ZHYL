@@ -3,30 +3,29 @@
     <div class="module DYBF">
       <div class="form-group">
         <label class="form-label">就诊人</label>
-        <input class="form-input icon" name="name" value="胡代宇" type="text"/>
-        <i class="form-icon icon-next"></i>
+        <span class="form-input">{{name}}</span>
       </div>
       <div class="form-group">
         <label class="form-label">就诊时间</label>
-        <input class="form-input" name="name" value="2017/07/18 下午" type="text"/>
+        <span class="form-input">{{date}}</span>
       </div>
       <div class="form-group">
         <label class="form-label">就诊科室</label>
-        <input class="form-input" name="name" value="眼科" type="text"/>
+        <span class="form-input">{{deptName}}</span>
       </div>
       <div class="form-group">
         <label class="form-label borderNone">医生姓名</label>
-        <input class="form-input" name="name" value="胡代宇" type="text"/>
+        <span class="form-input">{{doctName}}</span>
       </div>
     </div>
     <div class="module DEBF">
       <div class="form-group">
         <label class="form-label">门诊费用(不含挂号费)</label>
-        <input class="form-input" name="name" value="180元" type="text"/>
+        <input class="form-input" name="price" v-model="price" type="text" disabled/>
       </div>
       <div class="form-group">
         <label class="form-label borderNone">支付方式</label>
-        <input class="form-input" name="name" value="去医院支付" type="text"/>
+        <input class="form-input" name="payment" v-model="payment" type="text" disabled/>
       </div>
     </div>
     <div class="module DSMK">
@@ -36,14 +35,31 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {mapState} from 'vuex';
   import Controller from './Controller';
 
   export default {
     name: 'YYXX',
     data() {
-      return {};
+      return {
+        name: '',
+        date: '',
+        price: '',
+        deptName: '',
+        doctName: '',
+        payment: '微信支付'
+      };
     },
-    methods: Controller
+    created() {
+      this.exeFillParams();
+    },
+    methods: Controller,
+    computed: mapState({
+      isLoading: state => state.DEFAULT_CARD.isLoading,
+      isSuccess: state => state.DEFAULT_CARD.isSuccess,
+      isFailure: state => state.DEFAULT_CARD.isFailure,
+      data: state => state.DEFAULT_CARD.data
+    })
   };
 </script>
 

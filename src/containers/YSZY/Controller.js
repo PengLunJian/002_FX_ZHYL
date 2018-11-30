@@ -1,10 +1,23 @@
 import {mapActions} from 'vuex';
 
 const controller = {
-  handlerClick(item) {
-    console.log(item);
+  handlerClick(item, number) {
+    const {query} = this.$route;
+    const params = {
+      subSource: 'WX',
+      preTime: item.seeDate,
+      isExpert: query.isExpert,
+      deptCode: this.data.deptCode,
+      doctCode: this.data.doctCode,
+      deptName: this.data.deptName,
+      doctName: this.data.doctName,
+      classId: item.schedulDay[number].classId,
+      noonCode: item.schedulDay[number].noonCode,
+      clinicFee: item.schedulDay[number].totalFee
+    };
     this.$router.push({
-      path: this.$routes.YYXX.path
+      path: this.$routes.YYXX.path,
+      query: params
     });
   },
   exeSelectDoctorDetail() {

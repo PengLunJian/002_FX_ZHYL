@@ -8,6 +8,14 @@ const controller = {
   handlerSubmit() {
     this.exeSelectJSSDKConfig();
   },
+  exeFillParams() {
+    const {query} = this.$route;
+    this.name = this.data.name;
+    this.price = query.clinicFee + ' 元';
+    this.deptName = query.deptName;
+    this.doctName = query.doctName;
+    this.date = query.preTime + (query.noonCode === '1' ? ' 上午' : ' 下午');
+  },
   exeSelectJSSDKConfig() {
     const data = {
       Value: window.location.href.split('#')[0]
