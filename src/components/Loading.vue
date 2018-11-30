@@ -23,6 +23,9 @@
   .loading {
     display: inline-block;
     text-align: center;
+    position: absolute;
+    top: 48%;
+    left: 48%;
     &:before {
       content: '';
       height: 100%;

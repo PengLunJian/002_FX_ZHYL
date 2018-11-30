@@ -2,12 +2,13 @@
   <div class="module GHMK">
     <div class="row-box-1">
       <h3 class="name">{{item.deptName}}</h3>
-      <div class="date">
-        <label class="label">提交时间：</label>
-        <span class="span">{{item.date}}</span>
-      </div>
+      <em class="em">{{item.isPay?'已支付':'待支付'}}</em>
     </div>
     <div class="row-box-2">
+      <div class="group">
+        <label class="label">挂号单号：</label>
+        <span class="span">{{item.seeNo}}</span>
+      </div>
       <div class="group">
         <label class="label">就诊人：</label>
         <span class="span">{{item.idCardName}}</span>
@@ -21,12 +22,38 @@
         <span class="span">{{item.deptName}}</span>
       </div>
       <div class="group">
-        <label class="label">支付状况：</label>
-        <span class="span">{{item.isPay?'已支付':'待支付'}}</span>
+        <label class="label">就诊医院：</label>
+        <span class="span">{{item.hospitalName}}</span>
+      </div>
+      <div class="group">
+        <label class="label">就诊医生：</label>
+        <span class="span">{{item.doctorName}}</span>
+      </div>
+      <div class="group">
+        <label class="label">就诊类别：</label>
+        <span class="span">{{item.regType?'专家号':'普通号'}}</span>
+      </div>
+      <div class="group">
+        <label class="label">就诊时间：</label>
+        <span class="span">{{item.visistDate}}</span>
+      </div>
+      <div class="group">
+        <label class="label">就诊患者：</label>
+        <span class="span">{{item.idCardName}}</span>
+      </div>
+      <div class="group">
+        <label class="label">挂号费用：</label>
+        <span class="span">{{item.total}}元</span>
+      </div>
+      <div class="group">
+        <label class="label">提交时间：</label>
+        <span class="span">{{item.date}}</span>
       </div>
     </div>
     <div class="row-box-3">
-      <button class="btn btn-detail" @click="showDetails">查看详情</button>
+      <button class="btn btn-confirm" v-waves.block>去缴费</button>
+      <button class="btn btn-cancel" v-waves.block>取消挂号</button>
+      <!--<button class="btn btn-detail" @click="showDetails">查看详情</button>-->
     </div>
   </div>
 </template>
@@ -56,6 +83,7 @@
     position: relative;
     .row-box-1 {
       padding: 0 0.15rem;
+      line-height: 0.45rem;
       border-bottom: 1px solid @borderColor;
       .name {
         display: inline-block;
@@ -63,16 +91,10 @@
         font-size: 0.15rem;
         line-height: 0.36rem;
       }
-      .date {
+      .em {
         float: right;
-        line-height: 0.36rem;
-        font-size: 0.12rem;
-        .label {
-
-        }
-        .span {
-
-        }
+        color: @buttonColor;
+        font-size: 0.14rem;
       }
     }
     .row-box-2 {
@@ -94,12 +116,25 @@
       }
     }
     .row-box-3 {
-      .btn-detail {
-        width: 100%;
-        display: block;
-        line-height: 0.4rem;
-        text-align: center;
-        font-size: 0.15rem;
+      font-size: 0;
+      text-align: right;
+      padding: 0.1rem 0.15rem;
+      .btn {
+        line-height: 0.3rem;
+        padding: 0 0.15rem;
+        display: inline-block;
+        vertical-align: middle;
+        margin-left: 0.15rem;
+        border-radius: @borderRadius;
+        font-size: 0.13rem;
+        &.btn-confirm {
+          color: @buttonColor;
+          border: 1px solid @buttonColor;
+        }
+        &.btn-cancel {
+          color: @fontColor;
+          border: 1px solid @borderColor;
+        }
       }
     }
     &.slot-out {

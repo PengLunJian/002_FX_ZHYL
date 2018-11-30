@@ -1,3 +1,5 @@
+import {mapActions} from 'vuex';
+
 const controllers = {
   showMenus: function (type) {
     this.type = type;
@@ -5,9 +7,9 @@ const controllers = {
     if (type === 'blood') {
       this.popupPicker.data = [['A型', 'B型', 'AB型', 'O型']];
     } else if (type === 'smoke') {
-      this.popupPicker.data = [['有', '无']];
+      this.popupPicker.data = [['无', '有']];
     } else if (type === 'wine') {
-      this.popupPicker.data = [['有', '无']];
+      this.popupPicker.data = [['无', '有']];
     }
   },
   checkNotEmpty: function () {
@@ -34,8 +36,46 @@ const controllers = {
       this.wine = value[0];
     }
   },
+  exeSelectHealthList: function () {
+    this.selectHealthList()
+      .then((res) => {
+        console.log(res);
+        this.fillFormData(res);
+      })
+      .catch((res) => {
+        console.log(res);
+      });
+  },
   handlerBtnSave: function () {
-    console.log(1);
+    const data = {
+      id: this.id,
+      cardNo: this.cardNo,
+      height: this.height,
+      weight: this.weight,
+      bloodType: this.bloodTypeIndex,
+      smoking: this.smokingIndex, // 1是无，2抽烟
+      drink: this.drinkIndex
+    };
+    this.insertHealthList(data)
+      .then((res) => {
+        const {state} = res;
+        if (state === '1') {
+          this.$vux.toast.show({
+            text: '操作成功'
+          });
+          this.goGrzx();
+        } else {
+          this.$vux.toast.show({
+            text: '操作失败'
+          });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
+  goGrzx: function () {
+    this.$router.push({path: this.$routes.GRZX.path});
   },
   showKeyBoard: function (type) {
     this.isShow = true;
@@ -52,7 +92,20 @@ const controllers = {
     } else if (this.TYPE === 'weight') {
       this.weight = value;
     }
-  }
+  },
+  fillFormData(data) {
+    this.id = data.id;
+    this.cardNo = data.cardNo;
+    this.height = data.height;
+    this.weight = data.weight;
+    this.bloodTypeIndex = data.bloodType;
+    this.smokingIndex = data.smoking;
+    this.drinkIndex = data.drink;
+  },
+  ...mapActions([
+    'insertHealthList',
+    'selectHealthList'
+  ])
 };
 
 export default controllers;

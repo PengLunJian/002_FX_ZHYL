@@ -85,3 +85,18 @@ export const getBaseUrl = (params) => {
   url = url.substr(0, url.length - 2);
   return url;
 };
+/**
+ * 获取元素阿紫数组中的位置
+ */
+export const getIndexOf = (arr, item) => {
+  if (Array.prototype.indexOf) {
+    return arr.indexOf(item);
+  } else { // 是在IE
+    for (var i = 0; i < arr.length; i++) {
+      if (arr[i] === item) {
+        return i; // 返回相应的下标
+      }
+    }
+  }
+  return -1; // 找不到返回-1
+};

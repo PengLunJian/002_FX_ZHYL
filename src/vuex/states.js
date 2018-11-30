@@ -120,6 +120,40 @@ const states = {
     isSuccess: false,
     isFailure: false,
     data: null
+  },
+  REPORT_LIST: {
+    isLoading: false,
+    isSuccess: false,
+    isFailure: false,
+    data: {
+      realName: '',
+      sex: '',
+      checkDate: '',
+      type: '',
+      testReport: [
+        {
+          sample: '',
+          realResult: '',
+          referprint: '',
+          conclusion: '',
+          itemName: ''
+        }
+      ]
+    }
+  },
+  HEALTH_LIST: {
+    isLoading: false,
+    isSuccess: false,
+    isFailure: false,
+    data: {
+      id: 0, // 0为新增，其他为修改
+      cardNo: '',
+      height: '',
+      weight: '',
+      bloodType: '',
+      smoking: '', // 1是无，2抽烟
+      drink: '' // 1是无，2喝酒
+    }
   }
 };
 
