@@ -324,6 +324,57 @@ const mutations = {
     state.DEPT_DETAIL.isLoading = true;
     state.DEPT_DETAIL.isSuccess = false;
     state.DEPT_DETAIL.isFailure = true;
+  },
+  // 查询检验报告详情
+  SELECT_REPORT_LIST_REQUEST(state) {
+    state.REPORT_LIST.isLoading = false;
+    state.REPORT_LIST.isSuccess = false;
+    state.REPORT_LIST.isFailure = false;
+  },
+  SELECT_REPORT_LIST_SUCCESS(state, data) {
+    state.REPORT_LIST.isLoading = true;
+    state.REPORT_LIST.isSuccess = true;
+    state.REPORT_LIST.isFailure = false;
+    state.REPORT_LIST.data = data;
+  },
+  SELECT_REPORT_LIST_FAILURE(state) {
+    state.REPORT_LIST.isLoading = true;
+    state.REPORT_LIST.isSuccess = false;
+    state.REPORT_LIST.isFailure = true;
+  },
+  // 新增&修改健康档案
+  INSERT_HEALTH_LIST_REQUEST(state) {
+    state.HEALTH_LIST.isLoading = false;
+    state.HEALTH_LIST.isSuccess = false;
+    state.HEALTH_LIST.isFailure = false;
+  },
+  INSERT_HEALTH_LIST_SUCCESS(state, data) {
+    state.HEALTH_LIST.isLoading = true;
+    state.HEALTH_LIST.isSuccess = true;
+    state.HEALTH_LIST.isFailure = false;
+    state.HEALTH_LIST.data = data;
+  },
+  INSERT_HEALTH_LIST_FAILURE(state) {
+    state.HEALTH_LIST.isLoading = true;
+    state.HEALTH_LIST.isSuccess = false;
+    state.HEALTH_LIST.isFailure = true;
+  },
+  // 查询健康档案
+  SELECT_HEALTH_LIST_REQUEST(state) {
+    state.HEALTH_LIST.isLoading = false;
+    state.HEALTH_LIST.isSuccess = false;
+    state.HEALTH_LIST.isFailure = false;
+  },
+  SELECT_HEALTH_LIST_SUCCESS(state, data) {
+    state.HEALTH_LIST.isLoading = true;
+    state.HEALTH_LIST.isSuccess = true;
+    state.HEALTH_LIST.isFailure = false;
+    state.HEALTH_LIST.data = data;
+  },
+  SELECT_HEALTH_LIST_FAILURE(state) {
+    state.HEALTH_LIST.isLoading = true;
+    state.HEALTH_LIST.isSuccess = false;
+    state.HEALTH_LIST.isFailure = true;
   }
 };
 

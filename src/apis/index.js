@@ -60,10 +60,16 @@ const apis = {
     }
   },
   selectRegisterList: {
-    url: '/WenRongBusiness/v1/personal/regist/regist',
+    url: '/WenRongBusiness/v1/personal/regist/list',
     params: {
       pageIndex: 1,
       pageSize: 10
+    }
+  },
+  selectReportList: {
+    url: '/WenRongBusiness/v1/personal/inspectionreport/detail',
+    params: {
+      queryId: ''
     }
   },
   selectSubscribeList: {
@@ -138,7 +144,25 @@ const apis = {
       subSource: '',
       doctCode: ''
     }
+  },
+  // 新增/修改健康档案
+  insertHealthList: {
+    url: '/WenRongBusiness/v1/personal/health/create',
+    params: {
+      id: 0, // 0为新增，其他为修改
+      cardNo: '',
+      height: '',
+      weight: '',
+      bloodType: '',
+      smoking: '', // 1是无，2抽烟
+      drink: '' // 1是无，2喝酒
+    }
+  },
+  selectHealthList: {
+    url: '/WenRongBusiness/v1/personal/health/query',
+    params: {}
   }
+
 };
 
 export default apis;

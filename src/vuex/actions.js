@@ -458,6 +458,56 @@ const actions = {
           reject(err);
         });
     });
+  },
+  // 查询检查报告列表
+  selectReportList({commit, state}, data) {
+    commit(ACTION_TYPES.SELECT_REPORT_LIST_REQUEST);
+    return new Promise((resolve, reject) => {
+      axios.post(apis.selectReportList, data)
+        .then((res) => {
+          const {data} = res;
+          commit(ACTION_TYPES.SELECT_REPORT_LIST_SUCCESS, data);
+          resolve(data);
+        })
+        .catch((err) => {
+          commit(ACTION_TYPES.SELECT_REPORT_LIST_FAILURE);
+          reject(err);
+        });
+    });
+  },
+  // 新增&修改健康档案
+  insertHealthList ({commit, state}, data) {
+    commit(ACTION_TYPES.INSERT_HEALTH_LIST_REQUEST);
+    return new Promise((resolve, reject) => {
+      axios.post(apis.insertHealthList, data)
+        .then((res) => {
+          const {data, success} = res;
+          if (data && success) {
+            commit(ACTION_TYPES.INSERT_HEALTH_LIST_SUCCESS, data);
+          }
+          resolve(data);
+        })
+        .catch((err) => {
+          commit(ACTION_TYPES.INSERT_HEALTH_LIST_FAILURE);
+          reject(err);
+        });
+    });
+  },
+  // 查询健康档案
+  selectHealthList ({commit, state}, data) {
+    commit(ACTION_TYPES.SELECT_HEALTH_LIST_REQUEST);
+    return new Promise((resolve, reject) => {
+      axios.post(apis.selectHealthList, data)
+        .then((res) => {
+          const {data} = res;
+          commit(ACTION_TYPES.SELECT_HEALTH_LIST_SUCCESS, data);
+          resolve(data);
+        })
+        .catch((err) => {
+          commit(ACTION_TYPES.SELECT_HEALTH_LIST_FAILURE);
+          reject(err);
+        });
+    });
   }
 };
 

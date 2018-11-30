@@ -1,10 +1,11 @@
 <template>
   <div class="module YYMK">
     <div class="row-box-1">
-      <h3 class="name">{{item.doctorName}}<span class="span">({{item.doctorTitle}})</span></h3>
-      <div class="date">
-        <label class="label">提交时间：</label>
-        <span class="span">{{item.date}}</span>
+      <div class="group">
+        <img src="../assets/images/doctor@2x.png"/>
+        <label class="label">{{item.doctorName}}</label>
+        <span class="span">({{item.doctorTitle}})</span>
+        <em class="em">{{item.isPay?'已支付':'待支付'}}</em>
       </div>
     </div>
     <div class="row-box-2">
@@ -21,38 +22,34 @@
         <span class="span">{{item.deptName}}</span>
       </div>
       <div class="group">
-        <label class="label">支付状况：</label>
-        <span class="span">{{item.isPay?'已支付':'待支付'}}</span>
+        <label class="label">就诊医院：</label>
+        <span class="span">{{item.hospitalName}}</span>
       </div>
       <div class="group">
-        <label class="label">就诊医院</label>
-        <span class="span">芜湖市第二人民医院</span>
+        <label class="label">就诊类别：</label>
+        <span class="span">{{item.regType === 1 ? '专家号' : '普通号'}}</span>
       </div>
       <div class="group">
-        <label class="label">就诊科室</label>
-        <span class="span">眼科</span>
+        <label class="label">就诊时间：</label>
+        <span class="span">{{item.visistDate}} {{item.visitingTime}}</span>
       </div>
       <div class="group">
-        <label class="label">就诊类别</label>
-        <span class="span">专家门诊</span>
+        <label class="label">就诊患者：</label>
+        <span class="span">{{item.idCardName}}</span>
       </div>
       <div class="group">
-        <label class="label">就诊时间</label>
-        <span class="span">2018/09/08/ 下午</span>
+        <label class="label">门诊费用：</label>
+        <span class="span">{{item.total}}元(不含挂号费)</span>
       </div>
       <div class="group">
-        <label class="label">就诊患者</label>
-        <span class="span">胡代宇</span>
-      </div>
-      <div class="group">
-        <label class="label">门诊费用</label>
-        <span class="span">120.00元(不含挂号费)</span>
+        <label class="label">提交时间：</label>
+        <span class="span">{{item.date}}</span>
       </div>
     </div>
     <div class="row-box-3">
       <button class="btn btn-confirm" v-waves.block>去缴费</button>
       <button class="btn btn-cancel" v-waves.block>取消预约</button>
-      <button @click="showDetails" class="btn btn-detail">查看详情</button>
+      <!--<button @click="showDetails" class="btn btn-detail">查看详情</button>-->
     </div>
   </div>
 </template>
@@ -87,29 +84,39 @@
       color: @fontColor;
       font-size: 0.13rem;
     }
+    .em {
+      float: right;
+      padding-right: 0.15rem;
+      color: @buttonColor;
+      font-size: 0.14rem;
+    }
     .row-box-1 {
-      padding: 0 0.15rem;
-      border-bottom: 1px solid @borderColor;
-      .name {
+      height: auto;
+      line-height: 0.45rem;
+      padding-left: 0.15rem;
+      font-size: 0;
+      img {
+        width: 0.35rem;
+        height: 0.35rem;
+        margin-right: 0.15rem;
         display: inline-block;
-        font-weight: normal;
-        font-size: 0.15rem;
-        line-height: 0.36rem;
-        .span {
-          padding-left: 0.05rem;
-        }
+        vertical-align: middle;
       }
-      .date {
-        float: right;
-        line-height: 0.36rem;
+      .label {
+        padding: 0;
+        margin-right: 0.05rem;
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .span {
         font-size: 0.12rem;
-        .label {
-          font-size: 0.12rem;
-        }
-        .span {
-          color: #333333;
-          font-size: 0.12rem;
-        }
+        display: inline-block;
+        vertical-align: middle;
+      }
+      &:after {
+        content: '';
+        display: block;
+        border-bottom: 1px solid @borderColor;
       }
     }
     .row-box-2 {
@@ -145,11 +152,11 @@
         }
       }
       /*.btn-detail {*/
-        /*width: 100%;*/
-        /*display: block;*/
-        /*line-height: 0.4rem;*/
-        /*text-align: center;*/
-        /*font-size: 0.15rem;*/
+      /*width: 100%;*/
+      /*display: block;*/
+      /*line-height: 0.4rem;*/
+      /*text-align: center;*/
+      /*font-size: 0.15rem;*/
       /*}*/
     }
     &.slot-out {

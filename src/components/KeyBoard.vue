@@ -96,7 +96,7 @@
           case 8:
           case 9:
           case 0:
-            this.value += keyCode;
+            this.value += keyCode + '';
             break;
           case 10:
             break;
