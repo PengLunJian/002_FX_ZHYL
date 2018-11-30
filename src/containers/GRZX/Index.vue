@@ -1,7 +1,7 @@
 <template>
   <div class="FX_ZHYL_GRZX">
     <div class="module DYMK">
-      <loading v-if="isLoading"></loading>
+      <loading v-if="!isLoading"></loading>
       <div class="error" v-if="isFailure">
         <button class="btn btn-refresh" @click="exeSelectDefaultCard">重新加载</button>
       </div>
