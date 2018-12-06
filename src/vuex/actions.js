@@ -276,6 +276,34 @@ const actions = {
         });
     });
   },
+  // 取消我的预约
+  deleteSubscribeList({commit, state}, data) {
+    return new Promise((resolve, reject) => {
+      axios.post(apis.deleteSubscribeList)
+        .then((res) => {
+          res = res || {};
+          const {data, success} = res;
+          console.log('cancel');
+          if (success) {
+            const oldData = state.SUBSCRIBE_LIST.data;
+            let newData = oldData.concat(data);
+            if (success) {
+              newData = data;
+              commit(ACTION_TYPES.DELETE_SUBSCRIBE_LIST_REQUEST);
+            }
+            commit(ACTION_TYPES.DELETE_SUBSCRIBE_LIST_SUCCESS, newData);
+          } else {
+            commit(ACTION_TYPES.DELETE_SUBSCRIBE_LIST_FAILURE);
+          }
+          resolve(res);
+        })
+        .catch((err) => {
+          console.log('fail');
+          commit(ACTION_TYPES.DELETE_SUBSCRIBE_LIST_FAILURE);
+          reject(err);
+        });
+    });
+  },
   // 查询已支付记录
   selectIsPayedRecords({commit, state}, data) {
     const {pageIndex} = data;
@@ -476,7 +504,7 @@ const actions = {
     });
   },
   // 新增&修改健康档案
-  insertHealthList ({commit, state}, data) {
+  insertHealthList({commit, state}, data) {
     commit(ACTION_TYPES.INSERT_HEALTH_LIST_REQUEST);
     return new Promise((resolve, reject) => {
       axios.post(apis.insertHealthList, data)
@@ -494,7 +522,7 @@ const actions = {
     });
   },
   // 查询健康档案
-  selectHealthList ({commit, state}, data) {
+  selectHealthList({commit, state}, data) {
     commit(ACTION_TYPES.SELECT_HEALTH_LIST_REQUEST);
     return new Promise((resolve, reject) => {
       axios.post(apis.selectHealthList, data)
