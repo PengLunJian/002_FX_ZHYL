@@ -1,12 +1,17 @@
 import {mapActions} from 'vuex';
 import {
   handlerWXConfig,
+  handlerCheckJsApi,
   handlerChooseWXPay
 } from '../../jssdk/WXHelper';
 
 const controller = {
   handlerSubmit() {
-    this.exeSelectJSSDKConfig();
+    handlerCheckJsApi(this.jsApiList)
+      .then((res) => {
+        console.log(res);
+        this.exeSelectAppointmentCreate();
+      });
   },
   exeFillParams() {
     const {query} = this.$route;
@@ -16,19 +21,57 @@ const controller = {
     this.doctName = query.doctName;
     this.date = query.preTime + (query.noonCode === '1' ? ' 上午' : ' 下午');
   },
+  exeSelectDefaultCard() {
+    this.selectDefaultCard()
+      .then((res) => {
+        res = res || {};
+        const {data, success} = res;
+        if (success) {
+          this.name = data.name;
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
   exeSelectJSSDKConfig() {
     const data = {
-      Value: window.location.href.split('#')[0]
+      value: window.location.href.split('#')[0]
     };
     this.selectJSSDKConfig(data)
       .then((res) => {
         const {data, success} = res;
-        if (data && success) {
-          const jsApiList = ['chooseWXPay'];
-          const config = Object.assign(data, {jsApiList: jsApiList});
-          handlerWXConfig(config)
-            .then(() => {
-              this.exeSelectRegisterPay();
+        if (success) {
+          const config = Object.assign(data, this.jsApiList);
+          handlerWXConfig(config);
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
+  exeSelectAppointmentCreate() {
+    const {query} = this.$route;
+    const data = {
+      classId: query.classId,
+      deptCode: query.deptCode,
+      isExpert: query.isExpert,
+      preTime: query.preTime,
+      clinicFee: query.clinicFee,
+      subSource: query.subSource,
+      doctCode: query.doctCode,
+      noonCode: query.noonCode
+    };
+    this.selectAppointmentCreate(data)
+      .then((res) => {
+        res = res || {};
+        const {data, success} = res;
+        if (success) {
+          if (!data) return;
+          handlerChooseWXPay(data)
+            .then((res) => {
+              console.log(res);
+              this.$router.back();
             });
         }
       })
@@ -36,29 +79,10 @@ const controller = {
         console.log(err);
       });
   },
-  exeSelectRegisterPay() {
-    const data = {
-      isPre: '0',
-      onlyNo: '000001'
-    };
-    this.selectRegisterPay(data)
-      .then((res) => {
-        const {data} = res;
-        if (!data) return;
-        const jsApiList = ['chooseWXPay'];
-        const config = Object.assign(data, {jsApiList: jsApiList});
-        handlerChooseWXPay(config)
-          .then(() => {
-            console.log('支付成功');
-          });
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  },
   ...mapActions([
     'selectJSSDKConfig',
-    'selectRegisterPay'
+    'selectDefaultCard',
+    'selectAppointmentCreate'
   ])
 };
 

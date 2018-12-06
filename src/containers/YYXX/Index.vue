@@ -21,11 +21,11 @@
     <div class="module DEBF">
       <div class="form-group">
         <label class="form-label">门诊费用(不含挂号费)</label>
-        <input class="form-input" name="price" v-model="price" type="text" disabled/>
+        <span class="form-input">{{price}}</span>
       </div>
       <div class="form-group">
         <label class="form-label borderNone">支付方式</label>
-        <input class="form-input" name="payment" v-model="payment" type="text" disabled/>
+        <span class="form-input">{{payment}}</span>
       </div>
     </div>
     <div class="module DSMK">
@@ -47,18 +47,22 @@
         price: '',
         deptName: '',
         doctName: '',
-        payment: '微信支付'
+        payment: '微信支付',
+        jsApiList: {jsApiList: ['chooseWXPay']}
       };
     },
     created() {
+      alert('created');
       this.exeFillParams();
+      this.exeSelectJSSDKConfig();
+      this.exeSelectDefaultCard();
     },
     methods: Controller,
     computed: mapState({
       isLoading: state => state.DEFAULT_CARD.isLoading,
       isSuccess: state => state.DEFAULT_CARD.isSuccess,
       isFailure: state => state.DEFAULT_CARD.isFailure,
-      data: state => state.DEFAULT_CARD.data
+      data: state => state.DEFAULT_CARD.data || {}
     })
   };
 </script>
@@ -91,6 +95,7 @@
         width: 100%;
         height: 100%;
         display: block;
+        line-height: 0.5rem;
         padding-right: 0.15rem;
         background-color: transparent;
         text-align: right;

@@ -33,7 +33,6 @@ const actions = {
       axios.post(apis.selectGrantLogin, data)
         .then((res) => {
           res = res || {};
-          res.success = parseInt((Math.random() * 100)) % 2 === 0 ? false : true;
           const {data, success} = res;
           if (success) {
             commit(ACTION_TYPES.SELECT_GRANT_LOGIN_SUCCESS, data);
@@ -483,6 +482,27 @@ const actions = {
         })
         .catch((err) => {
           commit(ACTION_TYPES.SELECT_DEPT_DETAIL_FAILURE);
+          reject(err);
+        });
+    });
+  },
+  // 查询科室详情
+  selectAppointmentCreate({commit, state}, data) {
+    commit(ACTION_TYPES.SELECT_APPO_CREATE_REQUEST);
+    return new Promise((resolve, reject) => {
+      axios.post(apis.selectAppointmentCreate, data)
+        .then((res) => {
+          res = res || {};
+          const {data, success} = res;
+          if (success) {
+            commit(ACTION_TYPES.SELECT_APPO_CREATE_SUCCESS, data);
+          } else {
+            commit(ACTION_TYPES.SELECT_APPO_CREATE_FAILURE);
+          }
+          resolve(res);
+        })
+        .catch((err) => {
+          commit(ACTION_TYPES.SELECT_APPO_CREATE_FAILURE);
           reject(err);
         });
     });
