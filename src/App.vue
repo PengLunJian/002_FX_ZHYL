@@ -24,7 +24,7 @@
     data() {
       return {
         transitionName: '',
-        appId: 'wx9b4a02af4809f128',
+        appId: 'wxe790a197b8d02b72',
         token: sessionStorage.getItem('AccessToken')
       };
     },

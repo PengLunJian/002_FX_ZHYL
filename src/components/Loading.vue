@@ -1,14 +1,17 @@
 <template>
   <div class="loading">
-    <inline-loading></inline-loading>
+    <div class="inner">
+      <div class="rect"></div>
+      <div class="rect"></div>
+      <div class="rect"></div>
+      <div class="rect"></div>
+      <div class="rect"></div>
+    </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
-  import {InlineLoading} from 'vux';
-
   export default {
-    components: {InlineLoading},
     name: 'Loading',
     data() {
       return {};
@@ -21,16 +24,54 @@
   @import '../assets/less/variable';
 
   .loading {
-    display: inline-block;
+    width: 100%;
+    height: 100%;
     text-align: center;
-    position: absolute;
-    top: 48%;
-    left: 48%;
     &:before {
       content: '';
       height: 100%;
       display: inline-block;
       vertical-align: middle;
+    }
+    .inner {
+      width: 0.5rem;
+      height: 0.6rem;
+      text-align: center;
+      display: inline-block;
+      vertical-align: middle;
+      font-size: 0px;
+      .rect {
+        width: 0.03rem;
+        height: 100%;
+        display: inline-block;
+        background-color: #0062eb;
+        animation: loading 1.2s infinite ease-in-out;
+        margin-right: 0.02rem;
+        &:last-child {
+          margin: 0;
+        }
+        &:nth-child(2) {
+          animation-delay: -1.1s;
+        }
+        &:nth-child(3) {
+          animation-delay: -1.0s;
+        }
+        &:nth-child(4) {
+          animation-delay: -0.9s;
+        }
+        &:nth-child(5) {
+          animation-delay: -0.8s;
+        }
+      }
+    }
+  }
+
+  @keyframes loading {
+    0%, 40%, 100% {
+      transform: scaleY(0.3);
+    }
+    20% {
+      transform: scaleY(1.0);
     }
   }
 </style>

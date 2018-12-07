@@ -1,5 +1,6 @@
 <template>
   <div class="module JZKP">
+    <loading v-if="!isLoading"></loading>
     <error v-if="isFailure" @refresh="exeSelectDefaultCard"></error>
     <div class="select" v-if="isSuccess&&data">
       <div class="patient-left">
@@ -31,9 +32,10 @@
   import {mapState} from 'vuex';
   import Controller from './Controller';
   import Error from '../../components/Error';
+  import Loading from '../../components/Loading';
 
   export default {
-    components: {Error},
+    components: {Loading, Error},
     name: 'JZKP',
     data() {
       return {};
