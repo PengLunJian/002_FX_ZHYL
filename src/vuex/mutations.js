@@ -118,6 +118,10 @@ const mutations = {
     state.VISITOR_LIST.isSuccess = false;
     state.VISITOR_LIST.isFailure = true;
   },
+  // 清空就诊卡
+  CLEAR_VISITOR_LIST_SUCCESS(state) {
+    state.VISITOR_LIST.data = [];
+  },
   // 更新就诊卡
   UPDATE_VISITOR_LIST_REQUEST(state) {
     state.VISITOR_LIST.isLoading = false;

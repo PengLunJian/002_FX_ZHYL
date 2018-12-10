@@ -91,6 +91,7 @@ const controller = {
         const {data, success} = res || {};
         if (success) {
           const {rows} = data || {};
+          this.list = rows;
           const hasNext = rows.length !== 10 ? false : true;
           if (this.mescroll) {
             this.mescroll.endSuccess(rows.length, hasNext);
@@ -104,11 +105,15 @@ const controller = {
         this.exeCommonCallback();
       });
   },
+  exeClearVisitorList() {
+    this.clearVisitorList();
+  },
   ...mapActions([
     'insertVisitorList',
     'deleteVisitorList',
     'updateVisitorList',
-    'selectVisitorList'
+    'selectVisitorList',
+    'clearVisitorList'
   ])
 };
 

@@ -228,6 +228,10 @@ const actions = {
         });
     });
   },
+  // 清空就诊卡
+  clearVisitorList({commit}) {
+    commit(ACTION_TYPES.CLEAR_VISITOR_LIST_SUCCESS);
+  },
   // 查询我的挂号
   selectRegisterList({commit, state}, data) {
     const {pageIndex} = data;

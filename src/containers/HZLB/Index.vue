@@ -4,7 +4,8 @@
       <loading :show="!isLoading" text="加载中..."></loading>
       <no-data v-if="isSuccess&&!data.length"></no-data>
       <error v-if="isFailure&&!data.length" @refresh="exeSelectVisitorList"></error>
-      <mescroll-vue v-if="data.length" ref="mescroll" :down="down" :up="up" @init="init">
+      <mescroll-vue v-if="data.length"
+                    ref="mescroll" :down="down" :up="up" @init="init">
         <swipeout>
           <div class="module" v-for="(item,index) in data" :key="index">
             <swipeout-item>
@@ -72,6 +73,7 @@
       };
     },
     created() {
+      this.exeClearVisitorList();
       this.exeSelectVisitorList();
     },
     methods: Controller,

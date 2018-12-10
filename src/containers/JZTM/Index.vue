@@ -1,6 +1,6 @@
 <template>
   <div class="FX_ZHYL_JZTM">
-    <loading v-if="!isLoading"></loading>
+    <loading :show="!isLoading" text="加载中..."></loading>
     <error v-if="isFailure" @refresh="exeSelectDefaultCard"></error>
     <div class="content" v-if="isSuccess&&data">
       <div class="row-box-1">
@@ -23,7 +23,7 @@
   import {mapState} from 'vuex';
   import Controller from './Controller';
   import Error from '../../components/Error';
-  import Loading from '../../components/Loading';
+  import {Loading} from 'vux';
 
   export default {
     components: {

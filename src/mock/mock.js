@@ -10,7 +10,8 @@ Mock.setup({
 });
 
 Mock.mock(apis.selectDefaultCard.url, 'post', function (request) {
-  const resData = parseInt(Math.random() * 100) % 3 === 0 ? null : data.data1;
+  const success = (parseInt(Math.random() * 100)) % 3 === 0 ? false : true;
+  const resData = {success: success, ...data.data1};
   return resData;
 });
 Mock.mock(apis.insertVisitorList.url, 'post', function (request) {
@@ -18,7 +19,8 @@ Mock.mock(apis.insertVisitorList.url, 'post', function (request) {
   return resData;
 });
 Mock.mock(apis.deleteVisitorList.url, 'post', function (request) {
-  const resData = parseInt(Math.random() * 100) % 3 === 0 ? null : data.data3;
+  const success = (parseInt(Math.random() * 100)) % 3 === 0 ? false : true;
+  const resData = {success: success, ...data.data3};
   return resData;
 });
 Mock.mock(apis.updateVisitorList.url, 'post', function (request) {
