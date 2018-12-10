@@ -3,7 +3,7 @@ import axios from 'axios';
 import apis from '../apis';
 
 axios.defaults.timeout = apis.default.timeout;
-// axios.defaults.baseURL = apis.default.baseUrl;
+axios.defaults.baseURL = apis.default.baseUrl;
 axios.defaults.headers = apis.default.headers;
 
 axios.interceptors.request.use(

@@ -140,7 +140,6 @@ const mutations = {
     state.VISITOR_LIST.isLoading = false;
     state.VISITOR_LIST.isSuccess = false;
     state.VISITOR_LIST.isFailure = false;
-    state.VISITOR_LIST.data = [];
   },
   SELECT_VISITOR_LIST_SUCCESS(state, data) {
     state.VISITOR_LIST.isLoading = true;

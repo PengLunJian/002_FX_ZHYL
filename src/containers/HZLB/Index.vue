@@ -1,9 +1,9 @@
 <template>
   <div class="FX_ZHYL_HZLB">
     <div class="content">
-      <loading v-if="!isLoading"></loading>
+      <loading :show="!isLoading" text="加载中..."></loading>
       <no-data v-if="isSuccess&&!data.length"></no-data>
-      <error v-if="isFailure" @refresh="exeSelectVisitorList"></error>
+      <error v-if="isFailure&&!data.length" @refresh="exeSelectVisitorList"></error>
       <mescroll-vue v-if="data.length" ref="mescroll" :down="down" :up="up" @init="init">
         <swipeout>
           <div class="module" v-for="(item,index) in data" :key="index">
@@ -35,10 +35,9 @@
   import Controller from './Controller';
   import SufferItem from '../../components/SufferItem';
   import MescrollVue from 'mescroll.js/mescroll.vue';
-  import {Swipeout, SwipeoutItem, SwipeoutButton} from 'vux';
+  import {Swipeout, SwipeoutItem, SwipeoutButton, Loading} from 'vux';
   import Error from '../../components/Error';
   import NoData from '../../components/NoData';
-  import Loading from '../../components/Loading';
 
   export default {
     components: {
@@ -89,73 +88,48 @@
   @import "../../assets/less/variable";
 
   .FX_ZHYL_HZLB {
-    position: relative;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100vh;
-    padding: 0.15rem 0.15rem 0;
     background-color: @bgColor;
-    .header {
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-      width: 100%;
-      padding: 0 0.15rem;
-    }
     .content {
       height: 100%;
       position: relative;
+      padding: 0.15rem 0.15rem 0;
       .module {
         height: 0.91rem;
         transition: all 300ms ease;
       }
-    }
-    .footer {
-      position: absolute;
-      width: 100%;
-      bottom: 0;
-      left: 0;
-      z-index: 1000;
-      padding: 0.1rem 0.15rem;
-    }
-    .title {
-      color: @fontColor;
-      font-size: 0.14rem;
-      line-height: 0.45rem;
-      letter-spacing: 1px;
-    }
-    .btn-add {
-      width: 100%;
-      display: block;
-      background-color: @white;
-      border-radius: @borderRadius;
-      border: 1px solid @borderColor3;
-      color: @buttonColor2;
-      font-size: 0;
+      .btn-add {
+        width: 100%;
+        display: block;
+        background-color: @white;
+        border-radius: @borderRadius;
+        border: 1px solid @borderColor3;
+        color: @buttonColor2;
+        font-size: 0;
 
-      position: fixed;
-      right: 0.3rem;
-      bottom: 0.3rem;
-      width: 0.6rem;
-      height: 0.6rem;
-      border: none;
-      border-radius: 100%;
-      overflow: hidden;
-      box-shadow: @boxShadow1;
-      .btn-icon {
-        display: inline-block;
-        vertical-align: middle;
-        font-size: 0.18rem;
-        /*margin-right: 0.1rem;*/
-      }
-      .btn-text {
-        height: 0.48rem;
-        line-height: 0.48rem;
-        display: inline-block;
-        vertical-align: middle;
-        font-size: 0.18rem;
+        position: fixed;
+        right: 0.3rem;
+        bottom: 0.3rem;
+        width: 0.6rem;
+        height: 0.6rem;
+        border: none;
+        border-radius: 100%;
+        overflow: hidden;
+        box-shadow: @boxShadow1;
+        .btn-icon {
+          display: inline-block;
+          vertical-align: middle;
+          font-size: 0.18rem;
+          /*margin-right: 0.1rem;*/
+        }
+        .btn-text {
+          height: 0.48rem;
+          line-height: 0.48rem;
+          display: inline-block;
+          vertical-align: middle;
+          font-size: 0.18rem;
+        }
       }
     }
   }

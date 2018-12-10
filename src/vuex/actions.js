@@ -206,11 +206,8 @@ const actions = {
   // 查询就诊卡
   selectVisitorList({commit, state}, data) {
     const {value} = data;
-    const {VISITOR_LIST} = state;
-    const stateData = VISITOR_LIST.data;
-    if (stateData && !stateData.length && value === 1) {
-      commit(ACTION_TYPES.SELECT_VISITOR_LIST_REQUEST);
-    }
+    const oldData = state.VISITOR_LIST.data;
+    commit(ACTION_TYPES.SELECT_VISITOR_LIST_REQUEST);
     return new Promise((resolve, reject) => {
       axios.post(apis.selectVisitorList, data)
         .then((res) => {
@@ -218,13 +215,12 @@ const actions = {
           const {data, success} = res;
           if (success) {
             const {rows} = data || {};
-            const oldData = state.VISITOR_LIST.data;
-            const newData = oldData.concat(rows);
+            const newData = value === 1 ? rows : oldData.concat(rows);
             commit(ACTION_TYPES.SELECT_VISITOR_LIST_SUCCESS, newData);
-            resolve(res);
           } else {
             commit(ACTION_TYPES.SELECT_VISITOR_LIST_FAILURE);
           }
+          resolve(res);
         })
         .catch((err) => {
           commit(ACTION_TYPES.SELECT_VISITOR_LIST_FAILURE);

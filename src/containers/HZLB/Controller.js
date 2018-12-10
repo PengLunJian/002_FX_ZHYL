@@ -23,6 +23,17 @@ const controller = {
       path: this.$routes.SFLR.path
     });
   },
+  exeCommonCallback() {
+    this.pageCode--;
+    this.pageCode = this.pageCode <= 0 ? 1 : this.pageCode;
+    this.$vux.toast.show({
+      type: 'cancel',
+      text: '加载失败'
+    });
+    if (this.mescroll) {
+      this.mescroll.endErr();
+    }
+  },
   exeDeleteVisitorList(params) {
     params = {value: params};
     this.deleteVisitorList(params)
@@ -84,21 +95,13 @@ const controller = {
           if (this.mescroll) {
             this.mescroll.endSuccess(rows.length, hasNext);
           }
+        } else {
+          this.exeCommonCallback();
         }
       })
       .catch((err) => {
         console.log(err);
-        this.pageCode--;
-        this.pageCode = this.pageCode <= 0 ? 1 : this.pageCode;
-        if (this.data.length !== 0) {
-          this.$vux.toast.show({
-            type: 'cancel',
-            text: '加载失败'
-          });
-        }
-        if (this.mescroll) {
-          this.mescroll.endErr();
-        }
+        this.exeCommonCallback();
       });
   },
   ...mapActions([

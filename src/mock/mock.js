@@ -6,7 +6,7 @@ import {
 } from '../utils';
 
 Mock.setup({
-  timeout: 2000
+  timeout: 1000
 });
 
 Mock.mock(apis.selectDefaultCard.url, 'post', function (request) {
@@ -22,15 +22,17 @@ Mock.mock(apis.deleteVisitorList.url, 'post', function (request) {
   return resData;
 });
 Mock.mock(apis.updateVisitorList.url, 'post', function (request) {
-  const resData = parseInt(Math.random() * 100) % 3 === 0 ? null : data.data3;
+  const success = (parseInt(Math.random() * 100)) % 3 === 0 ? false : true;
+  const resData = {success: success, ...data.data3};
   return resData;
 });
 Mock.mock(apis.selectVisitorList.url, 'post', function (request) {
   const params = JSON.parse(request.body);
-  const pageCode = parseInt(params['Value']);
+  const pageCode = parseInt(params['value']);
   const pageSize = 10;
   const filterData = pagination(data.data2(22), pageCode, pageSize);
-  const resData = parseInt(Math.random() * 100) % 3 === 0 ? null : {data: {rows: filterData.data}};
+  const success = (parseInt(Math.random() * 100)) % 3 === 0 ? false : true;
+  const resData = {data: {rows: filterData.data}, success: success};
   return resData;
 });
 Mock.mock(apis.selectRegisterList.url, 'post', function (request) {

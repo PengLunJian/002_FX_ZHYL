@@ -10,7 +10,7 @@
       <div class="row-box-2">
         <img class="bar-code" :src="data.barCodeUrl"/>
         <img class="qr-code" :src="data.qrcodeUrl"/>
-        <p class="toast">出示就诊二维码到设备扫描</p>
+        <p class="message">出示就诊二维码到设备扫描</p>
       </div>
       <div class="row-box-3">
         <button class="btn btn-close" @click="closePage">关闭</button>
@@ -80,12 +80,12 @@
       }
       .row-box-2 {
         font-size: 0;
-        padding-bottom: 0.25rem;
+        padding: 0.25rem 0;
         .bar-code {
           width: 3rem;
           height: auto;
           display: block;
-          margin: 0.25rem auto;
+          margin: 0 auto 0.1rem;
         }
         .qr-code {
           width: 2.35rem;
@@ -93,8 +93,8 @@
           display: block;
           margin: 0 auto;
         }
-        .toast {
-          margin-top: 0.25rem;
+        .message {
+          margin-top: 0.1rem;
           text-align: center;
           font-size: 0.14rem;
           color: @fontColor;
@@ -107,7 +107,7 @@
         .btn-close {
           margin: 0 auto;
           padding: 0 0.7rem;
-          line-height: 0.35rem;
+          line-height: 0.36rem;
           border: 1px solid #979797;
           border-radius: @borderRadius;
           font-size: 0.16rem;

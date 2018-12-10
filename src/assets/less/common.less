@@ -212,32 +212,42 @@ li, ul {
   display: none !important;
 }
 
-.weui-toast {
-  width: 1rem !important;
-  height: auto !important;
-  padding: 0.15rem 0 !important;
-  .weui-icon_toast {
+.weui-loading_toast {
+  .weui-toast {
+    width: 1rem !important;
+    height: auto !important;
+    padding: 0.15rem 0 !important;
+  }
+  .weui-loading {
+    width: 0.38rem;
+    height: 0.38rem;
     margin: 0 !important;
-    &.weui-loading {
-      width: 0.38rem !important;
-      height: 0.38rem !important;
-    }
-    &:before {
-      display: block;
-      line-height: 0.45rem !important;
-      font-size: 0.55rem !important;
-    }
   }
   .weui-toast__content {
-    margin: 0 !important;
+    margin: 0.04rem 0 0 !important;
     line-height: 0.25rem !important;
     font-size: 0.16rem !important;
   }
-  &.weui-toast_text {
-    .weui-toast__content {
-      padding: 0 !important;
-      border-radius: 0 !important;
+}
+
+.vux-toast {
+  .weui-toast {
+    width: 1rem !important;
+    height: auto !important;
+    padding: 0.15rem 0 !important;
+  }
+  .weui-icon_toast {
+    width: 0.4rem;
+    height: 0.4rem;
+    margin: 0 auto !important;
+    &:before {
+      font-size: 0.4rem !important;
     }
+  }
+  .weui-toast__content {
+    height: 0.25rem;
+    line-height: 0.25rem;
+    margin: 0.05rem 0 0;
   }
 }
 
