@@ -7,7 +7,7 @@ import Routes from './router/routes';
 import {ToastPlugin, LoadingPlugin} from 'vux';
 import VueWaves from '../node_modules/vue-waves/dist/vue-waves.js';
 
-// require('./mock/mock.js');
+require('./mock/mock.js');
 
 Vue.use(VueWaves);
 Vue.use(LoadingPlugin);

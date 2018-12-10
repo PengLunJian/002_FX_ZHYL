@@ -35,7 +35,7 @@
     left: 0;
     width: 100%;
     height: 100vh;
-    overflow-y: scroll;
+    overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     background-color: @bgColor;
   }

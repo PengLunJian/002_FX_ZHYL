@@ -44,13 +44,14 @@
       vertical-align: middle;
       img {
         display: block;
-        width: 1.1rem;
-        margin-bottom: 0.1rem;
+        width: 0.7rem;
+        margin: 0 auto 0.1rem;
       }
       .btn-refresh {
-        display: inline-block;
-        line-height: 0.3rem;
-        padding: 0 0.3rem;
+        display: block;
+        height: 0.26rem;
+        line-height: 0.26rem;
+        padding: 0 0.2rem;
         overflow: hidden;
         border-radius: 0.3rem;
         background-color: #5f9bf1;

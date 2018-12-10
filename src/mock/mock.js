@@ -6,7 +6,7 @@ import {
 } from '../utils';
 
 Mock.setup({
-  timeout: 1000
+  timeout: 2000
 });
 
 Mock.mock(apis.selectDefaultCard.url, 'post', function (request) {

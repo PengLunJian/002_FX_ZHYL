@@ -1,8 +1,9 @@
 <template>
   <div class="FX_ZHYL_HZLB">
     <div class="content">
-      <no-data v-if="isLoading&&!isFailure&&!data.length"></no-data>
-      <error v-if="isFailure&&!data.length" @refresh="exeSelectVisitorList"></error>
+      <loading v-if="!isLoading"></loading>
+      <no-data v-if="isSuccess&&!data.length"></no-data>
+      <error v-if="isFailure" @refresh="exeSelectVisitorList"></error>
       <mescroll-vue v-if="data.length" ref="mescroll" :down="down" :up="up" @init="init">
         <swipeout>
           <div class="module" v-for="(item,index) in data" :key="index">
@@ -37,9 +38,11 @@
   import {Swipeout, SwipeoutItem, SwipeoutButton} from 'vux';
   import Error from '../../components/Error';
   import NoData from '../../components/NoData';
+  import Loading from '../../components/Loading';
 
   export default {
     components: {
+      Loading,
       NoData,
       Error,
       Swipeout,

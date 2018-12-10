@@ -1,5 +1,6 @@
 <template>
   <div class="FX_ZHYL_JZTM">
+    <loading v-if="!isLoading"></loading>
     <error v-if="isFailure" @refresh="exeSelectDefaultCard"></error>
     <div class="content" v-if="isSuccess&&data">
       <div class="row-box-1">
@@ -7,7 +8,7 @@
         <span class="card">卡号：{{data.patientCardNo}}</span>
       </div>
       <div class="row-box-2">
-        <img class="bar-code" ref="jsbarcode" src=""/>
+        <img class="bar-code" :src="data.barCodeUrl"/>
         <img class="qr-code" :src="data.qrcodeUrl"/>
         <p class="toast">出示就诊二维码到设备扫描</p>
       </div>
@@ -22,9 +23,13 @@
   import {mapState} from 'vuex';
   import Controller from './Controller';
   import Error from '../../components/Error';
+  import Loading from '../../components/Loading';
 
   export default {
-    components: {Error},
+    components: {
+      Loading,
+      Error
+    },
     name: 'JZTM',
     data() {
       return {};
@@ -49,14 +54,13 @@
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 1000;
     width: 100%;
-    height: 100%;
+    height: 100vh;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     background-color: @white;
     .content {
-      height: auto;
+      min-height: 100vh;
       .row-box-1 {
         text-align: center;
         line-height: 0.2rem;
@@ -81,7 +85,7 @@
           width: 3rem;
           height: auto;
           display: block;
-          margin: 0.25rem auto 0.1rem;
+          margin: 0.25rem auto;
         }
         .qr-code {
           width: 2.35rem;

@@ -77,10 +77,13 @@ const controller = {
     const data = {value: this.pageCode};
     this.selectVisitorList(data)
       .then((res) => {
-        const data = res.data.rows;
-        const hasNext = data.length !== 10 ? false : true;
-        if (this.mescroll) {
-          this.mescroll.endSuccess(data.length, hasNext);
+        const {data, success} = res || {};
+        if (success) {
+          const {rows} = data || {};
+          const hasNext = rows.length !== 10 ? false : true;
+          if (this.mescroll) {
+            this.mescroll.endSuccess(rows.length, hasNext);
+          }
         }
       })
       .catch((err) => {

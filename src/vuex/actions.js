@@ -1,3 +1,4 @@
+import JsBarcode from 'jsbarcode';
 import apis from '../apis';
 import axios from '../axios/axios';
 import * as ACTION_TYPES from './actionTypes';
@@ -98,7 +99,16 @@ const actions = {
           res = res || {};
           const {data, success} = res;
           if (success) {
-            commit(ACTION_TYPES.SELECT_DEFAULT_CARD_SUCCESS, data);
+            const {patientCardNo} = data || {};
+            let oImage = new Image();
+            JsBarcode(oImage, patientCardNo, {
+              format: 'CODE39',
+              displayValue: false
+            });
+            const tempObj = {barCodeUrl: oImage.src};
+            const newData = Object.assign(data, tempObj);
+            commit(ACTION_TYPES.SELECT_DEFAULT_CARD_SUCCESS, newData);
+            oImage = null;
           } else {
             commit(ACTION_TYPES.SELECT_DEFAULT_CARD_FAILURE);
           }
@@ -196,19 +206,20 @@ const actions = {
   // 查询就诊卡
   selectVisitorList({commit, state}, data) {
     const {value} = data;
+    const {VISITOR_LIST} = state;
+    const stateData = VISITOR_LIST.data;
+    if (stateData && !stateData.length && value === 1) {
+      commit(ACTION_TYPES.SELECT_VISITOR_LIST_REQUEST);
+    }
     return new Promise((resolve, reject) => {
       axios.post(apis.selectVisitorList, data)
         .then((res) => {
           res = res || {};
           const {data, success} = res;
           if (success) {
-            const {rows} = data;
+            const {rows} = data || {};
             const oldData = state.VISITOR_LIST.data;
-            let newData = oldData.concat(rows);
-            if (value === 1) {
-              newData = rows;
-              commit(ACTION_TYPES.SELECT_VISITOR_LIST_REQUEST);
-            }
+            const newData = oldData.concat(rows);
             commit(ACTION_TYPES.SELECT_VISITOR_LIST_SUCCESS, newData);
             resolve(res);
           } else {
@@ -496,7 +507,7 @@ const actions = {
     });
   },
   // 新增&修改健康档案
-  insertHealthList ({commit, state}, data) {
+  insertHealthList({commit, state}, data) {
     commit(ACTION_TYPES.INSERT_HEALTH_LIST_REQUEST);
     return new Promise((resolve, reject) => {
       axios.post(apis.insertHealthList, data)
@@ -514,7 +525,7 @@ const actions = {
     });
   },
   // 查询健康档案
-  selectHealthList ({commit, state}, data) {
+  selectHealthList({commit, state}, data) {
     commit(ACTION_TYPES.SELECT_HEALTH_LIST_REQUEST);
     return new Promise((resolve, reject) => {
       axios.post(apis.selectHealthList, data)

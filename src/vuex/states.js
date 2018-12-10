@@ -36,6 +36,7 @@ const states = {
       name: '',
       nation: '',
       patientCardNo: '',
+      barCodeUrl: '',
       phone: '',
       qrcodeUrl: '',
       releation: '',
