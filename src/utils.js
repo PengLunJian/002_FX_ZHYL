@@ -100,3 +100,14 @@ export const getIndexOf = (arr, item) => {
   }
   return -1; // 找不到返回-1
 };
+/**
+ *
+ * @param url
+ * @returns {string}
+ */
+export const getUriPath = (url) => {
+  const arrUrl = url.split('//');
+  var start = arrUrl[1].indexOf('/');
+  var relUrl = arrUrl[1].substring(start);
+  return relUrl;
+};

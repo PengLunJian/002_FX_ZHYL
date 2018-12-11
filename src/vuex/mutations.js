@@ -84,6 +84,23 @@ const mutations = {
     state.DEFAULT_CARD.isSuccess = false;
     state.DEFAULT_CARD.isFailure = true;
   },
+  // 查询默认就诊卡信息
+  SELECT_MESSAGE_LIST_REQUEST(state) {
+    state.MESSAGE_LIST.isLoading = false;
+    state.MESSAGE_LIST.isSuccess = false;
+    state.MESSAGE_LIST.isFailure = false;
+  },
+  SELECT_MESSAGE_LIST_SUCCESS(state, data) {
+    state.MESSAGE_LIST.isLoading = true;
+    state.MESSAGE_LIST.isSuccess = true;
+    state.MESSAGE_LIST.isFailure = false;
+    state.MESSAGE_LIST.data = data;
+  },
+  SELECT_MESSAGE_LIST_FAILURE(state) {
+    state.MESSAGE_LIST.isLoading = true;
+    state.MESSAGE_LIST.isSuccess = false;
+    state.MESSAGE_LIST.isFailure = true;
+  },
   // 新增就诊卡
   INSERT_VISITOR_LIST_REQUEST(state) {
     state.VISITOR_LIST.isLoading = false;
@@ -117,6 +134,10 @@ const mutations = {
     state.VISITOR_LIST.isLoading = true;
     state.VISITOR_LIST.isSuccess = false;
     state.VISITOR_LIST.isFailure = true;
+  },
+  // 清空就诊卡
+  CLEAR_VISITOR_LIST_SUCCESS(state) {
+    state.VISITOR_LIST.data = [];
   },
   // 更新就诊卡
   UPDATE_VISITOR_LIST_REQUEST(state) {

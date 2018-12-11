@@ -44,7 +44,7 @@
       vertical-align: middle;
       img {
         display: block;
-        width: 0.7rem;
+        width: 0.8rem;
         margin: 0 auto 0.1rem;
       }
       .btn-refresh {

@@ -120,6 +120,27 @@ const actions = {
         });
     });
   },
+  // 查询默认就诊卡
+  selectMessageList({commit}) {
+    commit(ACTION_TYPES.SELECT_MESSAGE_LIST_REQUEST);
+    return new Promise((resolve, reject) => {
+      axios.post(apis.selectMessageList)
+        .then((res) => {
+          res = res || {};
+          const {data, success} = res;
+          if (success) {
+            commit(ACTION_TYPES.SELECT_MESSAGE_LIST_SUCCESS, data);
+          } else {
+            commit(ACTION_TYPES.SELECT_MESSAGE_LIST_FAILURE);
+          }
+          resolve(res);
+        })
+        .catch((err) => {
+          commit(ACTION_TYPES.SELECT_DEFAULT_CARD_FAILURE);
+          reject(err);
+        });
+    });
+  },
   // 新增就诊卡
   insertVisitorList({commit, state}, data) {
     commit(ACTION_TYPES.INSERT_VISITOR_LIST_REQUEST);

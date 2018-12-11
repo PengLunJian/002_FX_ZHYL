@@ -1,4 +1,4 @@
-import {mapActions} from 'vuex';
+import {mapActions, mapMutations} from 'vuex';
 
 const controller = {
   init(mescroll) {
@@ -35,29 +35,32 @@ const controller = {
     }
   },
   exeDeleteVisitorList(params) {
-    params = {value: params};
-    this.deleteVisitorList(params)
-      .then((res) => {
-        res = res || {};
-        const {success} = res;
-        if (success) {
-          this.$vux.toast.show({
-            text: '操作成功'
-          });
-        } else {
+    const result = confirm('确认解绑就诊卡吗?');
+    if (result) {
+      params = {value: params};
+      this.deleteVisitorList(params)
+        .then((res) => {
+          res = res || {};
+          const {success} = res;
+          if (success) {
+            this.$vux.toast.show({
+              text: '操作成功'
+            });
+          } else {
+            this.$vux.toast.show({
+              type: 'cancel',
+              text: '操作失败'
+            });
+          }
+        })
+        .catch((err) => {
+          console.log(err);
           this.$vux.toast.show({
             type: 'cancel',
             text: '操作失败'
           });
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-        this.$vux.toast.show({
-          type: 'cancel',
-          text: '操作失败'
         });
-      });
+    }
   },
   exeUpdateVisitorList(params) {
     params = {value: params};
@@ -91,6 +94,7 @@ const controller = {
         const {data, success} = res || {};
         if (success) {
           const {rows} = data || {};
+          this.list = rows;
           const hasNext = rows.length !== 10 ? false : true;
           if (this.mescroll) {
             this.mescroll.endSuccess(rows.length, hasNext);
@@ -109,6 +113,9 @@ const controller = {
     'deleteVisitorList',
     'updateVisitorList',
     'selectVisitorList'
+  ]),
+  ...mapMutations([
+    'CLEAR_VISITOR_LIST_SUCCESS'
   ])
 };
 

@@ -1,4 +1,4 @@
-// import Vue from 'vue';
+import Vue from 'vue';
 import axios from 'axios';
 import apis from '../apis';
 
@@ -12,22 +12,22 @@ axios.interceptors.request.use(
     if (AccessToken) {
       config.headers = {'Authorization': AccessToken};
     }
-    // Vue.$vux.loading.show({
-    //   text: '加载中...'
-    // });
+    Vue.$vux.loading.show({
+      text: '加载中...'
+    });
     config = getConfig(config);
     return config;
   }, error => {
-    // Vue.$vux.loading.hide();
+    Vue.$vux.loading.hide();
     return Promise.reject(error);
   });
 
 axios.interceptors.response.use(
   response => {
-    // Vue.$vux.loading.hide();
+    Vue.$vux.loading.hide();
     return response.data;
   }, error => {
-    // Vue.$vux.loading.hide();
+    Vue.$vux.loading.hide();
     return Promise.resolve(error.response);
   }
 );

@@ -123,6 +123,8 @@
   @import "assets/less/common.less";
 
   #app {
+    z-index: 0;
+    position: relative;
     min-height: 100vh;
     background-color: @white;
   }

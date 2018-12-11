@@ -16,6 +16,7 @@
         </ul>
       </div>
       <div class="col-xs-6 right">
+        <loading v-if="!isChildLoading"></loading>
         <no-data v-if="isChildSuccess&&!isChildData"></no-data>
         <error v-if="isChildFailure" @refresh="exeSelectSubDepartment"></error>
         <ul class="inner-block" v-if="isChildSuccess&&isChildData">
@@ -35,9 +36,11 @@
   import Controller from './Controller';
   import Error from '../../components/Error';
   import NoData from '../../components/NoData';
+  import Loading from '../../components/Loading';
 
   export default {
     components: {
+      Loading,
       Error,
       NoData
     },
@@ -53,6 +56,7 @@
       isParentSuccess: state => state.DEPARTMENT.isSuccess,
       isParentFailure: state => state.DEPARTMENT.isFailure,
       isParentData: state => state.DEPARTMENT.data,
+      isChildLoading: state => state.SUB_DEPARTMENT.isLoading,
       isChildSuccess: state => state.SUB_DEPARTMENT.isSuccess,
       isChildFailure: state => state.SUB_DEPARTMENT.isFailure,
       isChildData: state => state.SUB_DEPARTMENT.data

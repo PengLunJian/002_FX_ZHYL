@@ -37,11 +37,11 @@
       display: inline-block;
       vertical-align: middle;
       img {
-        width: 1.25rem;
-        height: auto;
+        display: block;
+        width: 0.8rem;
+        margin: 0 auto 0.1rem;
       }
       .text {
-        margin-top: 0.1rem;
         letter-spacing: 1px;
         font-size: 0.14rem;
         color: #808080;
