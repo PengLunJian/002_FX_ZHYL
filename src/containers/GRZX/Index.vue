@@ -102,7 +102,13 @@
   .FX_ZHYL_GRZX {
     min-height: 100vh;
     background-color: @bgColor;
+    a:last-child {
+      .link-item:after {
+        border: none;
+      }
+    }
     .DYMK {
+      height: 1.11rem;
       min-height: 1.11rem;
       overflow: hidden;
       position: relative;
