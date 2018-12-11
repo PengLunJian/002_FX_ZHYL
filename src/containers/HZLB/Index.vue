@@ -1,10 +1,9 @@
 <template>
   <div class="FX_ZHYL_HZLB">
-    <div class="content">
-      <no-data v-if="isSuccess&&!data.length"></no-data>
-      <error v-if="isFailure&&!data.length" @refresh="exeSelectVisitorList"></error>
-      <mescroll-vue v-if="data.length"
-                    ref="mescroll" :down="down" :up="up" @init="init">
+    <no-data v-if="isSuccess&&!data.length"></no-data>
+    <error v-if="isFailure&&!data.length" @refresh="exeSelectVisitorList"></error>
+    <div class="content" v-if="data.length">
+      <mescroll-vue ref="mescroll" :down="down" :up="up" @init="init">
         <swipeout>
           <div class="module" v-for="(item,index) in data" :key="index">
             <swipeout-item>
@@ -23,10 +22,10 @@
           </div>
         </swipeout>
       </mescroll-vue>
-      <button class="btn btn-add" @click="insertVisitor">
-        <i class="btn-icon icon-add"></i>
-      </button>
     </div>
+    <button class="btn btn-add" @click="insertVisitor">
+      <i class="btn-icon icon-add"></i>
+    </button>
   </div>
 </template>
 
@@ -99,37 +98,36 @@
         height: 0.91rem;
         transition: all 300ms ease;
       }
-      .btn-add {
-        width: 100%;
-        display: block;
-        background-color: @white;
-        border-radius: @borderRadius;
-        border: 1px solid @borderColor3;
-        color: @buttonColor2;
-        font-size: 0;
-
-        position: fixed;
-        right: 0.3rem;
-        bottom: 0.3rem;
-        width: 0.6rem;
-        height: 0.6rem;
-        border: none;
-        border-radius: 100%;
-        overflow: hidden;
-        box-shadow: @boxShadow1;
-        .btn-icon {
-          display: inline-block;
-          vertical-align: middle;
-          font-size: 0.18rem;
-          /*margin-right: 0.1rem;*/
-        }
-        .btn-text {
-          height: 0.48rem;
-          line-height: 0.48rem;
-          display: inline-block;
-          vertical-align: middle;
-          font-size: 0.18rem;
-        }
+    }
+    .btn-add {
+      width: 100%;
+      display: block;
+      background-color: @white;
+      border-radius: @borderRadius;
+      border: 1px solid @borderColor3;
+      color: @buttonColor2;
+      font-size: 0;
+      position: fixed;
+      right: 0.3rem;
+      bottom: 0.3rem;
+      width: 0.6rem;
+      height: 0.6rem;
+      border: none;
+      border-radius: 100%;
+      overflow: hidden;
+      box-shadow: @boxShadow1;
+      .btn-icon {
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 0.18rem;
+        /*margin-right: 0.1rem;*/
+      }
+      .btn-text {
+        height: 0.48rem;
+        line-height: 0.48rem;
+        display: inline-block;
+        vertical-align: middle;
+        font-size: 0.18rem;
       }
     }
   }

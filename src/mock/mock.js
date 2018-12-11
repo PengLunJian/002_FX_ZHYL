@@ -9,6 +9,12 @@ Mock.setup({
   timeout: 1500
 });
 
+Mock.mock(apis.selectMessageList.url, 'post', function (request) {
+  const success = (parseInt(Math.random() * 100)) % 3 === 0 ? false : true;
+  const resData = {success: success, ...data.data8};
+  console.log(resData);
+  return resData;
+});
 Mock.mock(apis.selectDefaultCard.url, 'post', function (request) {
   const success = (parseInt(Math.random() * 100)) % 3 === 0 ? false : true;
   const resData = {success: success, ...data.data1};
@@ -32,7 +38,7 @@ Mock.mock(apis.selectVisitorList.url, 'post', function (request) {
   const params = JSON.parse(request.body);
   const pageCode = parseInt(params['value']);
   const pageSize = 10;
-  const filterData = pagination(data.data2(22), pageCode, pageSize);
+  const filterData = pagination(data.data2(15), pageCode, pageSize);
   const success = (parseInt(Math.random() * 100)) % 3 === 0 ? false : true;
   const resData = {data: {rows: filterData.data}, success: success};
   return resData;

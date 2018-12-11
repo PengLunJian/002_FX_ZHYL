@@ -102,6 +102,26 @@ const data = {
       data: data,
       success: true
     };
+  },
+  data8: {
+    data: [
+      {
+        msgTitle: '挂号信息',
+        msgUrl: 'http://www.baidu.com/GRZX',
+        msgContent: '<div class="group">' +
+        '<label class="label">患者姓名：</label>' +
+        '<span class="span">王志雷</span></div>' +
+        '<div class="group">' +
+        '<label class="label">就诊卡号：</label>' +
+        '<span class="span">342523199007244617</span></div>' +
+        '<div class="group"><label class="label">挂号费用：</label>' +
+        '<span class="span">20.00 元</span></div>' +
+        '<div class="group"><label class="label">就诊科室：</label>' +
+        '<span class="span">肛门科</span></div>' +
+        '<div class="group"><label class="label">挂号时间：</label>' +
+        '<span class="span">2018-12-11 23:04</span></div>'
+      }
+    ]
   }
 };
 

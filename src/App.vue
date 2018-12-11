@@ -25,11 +25,11 @@
       return {
         transitionName: '',
         appId: 'wxe790a197b8d02b72',
-        token: sessionStorage.getItem('AccessToken')
+        token: true || sessionStorage.getItem('AccessToken')
       };
     },
     created() {
-      this.exeLogin();
+      // this.exeLogin();
     },
     methods: {
       exeLogin() {
