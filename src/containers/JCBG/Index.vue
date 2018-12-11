@@ -44,7 +44,6 @@
       };
     },
     created() {
-      if (this.isLoading) return;
       this.exeSelectReportList();
     },
     methods: Controller,
