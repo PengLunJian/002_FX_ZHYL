@@ -48,7 +48,7 @@
     </div>
     <div class="row-box-3">
       <button class="btn btn-confirm" v-waves.block>去缴费</button>
-      <button class="btn btn-cancel" @click="deleteSubscribe" v-waves.block>取消预约</button>
+      <button class="btn btn-cancel" @click="deleteSubscribe(item.subscribeId)" v-waves.block>取消预约</button>
       <!--<button @click="showDetails" class="btn btn-detail">查看详情</button>-->
     </div>
   </div>
@@ -63,35 +63,8 @@
       return {};
     },
     methods: {
-      // deleteSubscribe: function() {
-      //   // this.$emit('delete');
-      //   // this.deleteSubscribe();
-      // },
-      deleteSubscribe() {
-        console.log('delete');
-        const data = {pageIndex: this.pageCode};
-        this.deleteSubscribeList(data)
-          .then((res) => {
-            const {data} = res;
-            const hasNext = data.length !== 10 ? false : true;
-            if (this.mescroll) {
-              this.mescroll.endSuccess(data.length, hasNext);
-            }
-          })
-          .catch((err) => {
-            console.log(err);
-            this.pageCode--;
-            this.pageCode = this.pageCode <= 0 ? 1 : this.pageCode;
-            if (this.data.length !== 0) {
-              this.$vux.toast.show({
-                type: 'cancel',
-                text: '加载失败'
-              });
-            }
-            if (this.mescroll) {
-              this.mescroll.endErr();
-            }
-          });
+      deleteSubscribe: function(id) {
+        this.$emit('delete', id);
       },
       showDetails: function () {
         this.$router.push({
@@ -99,7 +72,7 @@
         });
       },
       ...mapActions([
-        'deleteSubscribeList'
+        'exeDeleteSubscribeList'
       ])
     }
   };

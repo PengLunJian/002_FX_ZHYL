@@ -275,21 +275,18 @@ const actions = {
         });
     });
   },
-  // 取消我的预约
+  // 取消我的预约挂号
   deleteSubscribeList({commit, state}, data) {
     return new Promise((resolve, reject) => {
-      axios.post(apis.deleteSubscribeList)
+      const {value} = data;
+      axios.post(apis.deleteSubscribeList, data)
         .then((res) => {
           res = res || {};
-          const {data, success} = res;
+          const {success} = res;
           console.log('cancel');
           if (success) {
             const oldData = state.SUBSCRIBE_LIST.data;
-            let newData = oldData.concat(data);
-            if (success) {
-              newData = data;
-              commit(ACTION_TYPES.DELETE_SUBSCRIBE_LIST_REQUEST);
-            }
+            const newData = oldData.filter(item => value !== item.subscribeId);
             commit(ACTION_TYPES.DELETE_SUBSCRIBE_LIST_SUCCESS, newData);
           } else {
             commit(ACTION_TYPES.DELETE_SUBSCRIBE_LIST_FAILURE);

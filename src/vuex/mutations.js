@@ -170,23 +170,6 @@ const mutations = {
     state.REGISTER_LIST.isSuccess = false;
     state.REGISTER_LIST.isFailure = true;
   },
-  // 取消我的预约
-  DELETE_REGISTER_LIST_REQUEST(state) {
-    state.REGISTER_LIST.isLoading = false;
-    state.REGISTER_LIST.isSuccess = false;
-    state.REGISTER_LIST.isFailure = false;
-  },
-  DELETE_REGISTER_LIST_SUCCESS(state, data) {
-    state.REGISTER_LIST.isLoading = true;
-    state.REGISTER_LIST.isSuccess = true;
-    state.REGISTER_LIST.isFailure = false;
-    state.REGISTER_LIST.data = data;
-  },
-  DELETE_REGISTER_LIST_FAILURE(state) {
-    state.REGISTER_LIST.isLoading = true;
-    state.REGISTER_LIST.isSuccess = false;
-    state.REGISTER_LIST.isFailure = true;
-  },
   // 查询我的挂号
   SELECT_SUBSCRIBE_LIST_REQUEST(state) {
     state.SUBSCRIBE_LIST.isLoading = false;
@@ -200,6 +183,23 @@ const mutations = {
     state.SUBSCRIBE_LIST.data = data;
   },
   SELECT_SUBSCRIBE_LIST_FAILURE(state) {
+    state.SUBSCRIBE_LIST.isLoading = true;
+    state.SUBSCRIBE_LIST.isSuccess = false;
+    state.SUBSCRIBE_LIST.isFailure = true;
+  },
+  // 取消我的预约挂号
+  DELETE_SUBSCRIBE_LIST_REQUEST(state) {
+    state.SUBSCRIBE_LIST.isLoading = false;
+    state.SUBSCRIBE_LIST.isSuccess = false;
+    state.SUBSCRIBE_LIST.isFailure = false;
+  },
+  DELETE_SUBSCRIBE_LIST_SUCCESS(state, data) {
+    state.SUBSCRIBE_LIST.isLoading = true;
+    state.SUBSCRIBE_LIST.isSuccess = true;
+    state.SUBSCRIBE_LIST.isFailure = false;
+    state.SUBSCRIBE_LIST.data = data;
+  },
+  DELETE_SUBSCRIBE_LIST_FAILURE(state) {
     state.SUBSCRIBE_LIST.isLoading = true;
     state.SUBSCRIBE_LIST.isSuccess = false;
     state.SUBSCRIBE_LIST.isFailure = true;
