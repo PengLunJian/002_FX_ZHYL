@@ -79,6 +79,12 @@ const apis = {
       pageSize: 10
     }
   },
+  deleteSubscribeList: {
+    url: '/WenRongBusiness/v1/regist/appoint/cancel',
+    params: {
+      subscribeId: ''
+    }
+  },
   selectPaymentRecord: {
     url: '/WenRongBusiness/v1/personal/pay/record',
     params: {

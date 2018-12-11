@@ -1,56 +1,63 @@
 <template>
   <div class="FX_ZHYL_GRXX">
-    <div class="module JBXX">
-      <div class="row-box-1">
-        <h3 class="small-title">基本信息</h3>
+    <error v-if="isFailure"></error>
+    <div class="select" v-if="isSuccess&&data">
+      <div class="module JBXX">
+        <div class="row-box-1">
+          <h3 class="small-title">基本信息</h3>
+        </div>
+        <div class="row-box-2">
+          <div class="group">
+            <label class="label">姓名</label>
+            <span class="span">{{data.name}}</span>
+          </div>
+          <div class="group">
+            <label class="label">身份证号</label>
+            <span class="span">{{data.idCardNo}}</span>
+          </div>
+          <div class="group">
+            <label class="label">就诊卡</label>
+            <span class="span">{{data.patientCardNo}}</span>
+          </div>
+          <div class="group">
+            <label class="label">手机号</label>
+            <span class="span">{{data.phone}}</span>
+          </div>
+        </div>
       </div>
-      <div class="row-box-2">
-        <div class="group">
-          <label class="label">姓名</label>
-          <span class="span">{{data.name}}</span>
+      <div class="module ZYXX">
+        <div class="row-box-1">
+          <h3 class="small-title">紧急联系人信息</h3>
         </div>
-        <div class="group">
-          <label class="label">身份证号</label>
-          <span class="span">{{data.idCardNo}}</span>
+        <div class="row-box-2">
+          <div class="group">
+            <label class="label">关系</label>
+            <span class="span">{{data.releation}}</span>
+          </div>
+          <div class="group">
+            <label class="label">手机号</label>
+            <span class="span">{{data.linkmanTel}}</span>
+          </div>
         </div>
-        <div class="group">
-          <label class="label">就诊卡</label>
-          <span class="span">{{data.patientCardNo}}</span>
-        </div>
-        <div class="group">
-          <label class="label">手机号</label>
-          <span class="span">{{data.phone}}</span>
+        <div class="row-box-3">
+          <button class="btn btn-unbind">解绑该就诊卡</button>
+          <!--<p class="message">就诊卡在2019年03月04日后可解绑</p>-->
         </div>
       </div>
     </div>
-    <div class="module ZYXX">
-      <div class="row-box-1">
-        <h3 class="small-title">紧急联系人信息</h3>
-      </div>
-      <div class="row-box-2">
-        <div class="group">
-          <label class="label">关系</label>
-          <span class="span">{{data.releation}}</span>
-        </div>
-        <div class="group">
-          <label class="label">手机号</label>
-          <span class="span">{{data.linkmanTel}}</span>
-        </div>
-      </div>
-      <div class="row-box-3">
-        <button class="btn btn-unbind disabled">解绑该就诊卡</button>
-        <!--<p class="message">就诊卡在2019年03月04日后可解绑</p>-->
-      </div>
-    </div>
+    <no-data v-if="isSuccess&&!data"></no-data>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import {mapState} from 'vuex';
   import Controller from './Controller';
+  import Error from '../../components/Error';
+  import NoData from '../../components/NoData';
 
   export default {
     name: 'GRXX',
+    components: {Error, NoData},
     data() {
       return {};
     },

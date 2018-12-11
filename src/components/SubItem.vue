@@ -48,13 +48,14 @@
     </div>
     <div class="row-box-3">
       <button class="btn btn-confirm" v-waves.block>去缴费</button>
-      <button class="btn btn-cancel" v-waves.block>取消预约</button>
+      <button class="btn btn-cancel" @click="deleteSubscribe(item.subscribeId)" v-waves.block>取消预约</button>
       <!--<button @click="showDetails" class="btn btn-detail">查看详情</button>-->
     </div>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
+  import {mapActions} from 'vuex';
   export default {
     name: 'SubItem',
     props: ['item'],
@@ -62,11 +63,17 @@
       return {};
     },
     methods: {
+      deleteSubscribe: function(id) {
+        this.$emit('delete', id);
+      },
       showDetails: function () {
         this.$router.push({
           path: this.$routes.YYXQ.path
         });
-      }
+      },
+      ...mapActions([
+        'exeDeleteSubscribeList'
+      ])
     }
   };
 </script>
@@ -151,13 +158,6 @@
           border: 1px solid @borderColor;
         }
       }
-      /*.btn-detail {*/
-      /*width: 100%;*/
-      /*display: block;*/
-      /*line-height: 0.4rem;*/
-      /*text-align: center;*/
-      /*font-size: 0.15rem;*/
-      /*}*/
     }
     &.slot-out {
       &:before {

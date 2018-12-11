@@ -186,6 +186,23 @@ const mutations = {
     state.SUBSCRIBE_LIST.isSuccess = false;
     state.SUBSCRIBE_LIST.isFailure = true;
   },
+  // 取消我的预约挂号
+  DELETE_SUBSCRIBE_LIST_REQUEST(state) {
+    state.SUBSCRIBE_LIST.isLoading = false;
+    state.SUBSCRIBE_LIST.isSuccess = false;
+    state.SUBSCRIBE_LIST.isFailure = false;
+  },
+  DELETE_SUBSCRIBE_LIST_SUCCESS(state, data) {
+    state.SUBSCRIBE_LIST.isLoading = true;
+    state.SUBSCRIBE_LIST.isSuccess = true;
+    state.SUBSCRIBE_LIST.isFailure = false;
+    state.SUBSCRIBE_LIST.data = data;
+  },
+  DELETE_SUBSCRIBE_LIST_FAILURE(state) {
+    state.SUBSCRIBE_LIST.isLoading = true;
+    state.SUBSCRIBE_LIST.isSuccess = false;
+    state.SUBSCRIBE_LIST.isFailure = true;
+  },
   // 已支付记录
   SELECT_ISPAYED_RECORDS_REQUEST(state) {
     state.ISPAYED_RECORDS.isLoading = false;
