@@ -43,6 +43,12 @@ const states = {
       sex: ''
     }
   },
+  MESSAGE_LIST: {
+    isLoading: false,
+    isSuccess: false,
+    isFailure: false,
+    data: []
+  },
   VISITOR_LIST: {
     isLoading: false,
     isSuccess: false,

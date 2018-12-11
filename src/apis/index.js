@@ -161,6 +161,9 @@ const apis = {
   selectHealthList: {
     url: '/WenRongBusiness/v1/personal/health/query',
     params: {}
+  },
+  selectMessageList: {
+    url: 'PatientMessage/v1/msg/list'
   }
 
 };

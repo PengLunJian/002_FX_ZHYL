@@ -3,23 +3,23 @@
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <no-data v-if="isPayedSuccess && !isPayedItems.length"></no-data>
-          <error v-if="isPayedFailed && !isPayedItems.length"
-                 @refresh="this.exeSelectPaymentRecords"></error>
-          <mescroll-vue v-if="isPayedItems.length" ref="mescroll"
+          <loading v-if="!isPayedIsLoading"></loading>
+          <no-data v-if="isPayedIsSuccess&&!isPayedData.length"></no-data>
+          <error v-if="isPayedIsFailure" @refresh="exeSelectPaymentRecords"></error>
+          <mescroll-vue v-if="isPayedData.length" ref="mescroll"
                         :down="down" :up="up" @init="initMescroll1">
-            <pay-item v-for="(item,index) in isPayedItems"
+            <pay-item v-for="(item,index) in isPayedData"
                       :key="index"
                       :item="item"></pay-item>
           </mescroll-vue>
         </div>
         <div class="swiper-slide">
-          <no-data v-if="noPayedSuccess && !noPayedItems.length"></no-data>
-          <error v-if="noPayedFailed && !noPayedItems.length"
-                 @refresh="this.exeSelectPaymentRecords"></error>
-          <mescroll-vue v-if="noPayedItems.length" ref="mescroll"
+          <loading v-if="!noPayedIsLoading"></loading>
+          <no-data v-if="noPayedIsSuccess&&!noPayedData.length"></no-data>
+          <error v-if="noPayedIsFailure" @refresh="exeSelectPaymentRecords"></error>
+          <mescroll-vue v-if="noPayedData.length" ref="mescroll"
                         :down="down" :up="up" @init="initMescroll2">
-            <pay-item v-for="(item,index) in noPayedItems"
+            <pay-item v-for="(item,index) in noPayedData"
                       :key="index"
                       :item="item"></pay-item>
           </mescroll-vue>
@@ -37,10 +37,12 @@
   import PayItem from '../../components/PayItem';
   import NoData from '../../components/NoData';
   import Error from '../../components/Error';
+  import Loading from '../../components/Loading';
 
   export default {
     name: 'tab-content',
     components: {
+      Loading,
       Error,
       NoData,
       PayItem,
@@ -68,18 +70,15 @@
         }
       };
     },
+    props: ['tabIndex'],
     created() {
       this.$nextTick(() => {
         this.initSwiper();
       });
       if (!this.isPayedIsLoading) {
-        this.$vux.loading.show({
-          text: '加载中...'
-        });
         this.exeSelectPaymentRecords();
       }
     },
-    props: ['tabIndex'],
     methods: Controller,
     mounted() {
       window.onload = () => {
@@ -87,12 +86,12 @@
       };
     },
     computed: mapState({
-      isPayedItems: state => state.ISPAYED_RECORDS.data,
-      noPayedItems: state => state.NOPAYED_RECORDS.data,
-      isPayedFailed: state => state.ISPAYED_RECORDS.isFailure,
-      noPayedFailed: state => state.NOPAYED_RECORDS.isFailure,
-      isPayedSuccess: state => state.ISPAYED_RECORDS.isSuccess,
-      noPayedSuccess: state => state.NOPAYED_RECORDS.isSuccess,
+      isPayedData: state => state.ISPAYED_RECORDS.data,
+      noPayedData: state => state.NOPAYED_RECORDS.data,
+      isPayedIsFailure: state => state.ISPAYED_RECORDS.isFailure,
+      noPayedIsFailure: state => state.NOPAYED_RECORDS.isFailure,
+      isPayedIsSuccess: state => state.ISPAYED_RECORDS.isSuccess,
+      noPayedIsSuccess: state => state.NOPAYED_RECORDS.isSuccess,
       isPayedIsLoading: state => state.ISPAYED_RECORDS.isLoading,
       noPayedIsLoading: state => state.NOPAYED_RECORDS.isLoading
     }),
@@ -104,9 +103,6 @@
         }
         this.swiper.slideTo(this.tabIndex, 600, true);
         if (!this.noPayedIsLoading) {
-          this.$vux.loading.show({
-            text: '加载中...'
-          });
           this.exeSelectPaymentRecords();
         }
       }

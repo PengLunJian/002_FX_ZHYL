@@ -212,8 +212,9 @@ li, ul {
   display: none !important;
 }
 
-.weui-loading_toast {
+.vux-loading {
   .weui-toast {
+    z-index: 5001 !important;
     width: 1rem !important;
     height: auto !important;
     padding: 0.15rem 0 !important;
@@ -235,6 +236,13 @@ li, ul {
     width: 1rem !important;
     height: auto !important;
     padding: 0.15rem 0 !important;
+    &.weui-toast_text {
+      padding: 0.1rem 0 !important;
+      .weui-toast__content {
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+    }
   }
   .weui-icon_toast {
     width: 0.4rem;

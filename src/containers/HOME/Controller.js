@@ -1,4 +1,5 @@
-import {mapActions} from 'vuex';
+import {mapActions, mapMutations} from 'vuex';
+import {getUriPath} from '../../utils';
 
 const controller = {
   addVisitor() {
@@ -11,8 +12,16 @@ const controller = {
       path: this.$routes.JZTM.path
     });
   },
-  showContent() {
+  showDetail(msgUrl) {
+    const path = getUriPath(msgUrl);
+    if (!path) return;
+    this.$router.push({
+      path: path
+    });
+  },
+  showMessage() {
     if (this.clazz === 'hide') {
+      if (!this.isLoading) this.exeSelectMessageList();
       const element = document.querySelector('html');
       const fontSize = parseFloat(element.style.fontSize);
       const height = this.$refs.inner.offsetHeight;
@@ -36,8 +45,20 @@ const controller = {
         console.log(err);
       });
   },
+  exeSelectMessageList() {
+    this.selectMessageList()
+      .then((res) => {
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
   ...mapActions([
-    'selectDefaultCard'
+    'selectDefaultCard',
+    'selectMessageList'
+  ]),
+  ...mapMutations([
+    'SELECT_MESSAGE_LIST_REQUEST'
   ])
 };
 

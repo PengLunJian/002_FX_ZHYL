@@ -6,7 +6,7 @@ import {
 } from '../utils';
 
 Mock.setup({
-  timeout: 1000
+  timeout: 1500
 });
 
 Mock.mock(apis.selectDefaultCard.url, 'post', function (request) {
@@ -55,7 +55,8 @@ Mock.mock(apis.selectPaymentRecord.url, 'post', function (request) {
   const pageCode = parseInt(params['pageIndex']);
   const pageSize = parseInt(params['pageSize']);
   const size = payStatus ? 0 : 21;
-  return pagination(data.data6(size), pageCode, pageSize);
+  const success = (parseInt(Math.random() * 100)) % 3 === 0 ? true : true;
+  return {success: success, ...pagination(data.data6(size), pageCode, pageSize)};
 });
 Mock.mock(apis.selectDoctorList.url, 'post', function (request) {
   const params = JSON.parse(request.body);

@@ -1,7 +1,7 @@
 <template>
   <div class="FX_ZHYL_JZTM">
-    <loading :show="!isLoading" text="加载中..."></loading>
     <error v-if="isFailure" @refresh="exeSelectDefaultCard"></error>
+    <no-data v-if="isSuccess&&!data"></no-data>
     <div class="content" v-if="isSuccess&&data">
       <div class="row-box-1">
         <span class="name">{{data.name}}</span>
@@ -23,11 +23,11 @@
   import {mapState} from 'vuex';
   import Controller from './Controller';
   import Error from '../../components/Error';
-  import {Loading} from 'vux';
+  import NoData from '../../components/NoData';
 
   export default {
     components: {
-      Loading,
+      NoData,
       Error
     },
     name: 'JZTM',

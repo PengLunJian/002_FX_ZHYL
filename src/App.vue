@@ -25,11 +25,11 @@
       return {
         transitionName: '',
         appId: 'wxe790a197b8d02b72',
-        token: true || sessionStorage.getItem('AccessToken')
+        token: sessionStorage.getItem('AccessToken')
       };
     },
     created() {
-      // this.exeLogin();
+      this.exeLogin();
     },
     methods: {
       exeLogin() {
@@ -123,6 +123,8 @@
   @import "assets/less/common.less";
 
   #app {
+    z-index: 0;
+    position: relative;
     min-height: 100vh;
     background-color: @white;
   }

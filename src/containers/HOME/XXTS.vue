@@ -1,39 +1,22 @@
 <template>
-  <div class="module XXTS hide" :class="clazz">
-    <div class="trigger" @click="showContent">
-      <p class="info">缴费提醒</p>
+  <div class="module XXTS" :class="clazz">
+    <div class="trigger" @click="showMessage">
+      <h3 class="message">消息提醒</h3>
       <i class="icon icon-next"></i>
     </div>
     <div class="content" :style="style">
-      <div class="innerContent" ref="inner">
-        <div class="row-box-1">
-          <p class="desc">你有一笔挂号费代支付</p>
-        </div>
-        <div class="row-box-2">
-          <div class="group">
-            <label class="label">就诊姓名：</label>
-            <span class="span">胡代宇</span>
+      <div class="context" ref="inner">
+        <loading v-if="!isLoading"></loading>
+        <no-data v-if="isSuccess&&!data.length"></no-data>
+        <error v-if="isFailure" @refresh="exeSelectMessageList"></error>
+        <div v-if="isSuccess&&data.length">
+          <div class="row-box-1">
+            <h4>{{data[0].msgTitle}}</h4>
           </div>
-          <div class="group">
-            <label class="label">就诊卡号：</label>
-            <span class="span">36************99</span>
+          <div class="row-box-2" v-html="data[0].msgContent"></div>
+          <div class="row-box-3">
+            <button class="btn btn-confirm" @click="showDetail(data[0].msgUrl)">查看详情</button>
           </div>
-          <div class="group">
-            <label class="label">预约科室：</label>
-            <span class="span">眼科</span>
-          </div>
-          <div class="group">
-            <label class="label">就诊时间：</label>
-            <span class="span">2018/09/08 13:00-16:00</span>
-          </div>
-          <div class="group">
-            <label class="label">挂号费用：</label>
-            <span class="span">20.00元</span>
-          </div>
-        </div>
-        <div class="row-box-3">
-          <button class="btn btn-confirm">去缴费</button>
-          <button class="btn btn-cancel">取消挂号</button>
         </div>
       </div>
     </div>
@@ -41,20 +24,36 @@
 </template>
 
 <script type="text/ecmascript-6">
+  import {mapState} from 'vuex';
   import Controller from './Controller';
+  import Error from '../../components/Error';
+  import NoData from '../../components/NoData';
+  import Loading from '../../components/Loading';
 
   export default {
+    components: {
+      NoData,
+      Error,
+      Loading
+    },
     name: 'XXTS',
     data() {
       return {
-        clazz: 'hide',
         style: '',
-        height: 0
+        height: 0,
+        clazz: 'hide'
       };
     },
+    created() {
+      this.SELECT_MESSAGE_LIST_REQUEST();
+    },
     methods: Controller,
-    mounted() {
-    }
+    computed: mapState({
+      isLoading: state => state.MESSAGE_LIST.isLoading,
+      isSuccess: state => state.MESSAGE_LIST.isSuccess,
+      isFailure: state => state.MESSAGE_LIST.isFailure,
+      data: state => state.MESSAGE_LIST.data
+    })
   };
 </script>
 
@@ -72,9 +71,10 @@
       background-repeat: no-repeat;
       background-position: 0.15rem center;
       background-image: url('../../assets/images/news_icon@2x.png');
-      .info {
+      .message {
         padding-left: 0.1rem;
         font-size: 0.14rem;
+        color: #333333;
       }
       .icon {
         width: 0.4rem;
@@ -92,31 +92,24 @@
       }
     }
     .content {
-      height: 2.02rem;
       overflow: hidden;
       transition: all 300ms ease;
       font-size: 0.14rem;
-      .row-box-1 {
-        padding-top: 0.1rem;
-        line-height: 0.2rem;
+      .context {
+        height: 1.99rem;
+        position: relative;
         border-top: 1px solid @borderColor2;
-        .desc {
-          padding: 0 0.15rem;
+      }
+      .row-box-1 {
+        padding: 0.1rem 0.15rem 0;
+        h4 {
           font-size: 0.14rem;
         }
       }
       .row-box-2 {
-        padding: 0.08rem 0.15rem 0.1rem;
-        .group {
-          line-height: 0.2rem;
-          font-size: 0.14rem;
-          .label {
-
-          }
-          .span {
-            color: @fontColor;
-          }
-        }
+        padding: 0.1rem 0.15rem;
+        line-height: 0.2rem;
+        font-size: 0.14rem;
       }
       .row-box-3 {
         padding: 0.1rem 0.15rem;

@@ -1,7 +1,6 @@
 <template>
   <div class="FX_ZHYL_HZLB">
     <div class="content">
-      <loading :show="!isLoading" text="加载中..."></loading>
       <no-data v-if="isSuccess&&!data.length"></no-data>
       <error v-if="isFailure&&!data.length" @refresh="exeSelectVisitorList"></error>
       <mescroll-vue v-if="data.length"
@@ -34,15 +33,14 @@
 <script type="text/ecmascript-6">
   import {mapState} from 'vuex';
   import Controller from './Controller';
-  import SufferItem from '../../components/SufferItem';
-  import MescrollVue from 'mescroll.js/mescroll.vue';
-  import {Swipeout, SwipeoutItem, SwipeoutButton, Loading} from 'vux';
   import Error from '../../components/Error';
   import NoData from '../../components/NoData';
+  import MescrollVue from 'mescroll.js/mescroll.vue';
+  import SufferItem from '../../components/SufferItem';
+  import {Swipeout, SwipeoutItem, SwipeoutButton} from 'vux';
 
   export default {
     components: {
-      Loading,
       NoData,
       Error,
       Swipeout,
@@ -73,7 +71,7 @@
       };
     },
     created() {
-      this.exeClearVisitorList();
+      this.CLEAR_VISITOR_LIST_SUCCESS();
       this.exeSelectVisitorList();
     },
     methods: Controller,
