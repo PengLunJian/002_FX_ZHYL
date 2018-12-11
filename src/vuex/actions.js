@@ -303,6 +303,31 @@ const actions = {
         });
     });
   },
+  // 取消我的预约挂号
+  deleteSubscribeList({commit, state}, data) {
+    return new Promise((resolve, reject) => {
+      const {value} = data;
+      axios.post(apis.deleteSubscribeList, data)
+        .then((res) => {
+          res = res || {};
+          const {success} = res;
+          console.log('cancel');
+          if (success) {
+            const oldData = state.SUBSCRIBE_LIST.data;
+            const newData = oldData.filter(item => value !== item.subscribeId);
+            commit(ACTION_TYPES.DELETE_SUBSCRIBE_LIST_SUCCESS, newData);
+          } else {
+            commit(ACTION_TYPES.DELETE_SUBSCRIBE_LIST_FAILURE);
+          }
+          resolve(res);
+        })
+        .catch((err) => {
+          console.log('fail');
+          commit(ACTION_TYPES.DELETE_SUBSCRIBE_LIST_FAILURE);
+          reject(err);
+        });
+    });
+  },
   // 查询已支付记录
   selectIsPayedRecords({commit, state}, data) {
     const {pageIndex} = data;

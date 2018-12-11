@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <error v-if="isFailure" @refresh="exeRefresh"></error>
-    <transition :name="transitionName" v-if="token">
+    <!--<error v-if="isFailure" @refresh="exeRefresh"></error>-->
+    <transition :name="transitionName">
       <router-view></router-view>
     </transition>
   </div>

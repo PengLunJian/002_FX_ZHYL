@@ -3,7 +3,7 @@
     <no-data v-if="isLoading&&!isFailure&&!data.length"></no-data>
     <error v-if="isFailure&&!data.length" @refresh="exeSelectSubscribeList"></error>
     <mescroll-vue v-if="data.length" ref="mescroll" :down="down" :up="up" @init="init">
-      <sub-item v-for="(item,index) in data" :item="item" :key="index"></sub-item>
+      <sub-item v-for="(item,index) in data" :item="item" :key="index" @delete="exeDeleteSubscribeList"></sub-item>
     </mescroll-vue>
   </div>
 </template>
