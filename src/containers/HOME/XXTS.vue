@@ -1,6 +1,6 @@
 <template>
   <div class="module XXTS" :class="clazz">
-    <div class="trigger" @click="exeSelectMessageList">
+    <div class="trigger" @click="showMessage();">
       <h3 class="message">消息提醒</h3>
       <i class="icon icon-next"></i>
     </div>
@@ -96,7 +96,7 @@
       transition: all 300ms ease;
       font-size: 0.14rem;
       .context {
-        height: auto;
+        height: 2rem;
         position: relative;
         border-top: 1px solid @borderColor2;
       }

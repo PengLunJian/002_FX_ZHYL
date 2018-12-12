@@ -21,6 +21,7 @@ const controller = {
   },
   showMessage() {
     if (this.clazz === 'hide') {
+      if (!this.isLoading) this.exeSelectMessageList();
       const element = document.querySelector('html');
       const fontSize = parseFloat(element.style.fontSize);
       const height = this.$refs.inner.offsetHeight;
@@ -39,22 +40,23 @@ const controller = {
   exeSelectDefaultCard() {
     this.selectDefaultCard()
       .then((res) => {
+        res = res || {};
+        const {data, success} = res;
+        if (success) {
+          console.log(data);
+        }
       })
       .catch((err) => {
         console.log(err);
       });
   },
   exeSelectMessageList() {
-    if (this.isLoading) {
-      this.showMessage();
-      return;
-    }
     this.selectMessageList()
       .then((res) => {
         res = res || {};
-        const {success} = res;
+        const {data, success} = res;
         if (success) {
-          this.showMessage();
+          console.log(data);
         }
       })
       .catch((err) => {
