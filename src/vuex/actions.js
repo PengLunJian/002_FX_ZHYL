@@ -335,6 +335,7 @@ const actions = {
       axios.post(apis.selectPaymentRecord, data)
         .then((res) => {
           res = res || {};
+          console.log(res);
           const {data, success} = res;
           if (success) {
             if (pageIndex === 1) {
@@ -358,7 +359,7 @@ const actions = {
   selectNoPayedRecords({commit, state}, data) {
     const {pageIndex} = data;
     return new Promise((resolve, reject) => {
-      axios.post(apis.selectPaymentRecord, data)
+      axios.post(apis.selectUnpaidList, data)
         .then((res) => {
           res = res || {};
           const {data, success} = res;

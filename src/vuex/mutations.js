@@ -190,6 +190,14 @@ const mutations = {
     state.REGISTER_LIST.isSuccess = false;
     state.REGISTER_LIST.isFailure = true;
   },
+  // 清空我的预约
+  CLEAR_REGISTER_LIST_SUCCESS(state) {
+    state.REGISTER_LIST.data = [];
+  },
+  // 清空我的挂号
+  CLEAR_SUBCRIBE_LIST_SUCCESS(state) {
+    state.SUBSCRIBE_LIST.data = [];
+  },
   // 查询我的挂号
   SELECT_SUBSCRIBE_LIST_REQUEST(state) {
     state.SUBSCRIBE_LIST.isLoading = false;

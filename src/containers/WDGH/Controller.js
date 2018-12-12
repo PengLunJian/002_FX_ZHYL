@@ -1,4 +1,4 @@
-import {mapActions} from 'vuex';
+import {mapActions, mapMutations} from 'vuex';
 
 const controller = {
   init(mescroll) {
@@ -45,6 +45,9 @@ const controller = {
   },
   ...mapActions([
     'selectRegisterList'
+  ]),
+  ...mapMutations([
+    'CLEAR_REGISTER_LIST_SUCCESS'
   ])
 };
 

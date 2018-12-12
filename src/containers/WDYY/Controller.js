@@ -1,4 +1,4 @@
-import {mapActions} from 'vuex';
+import {mapActions, mapMutations} from 'vuex';
 
 const controller = {
   init(mescroll) {
@@ -49,7 +49,6 @@ const controller = {
       .then((res) => {
         console.log(res);
         const {data} = res;
-        // if ()
         const hasNext = data.length !== 10 ? false : true;
         if (this.mescroll) {
           this.mescroll.endSuccess(data.length, hasNext);
@@ -73,6 +72,9 @@ const controller = {
   ...mapActions([
     'selectSubscribeList',
     'deleteSubscribeList'
+  ]),
+  ...mapMutations([
+    'CLEAR_REGISTER_LIST_SUCCESS'
   ])
 };
 

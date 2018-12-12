@@ -53,13 +53,15 @@
       </router-link>
     </div>
     <div class="module DSMK">
-      <router-link :to="this.$routes.JCBG.path">
+      <!--<router-link :to="this.$routes.JCBG.path">-->
+      <div @click="notAvailable">
         <div class="link-item btn">
           <i class="link-icon icon-report"></i>
           <span class="link-text">检查报告</span>
           <i class="link-icon icon-next"></i>
         </div>
-      </router-link>
+      </div>
+      <!--</router-link>-->
       <router-link :to="this.$routes.JKDA.path">
         <div class="link-item btn">
           <i class="link-icon icon-file"></i>
