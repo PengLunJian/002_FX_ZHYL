@@ -21,7 +21,6 @@ const controller = {
   },
   showMessage() {
     if (this.clazz === 'hide') {
-      if (!this.isLoading) this.exeSelectMessageList();
       const element = document.querySelector('html');
       const fontSize = parseFloat(element.style.fontSize);
       const height = this.$refs.inner.offsetHeight;
@@ -46,8 +45,17 @@ const controller = {
       });
   },
   exeSelectMessageList() {
+    if (this.isLoading) {
+      this.showMessage();
+      return;
+    }
     this.selectMessageList()
       .then((res) => {
+        res = res || {};
+        const {success} = res;
+        if (success) {
+          this.showMessage();
+        }
       })
       .catch((err) => {
         console.log(err);
