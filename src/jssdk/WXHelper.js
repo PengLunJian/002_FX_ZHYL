@@ -3,7 +3,7 @@ import wx from 'weixin-js-sdk';
 export const handlerWXConfig = (config) => {
   return new Promise((resolve, reject) => {
     wx.config({
-      debug: true,
+      debug: false,
       appId: config.appId,
       timestamp: config.timestamp,
       nonceStr: config.nonceStr,
@@ -11,11 +11,11 @@ export const handlerWXConfig = (config) => {
       jsApiList: config.jsApiList
     });
     wx.ready(() => {
-      alert('config=success');
+      // alert('config=success');
       resolve();
     });
     wx.error((res) => {
-      alert('config=error');
+      // alert('config=error');
       reject(res);
     });
   });
@@ -26,7 +26,7 @@ export const handlerCheckJsApi = (config) => {
     wx.checkJsApi({
       jsApiList: config.jsApiList,
       success: (res) => {
-        alert('jsApiList=success+res=' + res);
+        // alert('jsApiList=success+res=' + res);
         resolve(res);
       }
     });
@@ -42,9 +42,16 @@ export const handlerChooseWXPay = (config) => {
       signType: config.signType,
       paySign: config.paySign,
       success: (res) => {
-        alert('chooseWXPay=success+res=' + res);
+        // alert('chooseWXPay=success+res=' + res);
         resolve(res);
       }
     });
+  });
+};
+
+export const handlerCloseWindow = () => {
+  return new Promise((resolve) => {
+    wx.closeWindow();
+    resolve();
   });
 };

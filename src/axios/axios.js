@@ -3,7 +3,7 @@ import axios from 'axios';
 import apis from '../apis';
 
 axios.defaults.timeout = apis.default.timeout;
-// axios.defaults.baseURL = apis.default.baseUrl;
+axios.defaults.baseURL = apis.default.baseUrl;
 axios.defaults.headers = apis.default.headers;
 
 axios.interceptors.request.use(
@@ -24,11 +24,19 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
   response => {
-    Vue.$vux.loading.hide();
-    return response.data;
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        Vue.$vux.loading.hide();
+        resolve(response.data);
+      }, 1000);
+    });
   }, error => {
-    Vue.$vux.loading.hide();
-    return Promise.resolve(error.response);
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        Vue.$vux.loading.hide();
+        resolve(error.response);
+      }, 1000);
+    });
   }
 );
 

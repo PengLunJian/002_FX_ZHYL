@@ -52,7 +52,6 @@
       };
     },
     created() {
-      alert('created');
       this.exeFillParams();
       this.exeSelectJSSDKConfig();
       this.exeSelectDefaultCard();

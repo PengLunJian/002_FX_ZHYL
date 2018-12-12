@@ -9,7 +9,7 @@
       </div>
       <div class="row-box-2">
         <img class="bar-code" :src="data.barCodeUrl"/>
-        <img class="qr-code" :src="data.qrcodeUrl"/>
+        <img class="qr-code" v-lazy="data.qrcodeUrl" :key="data.qrcodeUrl"/>
         <p class="message">出示就诊二维码到设备扫描</p>
       </div>
       <div class="row-box-3">

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <!--<error v-if="isFailure" @refresh="exeRefresh"></error>-->
-    <transition :name="transitionName">
+    <error v-if="isFailure" @refresh="exeRefresh"></error>
+    <transition :name="transitionName" v-if="token">
       <router-view></router-view>
     </transition>
   </div>
@@ -10,13 +10,9 @@
 <script type="text/ecmascript-6">
   import {mapActions, mapState} from 'vuex';
   import Error from './components/Error';
-  import {
-    getQueryParams
-  } from './utils';
-  import {
-    jumpToWeChatUrl,
-    saveLocalStorage
-  } from './login';
+  import {getQueryParams} from './utils';
+  import {jumpToWeChatUrl, saveLocalStorage} from './login';
+  // import {handlerWXConfig, handlerCloseWindow} from './jssdk/WXHelper';
 
   export default {
     components: {Error},
@@ -25,11 +21,13 @@
       return {
         transitionName: '',
         appId: 'wxe790a197b8d02b72',
-        token: true || sessionStorage.getItem('AccessToken')
+        token: sessionStorage.getItem('AccessToken'),
+        jsApiList: {jsApiList: ['closeWindow']}
       };
     },
     created() {
-      // this.exeLogin();
+      this.exeLogin();
+      // this.exeSelectJSSDKConfig();
     },
     methods: {
       exeLogin() {
@@ -37,6 +35,7 @@
         if (!AccessToken) {
           const code = getQueryParams('code');
           if (!code) {
+            // handlerCloseWindow();
             const baseUrl = window.location.href;
             sessionStorage.setItem('baseUrl', baseUrl);
             jumpToWeChatUrl(this.appId);
@@ -93,9 +92,26 @@
             console.log(err);
           });
       },
+      // exeSelectJSSDKConfig() {
+      //   const data = {
+      //     value: window.location.href.split('#')[0]
+      //   };
+      //   this.selectJSSDKConfig(data)
+      //     .then((res) => {
+      //       const {data, success} = res;
+      //       if (success) {
+      //         const config = Object.assign(data, this.jsApiList);
+      //         handlerWXConfig(config);
+      //       }
+      //     })
+      //     .catch((err) => {
+      //       console.log(err);
+      //     });
+      // },
       ...mapActions([
         'selectDeviceId',
-        'selectGrantLogin'
+        'selectGrantLogin',
+        'selectJSSDKConfig'
       ])
     },
     watch: {
