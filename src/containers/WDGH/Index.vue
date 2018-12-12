@@ -45,7 +45,7 @@
       };
     },
     created() {
-      if (this.loading) return;
+      this.CLEAR_REGISTER_LIST_SUCCESS();
       this.exeSelectRegisterList();
     },
     methods: Controller,

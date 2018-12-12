@@ -43,6 +43,7 @@
       };
     },
     created() {
+      this.CLEAR_REGISTER_LIST_SUCCESS();
       this.exeSelectSubscribeList();
     },
     methods: Controller,

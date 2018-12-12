@@ -161,6 +161,29 @@ const states = {
       smoking: '', // 1是无，2抽烟
       drink: '' // 1是无，2喝酒
     }
+  },
+  PAID_LIST: {
+    isLoading: false,
+    isSuccess: false,
+    isFailure: false,
+    data: [{
+      recipeId: '',
+      recipeNo: '',
+      seqNo: '',
+      feeCode: '',
+      drugFlag: '',
+      itemCode: '',
+      itemName: '',
+      qty: '',
+      unitPrice: '',
+      unit: '',
+      totCost: '',
+      doctName: '',
+      doctDeptName: '',
+      execDeptCode: '',
+      execDeptName: '',
+      moDate: ''
+    }]
   }
 };
 

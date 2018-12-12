@@ -3,7 +3,6 @@
     <div class="swiper-container">
       <div class="swiper-wrapper">
         <div class="swiper-slide">
-          <loading v-if="!isPayedIsLoading"></loading>
           <no-data v-if="isPayedIsSuccess&&!isPayedData.length"></no-data>
           <error v-if="isPayedIsFailure" @refresh="exeSelectPaymentRecords"></error>
           <mescroll-vue v-if="isPayedData.length" ref="mescroll"
@@ -14,7 +13,6 @@
           </mescroll-vue>
         </div>
         <div class="swiper-slide">
-          <loading v-if="!noPayedIsLoading"></loading>
           <no-data v-if="noPayedIsSuccess&&!noPayedData.length"></no-data>
           <error v-if="noPayedIsFailure" @refresh="exeSelectPaymentRecords"></error>
           <mescroll-vue v-if="noPayedData.length" ref="mescroll"
@@ -37,12 +35,10 @@
   import PayItem from '../../components/PayItem';
   import NoData from '../../components/NoData';
   import Error from '../../components/Error';
-  import Loading from '../../components/Loading';
 
   export default {
     name: 'tab-content',
     components: {
-      Loading,
       Error,
       NoData,
       PayItem,

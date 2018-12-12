@@ -85,6 +85,17 @@ const apis = {
       subscribeId: ''
     }
   },
+  // 查询已缴费记录
+  selectPaidList: {
+    url: 'WenRongBusiness/v1/personal/pay/complete',
+    param: {}
+  },
+  // 查询未交费记录
+  selectUnpaidList: {
+    url: 'WenRongBusiness/v1/personal/pay/complete',
+    param: {}
+  },
+  // 查找缴费记录-旧接口，暂用，新接口无数据
   selectPaymentRecord: {
     url: '/WenRongBusiness/v1/personal/pay/record',
     params: {
@@ -171,7 +182,6 @@ const apis = {
   selectMessageList: {
     url: 'PatientMessage/v1/msg/list'
   }
-
 };
 
 export default apis;
