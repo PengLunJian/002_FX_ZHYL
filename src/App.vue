@@ -140,8 +140,10 @@
 
   #app {
     z-index: 0;
+    height: 100vh;
     position: relative;
-    min-height: 100vh;
     background-color: @white;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
   }
 </style>
