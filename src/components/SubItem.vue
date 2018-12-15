@@ -47,7 +47,7 @@
       </div>
     </div>
     <div class="row-box-3">
-      <button class="btn btn-confirm" v-waves.block>去缴费</button>
+      <button class="btn btn-confirm" @click="toPayBill" v-waves.block>去缴费</button>
       <button class="btn btn-cancel" @click="deleteSubscribe(item.subscribeId)" v-waves.block>取消预约</button>
       <!--<button @click="showDetails" class="btn btn-detail">查看详情</button>-->
     </div>
@@ -63,6 +63,11 @@
       return {};
     },
     methods: {
+      toPayBill: function() {
+        this.$router.push({
+          path: this.$routes.JFJL.path
+        });
+      },
       deleteSubscribe: function(id) {
         this.$emit('delete', id);
       },

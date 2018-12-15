@@ -33,7 +33,7 @@
       <router-link :to="this.$routes.JFJL.path">
         <div class="link-item btn">
           <i class="link-icon icon-money"></i>
-          <span class="link-text">缴费记录</span>
+          <span class="link-text">待缴记录</span>
           <i class="link-icon icon-next"></i>
         </div>
       </router-link>

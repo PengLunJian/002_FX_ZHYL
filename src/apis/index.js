@@ -66,6 +66,12 @@ const apis = {
       pageSize: 10
     }
   },
+  deleteRegisterList: {
+    url: '/WenRongBusiness/v1/regist/regist/cancel',
+    params: {
+      clinicNo: ''
+    }
+  },
   selectReportList: {
     url: '/WenRongBusiness/v1/personal/inspectionreport/detail',
     params: {

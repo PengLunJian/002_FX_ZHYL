@@ -1,35 +1,18 @@
 <template>
   <div class="tab-content">
-    <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <no-data v-if="isPayedIsSuccess&&!isPayedData.length"></no-data>
-          <error v-if="isPayedIsFailure" @refresh="exeSelectPaymentRecords"></error>
-          <mescroll-vue v-if="isPayedData.length" ref="mescroll"
-                        :down="down" :up="up" @init="initMescroll1">
-            <pay-item v-for="(item,index) in isPayedData"
-                      :key="index"
-                      :item="item"></pay-item>
-          </mescroll-vue>
-        </div>
-        <div class="swiper-slide">
-          <no-data v-if="noPayedIsSuccess&&!noPayedData.length"></no-data>
-          <error v-if="noPayedIsFailure" @refresh="exeSelectPaymentRecords"></error>
-          <mescroll-vue v-if="noPayedData.length" ref="mescroll"
-                        :down="down" :up="up" @init="initMescroll2">
-            <pay-item v-for="(item,index) in noPayedData"
-                      :key="index"
-                      :item="item"></pay-item>
-          </mescroll-vue>
-        </div>
-      </div>
-    </div>
+    <no-data v-if="noPayedIsSuccess&&!noPayedData.length"></no-data>
+    <error v-if="noPayedIsFailure" @refresh="exeSelectPaymentRecords"></error>
+    <mescroll-vue v-if="noPayedData.length" ref="mescroll"
+                  :down="down" :up="up" @init="initMescroll2">
+      <pay-item v-for="(item,index) in noPayedData"
+                :key="index"
+                :item="item"></pay-item>
+    </mescroll-vue>
   </div>
 </template>
 
 <script type="text/ecmascript-6">
   import {mapState} from 'vuex';
-  import 'swiper/dist/css/swiper.min.css';
   import Controller from './Controller';
   import MescrollVue from 'mescroll.js/mescroll.vue';
   import PayItem from '../../components/PayItem';
@@ -71,7 +54,7 @@
       this.$nextTick(() => {
         this.initSwiper();
       });
-      if (!this.isPayedIsLoading) {
+      if (!this.noPayedIsLoading) {
         this.exeSelectPaymentRecords();
       }
     },
@@ -82,13 +65,9 @@
       };
     },
     computed: mapState({
-      isPayedData: state => state.ISPAYED_RECORDS.data,
       noPayedData: state => state.NOPAYED_RECORDS.data,
-      isPayedIsFailure: state => state.ISPAYED_RECORDS.isFailure,
       noPayedIsFailure: state => state.NOPAYED_RECORDS.isFailure,
-      isPayedIsSuccess: state => state.ISPAYED_RECORDS.isSuccess,
       noPayedIsSuccess: state => state.NOPAYED_RECORDS.isSuccess,
-      isPayedIsLoading: state => state.ISPAYED_RECORDS.isLoading,
       noPayedIsLoading: state => state.NOPAYED_RECORDS.isLoading
     }),
     watch: {

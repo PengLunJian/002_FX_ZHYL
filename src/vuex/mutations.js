@@ -194,6 +194,23 @@ const mutations = {
   CLEAR_REGISTER_LIST_SUCCESS(state) {
     state.REGISTER_LIST.data = [];
   },
+  // 删除我的预约
+  DELETE_REGISTER_LIST_REQUEST(state) {
+    state.REGISTER_LIST.isLoading = false;
+    state.REGISTER_LIST.isSuccess = false;
+    state.REGISTER_LIST.isFailure = false;
+  },
+  DELETE__REGISTER_LIST_SUCCESS(state, data) {
+    state.REGISTER_LIST.isLoading = true;
+    state.REGISTER_LIST.isSuccess = true;
+    state.REGISTER_LIST.isFailure = false;
+    state.REGISTER_LIST.data = data;
+  },
+  DELETE__REGISTER_LIST_FAILURE(state) {
+    state.REGISTER_LIST.isLoading = true;
+    state.REGISTER_LIST.isSuccess = false;
+    state.REGISTER_LIST.isFailure = true;
+  },
   // 清空我的挂号
   CLEAR_SUBCRIBE_LIST_SUCCESS(state) {
     state.SUBSCRIBE_LIST.data = [];

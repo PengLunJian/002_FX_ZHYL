@@ -5,7 +5,8 @@
     <mescroll-vue v-if="data.length" ref="mescroll" :down="down" :up="up" @init="init">
       <reg-item v-for="(item,index) in data"
                 :item="item"
-                :key="index"></reg-item>
+                :key="index"
+                @delete="exeDeleteRegisterList"></reg-item>
     </mescroll-vue>
   </div>
 </template>

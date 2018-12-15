@@ -13,11 +13,13 @@
   import Controller from './Controller';
   import SubItem from '../../components/SubItem';
   import NoData from '../../components/NoData';
+  import Error from '../../components/Error';
   import MescrollVue from 'mescroll.js/mescroll.vue';
 
   export default {
     components: {
       NoData,
+      Error,
       SubItem,
       MescrollVue
     },
