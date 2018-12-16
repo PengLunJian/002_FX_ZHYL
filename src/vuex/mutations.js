@@ -211,6 +211,23 @@ const mutations = {
     state.REGISTER_LIST.isSuccess = false;
     state.REGISTER_LIST.isFailure = true;
   },
+  // 预约取号
+  INSERT_DOREGISTER_LIST_REQUEST(state) {
+    state.DOREGISTER_LIST.isLoading = false;
+    state.DOREGISTER_LIST.isSuccess = false;
+    state.DOREGISTER_LIST.isFailure = false;
+  },
+  INSERT_DOREGISTER_LIST_SUCCESS(state, data) {
+    state.DOREGISTER_LIST.isLoading = true;
+    state.DOREGISTER_LIST.isSuccess = true;
+    state.DOREGISTER_LIST.isFailure = false;
+    state.DOREGISTER_LIST.data = data;
+  },
+  INSERT_DOREGISTER_LIST_FAILURE(state) {
+    state.DOREGISTER_LIST.isLoading = true;
+    state.DOREGISTER_LIST.isSuccess = false;
+    state.DOREGISTER_LIST.isFailure = true;
+  },
   // 清空我的挂号
   CLEAR_SUBCRIBE_LIST_SUCCESS(state) {
     state.SUBSCRIBE_LIST.data = [];

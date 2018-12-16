@@ -9,7 +9,7 @@
                   :key="index"
                   :item="item"></pay-item>
       </mescroll-vue>
-      <button class="btn">合并缴费</button>
+      <button class="btn" @click="handleSubmit">合并缴费</button>
     </div>
   </div>
 </template>
@@ -36,6 +36,7 @@
         pageCode: 1,
         hasNexts: [true, true],
         mescrolls: [null, null],
+        jsApiList: {jsApiList: ['chooseWXPay']},
         up: {
           auto: false,
           isBounce: false,
@@ -60,6 +61,7 @@
       if (!this.noPayedIsLoading) {
         this.exeSelectPaymentRecords();
       }
+      this.exeSelectJSSDKConfig();
     },
     methods: Controller,
     mounted() {

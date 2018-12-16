@@ -276,6 +276,7 @@ const actions = {
         });
     });
   },
+  // 取消我的挂号
   deleteRegisterList({commit, state}, data) {
     const {pageIndex} = data;
     return new Promise((resolve, reject) => {
@@ -292,6 +293,29 @@ const actions = {
               commit(ACTION_TYPES.DELETE_REGISTER_LIST_REQUEST);
             }
             commit(ACTION_TYPES.DELETE_REGISTER_LIST_SUCCESS, newData);
+          } else {
+            commit(ACTION_TYPES.DELETE_REGISTER_LIST_FAILURE);
+          }
+          resolve(res);
+        })
+        .catch((err) => {
+          commit(ACTION_TYPES.DELETE_REGISTER_LIST_FAILURE);
+          reject(err);
+        });
+    });
+  },
+  // 预约取号
+  insertDoRegister({commit, state}, data) {
+    commit(ACTION_TYPES.DELETE_REGISTER_LIST_REQUEST);
+    return new Promise((resolve, reject) => {
+      axios.post(apis.insertDoRegister, data)
+        .then((res) => {
+          debugger;
+          console.log(res);
+          res = res || {};
+          const {success} = res;
+          if (success) {
+            commit(ACTION_TYPES.DELETE_REGISTER_LIST_SUCCESS, []);
           } else {
             commit(ACTION_TYPES.DELETE_REGISTER_LIST_FAILURE);
           }

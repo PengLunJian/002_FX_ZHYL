@@ -47,6 +47,7 @@
       </div>
     </div>
     <div class="row-box-3">
+      <button class="btn btn-doregister" @click="toDoRegister(item.subscribeId)" v-waves.block>取号</button>
       <button class="btn btn-confirm" @click="toPayBill" v-waves.block>去缴费</button>
       <button class="btn btn-cancel" @click="deleteSubscribe(item.subscribeId)" v-waves.block>取消预约</button>
       <!--<button @click="showDetails" class="btn btn-detail">查看详情</button>-->
@@ -63,6 +64,9 @@
       return {};
     },
     methods: {
+      toDoRegister: function() {
+        this.$emit('doregister');
+      },
       toPayBill: function() {
         this.$router.push({
           path: this.$routes.JFJL.path
@@ -154,6 +158,12 @@
         margin-left: 0.15rem;
         border-radius: @borderRadius;
         font-size: 0.13rem;
+        &.btn-doregister {
+          color: @buttonColor;
+          border: 1px solid @buttonColor;
+          float: left;
+          margin-left: 0;
+        }
         &.btn-confirm {
           color: @buttonColor;
           border: 1px solid @buttonColor;

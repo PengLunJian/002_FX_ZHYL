@@ -72,6 +72,13 @@ const apis = {
       clinicNo: ''
     }
   },
+  // 预约取号
+  insertDoRegister: {
+    url: '/WenRongBusiness/v1/personal/pre/doregister',
+    params: {
+      id: ''
+    }
+  },
   selectReportList: {
     url: '/WenRongBusiness/v1/personal/inspectionreport/detail',
     params: {
