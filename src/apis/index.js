@@ -1,6 +1,6 @@
 const apis = {
   default: {
-    baseUrl: 'http://192.168.1.196',
+    baseUrl: 'http://192.168.1.192',
     method: 'POST',
     timeout: 20000,
     headers: {

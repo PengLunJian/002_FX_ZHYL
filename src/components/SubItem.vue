@@ -64,8 +64,8 @@
       return {};
     },
     methods: {
-      toDoRegister: function() {
-        this.$emit('doregister');
+      toDoRegister: function(id) {
+        this.$emit('doregister', id);
       },
       toPayBill: function() {
         this.$router.push({

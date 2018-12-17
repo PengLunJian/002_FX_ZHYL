@@ -306,7 +306,7 @@ const actions = {
   },
   // 预约取号
   insertDoRegister({commit, state}, data) {
-    commit(ACTION_TYPES.DELETE_REGISTER_LIST_REQUEST);
+    commit(ACTION_TYPES.INSERT_DOREGISTER_LIST_REQUEST);
     return new Promise((resolve, reject) => {
       axios.post(apis.insertDoRegister, data)
         .then((res) => {
@@ -315,14 +315,14 @@ const actions = {
           res = res || {};
           const {success} = res;
           if (success) {
-            commit(ACTION_TYPES.DELETE_REGISTER_LIST_SUCCESS, []);
+            commit(ACTION_TYPES.INSERT_DOREGISTER_LIST_SUCCESS, []);
           } else {
-            commit(ACTION_TYPES.DELETE_REGISTER_LIST_FAILURE);
+            commit(ACTION_TYPES.INSERT_DOREGISTER_LIST_FAILURE);
           }
           resolve(res);
         })
         .catch((err) => {
-          commit(ACTION_TYPES.DELETE_REGISTER_LIST_FAILURE);
+          commit(ACTION_TYPES.INSERT_DOREGISTER_LIST_FAILURE);
           reject(err);
         });
     });
