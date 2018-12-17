@@ -69,9 +69,31 @@ const controller = {
         }
       });
   },
+  exeInsertDoRegister(id) {
+    const data = {subscribeId: id};
+    this.insertDoRegister(data)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+        this.pageCode--;
+        this.pageCode = this.pageCode <= 0 ? 1 : this.pageCode;
+        if (this.data.length !== 0) {
+          this.$vux.toast.show({
+            type: 'cancel',
+            text: '加载失败'
+          });
+        }
+        if (this.mescroll) {
+          this.mescroll.endErr();
+        }
+      });
+  },
   ...mapActions([
     'selectSubscribeList',
-    'deleteSubscribeList'
+    'deleteSubscribeList',
+    'insertDoRegister'
   ]),
   ...mapMutations([
     'CLEAR_REGISTER_LIST_SUCCESS'

@@ -61,6 +61,12 @@ const states = {
     isFailure: false,
     data: []
   },
+  DOREGISTER_LIST: {
+    isLoading: false,
+    isSuccess: false,
+    isFailure: false,
+    data: []
+  },
   SUBSCRIBE_LIST: {
     isLoading: false,
     isSuccess: false,

@@ -50,6 +50,12 @@
       border-bottom: 1px solid @borderColor;
       .name {
         font-size: 0.15rem;
+        width: 1rem;
+        float: left;
+        label {
+          display: inline-block;
+          margin-top: 0.05rem;
+        }
         .time {
           display: block;
           margin: 0.04rem 0;
@@ -60,9 +66,11 @@
       }
       .price {
         text-align: center;
-        margin-bottom: 0.1rem;
+        margin-bottom: 0.05rem;
         .label {
           font-size: 0.3rem;
+          display: inline-block;
+          margin-top: 0.05rem;
         }
       }
     }

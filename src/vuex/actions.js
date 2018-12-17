@@ -280,6 +280,57 @@ const actions = {
         });
     });
   },
+  // 取消我的挂号
+  deleteRegisterList({commit, state}, data) {
+    const {pageIndex} = data;
+    return new Promise((resolve, reject) => {
+      axios.post(apis.deleteRegisterList, data)
+        .then((res) => {
+          debugger;
+          res = res || {};
+          const {data, success} = res;
+          if (success) {
+            const oldData = state.REGISTER_LIST.data;
+            let newData = oldData.concat(data);
+            if (pageIndex === 1) {
+              newData = data;
+              commit(ACTION_TYPES.DELETE_REGISTER_LIST_REQUEST);
+            }
+            commit(ACTION_TYPES.DELETE_REGISTER_LIST_SUCCESS, newData);
+          } else {
+            commit(ACTION_TYPES.DELETE_REGISTER_LIST_FAILURE);
+          }
+          resolve(res);
+        })
+        .catch((err) => {
+          commit(ACTION_TYPES.DELETE_REGISTER_LIST_FAILURE);
+          reject(err);
+        });
+    });
+  },
+  // 预约取号
+  insertDoRegister({commit, state}, data) {
+    commit(ACTION_TYPES.DELETE_REGISTER_LIST_REQUEST);
+    return new Promise((resolve, reject) => {
+      axios.post(apis.insertDoRegister, data)
+        .then((res) => {
+          debugger;
+          console.log(res);
+          res = res || {};
+          const {success} = res;
+          if (success) {
+            commit(ACTION_TYPES.DELETE_REGISTER_LIST_SUCCESS, []);
+          } else {
+            commit(ACTION_TYPES.DELETE_REGISTER_LIST_FAILURE);
+          }
+          resolve(res);
+        })
+        .catch((err) => {
+          commit(ACTION_TYPES.DELETE_REGISTER_LIST_FAILURE);
+          reject(err);
+        });
+    });
+  },
   // 查询我的预约
   selectSubscribeList({commit, state}, data) {
     const {pageIndex} = data;
@@ -332,7 +383,7 @@ const actions = {
         });
     });
   },
-  // 查询已支付记录
+  // 查询已支付记录-selectPaidList(新)
   selectIsPayedRecords({commit, state}, data) {
     const {pageIndex} = data;
     return new Promise((resolve, reject) => {
@@ -359,11 +410,11 @@ const actions = {
         });
     });
   },
-  // 查询未支付记录
+  // 查询未支付记录-selectUnpaidList(new)
   selectNoPayedRecords({commit, state}, data) {
     const {pageIndex} = data;
     return new Promise((resolve, reject) => {
-      axios.post(apis.selectUnpaidList, data)
+      axios.post(apis.selectPaymentRecord, data)
         .then((res) => {
           res = res || {};
           const {data, success} = res;

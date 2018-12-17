@@ -3,7 +3,10 @@
     <no-data v-if="isLoading&&!isFailure&&!data.length"></no-data>
     <error v-if="isFailure&&!data.length" @refresh="exeSelectSubscribeList"></error>
     <mescroll-vue v-if="data.length" ref="mescroll" :down="down" :up="up" @init="init">
-      <sub-item v-for="(item,index) in data" :item="item" :key="index" @delete="exeDeleteSubscribeList"></sub-item>
+      <sub-item v-for="(item,index) in data" :item="item" :key="index"
+                @delete="exeDeleteSubscribeList"
+                @doregister="exeInsertDoRegister"
+      ></sub-item>
     </mescroll-vue>
   </div>
 </template>
@@ -13,11 +16,13 @@
   import Controller from './Controller';
   import SubItem from '../../components/SubItem';
   import NoData from '../../components/NoData';
+  import Error from '../../components/Error';
   import MescrollVue from 'mescroll.js/mescroll.vue';
 
   export default {
     components: {
       NoData,
+      Error,
       SubItem,
       MescrollVue
     },

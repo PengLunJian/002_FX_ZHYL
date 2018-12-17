@@ -66,6 +66,19 @@ const apis = {
       pageSize: 10
     }
   },
+  deleteRegisterList: {
+    url: '/WenRongBusiness/v1/regist/regist/cancel',
+    params: {
+      clinicNo: ''
+    }
+  },
+  // 预约取号
+  insertDoRegister: {
+    url: '/WenRongBusiness/v1/personal/pre/doregister',
+    params: {
+      id: ''
+    }
+  },
   selectReportList: {
     url: '/WenRongBusiness/v1/personal/inspectionreport/detail',
     params: {
