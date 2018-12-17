@@ -2,7 +2,7 @@
   <div class="FX_ZHYL_YSLB">
     <no-data v-if="isSuccess&&!data"></no-data>
     <error v-if="isFailure" @refresh="exeSelectDoctorList"></error>
-    <div class="content" v-if="data&&data.doctor&&data.date">
+    <div class="content" v-if="isSuccess&&data&&data.date">
       <div class="module YYSJ">
         <ul class="date-filter">
           <li class="filter-item" :class="index===activeIndex?' active':''"
@@ -16,7 +16,7 @@
         <no-data v-if="isSuccess&&!data.doctor.length"></no-data>
         <error v-if="isFailure" @refresh="exeSelectDoctorList"></error>
         <doctor-item v-for="(item,index) in data.doctor"
-          :key="index" :item="item" :isPre="isPre"></doctor-item>
+                     :key="index" :item="item" :isPre="isPre"></doctor-item>
       </div>
     </div>
   </div>
@@ -63,8 +63,10 @@
     top: 0;
     left: 0;
     width: 100%;
+    height: 100vh;
     min-height: 100vh;
     background-color: @bgColor;
+    -webkit-overflow-scrolling: touch;
     .module {
       box-shadow: none;
       background-color: transparent;

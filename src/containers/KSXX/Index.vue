@@ -17,8 +17,8 @@
         <div class="table">
           <div class="table-header">
             <span>&nbsp;</span>
-            <span class="am">上午</span>
-            <span class="pm">下午</span>
+            <span v-for="(item,index) in days"
+                  :class="item.clazz" :key="index">{{item.text}}</span>
           </div>
           <div class="table-body">
             <table border="0" cellpadding="0" cellspacing="0" :style="isPre?'width:100%;':''">
@@ -30,25 +30,14 @@
               </tr>
               </thead>
               <tbody>
-              <tr>
+              <tr v-for="(day,i) in days" :key="i">
                 <td v-if="isPre">
-                  <span>{{data.schedulWeek[0].schedulDay[0].timeSolt}}</span>
+                  <span>{{data.schedulWeek[0].schedulDay[i].timeSolt}}</span>
                 </td>
                 <td v-for="(item,index) in data.schedulWeek" :key="index">
-                  <span :class="item.schedulDay[0].isRegister?'on':'off'"
+                  <span v-if="item.schedulDay[i]" :class="item.schedulDay[i].isRegister?'on':'off'"
                         @click="handlerClick(index)">
-                    {{item.schedulDay[0].isRegister?(isPre?'挂号':'预约'):(isPre?'已满':'约满')}}
-                  </span>
-                </td>
-              </tr>
-              <tr>
-                <td v-if="isPre">
-                  <span>{{data.schedulWeek[0].schedulDay[1].timeSolt}}</span>
-                </td>
-                <td v-for="(item,index) in data.schedulWeek" :key="index">
-                  <span :class="item.schedulDay[1].isRegister?'on':'off'"
-                        @click="handlerClick(index)">
-                    {{item.schedulDay[1].isRegister?(isPre?'挂号':'预约'):(isPre?'已满':'约满')}}
+                  {{item.schedulDay[i].isRegister?(isPre?'挂号':'预约'):(isPre?'已满':'约满')}}
                   </span>
                 </td>
               </tr>
@@ -82,6 +71,10 @@
     name: 'KSXX',
     data() {
       return {
+        days: [
+          {text: '上午', clazz: 'am'},
+          {text: '下午', clazz: 'pm'}
+        ],
         isPre: this.$route.query.isPre === '0'
       };
     },
@@ -102,8 +95,10 @@
   @import "../../assets/less/variable";
 
   .FX_ZHYL_KSXX {
+    height: 100vh;
     min-height: 100vh;
     background-color: @bgColor;
+    -webkit-overflow-scrolling: touch;
     .KSMC {
       height: 1.1rem;
       overflow: hidden;

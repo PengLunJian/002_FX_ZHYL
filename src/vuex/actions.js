@@ -99,6 +99,10 @@ const actions = {
           res = res || {};
           const {data, success} = res;
           if (success) {
+            if (!data) {
+              commit(ACTION_TYPES.SELECT_DEFAULT_CARD_SUCCESS, data);
+              return;
+            }
             const {patientCardNo} = data || {};
             let oImage = new Image();
             JsBarcode(oImage, patientCardNo, {
