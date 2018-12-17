@@ -28,6 +28,17 @@
     created() {
       // this.exeLogin();
       // this.exeSelectJSSDKConfig();
+      // this.selectDeviceId()
+      //   .then((res) => {
+      //     res = res || {};
+      //     const {data, success} = res;
+      //     if (success) {
+      //       sessionStorage.setItem('AccessToken', 'Bearer ' + data);
+      //     }
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
     },
     methods: {
       exeLogin() {
@@ -143,7 +154,7 @@
     height: 100vh;
     position: relative;
     background-color: @white;
-    overflow-y: auto;
+    /*overflow-y: auto;*/
     -webkit-overflow-scrolling: touch;
   }
 </style>

@@ -6,7 +6,7 @@
     <div class="item-box-2">
       <div class="item-name">{{item.doctName}}</div>
       <div class="item-post">{{item.reglevelName}}</div>
-      <div class="item-good">{{item.goodDisease}}</div>
+      <div class="item-good">{{item.goodDisease||'擅长:无'}}</div>
     </div>
     <div class="item-box-3">
       <button class="btn btn-bespoke"
