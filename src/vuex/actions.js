@@ -1,6 +1,7 @@
-import JsBarcode from 'jsbarcode';
 import apis from '../apis';
+import JsBarcode from 'jsbarcode';
 import axios from '../axios/axios';
+import {parseData} from '../utils';
 import * as ACTION_TYPES from './actionTypes';
 
 const actions = {
@@ -534,7 +535,8 @@ const actions = {
           res = res || {};
           const {data, success} = res;
           if (success) {
-            commit(ACTION_TYPES.SELECT_DOCTOR_DETAIL_SUCCESS, data);
+            const newData = parseData(data, 1);
+            commit(ACTION_TYPES.SELECT_DOCTOR_DETAIL_SUCCESS, newData);
           } else {
             commit(ACTION_TYPES.SELECT_DOCTOR_DETAIL_FAILURE);
           }

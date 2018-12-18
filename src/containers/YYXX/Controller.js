@@ -1,17 +1,8 @@
 import {mapActions} from 'vuex';
-import {
-  handlerWXConfig,
-  handlerCheckJsApi,
-  handlerChooseWXPay
-} from '../../jssdk/WXHelper';
 
 const controller = {
   handlerSubmit() {
-    handlerCheckJsApi(this.jsApiList)
-      .then((res) => {
-        console.log(res);
-        this.exeSelectAppointmentCreate();
-      });
+    this.exeSelectAppointmentCreate();
   },
   exeFillParams() {
     const {query} = this.$route;
@@ -28,22 +19,6 @@ const controller = {
         const {data, success} = res;
         if (success) {
           this.name = data.name;
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  },
-  exeSelectJSSDKConfig() {
-    const data = {
-      value: window.location.href.split('#')[0]
-    };
-    this.selectJSSDKConfig(data)
-      .then((res) => {
-        const {data, success} = res;
-        if (success) {
-          const config = Object.assign(data, this.jsApiList);
-          handlerWXConfig(config);
         }
       })
       .catch((err) => {
@@ -67,12 +42,7 @@ const controller = {
         res = res || {};
         const {data, success} = res;
         if (success) {
-          if (!data) return;
-          handlerChooseWXPay(data)
-            .then((res) => {
-              console.log(res);
-              this.$router.back();
-            });
+          console.log(data);
         }
       })
       .catch((err) => {
@@ -80,7 +50,6 @@ const controller = {
       });
   },
   ...mapActions([
-    'selectJSSDKConfig',
     'selectDefaultCard',
     'selectAppointmentCreate'
   ])
