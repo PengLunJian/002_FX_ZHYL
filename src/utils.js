@@ -145,7 +145,7 @@ export const parseData = (data, isPre) => {
   let {schedulWeek} = data || {};
   schedulWeek = schedulWeek || [];
   if (schedulWeek.length) {
-    const length = schedulWeek.length.length <= 7 ? schedulWeek.length : 7;
+    const length = schedulWeek.length <= 7 ? schedulWeek.length : 7;
     for (let i = 0; i < length; i++) {
       for (let j = 0; j < tempWeek.length; j++) {
         if (schedulWeek[i].seeDate === tempWeek[j].seeDate) {

@@ -3,25 +3,25 @@
     <div class="row-box-1">
       <div class="name">
         <label class="label">代缴费用</label>
-        <span class="time">09月08号</span>
+        <span class="time">{{item.moDate}}</span>
       </div>
       <div class="price">
-        <label class="label">22.00</label>
+        <label class="label">{{item.cost}}</label>
         <span class="unit">元</span>
       </div>
     </div>
     <div class="row-box-2">
       <div class="group">
         <label class="label">费用名称：</label>
-        <span class="span">挂号费</span>
+        <span class="span">{{item.transType}}</span>
       </div>
       <div class="group">
         <label class="label">缴费对象：</label>
-        <span class="span">{{item.idCardName}}</span>
+        <span class="span">{{item.itemName}}</span>
       </div>
       <div class="group">
-        <label class="label">就诊说明：</label>
-        <span class="span">眼科中心挂号费</span>
+        <label class="label">开方医生：</label>
+        <span class="span">{{item.exeDoct}}</span>
       </div>
     </div>
     <div class="row-box-3">
@@ -50,7 +50,7 @@
       border-bottom: 1px solid @borderColor;
       .name {
         font-size: 0.15rem;
-        width: 1rem;
+        width: 2rem;
         float: left;
         label {
           display: inline-block;

@@ -287,7 +287,6 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post(apis.deleteRegisterList, data)
         .then((res) => {
-          debugger;
           res = res || {};
           const {data, success} = res;
           if (success) {
@@ -315,7 +314,6 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post(apis.insertDoRegister, data)
         .then((res) => {
-          debugger;
           console.log(res);
           res = res || {};
           const {success} = res;
@@ -413,18 +411,17 @@ const actions = {
   },
   // 查询未支付记录-selectUnpaidList(new)
   selectNoPayedRecords({commit, state}, data) {
-    const {pageIndex} = data;
+    commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_REQUEST);
     return new Promise((resolve, reject) => {
-      axios.post(apis.selectPaymentRecord, data)
+      axios.post(apis.selectUnpaidList, data)
         .then((res) => {
           res = res || {};
+          debugger;
           const {data, success} = res;
+          var newData = data.recordItems || [];
+          console.log(data);
+          console.log(success);
           if (success) {
-            if (pageIndex === 1) {
-              commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_REQUEST);
-            }
-            const oldData = state.NOPAYED_RECORDS.data;
-            const newData = oldData.concat(data);
             commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_SUCCESS, newData);
           } else {
             commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_FAILURE);

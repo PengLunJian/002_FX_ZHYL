@@ -105,7 +105,7 @@ const apis = {
   },
   // 查询未交费记录
   selectUnpaidList: {
-    url: 'WenRongBusiness/v1/personal/pay/complete',
+    url: 'WenRongBusiness/v1/personal/wait/pay',
     param: {}
   },
   // 查找缴费记录-旧接口，暂用，新接口无数据

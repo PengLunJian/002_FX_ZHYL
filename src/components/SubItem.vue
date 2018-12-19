@@ -47,7 +47,9 @@
       </div>
     </div>
     <div class="row-box-3">
-      <button class="btn btn-doregister" @click="toDoRegister(item.subscribeId)" v-waves.block>取号</button>
+      <button class="btn btn-doneregister" v-if="item.appimentStatus==='0'" v-waves.block>已取消</button>
+      <button class="btn btn-doregister" @click="toDoRegister(item.subscribeId)" v-if="item.appimentStatus==='1'" v-waves.block>取号</button>
+      <button class="btn btn-doneregister" v-if="item.appimentStatus==='2'" v-waves.block>已取号</button>
       <button class="btn btn-confirm" @click="toPayBill" v-waves.block>去缴费</button>
       <button class="btn btn-cancel" @click="deleteSubscribe(item.subscribeId)" v-waves.block>取消预约</button>
       <!--<button @click="showDetails" class="btn btn-detail">查看详情</button>-->
@@ -161,6 +163,12 @@
         &.btn-doregister {
           color: @buttonColor;
           border: 1px solid @buttonColor;
+          float: left;
+          margin-left: 0;
+        }
+        &.btn-doneregister {
+          color: @fontColor;
+          border: 1px solid @borderColor;
           float: left;
           margin-left: 0;
         }

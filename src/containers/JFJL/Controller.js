@@ -70,22 +70,12 @@ const controller = {
       });
   },
   exeSelectPaymentRecords() {
-    const data = {
-      pageIndex: this.pageCode,
-      payStatus: this.tabIndex
-    };
-    this.selectNoPayedRecords(data)
+    this.selectNoPayedRecords()
       .then((res) => {
         console.log(res);
-        res = res || [];
         this.$vux.loading.hide();
-        const hasNext = res.length === 10 ? true : false;
-        this.hasNexts[this.tabIndex] = hasNext;
-        if (this.mescrolls[this.tabIndex]) {
-          this.mescrolls[this.tabIndex].endSuccess(10, hasNext);
-        }
       });
-    },
+  },
   ...mapActions([
     'selectNoPayedRecords',
     'selectJSSDKConfig'
