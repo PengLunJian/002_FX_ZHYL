@@ -55,9 +55,9 @@
     },
     props: ['tabIndex'],
     created() {
-      this.$nextTick(() => {
-        this.initSwiper();
-      });
+      // this.$nextTick(() => {
+      //   this.initSwiper();
+      // });
       if (!this.noPayedIsLoading) {
         this.exeSelectPaymentRecords();
       }

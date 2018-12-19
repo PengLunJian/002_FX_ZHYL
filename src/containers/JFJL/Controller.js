@@ -76,6 +76,7 @@ const controller = {
     };
     this.selectNoPayedRecords(data)
       .then((res) => {
+        console.log(res);
         res = res || [];
         this.$vux.loading.hide();
         const hasNext = res.length === 10 ? true : false;
@@ -86,7 +87,8 @@ const controller = {
       });
     },
   ...mapActions([
-    'selectNoPayedRecords'
+    'selectNoPayedRecords',
+    'selectJSSDKConfig'
   ])
 };
 
