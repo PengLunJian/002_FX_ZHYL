@@ -43,12 +43,14 @@
               <tbody>
               <tr v-for="(day,i) in days" :key="i">
                 <td v-if="isPre">
-                  <span>{{data.schedulWeek[0].schedulDay[i].timeSolt}}</span>
+                  <span v-if="data.schedulWeek[0].schedulDay[i]">
+                    {{data.schedulWeek[0].schedulDay[i].timeSolt}}
+                  </span>
                 </td>
                 <td v-for="(item,index) in data.schedulWeek" :key="index">
-                  <span :class="item.schedulDay[i].isRegister?'on':'off'"
+                  <span :class="item.schedulDay[i].isRegister==='1'?'on':'off'"
                         @click="handlerClick(item,i)">
-                  {{item.schedulDay[i].isRegister?(isPre?'挂号':'预约'):(isPre?'已满':'约满')}}
+                  {{item.schedulDay[i].isRegister==='1'?(isPre?'挂号':'预约'):(isPre?'已满':'约满')}}
                   </span>
                 </td>
               </tr>
@@ -106,14 +108,11 @@
   @import "../../assets/less/variable";
 
   .FX_ZHYL_YSZY {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100vh;
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
     background-color: @bgColor;
+    -webkit-overflow-scrolling: touch;
     .YSXX {
       height: auto;
       overflow: hidden;

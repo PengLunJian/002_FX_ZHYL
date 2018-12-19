@@ -15,7 +15,7 @@
       </div>
       <div class="form-group">
         <label class="form-label borderNone">医生姓名</label>
-        <span class="form-input">{{doctName}}</span>
+        <span class="form-input">{{doctName||'无'}}</span>
       </div>
     </div>
     <div class="module DEBF">
@@ -70,8 +70,11 @@
   @import "../../assets/less/variable";
 
   .FX_ZHYL_YYXX {
-    min-height: 100vh;
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
     background-color: @bgColor;
+    -webkit-overflow-scrolling: touch;
     .module {
       background-color: transparent;
       box-shadow: none;

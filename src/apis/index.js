@@ -2,7 +2,7 @@ const apis = {
   default: {
     baseUrl: 'http://192.168.1.196',
     method: 'POST',
-    timeout: 5000,
+    timeout: 30000,
     headers: {
       'Authorization': '',
       'X-Requested-With': 'XMLHttpRequest',

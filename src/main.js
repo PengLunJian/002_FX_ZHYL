@@ -8,7 +8,7 @@ import {ToastPlugin, LoadingPlugin} from 'vux';
 import VueWaves from 'vue-waves/dist/vue-waves.js';
 import VueLazyload from 'vue-lazyload';
 
-require('./mock/mock.js');
+// require('./mock/mock.js');
 
 Vue.use(VueWaves);
 Vue.use(ToastPlugin);

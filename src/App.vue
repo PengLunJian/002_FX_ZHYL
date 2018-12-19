@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <error v-if="isFailure" @refresh="exeRefresh"></error>
-    <transition :name="transitionName">
+    <transition :name="transitionName" v-if="token">
       <router-view></router-view>
     </transition>
   </div>
@@ -26,7 +26,7 @@
       };
     },
     created() {
-      // this.exeLogin();
+      this.exeLogin();
       // this.exeSelectJSSDKConfig();
       // this.selectDeviceId()
       //   .then((res) => {
@@ -154,7 +154,6 @@
     height: 100vh;
     position: relative;
     background-color: @white;
-    /*overflow-y: auto;*/
     -webkit-overflow-scrolling: touch;
   }
 </style>

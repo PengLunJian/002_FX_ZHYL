@@ -66,7 +66,6 @@ const controller = {
     this.selectAppointmentCreate(data)
       .then((res) => {
         res = res || {};
-        debugger;
         const {data, success} = res;
         if (success) {
           console.log(data);

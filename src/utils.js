@@ -111,3 +111,90 @@ export const getUriPath = (url) => {
   var relUrl = arrUrl[1].substring(start);
   return relUrl;
 };
+/**
+ *
+ * @param data
+ * @param isPre
+ * @returns {*}
+ */
+export const parseData = (data, isPre) => {
+  const tempWeek = [];
+  const weeks = parseInt(isPre) ? 7 : 1;
+  for (let i = 0; i < weeks; i++) {
+    tempWeek[i] = {};
+    tempWeek[i].schedulDay = [];
+    for (let j = 0; j < 2; j++) {
+      const noonCode = j + 1 + '';
+      const obj = getObj(i, noonCode);
+      tempWeek[i].schedulDay.push(obj);
+    }
+    const offsetTime = i * 24 * 60 * 60 * 1000;
+    let date = new Date(new Date().getTime() + offsetTime);
+    const day = date.getDate();
+    const month = date.getMonth() + 1;
+    const mm = month > 9 ? '' + month : '0' + month;
+    const dd = day > 9 ? '' + day : '0' + day;
+    let weekIndex = (date.getDay()) % 7;
+    weekIndex = weekIndex === 0 ? 7 : weekIndex;
+    const week = parseWeek(weekIndex);
+    tempWeek[i].week = week;
+    tempWeek[i].seeDate = mm + '-' + dd;
+    date = null;
+  }
+
+  let {schedulWeek} = data || {};
+  schedulWeek = schedulWeek || [];
+  if (schedulWeek.length) {
+    const length = schedulWeek.length.length <= 7 ? schedulWeek.length : 7;
+    for (let i = 0; i < length; i++) {
+      for (let j = 0; j < tempWeek.length; j++) {
+        if (schedulWeek[i].seeDate === tempWeek[j].seeDate) {
+          for (let k = 0; k < tempWeek[j].schedulDay.length; k++) {
+            if (schedulWeek[i].schedulDay[k]) {
+              const tempWeekNoonCode = tempWeek[j].schedulDay[k].noonCode;
+              const schedulWeekNoonCode = schedulWeek[i].schedulDay[k].noonCode;
+              if (tempWeekNoonCode === schedulWeekNoonCode) {
+                tempWeek[j].schedulDay[k] = schedulWeek[i].schedulDay[k];
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  console.log(tempWeek);
+  data.schedulWeek = tempWeek;
+  return data;
+};
+/**
+ *
+ * @param data
+ * @param noonCode
+ * @returns {{classId: string, noonCode: *, totalFee: string, week: string, isRegister: string, seeDate: string, timeSolt: string}}
+ */
+const getObj = (weeks, noonCode) => {
+  const index = parseInt(noonCode) - 1;
+  const timeSlot = ['07:00-12:00', '13:00-17:00'];
+  const tempObj = {
+    classId: '无',
+    totalFee: '0',
+    isRegister: '0',
+    noonCode: noonCode,
+    timeSolt: timeSlot[index]
+  };
+  return tempObj;
+};
+/**
+ *
+ * @param number
+ * @returns {string}
+ */
+export const parseWeek = (number) => {
+  const weeks = [
+    '星期一', '星期二',
+    '星期三', '星期四',
+    '星期五', '星期六',
+    '星期七'
+  ];
+  return weeks[parseInt(number) - 1];
+};
