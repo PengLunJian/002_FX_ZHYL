@@ -67,6 +67,12 @@ const states = {
     isFailure: false,
     data: []
   },
+  PAY_REGISTER: {
+    isLoading: false,
+    isSuccess: false,
+    isFailure: false,
+    data: []
+  },
   SUBSCRIBE_LIST: {
     isLoading: false,
     isSuccess: false,

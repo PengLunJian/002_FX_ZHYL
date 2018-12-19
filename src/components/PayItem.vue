@@ -13,11 +13,11 @@
     <div class="row-box-2">
       <div class="group">
         <label class="label">费用名称：</label>
-        <span class="span">{{item.transType}}</span>
+        <span class="span">{{item.itemName}}</span>
       </div>
       <div class="group">
         <label class="label">缴费对象：</label>
-        <span class="span">{{item.itemName}}</span>
+        <span class="span">{{item.transType}}</span>
       </div>
       <div class="group">
         <label class="label">开方医生：</label>

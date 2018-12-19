@@ -228,6 +228,23 @@ const mutations = {
     state.DOREGISTER_LIST.isSuccess = false;
     state.DOREGISTER_LIST.isFailure = true;
   },
+  // 代缴费去支付
+  SELECT_PAY_REGISTER_REQUEST(state) {
+    state.PAY_REGISTER.isLoading = false;
+    state.PAY_REGISTER.isSuccess = false;
+    state.PAY_REGISTER.isFailure = false;
+  },
+  SELECT_PAY_REGISTER_SUCCESS(state, data) {
+    state.PAY_REGISTER.isLoading = true;
+    state.PAY_REGISTER.isSuccess = true;
+    state.PAY_REGISTER.isFailure = false;
+    state.PAY_REGISTER.data = data;
+  },
+  SELECT_PAY_REGISTER_FAILURE(state) {
+    state.PAY_REGISTER.isLoading = true;
+    state.PAY_REGISTER.isSuccess = false;
+    state.PAY_REGISTER.isFailure = true;
+  },
   // 清空我的挂号
   CLEAR_SUBCRIBE_LIST_SUCCESS(state) {
     state.SUBSCRIBE_LIST.data = [];

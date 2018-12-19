@@ -36,6 +36,7 @@
         pageCode: 1,
         hasNexts: [true, true],
         mescrolls: [null, null],
+        clinicNo: '',
         jsApiList: {jsApiList: ['chooseWXPay']},
         up: {
           auto: false,

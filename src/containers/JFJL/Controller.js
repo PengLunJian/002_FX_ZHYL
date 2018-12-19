@@ -39,10 +39,11 @@ const controller = {
     }, 500);
   },
   handleSubmit() {
+    // this.exeSelectPayRegiter();
     handlerCheckJsApi(this.jsApiList)
       .then((res) => {
         console.log(res);
-        this.exeHandlePayAll();
+        this.exeSelectPayRegiter();
       });
   },
   exeHandlePayAll() {
@@ -69,11 +70,35 @@ const controller = {
         console.log(err);
       });
   },
+  exeSelectPayRegiter() {
+    const data = {id: this.clinicNo};
+    this.selectPayRegiter(data)
+      .then((res) => {
+        res = res || {};
+        const {data, success} = res;
+        if (success) {
+          console.log(data);
+          if (!data) return;
+          handlerChooseWXPay(data)
+            .then((res) => {
+              console.log(res);
+              this.$router.back();
+            });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
   exeSelectPaymentRecords() {
     this.selectNoPayedRecords()
       .then((res) => {
         console.log(res);
-        this.$vux.loading.hide();
+        const {success, data} = res;
+        if (success && !data) {
+          this.clinicNo = res.id;
+          this.$vux.loading.hide();
+        }
       });
   },
   ...mapActions([

@@ -108,6 +108,13 @@ const apis = {
     url: 'WenRongBusiness/v1/personal/wait/pay',
     param: {}
   },
+  // 代缴费去支付
+  selectPayRegiter: {
+    url: 'WenRongBusiness/v1/register/pay/register',
+    param: {
+      id: ''
+    }
+  },
   // 查找缴费记录-旧接口，暂用，新接口无数据
   selectPaymentRecord: {
     url: '/WenRongBusiness/v1/personal/pay/record',
