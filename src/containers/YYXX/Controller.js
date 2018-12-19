@@ -1,17 +1,18 @@
 import {mapActions} from 'vuex';
 import {
-  handlerWXConfig,
-  handlerCheckJsApi,
-  handlerChooseWXPay
+  handlerWXConfig
+  // handlerCheckJsApi,
+  // handlerChooseWXPay
 } from '../../jssdk/WXHelper';
 
 const controller = {
   handlerSubmit() {
-    handlerCheckJsApi(this.jsApiList)
-      .then((res) => {
-        console.log(res);
-        this.exeSelectAppointmentCreate();
-      });
+    this.exeSelectAppointmentCreate();
+    // handlerCheckJsApi(this.jsApiList)
+    //   .then((res) => {
+    //     console.log(res);
+    //
+    //   });
   },
   exeFillParams() {
     const {query} = this.$route;
@@ -68,12 +69,13 @@ const controller = {
         debugger;
         const {data, success} = res;
         if (success) {
-          if (!data) return;
-          handlerChooseWXPay(data)
-            .then((res) => {
-              console.log(res);
-              this.$router.back();
-            });
+          console.log(data);
+          // if (!data) return;
+          // handlerChooseWXPay(data)
+          //   .then((res) => {
+          //     console.log(res);
+          //     this.$router.back();
+          //   });
         }
       })
       .catch((err) => {

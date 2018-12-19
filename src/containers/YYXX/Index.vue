@@ -53,7 +53,7 @@
     },
     created() {
       this.exeFillParams();
-      this.exeSelectJSSDKConfig();
+      // this.exeSelectJSSDKConfig();
       this.exeSelectDefaultCard();
     },
     methods: Controller,
