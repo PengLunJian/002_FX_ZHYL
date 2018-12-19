@@ -1,3 +1,7 @@
+/**
+ *
+ * @param appId
+ */
 export const jumpToWeChatUrl = (appId) => {
   const ACCESS_URL = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' +
     appId + '&redirect_uri=' + encodeURIComponent(window.location.href) +
@@ -5,7 +9,10 @@ export const jumpToWeChatUrl = (appId) => {
     'connect_redirect=123#wechat_redirect';
   window.location.replace(ACCESS_URL);
 };
-
+/**
+ *
+ * @param data
+ */
 export const saveLocalStorage = (data) => {
   const {
     WechatAppId,

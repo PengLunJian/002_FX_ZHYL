@@ -287,7 +287,6 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post(apis.deleteRegisterList, data)
         .then((res) => {
-          debugger;
           res = res || {};
           const {data, success} = res;
           if (success) {
@@ -315,8 +314,6 @@ const actions = {
     return new Promise((resolve, reject) => {
       axios.post(apis.insertDoRegister, data)
         .then((res) => {
-          debugger;
-          console.log(res);
           res = res || {};
           const {success} = res;
           if (success) {
@@ -528,6 +525,7 @@ const actions = {
   },
   // 查询医生详情
   selectDoctorDetail({commit, state}, data) {
+    const {isPre} = data;
     commit(ACTION_TYPES.SELECT_DOCTOR_DETAIL_REQUEST);
     return new Promise((resolve, reject) => {
       axios.post(apis.selectDoctorDetail, data)
@@ -535,7 +533,7 @@ const actions = {
           res = res || {};
           const {data, success} = res;
           if (success) {
-            const newData = parseData(data, 1);
+            const newData = parseData(data, isPre);
             commit(ACTION_TYPES.SELECT_DOCTOR_DETAIL_SUCCESS, newData);
           } else {
             commit(ACTION_TYPES.SELECT_DOCTOR_DETAIL_FAILURE);
@@ -550,6 +548,7 @@ const actions = {
   },
   // 查询科室详情
   selectDepartmentDetail({commit, state}, data) {
+    const {isPre} = data;
     commit(ACTION_TYPES.SELECT_DEPT_DETAIL_REQUEST);
     return new Promise((resolve, reject) => {
       axios.post(apis.selectDepartmentDetail, data)
@@ -557,7 +556,8 @@ const actions = {
           res = res || {};
           const {data, success} = res;
           if (success) {
-            commit(ACTION_TYPES.SELECT_DEPT_DETAIL_SUCCESS, data);
+            const newData = parseData(data, isPre);
+            commit(ACTION_TYPES.SELECT_DEPT_DETAIL_SUCCESS, newData);
           } else {
             commit(ACTION_TYPES.SELECT_DEPT_DETAIL_FAILURE);
           }

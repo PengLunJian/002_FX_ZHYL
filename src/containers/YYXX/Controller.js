@@ -43,6 +43,9 @@ const controller = {
         const {data, success} = res;
         if (success) {
           console.log(data);
+          this.$router.push({
+            path: this.routes.TJCG.path
+          });
         }
       })
       .catch((err) => {

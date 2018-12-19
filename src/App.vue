@@ -12,7 +12,6 @@
   import Error from './components/Error';
   import {getQueryParams} from './utils';
   import {jumpToWeChatUrl, saveLocalStorage} from './login';
-  // import {handlerWXConfig, handlerCloseWindow} from './jssdk/WXHelper';
 
   export default {
     components: {Error},
@@ -20,25 +19,23 @@
     data() {
       return {
         transitionName: '',
-        appId: 'wxe790a197b8d02b72',
-        token: sessionStorage.getItem('AccessToken'),
-        jsApiList: {jsApiList: ['closeWindow']}
+        appId: 'wxf44faae689fe2d27',
+        token: sessionStorage.getItem('AccessToken')
       };
     },
     created() {
-      this.exeLogin();
-      // this.exeSelectJSSDKConfig();
-      // this.selectDeviceId()
-      //   .then((res) => {
-      //     res = res || {};
-      //     const {data, success} = res;
-      //     if (success) {
-      //       sessionStorage.setItem('AccessToken', 'Bearer ' + data);
-      //     }
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
+      // this.exeLogin();
+      this.selectDeviceId()
+        .then((res) => {
+          res = res || {};
+          const {data, success} = res;
+          if (success) {
+            sessionStorage.setItem('AccessToken', 'Bearer ' + data);
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
     methods: {
       exeLogin() {
@@ -46,7 +43,6 @@
         if (!AccessToken) {
           const code = getQueryParams('code');
           if (!code) {
-            // handlerCloseWindow();
             const baseUrl = window.location.href;
             sessionStorage.setItem('baseUrl', baseUrl);
             jumpToWeChatUrl(this.appId);
@@ -121,8 +117,7 @@
       // },
       ...mapActions([
         'selectDeviceId',
-        'selectGrantLogin',
-        'selectJSSDKConfig'
+        'selectGrantLogin'
       ])
     },
     watch: {

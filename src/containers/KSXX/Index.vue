@@ -35,9 +35,9 @@
                   <span>{{data.schedulWeek[0].schedulDay[i].timeSolt}}</span>
                 </td>
                 <td v-for="(item,index) in data.schedulWeek" :key="index">
-                  <span :class="item.schedulDay[i].isRegister?'on':'off'"
+                  <span :class="item.schedulDay[i].isRegister==='1'?'on':'off'"
                         @click="handlerClick(item,i)">
-                  {{item.schedulDay[i].isRegister?(isPre?'挂号':'预约'):(isPre?'已满':'约满')}}
+                  {{item.schedulDay[i].isRegister==='1'?(isPre?'挂号':'预约'):(isPre?'已满':'约满')}}
                   </span>
                 </td>
               </tr>
