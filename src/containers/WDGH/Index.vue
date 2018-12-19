@@ -16,11 +16,13 @@
   import Controller from './Controller';
   import RegItem from '../../components/RegItem';
   import NoData from '../../components/NoData';
+  import Error from '../../components/Error';
   import MescrollVue from 'mescroll.js/mescroll.vue';
 
   export default {
     components: {
       NoData,
+      Error,
       RegItem,
       MescrollVue
     },

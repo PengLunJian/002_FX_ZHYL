@@ -48,7 +48,18 @@ const controller = {
     this.deleteSubscribeList(data)
       .then((res) => {
         console.log(res);
-        const {data} = res;
+        const {data, success} = res;
+        if (success && data.state === '1') {
+          this.$vux.toast.show({
+            type: 'cancel',
+            text: '取消成功'
+          });
+        } else {
+          this.$vux.toast.show({
+            type: 'cancel',
+            text: '取消失败'
+          });
+        }
         const hasNext = data.length !== 10 ? false : true;
         if (this.mescroll) {
           this.mescroll.endSuccess(data.length, hasNext);
@@ -70,10 +81,22 @@ const controller = {
       });
   },
   exeInsertDoRegister(id) {
-    const data = {subscribeId: id};
+    const data = {id};
     this.insertDoRegister(data)
       .then((res) => {
         console.log(res);
+        const {data, success} = res;
+        if (success && data.status === '1') {
+          this.$vux.toast.show({
+            type: 'cancel',
+            text: '取号成功'
+          });
+        } else {
+          this.$vux.toast.show({
+            type: 'cancel',
+            text: '取号失败'
+          });
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -82,7 +105,7 @@ const controller = {
         if (this.data.length !== 0) {
           this.$vux.toast.show({
             type: 'cancel',
-            text: '加载失败'
+            text: '取号失败'
           });
         }
         if (this.mescroll) {

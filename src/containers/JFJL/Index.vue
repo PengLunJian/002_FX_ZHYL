@@ -36,6 +36,7 @@
         pageCode: 1,
         hasNexts: [true, true],
         mescrolls: [null, null],
+        clinicNo: '',
         jsApiList: {jsApiList: ['chooseWXPay']},
         up: {
           auto: false,
@@ -55,9 +56,9 @@
     },
     props: ['tabIndex'],
     created() {
-      this.$nextTick(() => {
-        this.initSwiper();
-      });
+      // this.$nextTick(() => {
+      //   this.initSwiper();
+      // });
       if (!this.noPayedIsLoading) {
         this.exeSelectPaymentRecords();
       }

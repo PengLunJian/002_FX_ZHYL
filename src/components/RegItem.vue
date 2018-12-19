@@ -53,7 +53,6 @@
     <div class="row-box-3">
       <button class="btn btn-confirm" @click="toPayBill" v-waves.block>去缴费</button>
       <button class="btn btn-cancel" @click="deleteSubscribe(item.clinicNo)" v-waves.block>取消挂号</button>
-      <!--<button class="btn btn-detail" @click="showDetails">查看详情</button>-->
     </div>
   </div>
 </template>

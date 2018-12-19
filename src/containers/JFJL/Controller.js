@@ -39,10 +39,11 @@ const controller = {
     }, 500);
   },
   handleSubmit() {
+    // this.exeSelectPayRegiter();
     handlerCheckJsApi(this.jsApiList)
       .then((res) => {
         console.log(res);
-        this.exeHandlePayAll();
+        this.exeSelectPayRegiter();
       });
   },
   exeHandlePayAll() {
@@ -69,24 +70,40 @@ const controller = {
         console.log(err);
       });
   },
-  exeSelectPaymentRecords() {
-    const data = {
-      pageIndex: this.pageCode,
-      payStatus: this.tabIndex
-    };
-    this.selectNoPayedRecords(data)
+  exeSelectPayRegiter() {
+    const data = {id: this.clinicNo};
+    this.selectPayRegiter(data)
       .then((res) => {
-        res = res || [];
-        this.$vux.loading.hide();
-        const hasNext = res.length === 10 ? true : false;
-        this.hasNexts[this.tabIndex] = hasNext;
-        if (this.mescrolls[this.tabIndex]) {
-          this.mescrolls[this.tabIndex].endSuccess(10, hasNext);
+        res = res || {};
+        const {data, success} = res;
+        if (success) {
+          console.log(data);
+          if (!data) return;
+          handlerChooseWXPay(data)
+            .then((res) => {
+              console.log(res);
+              this.$router.back();
+            });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
+  exeSelectPaymentRecords() {
+    this.selectNoPayedRecords()
+      .then((res) => {
+        console.log(res);
+        const {success, data} = res;
+        if (success && !data) {
+          this.clinicNo = res.id;
+          this.$vux.loading.hide();
         }
       });
-    },
+  },
   ...mapActions([
-    'selectNoPayedRecords'
+    'selectNoPayedRecords',
+    'selectJSSDKConfig'
   ])
 };
 

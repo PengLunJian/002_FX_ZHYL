@@ -310,21 +310,21 @@ const actions = {
   },
   // 预约取号
   insertDoRegister({commit, state}, data) {
-    commit(ACTION_TYPES.DELETE_REGISTER_LIST_REQUEST);
+    commit(ACTION_TYPES.INSERT_DOREGISTER_LIST_REQUEST);
     return new Promise((resolve, reject) => {
       axios.post(apis.insertDoRegister, data)
         .then((res) => {
           res = res || {};
           const {success} = res;
           if (success) {
-            commit(ACTION_TYPES.DELETE_REGISTER_LIST_SUCCESS, []);
+            commit(ACTION_TYPES.INSERT_DOREGISTER_LIST_SUCCESS, []);
           } else {
-            commit(ACTION_TYPES.DELETE_REGISTER_LIST_FAILURE);
+            commit(ACTION_TYPES.INSERT_DOREGISTER_LIST_FAILURE);
           }
           resolve(res);
         })
         .catch((err) => {
-          commit(ACTION_TYPES.DELETE_REGISTER_LIST_FAILURE);
+          commit(ACTION_TYPES.INSERT_DOREGISTER_LIST_FAILURE);
           reject(err);
         });
     });
@@ -410,21 +410,43 @@ const actions = {
   },
   // 查询未支付记录-selectUnpaidList(new)
   selectNoPayedRecords({commit, state}, data) {
-    const {pageIndex} = data;
+    commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_REQUEST);
     return new Promise((resolve, reject) => {
-      axios.post(apis.selectPaymentRecord, data)
+      axios.post(apis.selectUnpaidList, data)
         .then((res) => {
           res = res || {};
           const {data, success} = res;
+          var newData = data.recordItems || [];
+          console.log(data);
+          console.log(success);
           if (success) {
-            if (pageIndex === 1) {
-              commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_REQUEST);
-            }
-            const oldData = state.NOPAYED_RECORDS.data;
-            const newData = oldData.concat(data);
             commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_SUCCESS, newData);
           } else {
             commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_FAILURE);
+          }
+          resolve(res);
+        })
+        .catch((err) => {
+          commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_FAILURE);
+          reject(err);
+        });
+    });
+  },
+  // 代缴费去支付
+  selectPayRegiter({commit, state}, data) {
+    commit(ACTION_TYPES.SELECT_PAY_REGISTER_REQUEST);
+    return new Promise((resolve, reject) => {
+      axios.post(apis.selectPayRegiter, data)
+        .then((res) => {
+          res = res || {};
+          const {data, success} = res;
+          var newData = data.recordItems || [];
+          console.log(data);
+          console.log(success);
+          if (success) {
+            commit(ACTION_TYPES.SELECT_PAY_REGISTER_SUCCESS, newData);
+          } else {
+            commit(ACTION_TYPES.SELECT_PAY_REGISTER_FAILURE);
           }
           resolve(res);
         })

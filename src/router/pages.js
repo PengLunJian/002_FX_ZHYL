@@ -9,7 +9,7 @@ import CONST_WDGH from '../containers/WDGH/Index.vue';
 import CONST_GHXQ from '../containers/GHXQ/Index.vue';
 import CONST_YYXQ from '../containers/YYXQ/Index.vue';
 import CONST_WDYY from '../containers/WDYY/Index.vue';
-// import CONST_JFJL from '../containers/JFJL/Index.vue';
+import CONST_JFJL from '../containers/JFJL/Index.vue';
 import CONST_DCLB from '../containers/DCLB/Index.vue';
 import CONST_JKDA from '../containers/JKDA/Index.vue';
 import CONST_JCBG from '../containers/JCBG/Index.vue';
@@ -37,7 +37,7 @@ const WDGH = r => require.ensure([], () => r(CONST_WDGH));
 const GHXQ = r => require.ensure([], () => r(CONST_GHXQ));
 const YYXQ = r => require.ensure([], () => r(CONST_YYXQ));
 const WDYY = r => require.ensure([], () => r(CONST_WDYY));
-// const JFJL = r => require.ensure([], () => r(CONST_JFJL));
+const JFJL = r => require.ensure([], () => r(CONST_JFJL));
 const DCLB = r => require.ensure([], () => r(CONST_DCLB));
 const JKDA = r => require.ensure([], () => r(CONST_JKDA));
 const JCBG = r => require.ensure([], () => r(CONST_JCBG));
@@ -66,7 +66,7 @@ export default {
   GHXQ,
   YYXQ,
   WDYY,
-  // JFJL,
+  JFJL,
   DCLB,
   JKDA,
   JCBG,

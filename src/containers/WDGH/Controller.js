@@ -43,8 +43,8 @@ const controller = {
         }
       });
   },
-  exeDeleteRegisterList() {
-    const data = {pageIndex: this.pageCode};
+  exeDeleteRegisterList(id) {
+    const data = {clinicNo: id};
     this.deleteRegisterList(data)
       .then((res) => {
         const {data} = res;
