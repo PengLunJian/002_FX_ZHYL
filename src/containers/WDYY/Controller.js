@@ -117,7 +117,7 @@ const controller = {
     'insertDoRegister'
   ]),
   ...mapMutations([
-    'CLEAR_REGISTER_LIST_SUCCESS'
+    'CLEAR_SUBSCRIBE_LIST_SUCCESS'
   ])
 };
 

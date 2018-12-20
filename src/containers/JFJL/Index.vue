@@ -65,12 +65,11 @@
   @import "../../assets/less/variable";
 
   .FX_ZHYL_JFJL {
-    position: relative;
-    top: 0;
-    left: 0;
     width: 100%;
-    min-height: 100vh;
-    /*padding-top: 0.46rem;*/
+    height: 100vh;
+    overflow-y: auto;
+    padding-bottom: 0.6rem;
+    -webkit-overflow-scrolling: touch;
     background-color: @bgColor;
     .tab-content {
       position: fixed;

@@ -416,8 +416,9 @@ const actions = {
         .then((res) => {
           res = res || {};
           const {data, success} = res;
+          var newData = data || {};
           if (success) {
-            commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_SUCCESS, data);
+            commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_SUCCESS, newData);
           } else {
             commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_FAILURE);
           }
