@@ -51,7 +51,6 @@ const controller = {
         const {data, success} = res;
         if (success && data.state === '1') {
           this.$vux.toast.show({
-            type: 'cancel',
             text: '取消成功'
           });
         } else {
@@ -88,7 +87,6 @@ const controller = {
         const {data, success} = res;
         if (success && data.status === '1') {
           this.$vux.toast.show({
-            type: 'cancel',
             text: '取号成功'
           });
         } else {
