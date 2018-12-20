@@ -39,6 +39,7 @@ exports.cssLoaders = function (options) {
   const lessLoader = {
     loader: 'less-loader',
     options: {
+      publicPath: '../../',
       sourceMap: options.sourceMap
     }
   }
@@ -62,6 +63,7 @@ exports.cssLoaders = function (options) {
     if (options.extract) {
       return ExtractTextPlugin.extract({
         use: loaders,
+        publicPath: '../../',
         fallback: 'vue-style-loader'
       })
     } else {

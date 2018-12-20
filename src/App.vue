@@ -30,18 +30,6 @@
     },
     created() {
       this.exeLogin();
-      // this.exeSelectJSSDKConfig();
-      // this.selectDeviceId()
-      //   .then((res) => {
-      //     res = res || {};
-      //     const {data, success} = res;
-      //     if (success) {
-      //       sessionStorage.setItem('AccessToken', 'Bearer ' + data);
-      //     }
-      //   })
-      //   .catch((err) => {
-      //     console.log(err);
-      //   });
     },
     methods: {
       exeLogin() {
