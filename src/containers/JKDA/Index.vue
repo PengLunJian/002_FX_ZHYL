@@ -132,7 +132,11 @@
   @import "../../assets/less/variable.less";
 
   .FX_ZHYL_JKDA {
-    min-height: 100vh;
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    padding-bottom: 0.6rem;
+    -webkit-overflow-scrolling: touch;
     background-color: @bgColor;
     .form-group {
       position: relative;

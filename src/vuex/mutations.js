@@ -246,7 +246,7 @@ const mutations = {
     state.PAY_REGISTER.isFailure = true;
   },
   // 清空我的挂号
-  CLEAR_SUBCRIBE_LIST_SUCCESS(state) {
+  CLEAR_SUBSCRIBE_LIST_SUCCESS(state) {
     state.SUBSCRIBE_LIST.data = [];
   },
   // 查询我的挂号
