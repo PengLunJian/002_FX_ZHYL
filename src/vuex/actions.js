@@ -411,16 +411,15 @@ const actions = {
   },
   // 查询未支付记录-selectUnpaidList(new)
   selectNoPayedRecords({commit, state}, data) {
-    commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_REQUEST);
     return new Promise((resolve, reject) => {
       axios.post(apis.selectUnpaidList, data)
         .then((res) => {
           res = res || {};
           const {data, success} = res;
-          var newData = data.recordItems || [];
+          var newData = data || {};
           console.log(data);
-          console.log(success);
           if (success) {
+            commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_REQUEST);
             commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_SUCCESS, newData);
           } else {
             commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_FAILURE);
@@ -437,22 +436,19 @@ const actions = {
   selectPayRegiter({commit, state}, data) {
     commit(ACTION_TYPES.SELECT_PAY_REGISTER_REQUEST);
     return new Promise((resolve, reject) => {
-      axios.post(apis.selectPayRegiter, data)
+        axios.post(apis.selectPayRegiter, data)
         .then((res) => {
           res = res || {};
           const {data, success} = res;
-          var newData = data.recordItems || [];
-          console.log(data);
-          console.log(success);
           if (success) {
-            commit(ACTION_TYPES.SELECT_PAY_REGISTER_SUCCESS, newData);
+            commit(ACTION_TYPES.SELECT_PAY_REGISTER_SUCCESS, data);
           } else {
             commit(ACTION_TYPES.SELECT_PAY_REGISTER_FAILURE);
           }
           resolve(res);
         })
         .catch((err) => {
-          commit(ACTION_TYPES.SELECT_NOPAYED_RECORDS_FAILURE);
+          commit(ACTION_TYPES.SELECT_PAY_REGISTER_FAILURE);
           reject(err);
         });
     });

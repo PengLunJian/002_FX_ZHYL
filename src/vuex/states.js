@@ -89,7 +89,28 @@ const states = {
     isLoading: false,
     isSuccess: false,
     isFailure: false,
-    data: []
+    data: {
+      id: '',
+      recordItems: [{
+        recipeNo: '',
+        recipeSeq: '',
+        transType: '',
+        feeCode: '',
+        drugFlag: '',
+        itemCode: '',
+        itemName: '',
+        qty: '',
+        unit: '',
+        unitPrice: '',
+        cost: '',
+        docName: '',
+        exeDoctDept: '',
+        exeDeptName: '',
+        moDate: '',
+        payFlag: null,
+        invoiceNo: ''
+      }]
+    }
   },
   DOCTOR_LIST: {
     isLoading: false,

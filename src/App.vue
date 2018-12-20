@@ -20,7 +20,7 @@
     data() {
       return {
         transitionName: '',
-        appId: 'wx9b4a02af4809f128', // 'wxe790a197b8d02b72','wx9b4a02af4809f128'
+        appId: 'wx9b4a02af4809f128', // p:'wxe790a197b8d02b72',wr:'wx9b4a02af4809f128',bx:'wx9b4a02af4809f128'
         token: sessionStorage.getItem('AccessToken'),
         jsApiList: {jsApiList: ['closeWindow']}
       };

@@ -100,18 +100,16 @@ const apis = {
   },
   // 查询已缴费记录
   selectPaidList: {
-    url: 'WenRongBusiness/v1/personal/pay/complete',
-    param: {}
+    url: 'WenRongBusiness/v1/personal/pay/complete'
   },
   // 查询未交费记录
   selectUnpaidList: {
-    url: 'WenRongBusiness/v1/personal/wait/pay',
-    param: {}
+    url: 'WenRongBusiness/v1/personal/wait/pay'
   },
   // 代缴费去支付
   selectPayRegiter: {
     url: 'WenRongBusiness/v1/register/pay/register',
-    param: {
+    params: {
       id: ''
     }
   },
