@@ -102,7 +102,7 @@
   @import "../../assets/less/variable";
 
   .FX_ZHYL_GRZX {
-    min-height: 100vh;
+    height: 100vh;
     background-color: @bgColor;
     position: relative;
     a:last-child {
