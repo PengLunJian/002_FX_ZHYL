@@ -306,7 +306,7 @@ const mutations = {
     state.NOPAYED_RECORDS.isLoading = false;
     state.NOPAYED_RECORDS.isSuccess = false;
     state.NOPAYED_RECORDS.isFailure = false;
-    state.NOPAYED_RECORDS.data = [];
+    state.NOPAYED_RECORDS.data = {};
   },
   SELECT_NOPAYED_RECORDS_SUCCESS(state, data) {
     state.NOPAYED_RECORDS.isLoading = true;
@@ -318,6 +318,7 @@ const mutations = {
     state.NOPAYED_RECORDS.isLoading = true;
     state.NOPAYED_RECORDS.isSuccess = false;
     state.NOPAYED_RECORDS.isFailure = true;
+    state.NOPAYED_RECORDS.data = {};
   },
   // 查询医生列表
   SELECT_DOCTOR_LIST_REQUEST(state) {

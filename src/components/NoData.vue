@@ -24,6 +24,7 @@
     height: 100%;
     text-align: center;
     font-size: 0;
+    position: absolute;
     &:before {
       content: '';
       height: 100%;

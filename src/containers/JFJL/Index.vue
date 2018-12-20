@@ -1,13 +1,13 @@
 <template>
   <div class="FX_ZHYL_JFJL">
-    <no-data v-if="noPayedIsSuccess&&!noPayedData.length"></no-data>
+    <no-data v-if="noPayedIsSuccess&&!noPayedData"></no-data>
     <error v-if="noPayedIsFailure" @refresh="exeSelectPaymentRecords"></error>
-    <div v-if="noPayedData.length">
+    <div v-if="noPayedData">
       <pay-item v-for="(item,index) in noPayedData"
                 :key="index"
                 :item="item"></pay-item>
     </div>
-    <button class="btn" @click="handleSubmit">合并缴费</button>
+    <button v-if="noPayedData" class="btn" @click="handleSubmit">合并缴费</button>
   </div>
 </template>
 
