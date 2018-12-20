@@ -24,6 +24,7 @@ import CONST_YYZN from '../containers/YYZN/Index.vue';
 import CONST_JZTM from '../containers/JZTM/Index.vue';
 import CONST_SFYZ from '../containers/SFYZ/Index.vue';
 import CONST_SMKS from '../containers/SMKS/Index.vue';
+import CONST_TJCG from '../containers/TJCG/Index.vue';
 
 const HOME = r => require.ensure([], () => r(CONST_HOME));
 const YYGH = r => require.ensure([], () => r(CONST_YYGH));
@@ -51,6 +52,7 @@ const YYZN = r => require.ensure([], () => r(CONST_YYZN));
 const JZTM = r => require.ensure([], () => r(CONST_JZTM));
 const SFYZ = r => require.ensure([], () => r(CONST_SFYZ));
 const SMKS = r => require.ensure([], () => r(CONST_SMKS));
+const TJCG = r => require.ensure([], () => r(CONST_TJCG));
 
 export default {
   HOME,
@@ -78,5 +80,6 @@ export default {
   YYZN,
   JZTM,
   SFYZ,
-  SMKS
+  SMKS,
+  TJCG
 };

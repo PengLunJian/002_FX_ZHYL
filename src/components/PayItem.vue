@@ -16,17 +16,25 @@
         <span class="span">{{item.itemName}}</span>
       </div>
       <div class="group">
-        <label class="label">缴费对象：</label>
-        <span class="span">{{item.transType}}</span>
+        <label class="label">所在科室：</label>
+        <span class="span">{{item.exeDoctDept}}</span>
       </div>
       <div class="group">
-        <label class="label">开方医生：</label>
-        <span class="span">{{item.exeDoct}}</span>
+        <label class="label">单&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;价：</label>
+        <span class="span">{{item.unitPrice}}元 / {{item.unit}}</span>
+      </div>
+      <div class="group">
+        <label class="label">数&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;量：</label>
+        <span class="span">{{item.qty}}</span>
+      </div>
+      <div class="group">
+        <label class="label">是否药品：</label>
+        <span class="span">{{item.drugFlag ? '是' : '否'}}</span>
       </div>
     </div>
-    <div class="row-box-3">
-      <button class="btn btn-detail">查看详情</button>
-    </div>
+    <!--<div class="row-box-3">-->
+      <!--<button class="btn btn-detail">查看详情</button>-->
+    <!--</div>-->
   </div>
 </template>
 
@@ -48,6 +56,8 @@
     .row-box-1 {
       padding: 0.1rem 0.15rem;
       border-bottom: 1px solid @borderColor;
+      display: flex;
+      flex-direction: row;
       .name {
         font-size: 0.15rem;
         width: 2rem;
@@ -59,12 +69,13 @@
         .time {
           display: block;
           margin: 0.04rem 0;
-          padding-left: 0.05rem;
+          /*padding-left: 0.05rem;*/
           color: @fontColor;
           font-size: 0.12rem;
         }
       }
       .price {
+        flex: 1;
         text-align: center;
         margin-bottom: 0.05rem;
         .label {

@@ -46,7 +46,6 @@
         if (!AccessToken) {
           const code = getQueryParams('code');
           if (!code) {
-            // handlerCloseWindow();
             const baseUrl = window.location.href;
             sessionStorage.setItem('baseUrl', baseUrl);
             jumpToWeChatUrl(this.appId);

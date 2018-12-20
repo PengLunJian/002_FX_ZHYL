@@ -144,17 +144,18 @@ export const parseData = (data, isPre) => {
 
   let {schedulWeek} = data || {};
   schedulWeek = schedulWeek || [];
-  if (schedulWeek.length) {
-    const length = schedulWeek.length <= 7 ? schedulWeek.length : 7;
+  const newSchedulWeek = distinct(schedulWeek);
+  const length = newSchedulWeek.length <= 7 ? newSchedulWeek.length : 7;
+  if (newSchedulWeek.length) {
     for (let i = 0; i < length; i++) {
       for (let j = 0; j < tempWeek.length; j++) {
-        if (schedulWeek[i].seeDate === tempWeek[j].seeDate) {
+        if (newSchedulWeek[i].seeDate === tempWeek[j].seeDate) {
           for (let k = 0; k < tempWeek[j].schedulDay.length; k++) {
-            if (schedulWeek[i].schedulDay[k]) {
+            if (newSchedulWeek[i].schedulDay[k]) {
               const tempWeekNoonCode = tempWeek[j].schedulDay[k].noonCode;
-              const schedulWeekNoonCode = schedulWeek[i].schedulDay[k].noonCode;
+              const schedulWeekNoonCode = newSchedulWeek[i].schedulDay[k].noonCode;
               if (tempWeekNoonCode === schedulWeekNoonCode) {
-                tempWeek[j].schedulDay[k] = schedulWeek[i].schedulDay[k];
+                tempWeek[j].schedulDay[k] = newSchedulWeek[i].schedulDay[k];
               }
             }
           }
@@ -162,7 +163,7 @@ export const parseData = (data, isPre) => {
       }
     }
   }
-  console.log(tempWeek);
+
   data.schedulWeek = tempWeek;
   return data;
 };
@@ -194,7 +195,27 @@ export const parseWeek = (number) => {
     '星期一', '星期二',
     '星期三', '星期四',
     '星期五', '星期六',
-    '星期七'
+    '星期天'
   ];
   return weeks[parseInt(number) - 1];
+};
+
+export const distinct = (schedulWeek) => {
+  const newSchedulWeek = [];
+  if (schedulWeek.length) {
+    let result = false;
+    newSchedulWeek.push(schedulWeek[0]);
+    schedulWeek.map((item1) => {
+      newSchedulWeek.map((item2) => {
+        if (item1.seeDate === item2.seeDate) {
+          result = true;
+        }
+      });
+      if (!result) {
+        newSchedulWeek.push(item1);
+      }
+      result = false;
+    });
+  }
+  return newSchedulWeek;
 };

@@ -205,6 +205,14 @@ const routes = {
     component: (component) => {
       return component;
     }
+  },
+  TJCG: {
+    path: '/YYGH/YYXX/TJCG',
+    name: 'TJCG',
+    meta: {index: 4},
+    component: (component) => {
+      return component;
+    }
   }
 };
 

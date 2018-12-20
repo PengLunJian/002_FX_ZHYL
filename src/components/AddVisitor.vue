@@ -1,6 +1,6 @@
 <template>
   <div class="add-visitor">
-    <p class="desc">就诊前，请先添加就诊人</p>
+    <!--<p class="desc">就诊前，请先添加就诊人</p>-->
     <button class="btn btn-add" @click="addVisitor">
       <i class="btn-icon icon-add"></i>
       <span class="btn-text">添加就诊人</span>
@@ -29,7 +29,7 @@
 
   .add-visitor {
     height: 100%;
-    padding: 0.375rem 0;
+    padding: 0.3rem 0;
     position: relative;
     border-radius: @borderRadius;
     background: linear-gradient(to right, #0066ec, #00bcfa);
