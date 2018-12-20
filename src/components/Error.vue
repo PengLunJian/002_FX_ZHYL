@@ -30,7 +30,6 @@
     text-align: center;
     font-size: 0;
     color: @borderColor2;
-    position: absolute;
     &:before {
       content: '';
       height: 100%;

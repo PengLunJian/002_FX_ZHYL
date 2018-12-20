@@ -89,6 +89,9 @@
   .FX_ZHYL_HZLB {
     width: 100%;
     height: 100vh;
+    overflow-y: auto;
+    padding-bottom: 0.6rem;
+    -webkit-overflow-scrolling: touch;
     background-color: @bgColor;
     .content {
       height: 100%;
