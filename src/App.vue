@@ -25,22 +25,23 @@
       return {
         transitionName: '',
         appId: 'wxf44faae689fe2d27',
-        token: true || sessionStorage.getItem('AccessToken')
+        token: sessionStorage.getItem('AccessToken')
       };
     },
     created() {
-      // this.exeLogin();
-      this.selectDeviceId()
-        .then((res) => {
-          res = res || {};
-          const {data, success} = res;
-          if (success) {
-            sessionStorage.setItem('AccessToken', 'Bearer ' + data);
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      this.exeLogin();
+      // this.exeSelectJSSDKConfig();
+      // this.selectDeviceId()
+      //   .then((res) => {
+      //     res = res || {};
+      //     const {data, success} = res;
+      //     if (success) {
+      //       sessionStorage.setItem('AccessToken', 'Bearer ' + data);
+      //     }
+      //   })
+      //   .catch((err) => {
+      //     console.log(err);
+      //   });
     },
     methods: {
       exeLogin() {
