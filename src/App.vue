@@ -4,6 +4,7 @@
     <transition :name="transitionName" v-if="token">
       <router-view></router-view>
     </transition>
+    <footer-bar></footer-bar>
   </div>
 </template>
 
@@ -12,15 +13,19 @@
   import Error from './components/Error';
   import {getQueryParams} from './utils';
   import {jumpToWeChatUrl, saveLocalStorage} from './login';
+  import FooterBar from './components/FooterBar';
 
   export default {
-    components: {Error},
+    components: {
+      FooterBar,
+      Error
+    },
     name: 'App',
     data() {
       return {
         transitionName: '',
         appId: 'wxf44faae689fe2d27',
-        token: sessionStorage.getItem('AccessToken')
+        token: true || sessionStorage.getItem('AccessToken')
       };
     },
     created() {
@@ -99,22 +104,6 @@
             console.log(err);
           });
       },
-      // exeSelectJSSDKConfig() {
-      //   const data = {
-      //     value: window.location.href.split('#')[0]
-      //   };
-      //   this.selectJSSDKConfig(data)
-      //     .then((res) => {
-      //       const {data, success} = res;
-      //       if (success) {
-      //         const config = Object.assign(data, this.jsApiList);
-      //         handlerWXConfig(config);
-      //       }
-      //     })
-      //     .catch((err) => {
-      //       console.log(err);
-      //     });
-      // },
       ...mapActions([
         'selectDeviceId',
         'selectGrantLogin'

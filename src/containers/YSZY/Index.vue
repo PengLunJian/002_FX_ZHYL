@@ -111,8 +111,9 @@
     width: 100%;
     height: 100vh;
     overflow-y: auto;
-    background-color: @bgColor;
+    padding-bottom: 0.6rem;
     -webkit-overflow-scrolling: touch;
+    background-color: @bgColor;
     .YSXX {
       height: auto;
       overflow: hidden;
@@ -276,7 +277,7 @@
       }
     }
     .YSJJ {
-      min-height: 2.2rem;
+      min-height: 2.5rem;
       .content {
         padding: 0.15rem;
         text-align: justify;

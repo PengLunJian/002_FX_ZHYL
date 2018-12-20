@@ -41,9 +41,12 @@ const controller = {
     this.selectDefaultCard()
       .then((res) => {
         res = res || {};
-        const {data, success} = res;
-        if (success) {
-          console.log(data);
+        const {success, status} = res;
+        if (!success) {
+          this.$vux.toast.show({
+            type: 'cancel',
+            text: status.msg
+          });
         }
       })
       .catch((err) => {
@@ -54,9 +57,12 @@ const controller = {
     this.selectMessageList()
       .then((res) => {
         res = res || {};
-        const {data, success} = res;
-        if (success) {
-          console.log(data);
+        const {success, status} = res;
+        if (!success) {
+          this.$vux.toast.show({
+            type: 'cancel',
+            text: status.msg
+          });
         }
       })
       .catch((err) => {

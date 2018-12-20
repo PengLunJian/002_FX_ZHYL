@@ -59,14 +59,12 @@
   @import '../../assets/less/variable';
 
   .FX_ZHYL_YSLB {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100vh;
-    min-height: 100vh;
-    background-color: @bgColor;
+    overflow-y: auto;
+    padding-bottom: 0.6rem;
     -webkit-overflow-scrolling: touch;
+    background-color: @bgColor;
     .module {
       box-shadow: none;
       background-color: transparent;

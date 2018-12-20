@@ -18,9 +18,10 @@
       <label class="form-label">民族</label>
       <span class="form-select">{{nation}}</span>
     </div>
-    <div class="form-group" @click="showKeyBoard('phone')">
-      <label class="form-label">手机号码</label>
-      <span class="form-select">{{phone}}</span>
+    <div class="form-group">
+      <label class="form-label" for="phone">手机号码</label>
+      <input class="form-input" id="phone" type="tel"
+             v-model="phone" placeholder="请输入"/>
     </div>
     <div class="form-group" @click="showMenus('关系')">
       <label class="form-label">与就诊人关系</label>
@@ -31,7 +32,6 @@
               @click="exeInsertVisitorList">绑卡
       </button>
     </div>
-    <key-board :isShow.sync="isShow" :initValue.sync="initValue" @writeNumber="writeNumber"></key-board>
     <popup-picker :data="popupPicker.data" :popup-title="popupPicker.popupTitle"
                   :show.sync="popupPicker.show" @on-change="handlerChange"/>
   </div>
@@ -40,22 +40,17 @@
 <script type="text/ecmascript-6">
   import {PopupPicker} from 'vux';
   import Controller from './Controller';
-  import KeyBoard from '../../components/KeyBoard';
 
   export default {
     components: {
-      KeyBoard,
       PopupPicker
     },
     name: 'SFLR',
     data() {
       return {
-        TYPE: '',
-        isShow: false,
-        initValue: '',
         name: '',
+        phone: '',
         number: '',
-        phone: '请输入',
         gender: '请选择',
         nation: '请选择',
         relation: '请选择',
@@ -96,7 +91,11 @@
   @import "../../assets/less/variable";
 
   .FX_ZHYL_SFLR {
-    min-height: 100vh;
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
     background-color: @bgColor;
     .form-group {
       position: relative;
@@ -141,9 +140,14 @@
         display: block;
         border-top: 1px solid @borderColor;
       }
-      &:nth-last-child(3) {
+      &:nth-last-child(2) {
         padding: 0.35rem 0.2rem 0;
         background-color: transparent;
+        &:after {
+          border: none !important;
+        }
+      }
+      &:nth-last-child(3) {
         &:after {
           border: none !important;
         }

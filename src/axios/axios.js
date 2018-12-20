@@ -18,6 +18,10 @@ axios.interceptors.request.use(
     config = getConfig(config);
     return config;
   }, error => {
+    Vue.$vux.toast.show({
+      type: 'cancel',
+      text: '连接异常'
+    });
     Vue.$vux.loading.hide();
     return Promise.reject(error);
   });
@@ -33,6 +37,10 @@ axios.interceptors.response.use(
   }, error => {
     return new Promise((resolve) => {
       setTimeout(() => {
+        Vue.$vux.toast.show({
+          type: 'cancel',
+          text: '连接异常'
+        });
         Vue.$vux.loading.hide();
         resolve(error.response);
       }, 1000);

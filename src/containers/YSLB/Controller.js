@@ -12,8 +12,12 @@ const controller = {
     this.selectDoctorList(params)
       .then((res) => {
         res = res || {};
-        const {data, success} = res;
-        if (data && success) {
+        const {success, status} = res;
+        if (!success) {
+          this.$vux.toast.show({
+            type: 'cancel',
+            text: status.msg
+          });
         }
       })
       .catch((err) => {

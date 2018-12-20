@@ -73,6 +73,7 @@
     width: 100%;
     height: 100vh;
     overflow-y: auto;
+    padding-bottom: 0.5rem;
     background-color: @bgColor;
     -webkit-overflow-scrolling: touch;
     .module {

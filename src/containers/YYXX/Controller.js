@@ -16,8 +16,13 @@ const controller = {
     this.selectDefaultCard()
       .then((res) => {
         res = res || {};
-        const {data, success} = res;
-        if (success) {
+        const {data, success, status} = res;
+        if (!success) {
+          this.$vux.toast.show({
+            type: 'cancel',
+            text: status.msg
+          });
+        } else {
           this.name = data.name;
         }
       })
@@ -40,9 +45,13 @@ const controller = {
     this.selectAppointmentCreate(data)
       .then((res) => {
         res = res || {};
-        const {data, success} = res;
-        if (success) {
-          console.log(data);
+        const {success, status} = res;
+        if (!success) {
+          this.$vux.toast.show({
+            type: 'cancel',
+            text: status.msg
+          });
+        } else {
           this.$router.push({
             path: this.routes.TJCG.path
           });

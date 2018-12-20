@@ -95,10 +95,12 @@
   @import "../../assets/less/variable";
 
   .FX_ZHYL_KSXX {
+    width: 100%;
     height: 100vh;
-    min-height: 100vh;
-    background-color: @bgColor;
+    overflow-y: auto;
+    padding-bottom: 0.6rem;
     -webkit-overflow-scrolling: touch;
+    background-color: @bgColor;
     .KSMC {
       height: 1.1rem;
       overflow: hidden;
@@ -236,7 +238,7 @@
       }
     }
     .KSJJ {
-      height: 2.5rem;
+      min-height: 2.5rem;
       .content {
         padding: 0.15rem;
         text-align: justify;

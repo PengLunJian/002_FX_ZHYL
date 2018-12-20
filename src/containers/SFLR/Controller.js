@@ -24,29 +24,15 @@ const controllers = {
     }
   },
   checkNotEmpty() {
-    this.phone = this.phone ? this.phone : '请输入';
     if (this.name && this.number &&
       this.gender && this.nation &&
       this.phone && this.relation &&
       this.gender !== '请选择' &&
       this.nation !== '请选择' &&
-      this.phone !== '请输入' &&
       this.relation !== '请选择') {
       this.status = '';
     } else {
       this.status = 'disabled';
-    }
-  },
-  showKeyBoard(type) {
-    this.isShow = true;
-    this.TYPE = type;
-    if (this.TYPE === 'phone') {
-      this.initValue = this.phone === '请输入' ? '' : this.phone;
-    }
-  },
-  writeNumber(value) {
-    if (this.TYPE === 'phone') {
-      this.phone = value;
     }
   },
   handlerChange(value) {
@@ -70,17 +56,19 @@ const controllers = {
       };
       this.insertVisitorList(data)
         .then((res) => {
-          const {data, success} = res;
-          if (data && success) {
+          res = res || {};
+          const {success, status} = res;
+          if (!success) {
+            this.$vux.toast.show({
+              type: 'cancel',
+              text: status.msg
+            });
+          } else {
             this.$vux.toast.show({
               text: '操作成功'
             });
             this.clearFormData();
             this.$router.back();
-          } else {
-            this.$vux.toast.show({
-              text: '操作失败'
-            });
           }
         })
         .catch((err) => {

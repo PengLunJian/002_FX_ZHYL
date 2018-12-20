@@ -220,8 +220,8 @@ li, ul {
     padding: 0.15rem 0 !important;
   }
   .weui-loading {
-    width: 0.38rem;
-    height: 0.38rem;
+    width: 0.38rem !important;
+    height: 0.38rem !important;
     margin: 0 !important;
   }
   .weui-toast__content {
@@ -233,7 +233,7 @@ li, ul {
 
 .vux-toast {
   .weui-toast {
-    width: 1rem !important;
+    width: auto !important;
     height: auto !important;
     padding: 0.15rem 0 !important;
     &.weui-toast_text {
@@ -245,17 +245,19 @@ li, ul {
     }
   }
   .weui-icon_toast {
-    width: 0.4rem;
-    height: 0.4rem;
+    width: 0.4rem !important;
+    height: 0.4rem !important;
     margin: 0 auto !important;
     &:before {
       font-size: 0.4rem !important;
     }
   }
   .weui-toast__content {
-    height: 0.25rem;
-    line-height: 0.25rem;
-    margin: 0.05rem 0 0;
+    min-width: 1rem !important;
+    height: 0.25rem !important;
+    padding: 0 0.18rem !important;
+    line-height: 0.25rem !important;
+    margin: 0.05rem 0 0 !important;
   }
 }
 

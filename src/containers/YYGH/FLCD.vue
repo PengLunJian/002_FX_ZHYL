@@ -18,7 +18,7 @@
       <div class="col-xs-6 right">
         <loading v-if="!isChildLoading"></loading>
         <no-data v-if="isChildSuccess&&!isChildData"></no-data>
-        <error v-if="isChildFailure" @refresh="exeSelectSubDepartment"></error>
+        <error v-if="isChildFailure" @refresh="exeSelectSubDepartment(params)"></error>
         <ul class="inner-block" v-if="isChildSuccess&&isChildData">
           <li class="btn btn-result"
               @click="handlerResult(item.deptCode)"
@@ -47,6 +47,7 @@
     name: 'Menus',
     data() {
       return {
+        params: null,
         activeIndex: 0
       };
     },

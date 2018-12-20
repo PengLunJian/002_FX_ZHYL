@@ -37,7 +37,7 @@
 
   .FX_ZHYL_MENU {
     height: 100vh;
-    padding-top: 0.56rem;
+    padding: 0.56rem 0 0.5rem;
     background-color: @bgColor;
   }
 </style>

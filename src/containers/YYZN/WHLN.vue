@@ -2,28 +2,44 @@
   <div class="module WHLN">
     <div class="row-box-1">
       <i class="icon icon-culture"></i>
-      <span class="text">文化理念</span>
+      <span class="text">联系我们</span>
     </div>
     <div class="row-box-2">
-      <div class="list">
-        <label class="label">功能定位：</label>
-        <span class="span">立足芜湖、服务皖南、辐射皖江，集医疗、教学、科研、预防、保健、康复为一体的现代化区域医疗中心</span>
+      <div class="group">
+        <label class="label">总机：</label>
+        <span class="span">0579-82686767</span>
       </div>
-      <div class="list">
-        <label class="label">总体目标：</label>
-        <span class="span">现代化、信息化、精细化，集医疗、教学、科研、预防、保健、康复为一体的现代化区域医疗中心</span>
+      <div class="group">
+        <label class="label">预约电话：</label>
+        <span class="span">0579-82611088</span>
       </div>
-      <div class="list">
-        <label class="label">服务宗旨：</label>
-        <span class="span">以人为本、安全优质</span>
+      <div class="group">
+        <label class="label">传真：</label>
+        <span class="span">0579-82611800</span>
       </div>
-      <div class="list">
-        <label class="label">院&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;训：</label>
-        <span class="span">以人为本、安全优质</span>
+      <div class="group">
+        <label class="label">急救电话：</label>
+        <span class="span">0579-82611120</span>
       </div>
-      <div class="list">
-        <label class="label">愿&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;景：</label>
-        <span class="span">群众满意、社会认同、员工幸福、医院发展</span>
+      <div class="group">
+        <label class="label">服务监督电话：</label>
+        <span class="span">13588651120</span>
+      </div>
+      <div class="group">
+        <label class="label">网站：</label>
+        <span class="span">http://www.wr120.com</span>
+      </div>
+      <div class="group">
+        <label class="label">微信公众号：</label>
+        <span class="span">jhwr120</span>
+      </div>
+      <div class="group">
+        <label class="label">邮政编码：</label>
+        <span class="span">321000</span>
+      </div>
+      <div class="group">
+        <label class="label">地址：</label>
+        <span class="span">浙江省金华市东莱路768号</span>
       </div>
     </div>
   </div>
@@ -65,9 +81,11 @@
       }
     }
     .row-box-2 {
-      padding: 0.1rem 0.15rem 0.2rem;
+      padding: 0.1rem 0.15rem;
       line-height: 0.2rem;
-      .list {
+      .group {
+        position: relative;
+        line-height: 0.24rem;
         .label {
 
         }

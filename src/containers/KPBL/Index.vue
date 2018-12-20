@@ -32,10 +32,14 @@
   @import "../../assets/less/variable";
 
   .FX_ZHYL_KPBL {
-    min-height: 100vh;
+    width: 100%;
+    height: 100vh;
+    overflow-y: auto;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
     background-color: @bgColor;
-    font-size: 0.14rem;
     .BKXZ {
+      font-size: 0.14rem;
       .desc-title {
         color: @fontColor;
         line-height: 0.45rem;
@@ -66,6 +70,7 @@
       padding: 0.2rem;
       box-shadow: none;
       background-color: transparent;
+      font-size: 0.14rem;
       .btn {
         width: 100%;
         display: block;
