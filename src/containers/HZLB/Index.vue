@@ -89,6 +89,8 @@
   .FX_ZHYL_HZLB {
     width: 100%;
     height: 100vh;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
     background-color: @bgColor;
     .content {
       height: 100%;
@@ -108,11 +110,12 @@
       color: @buttonColor2;
       font-size: 0;
       position: fixed;
-      right: 0.3rem;
-      bottom: 0.3rem;
+      left: 0.3rem;
+      bottom: 0.7rem;
       width: 0.6rem;
       height: 0.6rem;
       border: none;
+      z-index: 1000;
       border-radius: 100%;
       overflow: hidden;
       box-shadow: @boxShadow1;
@@ -120,7 +123,6 @@
         display: inline-block;
         vertical-align: middle;
         font-size: 0.18rem;
-        /*margin-right: 0.1rem;*/
       }
       .btn-text {
         height: 0.48rem;

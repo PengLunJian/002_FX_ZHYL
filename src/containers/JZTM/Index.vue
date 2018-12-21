@@ -51,12 +51,10 @@
   @import "../../assets/less/variable";
 
   .FX_ZHYL_JZTM {
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
     height: 100vh;
     overflow-y: auto;
+    padding-bottom: 0.6rem;
     -webkit-overflow-scrolling: touch;
     background-color: @white;
     .content {

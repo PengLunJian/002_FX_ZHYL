@@ -47,7 +47,7 @@
     padding: 0 0.84rem;
     position: relative;
     background-color: @white;
-    border-bottom: 1px solid #cccccc;
+    border-bottom: @border;
     .item-box-1 {
       position: absolute;
       top: 0;

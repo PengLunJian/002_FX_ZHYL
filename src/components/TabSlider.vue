@@ -66,7 +66,7 @@
       width: 100%;
       text-align: center;
       background-color: @white;
-      border-bottom: 1px solid @borderColor;
+      border-bottom: @border;
       font-size: 0.16rem;
       .tab-item {
         display: flex;

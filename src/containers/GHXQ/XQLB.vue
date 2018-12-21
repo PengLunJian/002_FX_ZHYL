@@ -45,9 +45,9 @@
 </template>
 
 <script type="text/ecmascript-6">
-  export default{
+  export default {
     name: 'XQLB',
-    data () {
+    data() {
       return {};
     }
   };
@@ -75,11 +75,11 @@
       height: auto;
       padding: 0 0.15rem;
       line-height: 0.45rem;
-      border-bottom: 1px solid @borderColor;
+      border-bottom: @border;
     }
     .col-box-2 {
       padding: 0.1rem 0rem;
-      border-bottom: 1px solid @borderColor;
+      border-bottom: @border;
       .group {
         padding: 0 0.15rem;
         line-height: 0.23rem;
@@ -103,7 +103,7 @@
         }
         &.btn-cancel {
           color: @fontColor;
-          border: 1px solid @borderColor;
+          border: @border;
         }
       }
     }

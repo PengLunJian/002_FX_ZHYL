@@ -136,12 +136,12 @@
       &:after {
         content: '';
         display: block;
-        border-bottom: 1px solid @borderColor;
+        border-bottom: @border;
       }
     }
     .row-box-2 {
       padding: 0.1rem 0.15rem;
-      border-bottom: 1px solid @borderColor;
+      border-bottom: @border;
       .group {
         line-height: 0.2rem;
         margin-bottom: 0.04rem;

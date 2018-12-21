@@ -72,7 +72,7 @@
     text-align: center;
     box-shadow: @boxShadow;
     background-color: #F7FAFF;
-    border-top: 1px solid @borderColor;
+    border-top: @border;
     &:after {
       content: '';
       display: block;
@@ -83,22 +83,28 @@
       width: 33.333%;
       height: 0.5rem;
       line-height: 0.5rem;
-      color: @fontColor2;
+      color: #4c4c4c;
       font-size: 0;
       .icon {
         margin-right: 0.06rem;
         display: inline-block;
         vertical-align: middle;
         font-size: 0.17rem;
+        color: @fontColor3;
       }
       .text {
         letter-spacing: 1px;
         display: inline-block;
         vertical-align: middle;
-        font-size: 0.15rem;
+        font-size: 0.14rem;
       }
       &.active {
-        color: @buttonColor2;
+        .icon {
+          color: @buttonColor2;
+        }
+        .text {
+          color: @buttonColor2;
+        }
       }
     }
   }

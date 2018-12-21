@@ -57,7 +57,7 @@
       &:after {
         content: '';
         display: block;
-        border-bottom: 1px solid @borderColor;
+        border-bottom: @border;
       }
     }
     .row-box-2 {

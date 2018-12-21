@@ -54,10 +54,10 @@
       text-align: center;
     }
     &:nth-child(n+4) {
-      border-top: 1px solid @borderColor;
+      border-top: @border;
     }
     &:not(:nth-of-type(3n)) {
-      border-right: 1px solid @borderColor;
+      border-right: @border;
     }
   }
 </style>

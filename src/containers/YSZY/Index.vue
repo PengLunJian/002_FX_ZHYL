@@ -5,7 +5,9 @@
     <div class="content" v-if="isSuccess&&data">
       <div class="module YSXX">
         <div class="col-box-1">
-          <img :src="data.doctImage||require('../../assets/images/doctor@2x.png')"/>
+          <div class="img">
+            <img :src="data.doctImage"/>
+          </div>
         </div>
         <div class="col-box-2">
           <div class="name">{{data.doctName}}&nbsp;<span class="span">(在职医生)</span></div>
@@ -128,12 +130,28 @@
         left: 0;
         padding-left: 0.15rem;
         font-size: 0;
-        img {
+        .img {
           width: 0.65rem;
           height: 0.8rem;
+          padding: 0 0.04rem;
+          display: inline-block;
           vertical-align: middle;
           background-color: #def9f4;
           border-radius: @borderRadius;
+          font-size: 0;
+          img {
+            width: 100%;
+            height: auto;
+            max-height: 100%;
+            display: inline-block;
+            vertical-align: middle;
+          }
+          &:before {
+            content: '';
+            height: 100%;
+            display: inline-block;
+            vertical-align: middle;
+          }
         }
         &:before {
           content: '';
@@ -199,8 +217,8 @@
             line-height: 0.5rem;
             text-align: center;
             font-size: 0.16rem;
-            border-right: 1px solid @tableBorder;
-            border-bottom: 1px solid @tableBorder;
+            border-right: @tableBorder;
+            border-bottom: @tableBorder;
           }
         }
         .table-body {
@@ -214,9 +232,9 @@
               width: 100% !important;
             }
             th, td {
-              height: 0.5rem;
-              border-right: 1px solid @tableBorder;
-              border-bottom: 1px solid @tableBorder;
+              height:0.5rem;
+              border-right: @tableBorder;
+              border-bottom: @tableBorder;
               &:last-child {
                 border-right: none;
               }
@@ -237,7 +255,7 @@
                     top: 50%;
                     right: 0;
                     margin-top: -0.15rem;
-                    border-left: 1px solid @tableBorder;
+                    border-left: @tableBorder;
                   }
                 }
               }
@@ -268,10 +286,11 @@
         .table-footer {
           p {
             text-align: right;
-            padding-right: 0.15rem;
+            padding-right: 0.12rem;
             border-bottom: none;
             line-height: 0.5rem;
-            font-size: 0.14rem;
+            font-size: 0.13rem;
+            color: #808080;
           }
         }
       }

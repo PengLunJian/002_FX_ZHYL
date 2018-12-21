@@ -85,7 +85,7 @@ li, ul {
     padding: 0 0.15rem;
     font-weight: normal;
     font-size: 0;
-    border-bottom: 1px solid @borderColor2;
+    border-bottom: @tableBorder;
     &:before {
       content: '';
       margin-right: 0.1rem;
@@ -262,3 +262,15 @@ li, ul {
   }
 }
 
+img[lazy='loaded'] {
+  animation: lazy 500ms ease-out;
+}
+
+@keyframes lazy {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
