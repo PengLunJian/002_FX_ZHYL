@@ -65,10 +65,15 @@ const controller = {
     this.selectNoPayedRecords()
       .then((res) => {
         console.log(res);
-        const {data, success} = res;
+        const {data, success, status} = res;
         if (success && data) {
           this.clinicNo = data.id;
           this.$vux.loading.hide();
+        } else if (!success) {
+          this.$vux.toast.show({
+            type: 'cancel',
+            text: status.msg
+          });
         }
       })
       .catch((err) => {
