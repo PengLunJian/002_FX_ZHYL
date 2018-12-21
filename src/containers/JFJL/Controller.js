@@ -41,7 +41,7 @@ const controller = {
     this.selectPayRegiter(data)
       .then((res) => {
         res = res || {};
-        const {data, success} = res;
+        const {data, success, status} = res;
         if (success) {
           console.log(data);
           if (!data) return;
@@ -50,6 +50,11 @@ const controller = {
               console.log(res);
               this.$router.back();
             });
+        } else {
+          this.$vux.toast.show({
+            type: 'cancel',
+            text: status.msg
+          });
         }
       })
       .catch((err) => {
