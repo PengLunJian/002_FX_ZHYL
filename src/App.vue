@@ -12,7 +12,7 @@
   import {mapActions, mapState} from 'vuex';
   import Error from './components/Error';
   import {getQueryParams} from './utils';
-  import {jumpToWeChatUrl, saveLocalStorage} from './login';
+  import {linkToWXPage, saveLocalStorage} from './login';
   import FooterBar from './components/FooterBar';
 
   export default {
@@ -24,7 +24,6 @@
     data() {
       return {
         transitionName: '',
-        appId: 'wxf44faae689fe2d27',
         token: sessionStorage.getItem('AccessToken')
       };
     },
@@ -39,7 +38,7 @@
           if (!code) {
             const baseUrl = window.location.href;
             sessionStorage.setItem('baseUrl', baseUrl);
-            jumpToWeChatUrl(this.appId);
+            linkToWXPage();
           } else {
             if (this.exeCheckCode(code)) {
               this.exeRefresh();

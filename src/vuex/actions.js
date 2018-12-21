@@ -434,7 +434,7 @@ const actions = {
   selectPayRegiter({commit, state}, data) {
     commit(ACTION_TYPES.SELECT_PAY_REGISTER_REQUEST);
     return new Promise((resolve, reject) => {
-        axios.post(apis.selectPayRegiter, data)
+      axios.post(apis.selectPayRegiter, data)
         .then((res) => {
           res = res || {};
           const {data, success} = res;
@@ -550,7 +550,11 @@ const actions = {
           res = res || {};
           const {data, success} = res;
           if (success) {
-            const newData = parseData(data, isPre);
+            let newData = null;
+            if (data) {
+              data.doctImage = require('../assets/images/doctor_detail.png');
+              newData = parseData(data, isPre);
+            }
             commit(ACTION_TYPES.SELECT_DOCTOR_DETAIL_SUCCESS, newData);
           } else {
             commit(ACTION_TYPES.SELECT_DOCTOR_DETAIL_FAILURE);
@@ -573,7 +577,11 @@ const actions = {
           res = res || {};
           const {data, success} = res;
           if (success) {
-            const newData = parseData(data, isPre);
+            let newData = null;
+            if (data) {
+              data.deptImg = require('../assets/images/hospital@2x.png');
+              newData = parseData(data, isPre);
+            }
             commit(ACTION_TYPES.SELECT_DEPT_DETAIL_SUCCESS, newData);
           } else {
             commit(ACTION_TYPES.SELECT_DEPT_DETAIL_FAILURE);

@@ -94,7 +94,7 @@
       .row-box-1 {
         padding: 0 0.15rem;
         line-height: 0.45rem;
-        border-bottom: 1px solid @borderColor;
+        border-bottom: @border;
         .time {
         }
       }
@@ -132,7 +132,7 @@
           &:after {
             content: '';
             display: block;
-            border-bottom: 1px solid @borderColor;
+            border-bottom: @border;
           }
           &.off {
             &:before {

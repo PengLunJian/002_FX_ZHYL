@@ -5,7 +5,7 @@
     <div class="content" v-if="isSuccess&&data">
       <div class="module KSMC">
         <div class="col-box-1">
-          <img :src="data.deptImg||require('../../assets/images/hospital@2x.png')"/>
+          <img :src="data.deptImg"/>
         </div>
         <div class="col-box-2">
           <h3 class="name">{{data.deptName}}</h3>
@@ -117,7 +117,9 @@
         font-size: 0;
         img {
           width: 0.65rem;
-          height: 0.8rem;
+          height: auto;
+          max-height: 0.8rem;
+          display: inline-block;
           vertical-align: middle;
           background-color: #def9f4;
           border-radius: @borderRadius;
@@ -160,8 +162,8 @@
             line-height: 0.5rem;
             text-align: center;
             font-size: 0.16rem;
-            border-right: 1px solid @tableBorder;
-            border-bottom: 1px solid @tableBorder;
+            border-right: @tableBorder;
+            border-bottom: @tableBorder;
           }
         }
         .table-body {
@@ -176,8 +178,8 @@
             }
             th, td {
               height: 0.5rem;
-              border-right: 1px solid @tableBorder;
-              border-bottom: 1px solid @tableBorder;
+              border-right: @tableBorder;
+              border-bottom: @tableBorder;
               &:last-child {
                 border-right: none;
               }
@@ -198,7 +200,7 @@
                     top: 50%;
                     right: 0;
                     margin-top: -0.15rem;
-                    border-left: 1px solid @tableBorder;
+                    border-left: @tableBorder;
                   }
                 }
               }
@@ -232,7 +234,8 @@
             padding-right: 0.15rem;
             border-bottom: none;
             line-height: 0.5rem;
-            font-size: 0.14rem;
+            font-size: 0.13rem;
+            color: #808080;
           }
         }
       }

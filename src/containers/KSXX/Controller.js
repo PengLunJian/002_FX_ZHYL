@@ -27,9 +27,12 @@ const controller = {
     this.selectDepartmentDetail(query)
       .then((res) => {
         res = res || {};
-        const {data, success} = res;
-        if (success) {
-          console.log(data);
+        const {success, status} = res;
+        if (!success) {
+          this.$vux.toast.show({
+            type: 'cancel',
+            text: status.msg
+          });
         }
       })
       .catch((err) => {

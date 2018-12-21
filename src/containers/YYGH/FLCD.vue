@@ -78,7 +78,7 @@
         height: 100%;
         overflow-y: auto;
         position: relative;
-        background-color: @bgColor;
+        background-color: #fafafa;
         -webkit-overflow-scrolling: touch;
         .inner-block {
           .btn-filter {
@@ -86,7 +86,7 @@
             position: relative;
             line-height: 0.45rem;
             padding-left: 0.3rem;
-            border-bottom: 1px solid #d9d9d9;
+            border-bottom: @border;
             font-size: 0.14rem;
             &.active {
               color: @activeColor;

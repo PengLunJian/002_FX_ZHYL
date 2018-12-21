@@ -2,7 +2,8 @@
  *
  * @param appId
  */
-export const jumpToWeChatUrl = (appId) => {
+export const linkToWXPage = () => {
+  const appId = 'wxf44faae689fe2d27';
   const ACCESS_URL = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' +
     appId + '&redirect_uri=' + encodeURIComponent(window.location.href) +
     '&response_type=code&scope=snsapi_userinfo&state=123&' +

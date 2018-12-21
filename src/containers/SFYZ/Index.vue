@@ -34,7 +34,7 @@
       position: relative;
       padding: 0 0.15rem;
       background-color: @white;
-      border-bottom: 1px solid @borderColor;
+      border-bottom: @border;
       .form-label {
         line-height: 0.45rem;
         font-size: 0.16rem;

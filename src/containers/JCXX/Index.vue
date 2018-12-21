@@ -38,7 +38,7 @@
       margin-bottom: 0.15rem;
       background-color: @white;
       padding: 0 0.45rem 0 0.15rem;
-      border-bottom: 1px solid @borderColor;
+      border-bottom: @border;
       font-size: 0.14rem;
       .form-label {
 

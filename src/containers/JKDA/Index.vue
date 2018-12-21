@@ -176,7 +176,7 @@
       &:after {
         content: '';
         display: block;
-        border-top: 1px solid @borderColor;
+        border-top: @border;
       }
       &:last-child {
         &:after {

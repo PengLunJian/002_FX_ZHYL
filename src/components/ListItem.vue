@@ -28,7 +28,7 @@
     position: relative;
     padding-left: 0.7rem;
     background-color: @white;
-    border-bottom: 1px solid @borderColor;
+    border-bottom: @border;
     .item-img {
       position: absolute;
       top: 0;

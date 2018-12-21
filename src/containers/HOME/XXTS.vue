@@ -98,7 +98,7 @@
       .context {
         height: 2rem;
         position: relative;
-        border-top: 1px solid @borderColor2;
+        border-top: @border;
       }
       .row-box-1 {
         padding: 0.1rem 0.15rem 0;
@@ -113,7 +113,7 @@
       }
       .row-box-3 {
         padding: 0.1rem 0.15rem;
-        border-top: 1px solid @borderColor2;
+        border-top: @border;
         text-align: right;
         font-size: 0;
         .btn {

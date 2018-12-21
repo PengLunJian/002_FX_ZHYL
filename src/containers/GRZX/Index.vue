@@ -216,15 +216,9 @@
             height: 0.25rem;
             border-radius: 100%;
             margin-right: 0.1rem;
-            background-color: #dbecff;
-            color: @buttonColor;
-            font-size: 0.15rem;
-          }
-          &.icon-money {
-            font-size: 0.18rem;
-          }
-          &.icon-before {
-            font-size: 0.18rem;
+            background-color: @userCenterIconBgColor;
+            color: @userCenterIconColor;
+            font-size: 0.16rem;
           }
         }
         .link-text {
@@ -244,7 +238,7 @@
         &:after {
           content: '';
           display: block;
-          border-top: 1px solid @borderColor;
+          border-top: @border;
         }
       }
     }
@@ -266,12 +260,9 @@
             height: 0.25rem;
             border-radius: 100%;
             margin-right: 0.1rem;
-            background-color: #dbecff;
-            color: @buttonColor;
+            background-color: @userCenterIconBgColor;
+            color: @userCenterIconColor;
             font-size: 0.15rem;
-          }
-          &.icon-print {
-            font-size: 0.22rem;
           }
         }
         .link-text {
@@ -291,7 +282,7 @@
         &:after {
           content: '';
           display: block;
-          border-top: 1px solid @borderColor;
+          border-top: @border;
         }
       }
     }

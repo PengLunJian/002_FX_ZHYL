@@ -138,7 +138,7 @@
       &:after {
         content: '';
         display: block;
-        border-top: 1px solid @borderColor;
+        border-top: @border;
       }
       &:nth-last-child(2) {
         padding: 0.35rem 0.2rem 0;
