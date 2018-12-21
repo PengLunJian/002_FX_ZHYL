@@ -5,7 +5,7 @@
         <img src="../assets/images/doctor@2x.png"/>
         <label class="label">{{item.doctorName}}</label>
         <span class="span">({{item.doctorTitle}})</span>
-        <em class="em">{{regStatusArr[item.regStatus]}}</em>
+        <em class="em">{{regStatusArr[item.appimentStatus]}}</em>
       </div>
     </div>
     <div class="row-box-2">
@@ -47,9 +47,7 @@
       </div>
     </div>
     <div class="row-box-3">
-      <button class="btn btn-doneregister" v-if="item.appimentStatus==='0'" v-waves.block>已取消</button>
       <button class="btn btn-doregister" @click="toDoRegister(item.subscribeId)" v-if="item.appimentStatus==='1'" v-waves.block>取号</button>
-      <button class="btn btn-doneregister" v-if="item.appimentStatus==='2'" v-waves.block>已取号</button>
       <button class="btn btn-confirm" @click="toPayBill" v-waves.block>去缴费</button>
       <button class="btn btn-cancel" @click="deleteSubscribe(item.subscribeId)" v-waves.block>取消预约</button>
       <!--<button @click="showDetails" class="btn btn-detail">查看详情</button>-->
@@ -64,7 +62,7 @@
     props: ['item'],
     data() {
       return {
-        regStatusArr: ['已支付', '未支付', '已取消', '已失效']
+        regStatusArr: ['已取消', '预约中', '已取号']
       };
     },
     methods: {
