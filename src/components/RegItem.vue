@@ -2,7 +2,7 @@
   <div class="module GHMK">
     <div class="row-box-1">
       <h3 class="name">{{item.deptName}}</h3>
-      <em class="em">{{regStatusArr[item.regStatus]}}</em>
+      <em class="em">{{regStatusArr[item.regStatus + 1]}}</em>
     </div>
     <div class="row-box-2">
       <div class="group">
