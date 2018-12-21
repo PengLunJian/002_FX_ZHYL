@@ -28,7 +28,7 @@
       };
     },
     created() {
-      this.exeLogin();
+      // this.exeLogin();
     },
     methods: {
       exeLogin() {
