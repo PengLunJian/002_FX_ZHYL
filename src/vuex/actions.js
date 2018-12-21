@@ -594,6 +594,27 @@ const actions = {
         });
     });
   },
+  // 执行当日挂号
+  selectTodayCreate({commit, state}, data) {
+    commit(ACTION_TYPES.SELECT_TODAY_CREATE_REQUEST);
+    return new Promise((resolve, reject) => {
+      axios.post(apis.selectTodayCreate, data)
+        .then((res) => {
+          res = res || {};
+          const {data, success} = res;
+          if (success) {
+            commit(ACTION_TYPES.SELECT_TODAY_CREATE_SUCCESS, data);
+          } else {
+            commit(ACTION_TYPES.SELECT_TODAY_CREATE_FAILURE);
+          }
+          resolve(res);
+        })
+        .catch((err) => {
+          commit(ACTION_TYPES.SELECT_TODAY_CREATE_FAILURE);
+          reject(err);
+        });
+    });
+  },
   // 查询科室详情
   selectAppointmentCreate({commit, state}, data) {
     commit(ACTION_TYPES.SELECT_APPO_CREATE_REQUEST);

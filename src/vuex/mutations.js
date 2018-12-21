@@ -439,6 +439,23 @@ const mutations = {
     state.APPO_CREATE.isSuccess = false;
     state.APPO_CREATE.isFailure = true;
   },
+  // 查询科室详情
+  SELECT_TODAY_CREATE_REQUEST(state) {
+    state.TODAY_CREATE.isLoading = false;
+    state.TODAY_CREATE.isSuccess = false;
+    state.TODAY_CREATE.isFailure = false;
+  },
+  SELECT_TODAY_CREATE_SUCCESS(state, data) {
+    state.TODAY_CREATE.isLoading = true;
+    state.TODAY_CREATE.isSuccess = true;
+    state.TODAY_CREATE.isFailure = false;
+    state.TODAY_CREATE.data = data;
+  },
+  SELECT_TODAY_CREATE_FAILURE(state) {
+    state.TODAY_CREATE.isLoading = true;
+    state.TODAY_CREATE.isSuccess = false;
+    state.TODAY_CREATE.isFailure = true;
+  },
   // 查询检验报告详情
   SELECT_REPORT_LIST_REQUEST(state) {
     state.REPORT_LIST.isLoading = false;

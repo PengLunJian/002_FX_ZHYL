@@ -6,6 +6,7 @@ const controller = {
       const {query} = this.$route;
       const params = {
         subSource: 'WX',
+        isPre: query.isPre,
         preTime: item.seeDate,
         isExpert: query.isExpert,
         deptCode: this.data.deptCode,

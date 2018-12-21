@@ -2,7 +2,14 @@ import {mapActions} from 'vuex';
 
 const controller = {
   handlerSubmit() {
-    this.exeSelectAppointmentCreate();
+    const {isPre} = this.$route || {};
+    if (parseInt(isPre)) {
+      // 预约挂号
+      this.exeSelectAppointmentCreate();
+    } else {
+      // 当日挂号
+      this.exeSelectTodayCreate();
+    }
   },
   exeFillParams() {
     const {query} = this.$route;
@@ -24,6 +31,38 @@ const controller = {
           });
         } else {
           this.name = data.name;
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  },
+  exeSelectTodayCreate() {
+    const {query} = this.$route;
+    const data = {
+      classId: query.classId,
+      deptCode: query.deptCode,
+      regLevel: query.isExpert ? 'ZJ' : 'PT',
+      regType: query.isExpert ? 'ZJ' : 'PT',
+      clinicFee: query.clinicFee,
+      doctCode: query.doctCode,
+      noonCode: query.noonCode,
+      regDate: query.regDate,
+      regTime: ''
+    };
+    this.selectTodayCreate(data)
+      .then((res) => {
+        res = res || {};
+        const {success, status} = res;
+        if (!success) {
+          this.$vux.toast.show({
+            type: 'cancel',
+            text: status.msg
+          });
+        } else {
+          this.$router.push({
+            path: this.$routes.TJCG.path
+          });
         }
       })
       .catch((err) => {
@@ -63,6 +102,7 @@ const controller = {
   },
   ...mapActions([
     'selectDefaultCard',
+    'selectTodayCreate',
     'selectAppointmentCreate'
   ])
 };

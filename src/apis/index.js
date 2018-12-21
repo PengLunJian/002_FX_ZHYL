@@ -180,6 +180,18 @@ const apis = {
       doctCode: ''
     }
   },
+  selectTodayCreate: {
+    url: '/WenRongBusiness/v1/regist/regist/create',
+    params: {
+      classId: '',
+      deptCode: '',
+      isExpert: '',
+      preTime: '',
+      clinicFee: '',
+      subSource: '',
+      doctCode: ''
+    }
+  },
   // 新增/修改健康档案
   insertHealthList: {
     url: '/WenRongBusiness/v1/personal/health/create',
