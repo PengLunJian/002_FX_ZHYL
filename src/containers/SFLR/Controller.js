@@ -68,7 +68,9 @@ const controllers = {
               text: '操作成功'
             });
             this.clearFormData();
-            this.$router.back();
+            this.$router.replace({
+              path: this.$routes.GRZX.path
+            });
           }
         })
         .catch((err) => {

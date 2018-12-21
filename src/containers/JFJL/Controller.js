@@ -58,7 +58,6 @@ const controller = {
         }
       })
       .catch((err) => {
-        alert('error0');
         console.log(err);
       });
   },
