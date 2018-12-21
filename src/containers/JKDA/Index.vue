@@ -2,15 +2,15 @@
   <div class="FX_ZHYL_JKDA">
     <div class="module DYMK">
       <p class="desc">建立个人健康档案，可提高就诊效率与自我健康管理</p>
-      <div class="form-group" @click="showKeyBoard('height')">
+      <div class="form-group">
         <label class="form-label">身高</label>
-        <span class="form-select">{{height}}</span>
+        <input class="form-input" type="tel" palceholder="请输入" v-model="height" />
         <i class="form-icon icon-next"></i>
       </div>
 
-      <div class="form-group" @click="showKeyBoard('weight')">
+      <div class="form-group">
         <label class="form-label">体重</label>
-        <span class="form-select">{{weight}}</span>
+        <input class="form-input" type="tel" palceholder="请输入" v-model="weight" />
         <i class="form-icon icon-next"></i>
       </div>
 
@@ -60,8 +60,8 @@
         initValue: '',
         id: 0,
         cardNo: '1',
-        height: '请输入',
-        weight: '请输入',
+        height: '',
+        weight: '',
         bloodTypeIndex: '',
         smokingIndex: '',
         drinkIndex: '',
@@ -105,7 +105,6 @@
     },
     methods: Controller,
     created() {
-      if (this.isLoading) return;
       this.exeSelectHealthList();
     },
     watch: {

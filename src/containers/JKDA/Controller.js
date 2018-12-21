@@ -13,12 +13,12 @@ const controllers = {
     }
   },
   checkNotEmpty: function () {
-    this.height = this.height ? this.height : '请输入';
-    this.weight = this.weight ? this.weight : '请输入';
+    // this.height = this.height ? this.height : '请输入';
+    // this.weight = this.weight ? this.weight : '请输入';
     if (this.height && this.weight &&
       this.blood && this.smoke && this.wine &&
-      this.height !== '请输入' &&
-      this.weight !== '请输入' &&
+      this.height &&
+      this.weight &&
       this.blood !== '请选择' &&
       this.smoke !== '请选择' &&
       this.wine !== '请选择') {

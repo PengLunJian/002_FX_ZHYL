@@ -41,7 +41,7 @@ const data = {
         idCardNo: '342523199007244618',
         deptName: '眼科中心',
         date: dateFormat(new Date(), 'yyyy/mm/dd hh:mm'),
-        isPay: parseInt(Math.random() * 100) % 2
+        regStatus: parseInt(Math.random() * 100) % 4
       });
     }
     return {
@@ -60,7 +60,7 @@ const data = {
         idCardNo: '342523199007244618',
         deptName: '一百万伏电击科',
         date: dateFormat(new Date(), 'yyyy/mm/dd hh:mm'),
-        isPay: parseInt(Math.random() * 100) % 2
+        regStatus: parseInt(Math.random() * 100) % 4
       });
     }
     return {

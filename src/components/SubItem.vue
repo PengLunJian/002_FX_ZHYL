@@ -5,7 +5,7 @@
         <img src="../assets/images/doctor@2x.png"/>
         <label class="label">{{item.doctorName}}</label>
         <span class="span">({{item.doctorTitle}})</span>
-        <em class="em">{{item.isPay?'已支付':'待支付'}}</em>
+        <em class="em">{{regStatusArr[item.regStatus]}}</em>
       </div>
     </div>
     <div class="row-box-2">
@@ -63,7 +63,9 @@
     name: 'SubItem',
     props: ['item'],
     data() {
-      return {};
+      return {
+        regStatusArr: ['已支付', '未支付', '已取消', '已失效']
+      };
     },
     methods: {
       toDoRegister: function(id) {

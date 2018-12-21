@@ -2,7 +2,7 @@
   <div class="module GHMK">
     <div class="row-box-1">
       <h3 class="name">{{item.deptName}}</h3>
-      <em class="em">{{item.isPay?'已支付':'待支付'}}</em>
+      <em class="em">{{regStatusArr[item.regStatus]}}</em>
     </div>
     <div class="row-box-2">
       <div class="group">
@@ -61,16 +61,18 @@
   export default {
     name: 'RegItem',
     data() {
-      return {};
+      return {
+        regStatusArr: ['已支付', '未支付', '已取消', '已失效']
+      };
     },
     props: ['item'],
     methods: {
-      toPayBill: function() {
+      toPayBill: function () {
         this.$router.push({
           path: this.$routes.JFJL.path
         });
       },
-      deleteSubscribe: function(id) {
+      deleteSubscribe: function (id) {
         this.$emit('delete', id);
       },
       showDetails: function () {

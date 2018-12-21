@@ -3,7 +3,7 @@ import wx from 'weixin-js-sdk';
 export const handlerWXConfig = (config) => {
   return new Promise((resolve, reject) => {
     wx.config({
-      debug: true,
+      debug: false,
       appId: config.appId,
       timestamp: config.timestamp,
       nonceStr: config.nonceStr,
