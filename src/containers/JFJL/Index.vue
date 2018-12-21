@@ -9,7 +9,9 @@
                 :item="item"></pay-item>
     </div>
     <!--</mescroll-vue>-->
-    <button v-if="noPayedData" class="btn" @click="handleSubmit">合并缴费</button>
+    <div class="btn-wrapper">
+      <button v-if="noPayedData" class="btn" @click="handleSubmit">合并缴费</button>
+    </div>
   </div>
 </template>
 
@@ -94,15 +96,19 @@
         height: 100% !important;
       }
     }
-    .btn {
-      width: 100%;
-      height: 0.46rem;
-      background: @buttonColor2;
-      color: #fff;
-      font-size: 0.2rem;
-      letter-spacing: 0.01rem;
-      position: fixed;
-      bottom: 0;
+    .btn-wrapper {
+      padding: 0.1rem;
+      .btn {
+        width: 100%;
+        height: 0.46rem;
+        background: @buttonColor2;
+        color: #fff;
+        font-size: 0.2rem;
+        letter-spacing: 0.01rem;
+        border-radius: @borderRadius;
+        /*position: fixed;*/
+        /*bottom: 0;*/
+      }
     }
   }
 </style>

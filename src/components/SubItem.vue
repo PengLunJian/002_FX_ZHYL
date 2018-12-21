@@ -5,7 +5,7 @@
         <img src="../assets/images/doctor@2x.png"/>
         <label class="label">{{item.doctorName}}</label>
         <span class="span">({{item.doctorTitle}})</span>
-        <em class="em">{{regStatusArr[item.appimentStatus]}}</em>
+        <em class="em">{{appimentStatusArr[item.appimentStatus]}}</em>
       </div>
     </div>
     <div class="row-box-2">
@@ -62,7 +62,7 @@
     props: ['item'],
     data() {
       return {
-        regStatusArr: ['已取消', '预约中', '已取号']
+        appimentStatusArr: ['已取消', '待取号', '已取号']
       };
     },
     methods: {
