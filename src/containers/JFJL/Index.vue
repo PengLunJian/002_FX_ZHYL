@@ -97,7 +97,7 @@
       }
     }
     .btn-wrapper {
-      padding: 0.1rem;
+      padding: 0.25rem 0.2rem;
       .btn {
         width: 100%;
         height: 0.46rem;
