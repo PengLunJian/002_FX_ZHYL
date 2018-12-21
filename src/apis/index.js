@@ -1,8 +1,8 @@
 const apis = {
   default: {
-    baseUrl: 'http://192.168.1.196',
+    baseUrl: 'http://zero.yizuanbao.cn',
     method: 'POST',
-    timeout: 5000,
+    timeout: 20000,
     headers: {
       'Authorization': '',
       'X-Requested-With': 'XMLHttpRequest',

@@ -20,6 +20,7 @@
             name: this.$routes.YYGH.name,
             icon: 'icon-register',
             text: '挂号',
+            query: {isPre: '0'},
             path: this.$routes.YYGH.path
           },
           {
@@ -41,7 +42,8 @@
       showPage(item, index) {
         this.activeIndex = index;
         this.$router.replace({
-          path: item.path
+          path: item.path,
+          query: item.query
         });
       }
     },
