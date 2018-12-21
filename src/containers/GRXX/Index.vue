@@ -40,7 +40,8 @@
           </div>
         </div>
         <div class="row-box-3">
-          <button class="btn btn-unbind">解绑该就诊卡</button>
+          <button class="btn btn-unbind"
+                  @click="exeDeleteVisitorList(data.patientCardNo)">解绑该就诊卡</button>
           <!--<p class="message">就诊卡在2019年03月04日后可解绑</p>-->
         </div>
       </div>
