@@ -53,7 +53,7 @@ const controller = {
           });
         } else {
           this.$router.push({
-            path: this.routes.TJCG.path
+            path: this.$routes.TJCG.path
           });
         }
       })
