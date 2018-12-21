@@ -2,11 +2,13 @@
   <div class="FX_ZHYL_JFJL">
     <no-data v-if="noPayedIsSuccess&&!noPayedData"></no-data>
     <error v-if="noPayedIsFailure" @refresh="exeSelectPaymentRecords"></error>
+    <!--<mescroll-vue v-if="noPayedData" ref="mescroll" :down="down" :init="init">-->
     <div v-if="noPayedData">
       <pay-item v-for="(item,index) in noPayedData"
                 :key="index"
                 :item="item"></pay-item>
     </div>
+    <!--</mescroll-vue>-->
     <button v-if="noPayedData" class="btn" @click="handleSubmit">合并缴费</button>
   </div>
 </template>
@@ -17,6 +19,7 @@
   import PayItem from '../../components/PayItem';
   import NoData from '../../components/NoData';
   import Error from '../../components/Error';
+  // import MescrollVue from 'mescroll.js/mescroll.vue';
 
   export default {
     components: {
@@ -29,6 +32,14 @@
       return {
         clinicNo: '',
         jsApiList: {jsApiList: ['chooseWXPay']}
+        // down: {
+        //   auto: false,
+        //   offset: 50,
+        //   mustToTop: true,
+        //   outOffsetRate: 0.3,
+        //   callback: this.refresh,
+        //   autoShowLoading: true
+        // }
       };
     },
     created() {

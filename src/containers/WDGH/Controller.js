@@ -52,6 +52,14 @@ const controller = {
         if (this.mescroll) {
           this.mescroll.endSuccess(data.length, hasNext);
         }
+        // res = res || {};
+        // const {success, status} = res;
+        // if (!success) {
+        //   this.$vux.toast.show({
+        //     type: 'cancel',
+        //     text: status.msg
+        //   });
+        // }
       })
       .catch((err) => {
         console.log(err);

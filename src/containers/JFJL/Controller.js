@@ -6,6 +6,12 @@ import {
 } from '../../jssdk/WXHelper';
 
 const controller = {
+  // init(mescroll) {
+  //   this.mescroll = mescroll;
+  // },
+  // refresh() {
+  //   this.exeSelectPaymentRecords();
+  // },
   handleSubmit() {
     // this.exeSelectPayRegiter();
     handlerCheckJsApi(this.jsApiList)

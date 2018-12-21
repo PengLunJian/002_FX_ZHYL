@@ -22,10 +22,17 @@ const controller = {
     const data = {pageIndex: this.pageCode};
     this.selectSubscribeList(data)
       .then((res) => {
-        const {data} = res;
+        console.log(res);
+        const {status, success, data} = res;
         const hasNext = data.length !== 10 ? false : true;
         if (this.mescroll) {
           this.mescroll.endSuccess(data.length, hasNext);
+        }
+        if (!success) {
+          this.$vux.toast.show({
+            type: 'cancel',
+            text: status.msg
+          });
         }
       })
       .catch((err) => {
@@ -48,15 +55,15 @@ const controller = {
     this.deleteSubscribeList(data)
       .then((res) => {
         console.log(res);
-        const {data, success} = res;
-        if (success && data.state === '1') {
-          this.$vux.toast.show({
-            text: '取消成功'
-          });
-        } else {
+        const {data, success, status} = res;
+        if (!success) {
           this.$vux.toast.show({
             type: 'cancel',
-            text: '取消失败'
+            text: status.msg
+          });
+        } else if (success && data.state === '1') {
+          this.$vux.toast.show({
+            text: '取消成功'
           });
         }
         const hasNext = data.length !== 10 ? false : true;
@@ -84,15 +91,15 @@ const controller = {
     this.insertDoRegister(data)
       .then((res) => {
         console.log(res);
-        const {data, success} = res;
-        if (success && data.status === '1') {
-          this.$vux.toast.show({
-            text: '取号成功'
-          });
-        } else {
+        const {data, success, status} = res;
+        if (!success) {
           this.$vux.toast.show({
             type: 'cancel',
-            text: '取号失败'
+            text: status.msg
+          });
+        } else if (success && data.status === '1') {
+          this.$vux.toast.show({
+            text: '取号成功'
           });
         }
       })
