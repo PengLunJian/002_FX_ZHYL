@@ -14,6 +14,8 @@ const controller = {
         deptName: this.data.deptName,
         doctName: this.data.doctName,
         classId: item.schedulDay[number].classId,
+        regCode: item.schedulDay[number].regCode,
+        timeSolt: item.schedulDay[number].timeSolt,
         noonCode: item.schedulDay[number].noonCode,
         clinicFee: item.schedulDay[number].totalFee
       };

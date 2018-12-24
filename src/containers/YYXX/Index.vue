@@ -47,13 +47,11 @@
         price: '',
         deptName: '',
         doctName: '',
-        payment: '微信支付',
-        jsApiList: {jsApiList: ['chooseWXPay']}
+        payment: '微信支付'
       };
     },
     created() {
       this.exeFillParams();
-      // this.exeSelectJSSDKConfig();
       this.exeSelectDefaultCard();
     },
     methods: Controller,

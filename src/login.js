@@ -22,9 +22,9 @@ export const saveLocalStorage = (data) => {
     WechatAccessToken,
     WechatRefreshToken
   } = data;
-  sessionStorage.setItem('WechatAppId', WechatAppId);
-  sessionStorage.setItem('AccessToken', 'Bearer ' + AccessToken);
-  sessionStorage.setItem('RefreshToken', RefreshToken);
-  sessionStorage.setItem('WechatAccessToken', WechatAccessToken);
-  sessionStorage.setItem('WechatRefreshToken', WechatRefreshToken);
+  localStorage.setItem('WechatAppId', WechatAppId);
+  localStorage.setItem('AccessToken', 'Bearer ' + AccessToken);
+  localStorage.setItem('RefreshToken', RefreshToken);
+  localStorage.setItem('WechatAccessToken', WechatAccessToken);
+  localStorage.setItem('WechatRefreshToken', WechatRefreshToken);
 };

@@ -2,7 +2,8 @@ import {mapActions} from 'vuex';
 
 const controller = {
   handlerSubmit() {
-    const {isPre} = this.$route || {};
+    const {query} = this.$route || {};
+    const {isPre} = query || {};
     if (parseInt(isPre)) {
       // 预约挂号
       this.exeSelectAppointmentCreate();
@@ -38,17 +39,17 @@ const controller = {
       });
   },
   exeSelectTodayCreate() {
-    const {query} = this.$route;
+    const {query} = this.$route || {};
     const data = {
       classId: query.classId,
       deptCode: query.deptCode,
-      regLevel: query.isExpert ? 'ZJ' : 'PT',
+      regLevel: query.regCode,
       regType: query.isExpert ? 'ZJ' : 'PT',
       clinicFee: query.clinicFee,
-      doctCode: query.doctCode,
+      doctCode: query.doctCode || '',
       noonCode: query.noonCode,
-      regDate: query.regDate,
-      regTime: ''
+      regDate: query.preTime,
+      regTime: query.timeSolt
     };
     this.selectTodayCreate(data)
       .then((res) => {
@@ -70,7 +71,7 @@ const controller = {
       });
   },
   exeSelectAppointmentCreate() {
-    const {query} = this.$route;
+    const {query} = this.$route || {};
     const data = {
       classId: query.classId,
       deptCode: query.deptCode,

@@ -24,7 +24,7 @@
     data() {
       return {
         transitionName: '',
-        token: sessionStorage.getItem('AccessToken')
+        token: true || localStorage.getItem('AccessToken')
       };
     },
     created() {
@@ -32,7 +32,7 @@
     },
     methods: {
       exeLogin() {
-        const {AccessToken} = sessionStorage;
+        const {AccessToken} = localStorage;
         if (!AccessToken) {
           const code = getQueryParams('code');
           if (!code) {
@@ -67,7 +67,7 @@
             res = res || {};
             const {data, success} = res;
             if (success) {
-              sessionStorage.setItem('AccessToken', 'Bearer ' + data);
+              localStorage.setItem('AccessToken', 'Bearer ' + data);
               this.selectGrantLogin(params)
                 .then((res) => {
                   const {data, success} = res;
@@ -76,19 +76,19 @@
                     const {baseUrl} = sessionStorage;
                     window.location.replace(baseUrl);
                   } else {
-                    sessionStorage.removeItem('AccessToken');
+                    localStorage.removeItem('AccessToken');
                   }
                 })
                 .catch((err) => {
-                  sessionStorage.removeItem('AccessToken');
+                  localStorage.removeItem('AccessToken');
                   console.log(err);
                 });
             } else {
-              sessionStorage.removeItem('AccessToken');
+              localStorage.removeItem('AccessToken');
             }
           })
           .catch((err) => {
-            sessionStorage.removeItem('AccessToken');
+            localStorage.removeItem('AccessToken');
             console.log(err);
           });
       },

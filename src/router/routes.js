@@ -24,7 +24,7 @@ const routes = {
     }
   },
   YYXX: {
-    path: '/YYGH/YSLB/YSZY/YYXX',
+    path: '/YYGH/YYXX',
     name: 'YYXX',
     meta: {index: 4},
     component: (component) => {

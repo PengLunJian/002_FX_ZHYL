@@ -30,8 +30,8 @@
           },
           {
             image: require('../../assets/images/nav_icon03@2x.png'),
-            title: '绑卡',
-            path: this.$routes.KPBL.path,
+            title: '缴费',
+            path: this.$routes.JFJL.path,
             disabled: false
           },
           {

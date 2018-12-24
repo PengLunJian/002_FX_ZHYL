@@ -185,11 +185,13 @@ const apis = {
     params: {
       classId: '',
       deptCode: '',
-      isExpert: '',
-      preTime: '',
-      clinicFee: '',
-      subSource: '',
-      doctCode: ''
+      doctCode: '',
+      regLevel: '',
+      noonCode: '',
+      regType: '',
+      regDate: '',
+      regTime: '',
+      clinicFee: ''
     }
   },
   // 新增/修改健康档案

@@ -73,6 +73,7 @@
       background-image: url('../../assets/images/news_icon@2x.png');
       .message {
         padding-left: 0.1rem;
+        font-weight: normal;
         font-size: 0.14rem;
         color: #333333;
       }
