@@ -9,7 +9,7 @@
 
 <script type="text/ecmascript-6">
   export default {
-    name: 'no-dat',
+    name: 'no-data',
     data() {
       return {};
     }
