@@ -24,7 +24,7 @@
     data() {
       return {
         transitionName: '',
-        token: true || localStorage.getItem('AccessToken')
+        token: localStorage.getItem('AccessToken')
       };
     },
     created() {

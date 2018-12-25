@@ -2,9 +2,7 @@
   <div class="FX_ZHYL_GRZX">
     <div class="module DYMK">
       <loading v-if="!isLoading"></loading>
-      <div class="error" v-if="isFailure">
-        <button class="btn btn-refresh" @click="exeSelectDefaultCard">重新加载</button>
-      </div>
+      <error v-if="isFailure" :isIcon="false" @refresh="exeSelectDefaultCard"></error>
       <div class="select" v-if="isSuccess&&data">
         <div class="row-box-1">
           <img src="../../assets/images/doctor@2x.png"/>
@@ -53,15 +51,13 @@
       </router-link>
     </div>
     <div class="module DSMK">
-      <!--<router-link :to="this.$routes.JCBG.path">-->
-      <div @click="notAvailable">
+      <router-link :to="this.$routes.JCBG.path">
         <div class="link-item btn">
           <i class="link-icon icon-report"></i>
           <span class="link-text">检查报告</span>
           <i class="link-icon icon-next"></i>
         </div>
-      </div>
-      <!--</router-link>-->
+      </router-link>
       <router-link :to="this.$routes.JKDA.path">
         <div class="link-item btn">
           <i class="link-icon icon-file"></i>
@@ -78,9 +74,14 @@
   import Controller from './Controller';
   import Loading from '../../components/Loading';
   import AddVisitor from '../../components/AddVisitor';
+  import Error from '../../components/Error';
 
   export default {
-    components: {Loading, AddVisitor},
+    components: {
+      Error,
+      Loading,
+      AddVisitor
+    },
     name: 'GRZX',
     data() {
       return {};
