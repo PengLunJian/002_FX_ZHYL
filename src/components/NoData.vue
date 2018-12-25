@@ -1,6 +1,6 @@
 <template>
   <div class="no-data">
-    <div class="content">
+    <div class="content fade">
       <img src="../assets/images/no_data.png"/>
       <p class="text">暂无数据</p>
     </div>

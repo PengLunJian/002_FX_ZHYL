@@ -1,6 +1,6 @@
 <template>
   <div class="loading" :style="'height:'+height">
-    <div class="inner"></div>
+    <div class="content fade"></div>
   </div>
 </template>
 
@@ -28,7 +28,7 @@
       display: inline-block;
       vertical-align: middle;
     }
-    .inner {
+    .content {
       width: 0.2rem;
       height: 0.2rem;
       display: inline-block;

@@ -266,8 +266,24 @@ img[lazy='loaded'] {
   animation: lazy 500ms ease-out;
 }
 
+.fade {
+  animation: fade 400ms ease-out;
+}
+
 @keyframes lazy {
   0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  25% {
     opacity: 0;
   }
   100% {

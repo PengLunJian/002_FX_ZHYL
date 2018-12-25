@@ -1,6 +1,6 @@
 <template>
   <div class="error">
-    <div class="content">
+    <div class="content fade">
       <img v-if="isIcon===false?isIcon:isShow" src="../assets/images/error.png"/>
       <button class="btn btn-refresh" @click="handlerRefresh">重新加载</button>
     </div>
