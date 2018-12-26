@@ -1,7 +1,7 @@
 <template>
   <div class="error">
-    <div class="content">
-      <img src="../assets/images/error.png"/>
+    <div class="content fade">
+      <img v-if="isIcon===false?isIcon:isShow" src="../assets/images/error.png"/>
       <button class="btn btn-refresh" @click="handlerRefresh">重新加载</button>
     </div>
   </div>
@@ -11,8 +11,11 @@
   export default {
     name: 'error',
     data() {
-      return {};
+      return {
+        isShow: true
+      };
     },
+    props: ['isIcon'],
     methods: {
       handlerRefresh() {
         this.$emit('refresh');
@@ -50,7 +53,7 @@
         line-height: 0.26rem;
         padding: 0 0.2rem;
         overflow: hidden;
-        border-radius: 0.3rem;
+        border-radius: 0.26rem;
         background-color: #5f9bf1;
         font-size: 0.12rem;
         color: @white;

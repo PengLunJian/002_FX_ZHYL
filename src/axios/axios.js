@@ -8,7 +8,7 @@ axios.defaults.headers = apis.default.headers;
 
 axios.interceptors.request.use(
   config => {
-    const AccessToken = sessionStorage.getItem('AccessToken');
+    const AccessToken = localStorage.getItem('AccessToken');
     if (AccessToken) {
       config.headers = {'Authorization': AccessToken};
     }

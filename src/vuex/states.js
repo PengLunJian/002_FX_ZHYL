@@ -161,6 +161,12 @@ const states = {
     isFailure: false,
     data: null
   },
+  TODAY_CREATE: {
+    isLoading: false,
+    isSuccess: false,
+    isFailure: false,
+    data: null
+  },
   REPORT_LIST: {
     isLoading: false,
     isSuccess: false,

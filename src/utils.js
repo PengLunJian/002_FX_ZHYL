@@ -150,13 +150,12 @@ export const parseData = (data, isPre) => {
     for (let i = 0; i < length; i++) {
       for (let j = 0; j < tempWeek.length; j++) {
         if (newSchedulWeek[i].seeDate === tempWeek[j].seeDate) {
-          for (let k = 0; k < newSchedulWeek[i].schedulDay.length; k++) {
-            for (let g = 0; g < tempWeek[j].schedulWeek.length; g++) {
-              const tempWeekNoonCode = tempWeek[j].schedulDay[g].noonCode;
-              const schedulWeekNoonCode = newSchedulWeek[i].schedulDay[k].noonCode;
+          for (let k = 0; k < tempWeek[j].schedulDay.length; k++) {
+            for (let g = 0; g < newSchedulWeek[i].schedulDay.length; g++) {
+              const tempWeekNoonCode = tempWeek[j].schedulDay[k].noonCode;
+              const schedulWeekNoonCode = newSchedulWeek[i].schedulDay[g].noonCode;
               if (tempWeekNoonCode === schedulWeekNoonCode) {
-                tempWeek[j].schedulDay[g] = newSchedulWeek[i].schedulDay[k];
-                return;
+                tempWeek[j].schedulDay[k] = newSchedulWeek[i].schedulDay[g];
               }
             }
           }
@@ -200,11 +199,7 @@ export const parseWeek = (number) => {
   ];
   return weeks[parseInt(number) - 1];
 };
-/**
- *
- * @param schedulWeek
- * @returns {Array}
- */
+
 export const distinct = (schedulWeek) => {
   const newSchedulWeek = [];
   if (schedulWeek.length) {
