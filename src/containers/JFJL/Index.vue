@@ -3,14 +3,14 @@
     <no-data v-if="noPayedIsSuccess&&!noPayedData"></no-data>
     <error v-if="noPayedIsFailure" @refresh="exeSelectPaymentRecords"></error>
     <!--<mescroll-vue v-if="noPayedData" ref="mescroll" :down="down" :init="init">-->
-    <div v-if="noPayedData">
+    <div v-if="noPayedIsSuccess&&noPayedData">
       <pay-item v-for="(item,index) in noPayedData"
                 :key="index"
                 :item="item"></pay-item>
     </div>
     <!--</mescroll-vue>-->
     <div class="btn-wrapper">
-      <button v-if="noPayedData" class="btn" @click="handleSubmit">合并缴费</button>
+      <button v-if="noPayedIsSuccess&&noPayedData.length" class="btn" @click="handleSubmit">合并缴费</button>
     </div>
   </div>
 </template>

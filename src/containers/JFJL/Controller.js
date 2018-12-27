@@ -40,9 +40,11 @@ const controller = {
     const data = {id: this.id};
     this.selectPayRegiter(data)
       .then((res) => {
+        alert(JSON.stringify(res));
         res = res || {};
         const {data, success, status} = res;
         if (success) {
+          alert(JSON.stringify(data));
           console.log(data);
           if (!data) return;
           handlerChooseWXPay(data)
