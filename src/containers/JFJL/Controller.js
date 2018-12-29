@@ -40,9 +40,11 @@ const controller = {
     const data = {id: this.id};
     this.selectPayRegiter(data)
       .then((res) => {
+        alert(JSON.stringify(res));
         res = res || {};
         const {data, success, status} = res;
         if (success) {
+          alert(JSON.stringify(data));
           console.log(data);
           if (!data) return;
           handlerChooseWXPay(data)
@@ -65,10 +67,15 @@ const controller = {
     this.selectNoPayedRecords()
       .then((res) => {
         console.log(res);
-        const {data, success} = res;
+        const {data, success, status} = res;
         if (success && data) {
           this.clinicNo = data.id;
           this.$vux.loading.hide();
+        } else if (!success) {
+          this.$vux.toast.show({
+            type: 'cancel',
+            text: status.msg
+          });
         }
       })
       .catch((err) => {
