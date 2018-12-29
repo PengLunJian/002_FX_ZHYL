@@ -24,11 +24,11 @@
     data() {
       return {
         transitionName: '',
-        token: localStorage.getItem('AccessToken')
+        token: true || localStorage.getItem('AccessToken')
       };
     },
     created() {
-      // this.exeLogin();
+      this.exeLogin();
     },
     methods: {
       exeLogin() {

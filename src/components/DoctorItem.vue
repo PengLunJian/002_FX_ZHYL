@@ -1,5 +1,5 @@
 <template>
-  <div class="doctor">
+  <div class="doctor scale">
     <div class="item-box-1">
       <img :src="item.doctImg||require('../assets/images/doctor@2x.png')"/>
     </div>

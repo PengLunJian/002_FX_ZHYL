@@ -13,9 +13,9 @@
         </ul>
       </div>
       <div class="module ZZYS">
-        <no-data v-if="isSuccess&&!data.doctor.length"></no-data>
+        <no-data v-if="isSuccess&&!data.date[activeIndex].doctor.length"></no-data>
         <error v-if="isFailure" @refresh="exeSelectDoctorList"></error>
-        <doctor-item v-for="(item,index) in data.doctor"
+        <doctor-item v-for="(item,index) in data.date[activeIndex].doctor"
                      :key="index" :item="item" :isPre="isPre"></doctor-item>
       </div>
     </div>
@@ -69,10 +69,6 @@
       background-color: transparent;
     }
     .content {
-      height: 100%;
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       padding-top: 0.5rem;

@@ -3,7 +3,6 @@ import {mapActions} from 'vuex';
 const controller = {
   handleFilter(index) {
     this.activeIndex = index;
-    this.exeSelectDoctorList();
   },
   exeSelectDoctorList() {
     const {query} = this.$route || {};

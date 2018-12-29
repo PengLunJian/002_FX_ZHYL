@@ -50,10 +50,13 @@
     watch: {
       $route() {
         this.$nextTick(() => {
-          const {name} = this.$route;
+          const {name, query} = this.$route;
+          const {isPre} = query || {};
           this.data.map((item, index) => {
             if (item.name === name) {
-              this.activeIndex = index;
+              if (!item.query || isPre === '0') {
+                this.activeIndex = index;
+              }
             }
           });
         });
